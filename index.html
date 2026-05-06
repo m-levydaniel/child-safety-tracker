@@ -1,0 +1,1320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Global Child Safety & Social Media Policy Tracker — v2.1</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #161616;
+    --card: #1f1f1f;
+    --border: #2f2f2f;
+    --text: #ececec;
+    --muted: #9a9a9a;
+    --accent: #e08a6a;
+    --accent-soft: #3a241b;
+    --green: #6fb877;
+    --green-soft: #1c3322;
+    --blue: #6aa6e0;
+    --blue-soft: #1a2a40;
+    --amber: #d9a45c;
+    --amber-soft: #3a2c14;
+    --red: #e07474;
+    --red-soft: #3a1f1f;
+    --gray: #b0b0b0;
+    --gray-soft: #2a2a2a;
+    --hover: #262626;
+    --th-bg: #181818;
+    --purple: #b48ad9;
+    --purple-soft: #2c1f3a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 24px; }
+  header { margin-bottom: 24px; }
+  h1 { font-size: 22px; margin: 0 0 6px 0; font-weight: 600; }
+  .meta {
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .refresh-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .refresh-btn:hover { background: #c97056; }
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 32px 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 18px 0 8px 0;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 12px;
+    margin: -8px 0 12px 0;
+  }
+  .controls {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .controls-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 4px;
+  }
+  .chip {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--text);
+    user-select: none;
+  }
+  .chip:hover { background: var(--hover); }
+  .chip.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+  input[type="search"] {
+    flex: 1;
+    min-width: 180px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--text);
+  }
+  input[type="search"]::placeholder { color: var(--muted); }
+
+  /* Milestones */
+  .milestones {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .milestone-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .milestone-row:last-child { border-bottom: none; }
+  .milestone-date {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+    min-width: 110px;
+    font-variant-numeric: tabular-nums;
+  }
+  .milestone-flag { font-size: 13px; min-width: 22px; }
+  .milestone-text { font-size: 13px; }
+  .milestone-text strong { color: var(--text); }
+  .milestone-past { opacity: 0.55; }
+  .milestone-past .milestone-date { color: var(--muted); }
+
+  /* Policy table */
+  .table-scroll { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    min-width: 1100px;
+  }
+  th, td {
+    padding: 9px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    font-size: 12.5px;
+  }
+  th {
+    background: var(--th-bg);
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  th .sort-arrow { color: var(--accent); margin-left: 3px; }
+  tbody tr:hover { background: var(--hover); }
+  tbody tr:last-child td { border-bottom: none; }
+  .country { font-weight: 600; white-space: nowrap; }
+  .initiative-name { font-weight: 500; }
+  .initiative-summary { color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+  .min-age {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .min-age-na { color: var(--muted); font-weight: 400; font-size: 12px; }
+  .year-cell { color: var(--muted); white-space: nowrap; font-size: 12px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .badge-implemented { background: var(--green-soft); color: var(--green); }
+  .badge-passed { background: var(--blue-soft); color: var(--blue); }
+  .badge-pending { background: var(--amber-soft); color: var(--amber); }
+  .badge-stalled { background: var(--gray-soft); color: var(--gray); }
+
+  .type-full-ban { background: var(--red-soft); color: var(--red); }
+  .type-parental-consent { background: var(--purple-soft); color: var(--purple); }
+  .type-design-rules { background: var(--blue-soft); color: var(--blue); }
+  .type-age-verification { background: var(--amber-soft); color: var(--amber); }
+  .type-mixed { background: var(--accent-soft); color: var(--accent); }
+
+  .lit-active { background: var(--red-soft); color: var(--red); }
+  .lit-enjoined { background: var(--gray-soft); color: var(--gray); }
+  .lit-struckdown { background: var(--gray-soft); color: var(--gray); }
+  .lit-none { background: var(--green-soft); color: var(--green); }
+
+  .latest-update { font-size: 12px; line-height: 1.45; max-width: 360px; }
+  .latest-meta {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .litigation-cell { min-width: 150px; }
+  .litigation-detail {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .source-cell a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+  .source-cell a:hover { text-decoration: underline; }
+  .source-cell .source-host {
+    color: var(--muted);
+    font-size: 10.5px;
+    margin-top: 2px;
+  }
+
+  /* Media */
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 10px;
+  }
+  .media-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .media-title { font-weight: 600; margin: 0 0 4px 0; font-size: 13.5px; }
+  .media-title a { color: var(--text); text-decoration: none; }
+  .media-title a:hover { color: var(--accent); }
+  .media-meta {
+    color: var(--muted);
+    font-size: 11.5px;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .media-summary { font-size: 12.5px; color: var(--text); margin: 0; }
+
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11.5px;
+  }
+  .empty {
+    padding: 18px;
+    text-align: center;
+    color: var(--muted);
+    background: var(--card);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 6px 0 14px 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .stat-row strong { color: var(--text); margin-right: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🌐 Global Child Safety & Social Media Policy Tracker — v2.1</h1>
+    <div class="meta">
+      <span>Last updated: <strong id="last-updated">May 6, 2026</strong></span>
+      <span>·</span>
+      <span><span id="policy-count">—</span> jurisdictions tracked</span>
+      <button class="refresh-btn" id="refresh-btn">Refresh data</button>
+    </div>
+  </header>
+
+  <h2>📅 Upcoming Milestones</h2>
+  <p class="subtitle">Key dates ahead — effective dates, consultation deadlines, court dates. Past milestones shown faded.</p>
+  <div class="milestones" id="milestones"></div>
+
+  <h2>📋 Policy Tracker</h2>
+  <div class="stat-row" id="stats"></div>
+
+  <div class="controls">
+    <span class="controls-label">Status</span>
+    <span class="chip active" data-filter="status:all">All</span>
+    <span class="chip" data-filter="status:implemented">Implemented</span>
+    <span class="chip" data-filter="status:passed">Passed</span>
+    <span class="chip" data-filter="status:pending">Pending</span>
+    <span class="chip" data-filter="status:stalled">Stalled</span>
+  </div>
+  <div class="controls">
+    <span class="controls-label">Type</span>
+    <span class="chip active" data-filter="type:all">All</span>
+    <span class="chip" data-filter="type:full-ban">Full ban</span>
+    <span class="chip" data-filter="type:parental-consent">Parental consent</span>
+    <span class="chip" data-filter="type:design-rules">Design rules</span>
+    <span class="chip" data-filter="type:age-verification">Age verification</span>
+    <span class="chip" data-filter="type:mixed">Mixed</span>
+  </div>
+  <div class="controls">
+    <span class="controls-label">Region</span>
+    <span class="chip active" data-filter="region:all">All</span>
+    <span class="chip" data-filter="region:Europe">Europe</span>
+    <span class="chip" data-filter="region:Americas">Americas</span>
+    <span class="chip" data-filter="region:APAC">APAC</span>
+    <span class="chip" data-filter="region:Africa">Africa</span>
+    <input type="search" id="search-box" placeholder="Search country, law, regulator…" />
+  </div>
+
+  <div class="table-scroll">
+    <table id="policy-table">
+      <thead>
+        <tr>
+          <th data-sort="country">Country</th>
+          <th data-sort="initiative">Initiative</th>
+          <th data-sort="minAge">Min age</th>
+          <th data-sort="regType">Type</th>
+          <th data-sort="status">Status</th>
+          <th data-sort="yearSort">Year</th>
+          <th>Latest update</th>
+          <th data-sort="litigation">Litigation</th>
+          <th>Sources</th>
+        </tr>
+      </thead>
+      <tbody id="policy-tbody"></tbody>
+    </table>
+  </div>
+  <div id="empty-state" class="empty" style="display:none;">No matching policies.</div>
+
+  <h2>📰 Media, Research & Civil Society</h2>
+  <p class="subtitle">Split by source type so you can scan the buckets that matter for your work.</p>
+  <div class="controls">
+    <span class="chip active" data-mfilter="all">All</span>
+    <span class="chip" data-mfilter="research">Research & reviews</span>
+    <span class="chip" data-mfilter="advocacy">Civil society & advocacy</span>
+    <span class="chip" data-mfilter="industry">Industry response</span>
+    <span class="chip" data-mfilter="legal">Legal commentary</span>
+    <span class="chip" data-mfilter="impact">Impact analysis</span>
+    <span class="chip" data-mfilter="news">Journalism</span>
+  </div>
+
+  <div id="media-sections"></div>
+
+  <div class="footer">
+    Sources column links only to primary legal/regulatory text (statute pages, regulator websites, parliamentary bill records). Media section gathers third-party analysis.
+    <br /><br />
+    <strong>Status:</strong> Implemented = in force and being enforced · Passed = enacted but not yet in force · Pending = in legislative process · Stalled = died, blocked, or stuck.
+    <strong>Type:</strong> Full ban = age-based access prohibition · Parental consent = requires guardian approval · Design rules = duty of care / addictive features rules · Age verification = AV/age assurance only · Mixed = combination.
+    <strong>Litigation:</strong> Active = open challenge · Enjoined = currently blocked by court · Struck down = permanently invalidated · None = no pending challenge / not applicable.
+  </div>
+</div>
+
+<script>
+const POLICIES = [
+  {
+    country: "🇦🇺 Australia", region: "APAC",
+    initiative: "Online Safety Amendment (Social Media Minimum Age) Act",
+    summary: "Bans under-16s from holding accounts on Instagram, TikTok, YouTube, Snapchat, Facebook, X, Threads, Reddit, Kick, Twitch.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2024 (in force Dec 2025)", yearSort: 2024,
+    enforcement: "eSafety Commissioner",
+    penalties: "Up to A$49.5M",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "March 31, 2026: eSafety opened formal investigations into Facebook, Instagram, Snapchat, TikTok, YouTube. ~4.7M under-16 accounts removed by mid-Dec 2025; ~70% of under-16s reportedly still accessing per parents.",
+    primary: { title: "eSafety Commissioner — official guidance", url: "https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions", host: "esafety.gov.au" }
+  },
+  {
+    country: "🇬🇧 United Kingdom", region: "Europe",
+    initiative: "Online Safety Act 2023 + Children's Wellbeing & Schools Act 2026",
+    summary: "Ofcom-enforced duty-of-care for child users; risk assessment, age assurance, child-appropriate experiences.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2023; amended 2026", yearSort: 2023,
+    enforcement: "Ofcom",
+    penalties: "Up to £18M or 10% global turnover",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Children's Wellbeing & Schools Act got Royal Assent April 29, 2026. Ofcom: 80+ investigations open; £1M fine for age-assurance failure; £520K fine for 4chan (March 2026). Children's online-safety consultation closes May 26, 2026.",
+    primary: { title: "Online Safety Act 2023 (legislation.gov.uk)", url: "https://www.legislation.gov.uk/ukpga/2023/50/contents", host: "legislation.gov.uk" }
+  },
+  {
+    country: "🇪🇺 European Union", region: "Europe",
+    initiative: "Digital Services Act + EU Age Verification Blueprint",
+    summary: "DSA child-protection guidelines plus a privacy-preserving age verification app using zero-knowledge proofs.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules + AV",
+    status: "implemented", statusLabel: "Implemented",
+    year: "DSA 2022; AV Blueprint 2026", yearSort: 2022,
+    enforcement: "European Commission + national DSCs",
+    penalties: "Up to 6% global turnover (DSA)",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "EU AV Blueprint feature-ready April 15, 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026.",
+    primary: { title: "EC — EU age verification policy", url: "https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification", host: "ec.europa.eu" }
+  },
+  {
+    country: "🇫🇷 France", region: "Europe",
+    initiative: "Under-15 social media ban",
+    summary: "Bans social media for children under 15; mandates age verification and platform fines for non-compliance.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "passed", statusLabel: "Passed",
+    year: "2026 (in force Sept 2026)", yearSort: 2026,
+    enforcement: "Arcom",
+    penalties: "Significant; tied to EU rules",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "National Assembly approved bill January 2026. Platforms must implement robust age verification by Sept 2026 for new accounts; full compliance Jan 2027. Targets recommendation algorithms; extends school phone ban to high schools.",
+    primary: { title: "Légifrance — French legal database", url: "https://www.legifrance.gouv.fr/", host: "legifrance.gouv.fr" }
+  },
+  {
+    country: "🇺🇸 United States (Federal)", region: "Americas",
+    initiative: "Kids Online Safety Act (KOSA) / KIDS Act",
+    summary: "Would impose duty of care on platforms re: minors' wellbeing. Senate passed 91-3 in 2024; House version stripped duty of care.",
+    minAge: 17, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "stalled", statusLabel: "Stalled",
+    year: "2024–2026", yearSort: 2024,
+    enforcement: "FTC + state AGs",
+    penalties: "Per FTC Act; civil penalties",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim; key senators denouncing House changes.",
+    primary: { title: "Congress.gov — S.1748 (KOSA) text", url: "https://www.congress.gov/bill/119th-congress/senate-bill/1748/text", host: "congress.gov" }
+  },
+  {
+    country: "🇺🇸 US — Tennessee", region: "Americas",
+    initiative: "Public Chapter 899",
+    summary: "Requires social media companies to verify age and obtain parental consent for users under 18.",
+    minAge: 18, regType: "parental-consent", regTypeLabel: "Parental consent",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2024", yearSort: 2024,
+    enforcement: "TN Attorney General",
+    penalties: "Civil penalties",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "In force. Part of broader US state trend — at least 19 states had laws addressing minors on social media by April 2026.",
+    primary: { title: "Tennessee General Assembly", url: "https://wapp.capitol.tn.gov/apps/Billinfo/", host: "capitol.tn.gov" }
+  },
+  {
+    country: "🇺🇸 US — Virginia", region: "Americas",
+    initiative: "Social media time-limit for minors",
+    summary: "Limits users under 16 to one hour per day on Instagram, TikTok, Snapchat, YouTube and similar platforms.",
+    minAge: 16, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2026 (in force Jan 1)", yearSort: 2026,
+    enforcement: "VA Attorney General",
+    penalties: "Civil penalties under VCDPA",
+    litigation: "active", litigationLabel: "Active",
+    litigationDetail: "NetChoice v. Virginia — First Amendment challenge filed.",
+    notes: "In force January 1, 2026 via amendment to Virginia Consumer Data Protection Act.",
+    primary: { title: "Virginia Legislative Information System", url: "https://lis.virginia.gov/", host: "lis.virginia.gov" }
+  },
+  {
+    country: "🇺🇸 US — Florida", region: "Americas",
+    initiative: "HB 3 — Online Protections for Minors",
+    summary: "Prohibits under-14s from creating accounts; requires parental consent for 14- and 15-year-olds.",
+    minAge: 14, regType: "mixed", regTypeLabel: "Ban + parental consent",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2024", yearSort: 2024,
+    enforcement: "FL Attorney General",
+    penalties: "Civil penalties",
+    litigation: "active", litigationLabel: "Active",
+    litigationDetail: "First Amendment challenges by industry groups ongoing.",
+    notes: "In force.",
+    primary: { title: "Florida Senate — HB 3 (2024)", url: "https://www.flsenate.gov/Session/Bill/2024/3", host: "flsenate.gov" }
+  },
+  {
+    country: "🇺🇸 US — California", region: "Americas",
+    initiative: "SB 976 (Protecting Our Kids from Social Media Addiction Act)",
+    summary: "Requires age verification and addictive-feed restrictions for minor users.",
+    minAge: 18, regType: "mixed", regTypeLabel: "Design + AV",
+    status: "passed", statusLabel: "Passed",
+    year: "2024 (in force Dec 31, 2026)", yearSort: 2024,
+    enforcement: "CA Attorney General",
+    penalties: "Civil penalties",
+    litigation: "active", litigationLabel: "Active",
+    litigationDetail: "Related California design laws (e.g., AADC) face NetChoice litigation.",
+    notes: "Effective December 31, 2026.",
+    primary: { title: "California Legislative Info — SB 976", url: "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202320240SB976", host: "leginfo.legislature.ca.gov" }
+  },
+  {
+    country: "🇺🇸 US — Nebraska", region: "Americas",
+    initiative: "Parental Rights in Social Media Act",
+    summary: "Requires age verification and parental consent for social media users under 18.",
+    minAge: 18, regType: "parental-consent", regTypeLabel: "Parental consent",
+    status: "passed", statusLabel: "Passed",
+    year: "2025 (in force July 2026)", yearSort: 2025,
+    enforcement: "NE Attorney General",
+    penalties: "Civil penalties",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Effective July 1, 2026. Likely to face First Amendment challenge similar to other state laws.",
+    primary: { title: "Nebraska Legislature", url: "https://nebraskalegislature.gov/", host: "nebraskalegislature.gov" }
+  },
+  {
+    country: "🇺🇸 US — Louisiana", region: "Americas",
+    initiative: "Act 456 (social media age check)",
+    summary: "Imposed age restrictions and access controls for social media platforms.",
+    minAge: 18, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "stalled", statusLabel: "Stalled",
+    year: "2023", yearSort: 2023,
+    enforcement: "LA Attorney General",
+    penalties: "Civil penalties",
+    litigation: "struckdown", litigationLabel: "Struck down",
+    litigationDetail: "NetChoice v. Murrill — M.D. La. struck down Act 456 on First Amendment grounds (summary judgment).",
+    notes: "Permanently invalidated by federal district court.",
+    primary: { title: "Louisiana State Legislature", url: "https://www.legis.la.gov/", host: "legis.la.gov" }
+  },
+  {
+    country: "🇺🇸 US — Mississippi", region: "Americas",
+    initiative: "HB 1126 (age assurance + parental consent)",
+    summary: "Imposed age-verification and parental-consent requirements on social media platforms.",
+    minAge: 18, regType: "mixed", regTypeLabel: "AV + parental consent",
+    status: "stalled", statusLabel: "Stalled",
+    year: "2024", yearSort: 2024,
+    enforcement: "MS Attorney General",
+    penalties: "Civil penalties",
+    litigation: "enjoined", litigationLabel: "Enjoined",
+    litigationDetail: "Preliminary injunction in NetChoice v. Mississippi; 5th Circuit hearing the appeal.",
+    notes: "Currently blocked by court order.",
+    primary: { title: "Mississippi Legislature — Bill Status", url: "http://billstatus.ls.state.ms.us/", host: "billstatus.ls.state.ms.us" }
+  },
+  {
+    country: "🇨🇦 Canada", region: "Americas",
+    initiative: "Online Harms Act (Bill C-63 / C-216)",
+    summary: "Would impose duties on platforms re: harmful content, age-appropriate design, and CSAM. C-63 died at dissolution; C-216 introduced in 45th Parliament.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "stalled", statusLabel: "Stalled",
+    year: "2024 (died 2025)", yearSort: 2024,
+    enforcement: "Digital Safety Commission (proposed)",
+    penalties: "Up to 6% global revenue (proposed)",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "C-63 died on the Order Paper January 2025. As of February 2026, advocacy groups pressing for re-introduction; private member's Bill C-216 also in play.",
+    primary: { title: "Parliament of Canada — Bill C-216", url: "https://www.parl.ca/DocumentViewer/en/45-1/bill/C-216/first-reading", host: "parl.ca" }
+  },
+  {
+    country: "🇳🇿 New Zealand", region: "APAC",
+    initiative: "Social Media (Age-Restricted Users) Bill",
+    summary: "Member's bill to ban under-16s from social media via mandatory age verification.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2025", yearSort: 2025,
+    enforcement: "tbd",
+    penalties: "Up to NZ$2M",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Select committee made 12 recommendations Dec 10, 2025. PM Christopher Luxon supportive; government plans bill in 2026 before general election. ACT Party opposed.",
+    primary: { title: "NZ Legislation — Bill 216 text", url: "https://www.legislation.govt.nz/bill/member/2025/0216/latest/whole.html", host: "legislation.govt.nz" }
+  },
+  {
+    country: "🇮🇩 Indonesia", region: "APAC",
+    initiative: "Social media ban for under-16s",
+    summary: "First Southeast Asian country to enforce a nationwide ban on under-16s using major social media platforms.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2026 (in force March 28)", yearSort: 2026,
+    enforcement: "Komdigi (Ministry of Communications and Digital)",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Came into effect March 28, 2026. Initially affected platforms: YouTube, TikTok, X, Facebook, Instagram, Threads, Roblox, Bigo Live.",
+    primary: { title: "Komdigi — Ministry of Communications and Digital", url: "https://www.komdigi.go.id/", host: "komdigi.go.id" }
+  },
+  {
+    country: "🇲🇾 Malaysia", region: "APAC",
+    initiative: "Under-16 social media ban + eKYC age verification",
+    summary: "All social media platforms must ban under-16s and implement eKYC-based age verification.",
+    minAge: 16, regType: "mixed", regTypeLabel: "Ban + AV",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2025 (in force Jan 1, 2026)", yearSort: 2025,
+    enforcement: "MCMC",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Announced by Communications Minister Nov 2025; took effect Jan 1, 2026. eKYC-based identity verification required.",
+    primary: { title: "MCMC — Malaysian Communications & Multimedia Commission", url: "https://www.mcmc.gov.my/", host: "mcmc.gov.my" }
+  },
+  {
+    country: "🇹🇷 Türkiye", region: "Europe",
+    initiative: "Under-15 social media restriction",
+    summary: "Restricts social media access for children under 15; broader platform regulations and 'controlled digital environments' for younger users.",
+    minAge: 15, regType: "mixed", regTypeLabel: "Ban + design rules",
+    status: "passed", statusLabel: "Passed",
+    year: "2026 (passed April 23)", yearSort: 2026,
+    enforcement: "BTK / RTÜK",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Passed by Turkish parliament April 23, 2026. Promotes regulated digital environments for under-15s.",
+    primary: { title: "BTK — Information and Communication Technologies Authority", url: "https://www.btk.gov.tr/", host: "btk.gov.tr" }
+  },
+  {
+    country: "🇧🇷 Brazil", region: "Americas",
+    initiative: "Digital Statute of Children and Adolescents",
+    summary: "Requires under-16s to link social media accounts to a legal guardian and prohibits addictive features such as infinite scroll.",
+    minAge: 16, regType: "mixed", regTypeLabel: "Parental linking + design",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2026 (in force March 17)", yearSort: 2026,
+    enforcement: "ANPD + relevant agencies",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "In force March 17, 2026. Combines guardian linking with platform design constraints.",
+    primary: { title: "Câmara dos Deputados — bill records", url: "https://www.camara.leg.br/", host: "camara.leg.br" }
+  },
+  {
+    country: "🇵🇹 Portugal", region: "Europe",
+    initiative: "Under-13 ban + 13–16 parental consent",
+    summary: "Outright ban for under-13s; 13- to 16-year-olds need express verified parental consent and digital authentication.",
+    minAge: 13, regType: "mixed", regTypeLabel: "Ban + parental consent",
+    status: "passed", statusLabel: "Passed",
+    year: "2025–2026", yearSort: 2025,
+    enforcement: "ANACOM / CNPD",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Pairs strict under-13 ban with consent-based regime for 13–16 — among the more layered EU approaches.",
+    primary: { title: "Assembleia da República — Parliament", url: "https://www.parlamento.pt/", host: "parlamento.pt" }
+  },
+  {
+    country: "🇩🇰 Denmark", region: "Europe",
+    initiative: "Under-15 social media ban",
+    summary: "Government agreement to ban under-15s from social media — among the strongest EU steps.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "passed", statusLabel: "Passed",
+    year: "2026 (target mid-2026)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Could become law as soon as mid-2026. Denmark is also a pilot Member State for the EU Age Verification Blueprint.",
+    primary: { title: "Folketinget — Danish Parliament", url: "https://www.ft.dk/", host: "ft.dk" }
+  },
+  {
+    country: "🇬🇷 Greece", region: "Europe",
+    initiative: "Social media age restriction (passed)",
+    summary: "EU AV Blueprint pilot member; targeting age-restricted access to social media.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "passed", statusLabel: "Passed",
+    year: "2026 (in force Jan 2027)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Effective date set for January 2027. Greece is among the EU front-runner countries piloting the Age Verification Blueprint.",
+    primary: { title: "Hellenic Parliament", url: "https://www.hellenicparliament.gr/en/", host: "hellenicparliament.gr" }
+  },
+  {
+    country: "🇪🇸 Spain", region: "Europe",
+    initiative: "Social media restrictions for minors",
+    summary: "EU AV Blueprint pilot; considering age-based restrictions on platform access.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Pilot Member State for EU age verification system. Restrictions under discussion.",
+    primary: { title: "Congreso de los Diputados", url: "https://www.congreso.es/", host: "congreso.es" }
+  },
+  {
+    country: "🇮🇹 Italy", region: "Europe",
+    initiative: "Social media age restriction proposals",
+    summary: "EU AV Blueprint pilot; restrictions for younger users under consideration.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Pilot Member State for EU age verification; specific national restrictions under discussion.",
+    primary: { title: "Parlamento Italiano", url: "https://www.parlamento.it/", host: "parlamento.it" }
+  },
+  {
+    country: "🇩🇪 Germany", region: "Europe",
+    initiative: "Social media age restriction proposals",
+    summary: "Age-based restrictions under discussion at federal level.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Under active discussion as part of broader EU debate.",
+    primary: { title: "Deutscher Bundestag", url: "https://www.bundestag.de/", host: "bundestag.de" }
+  },
+  {
+    country: "🇦🇹 Austria", region: "Europe",
+    initiative: "Under-14 social media ban (proposed)",
+    summary: "Considering a ban for under-14s with 'technically modern' age verification.",
+    minAge: 14, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (draft by end June)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Draft proposal targeted for end of June 2026.",
+    primary: { title: "Österreichisches Parlament", url: "https://www.parlament.gv.at/", host: "parlament.gv.at" }
+  },
+  {
+    country: "🇳🇴 Norway", region: "Europe",
+    initiative: "Under-16 social media ban (proposed)",
+    summary: "Government plan to ban under-16s; tech companies responsible for age verification.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (legislation late 2026)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Latest European country to announce a ban; legislation expected by end of 2026.",
+    primary: { title: "Stortinget — Norwegian Parliament", url: "https://www.stortinget.no/", host: "stortinget.no" }
+  },
+  {
+    country: "🇸🇮 Slovenia", region: "Europe",
+    initiative: "Under-15 social media ban (drafting)",
+    summary: "Drafting law to prohibit children under 15 from accessing social media.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Currently in drafting stage.",
+    primary: { title: "Državni zbor — National Assembly", url: "https://www.dz-rs.si/", host: "dz-rs.si" }
+  },
+  {
+    country: "🇨🇿 Czechia", region: "Europe",
+    initiative: "Social media age proposals",
+    summary: "Age-based access restrictions under discussion.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Part of the broader European wave of national-level proposals.",
+    primary: { title: "Poslanecká sněmovna — Chamber of Deputies", url: "https://www.psp.cz/", host: "psp.cz" }
+  },
+  {
+    country: "🇵🇱 Poland", region: "Europe",
+    initiative: "Under-15 social media ban (proposed)",
+    summary: "Education Minister's plan to ban under-15s; non-compliance fines up to 6% of annual revenue.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (presented Feb)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "Up to 6% annual revenue",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Plan presented February 2026 by the Minister of Education.",
+    primary: { title: "Sejm Rzeczypospolitej Polskiej", url: "https://www.sejm.gov.pl/", host: "sejm.gov.pl" }
+  },
+  {
+    country: "🇳🇱 Netherlands", region: "Europe",
+    initiative: "Social media restrictions (under consideration)",
+    summary: "Reviewing age-based social media restrictions for minors.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Under early-stage consideration.",
+    primary: { title: "Tweede Kamer — House of Representatives", url: "https://www.tweedekamer.nl/", host: "tweedekamer.nl" }
+  },
+  {
+    country: "🇬🇦 Gabon", region: "Africa",
+    initiative: "Social media regulation ordinance (digital age 16)",
+    summary: "Ordinance regulating social media platforms with age-verification requirements; digital age of majority set at 16.",
+    minAge: 16, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2026 (April 8)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Published April 8, 2026. One of the first African nations with explicit social media age regulation.",
+    primary: { title: "Présidence de la République Gabonaise", url: "https://www.presidence.gouv.ga/", host: "presidence.gouv.ga" }
+  },
+  {
+    country: "🇵🇬 Papua New Guinea", region: "APAC",
+    initiative: "2025 Social Media Policy (age 14+)",
+    summary: "Policy requires users to verify they are at least 14 years old.",
+    minAge: 14, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2025", yearSort: 2025,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Approved 2025; sets digital age threshold of 14.",
+    primary: { title: "Department of Information & Communications Technology", url: "https://www.ict.gov.pg/", host: "ict.gov.pg" }
+  },
+  {
+    country: "🇪🇨 Ecuador", region: "Americas",
+    initiative: "Teen social media restrictions",
+    summary: "National security framing for restricting teen social media use.",
+    minAge: null, regType: "mixed", regTypeLabel: "Mixed",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Government making a national-security case for restrictions; bill in progress.",
+    primary: { title: "Asamblea Nacional del Ecuador", url: "https://www.asambleanacional.gob.ec/", host: "asambleanacional.gob.ec" }
+  },
+  {
+    country: "🇵🇭 Philippines", region: "APAC",
+    initiative: "Under-18 social media ban (bill)",
+    summary: "Bill introduced 2025 that would ban social media for minors under 18 — highest minimum-age threshold of any major proposal.",
+    minAge: 18, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2025", yearSort: 2025,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Introduced July 2025.",
+    primary: { title: "Congress of the Philippines", url: "https://www.congress.gov.ph/", host: "congress.gov.ph" }
+  },
+  {
+    country: "🇮🇳 India", region: "APAC",
+    initiative: "Age verification proposals (Supreme Court)",
+    summary: "Supreme Court granted request to propose age verification requirements to the Central Government.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Court-led process; Ministry of Electronics & IT developing response.",
+    primary: { title: "Ministry of Electronics & Information Technology", url: "https://www.meity.gov.in/", host: "meity.gov.in" }
+  },
+  {
+    country: "🇿🇼 Zimbabwe", region: "Africa",
+    initiative: "Under-18 social media access ban (considering)",
+    summary: "Considering a ban on social media access for minors under 18.",
+    minAge: 18, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Early-stage consideration.",
+    primary: { title: "Parliament of Zimbabwe", url: "https://www.parlzim.gov.zw/", host: "parlzim.gov.zw" }
+  }
+];
+
+const MILESTONES = [
+  { date: "2026-05-26", flag: "🇬🇧", label: "<strong>UK</strong> — Children's Online Safety consultation closes" },
+  { date: "2026-06-30", flag: "🇦🇹", label: "<strong>Austria</strong> — Draft under-14 ban proposal due" },
+  { date: "2026-07-01", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Parental Rights in Social Media Act takes effect" },
+  { date: "2026-07-15", flag: "🇲🇸", label: "<strong>US (Mississippi)</strong> — 5th Circuit hears NetChoice appeal (approx.)" },
+  { date: "2026-09-01", flag: "🇫🇷", label: "<strong>France</strong> — Under-15 ban takes effect (new accounts)" },
+  { date: "2026-12-31", flag: "🇪🇺", label: "<strong>EU</strong> — Age Verification Blueprint full rollout target" },
+  { date: "2026-12-31", flag: "🇺🇸", label: "<strong>US (California)</strong> — SB 976 takes effect" },
+  { date: "2026-12-31", flag: "🇩🇰", label: "<strong>Denmark</strong> — Government targets passage by year-end" },
+  { date: "2027-01-01", flag: "🇫🇷", label: "<strong>France</strong> — Full compliance deadline (existing accounts)" },
+  { date: "2027-01-01", flag: "🇬🇷", label: "<strong>Greece</strong> — Social media age restriction takes effect" },
+  { date: "2026-03-31", flag: "🇦🇺", label: "<strong>Australia</strong> — eSafety opened investigations into Facebook, Instagram, Snapchat, TikTok, YouTube" },
+  { date: "2026-04-23", flag: "🇹🇷", label: "<strong>Türkiye</strong> — Parliament passed under-15 social media restriction" },
+  { date: "2026-04-29", flag: "🇬🇧", label: "<strong>UK</strong> — Children's Wellbeing & Schools Act received Royal Assent" },
+  { date: "2026-04-15", flag: "🇪🇺", label: "<strong>EU</strong> — Age Verification Blueprint became feature-ready" },
+  { date: "2026-04-08", flag: "🇬🇦", label: "<strong>Gabon</strong> — Published social media regulation ordinance" },
+  { date: "2026-03-28", flag: "🇮🇩", label: "<strong>Indonesia</strong> — Under-16 social media ban took effect" },
+  { date: "2026-03-17", flag: "🇧🇷", label: "<strong>Brazil</strong> — Digital Statute of Children and Adolescents took effect" }
+];
+
+const MEDIA = [
+  // ─── Research & reviews ───
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "Implementation of the Online Safety Act",
+    outlet: "House of Commons Library", region: "UK",
+    summary: "UK Parliament research briefing on the OSA's implementation timeline, Ofcom's rollout, and outstanding regulatory gaps.",
+    url: "https://commonslibrary.parliament.uk/research-briefings/cdp-2025-0043/" },
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "Pursuing Kids Safety through Online Age Verification Legislation",
+    outlet: "New America", region: "United States",
+    summary: "Think-tank analysis of the policy tradeoffs in age verification approaches across US states and federal proposals.",
+    url: "https://www.newamerica.org/insights/age-verification-the-complicated-effort-to-protect-youth-online/pursuing-kids-safety-through-online-age-verification-legislation/" },
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "Age assurance regulation for social media to go global in 2026",
+    outlet: "Biometric Update", region: "Global",
+    summary: "Industry-research view of age-assurance regulatory momentum and the technologies emerging to meet it.",
+    url: "https://www.biometricupdate.com/202601/age-assurance-regulation-for-social-media-to-go-global-in-2026" },
+
+  // ─── Civil society & advocacy ───
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "The Year States Chose Surveillance Over Safety: 2025 in Review",
+    outlet: "Electronic Frontier Foundation", region: "United States",
+    summary: "EFF's critique of US state-level age verification laws as imposing surveillance on all users while doing little to protect minors.",
+    url: "https://www.eff.org/deeplinks/2025/12/year-states-chose-surveillance-over-safety-2025-review" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "Social Media Bans Fail to Protect Children",
+    outlet: "CEPA", region: "Global",
+    summary: "Argues that age-based bans are an ineffective substitute for platform design reform and digital literacy investment.",
+    url: "https://cepa.org/article/social-media-bans-fail-to-protect-children/" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "What's in Bill C-63, and why we are alarmed",
+    outlet: "BC Civil Liberties Association", region: "Canada",
+    summary: "Civil-liberties critique of the now-stalled Canadian Online Harms Act, focusing on speech and surveillance concerns.",
+    url: "https://bccla.org/2024/09/whats-in-bill-c-63-why-are-we-alarmed/" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "Stop Stalling. Start Protecting: Kids Can't Keep Waiting for an Online Safety Act",
+    outlet: "Children First Canada", region: "Canada",
+    summary: "Advocacy push for re-introduction of a Canadian online-safety act after Bill C-63 lapsed.",
+    url: "https://childrenfirstcanada.org/press-releases/stop-stalling-start-protecting-kids-cant-keep-waiting-for-an-online-safety-act-children-first-canada-to-testify-at-heritage-committee/" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "Legislated age assurance requirement for the Online Harms Act",
+    outlet: "Canadian Centre for Child Protection", region: "Canada",
+    summary: "Pro-age-assurance position from a leading child-protection NGO arguing for statutory baselines.",
+    url: "https://www.protectchildren.ca/en/press-and-media/blog/2024/online-harms-bill-age-verification" },
+
+  // ─── Industry response ───
+  { tag: "industry", tagLabel: "Industry response",
+    title: "NetChoice — Litigation Center",
+    outlet: "NetChoice", region: "United States",
+    summary: "Industry trade-group hub tracking NetChoice's lawsuits against state-level social media age-verification and design laws.",
+    url: "https://netchoice.org/litigation/" },
+  { tag: "industry", tagLabel: "Industry response",
+    title: "NetChoice wins permanent injunction to Louisiana social media age check law",
+    outlet: "Biometric Update", region: "United States (Louisiana)",
+    summary: "Industry victory: federal court struck down Louisiana's Act 456 on First Amendment grounds.",
+    url: "https://www.biometricupdate.com/202602/netchoice-wins-permanent-injunction-to-louisiana-social-media-age-check-law" },
+  { tag: "industry", tagLabel: "Industry response",
+    title: "NetChoice back in appeals court over injunction on Mississippi age assurance law",
+    outlet: "Biometric Update", region: "United States (Mississippi)",
+    summary: "Industry challenge to Mississippi HB 1126 reaches the Fifth Circuit on appeal.",
+    url: "https://www.biometricupdate.com/202602/netchoice-back-in-appeals-court-over-injunction-on-mississippi-age-assurance-law" },
+  { tag: "industry", tagLabel: "Industry response",
+    title: "NetChoice Sues Virginia Over Social-Media Age-Verification Law",
+    outlet: "Bloomberg Law", region: "United States (Virginia)",
+    summary: "Industry suit against Virginia's screen-time and age-check law on First Amendment grounds.",
+    url: "https://news.bloomberglaw.com/litigation/netchoice-sues-virginia-over-social-media-age-verification-law" },
+  { tag: "industry", tagLabel: "Industry response",
+    title: "Social Platforms Explore Age Verification Options to Comply With Teen Access Regulations",
+    outlet: "Social Media Today", region: "Global",
+    summary: "Coverage of platform-side compliance work — what major platforms are building to meet new teen-access rules.",
+    url: "https://www.socialmediatoday.com/news/social-platforms-seek-age-checking-solutions-align-with-teen-restrictions/751262/" },
+  { tag: "industry", tagLabel: "Industry response",
+    title: "State laws for social media",
+    outlet: "Age Verification Providers Association (AVPA)", region: "United States",
+    summary: "AV-industry association's working tracker of US state social media age-assurance laws.",
+    url: "https://avpassociation.com/us-state-age-assurance-laws-for-social-media/" },
+
+  // ─── Legal commentary ───
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "UK Online Safety Act: Protection of Children Codes come into force",
+    outlet: "White & Case", region: "UK",
+    summary: "Walkthrough of the OSA child-protection codes, the Ofcom enforcement posture, and what platforms must do.",
+    url: "https://www.whitecase.com/insight-alert/uk-online-safety-act-protection-children-codes-come-force" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "Online Safety Act: new powers proposed to restrict children's access to online services",
+    outlet: "DLA Piper", region: "UK",
+    summary: "Detailed look at the additional powers in the 2026 Children's Wellbeing Act and how they layer onto the OSA framework.",
+    url: "https://www.dlapiper.com/en-us/insights/blogs/mse-today/2026/online-safety-act" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "France's new age verification standard",
+    outlet: "IAPP", region: "France / EU",
+    summary: "Privacy-focused analysis of France's age verification regime, its interaction with EU law, and implications for cross-border platforms.",
+    url: "https://iapp.org/news/a/france-s-new-age-verification-standard-tightening-controls-on-access-to-explicit-image-sites" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "European Commission Makes New Announcements on the Protection of Minors Under the DSA",
+    outlet: "Inside Privacy (Covington)", region: "EU",
+    summary: "Law-firm summary of the Commission's protection-of-minors guidelines and what platforms need to operationalize.",
+    url: "https://www.insideprivacy.com/digital-services-act/european-commission-makes-new-announcements-on-the-protection-of-minors-under-the-digital-services-act/" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "Wave of Federal 'Online Safety' Legislation Hits Congress",
+    outlet: "Davis Wright Tremaine", region: "United States",
+    summary: "Overview of the federal online-safety bills moving through Congress and how they would interact with state regimes.",
+    url: "https://www.dwt.com/insights/2026/01/federal-online-safety-legislation-hits-congress" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "State Kids' Privacy Laws: 2025 Review & 2026 Outlook",
+    outlet: "Keller and Heckman", region: "United States",
+    summary: "Year-end law-firm review of state kids' privacy and social media laws plus forward-looking 2026 predictions.",
+    url: "https://www.khlaw.com/insights/kids-and-teens-privacy-2025-look-back-and-2026-predictions-part-ii-state-privacy-patchwork" },
+
+  // ─── Impact analysis ───
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Mapping the Spread of Child Safety Rules",
+    outlet: "CEPA", region: "Global",
+    summary: "Comprehensive cross-jurisdictional comparison of child-safety regulatory approaches and what is actually working.",
+    url: "https://cepa.org/comprehensive-reports/mapping-the-spread-of-child-safety-rules/" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Early Lessons from Australia's Teen Social Media Ban for the Rest of the World",
+    outlet: "TechPolicy.Press", region: "Australia / Global",
+    summary: "What other jurisdictions can learn from Australia's first-mover under-16 ban — enforcement gaps and platform behavior.",
+    url: "https://www.techpolicy.press/early-lessons-from-australias-teen-social-media-ban-for-the-rest-of-the-world/" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "More countries weigh teen social media ban, experts warn it's 'lazy'",
+    outlet: "CNBC", region: "Global",
+    summary: "Survey of expert pushback that bans are politically convenient but technically porous and may displace harm.",
+    url: "https://www.cnbc.com/2026/04/08/teen-social-media-ban-countries-tech-experts-warning.html" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Can social media age verification really protect kids?",
+    outlet: "Rest of World", region: "Global",
+    summary: "Examines age verification technologies in practice across countries — circumvention, false positives, and privacy tradeoffs.",
+    url: "https://restofworld.org/2026/social-media-age-verification-tools/" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Australia is fixing its teen social media ban on the fly",
+    outlet: "Crikey", region: "Australia",
+    summary: "Analysis of mid-implementation adjustments to the Australian ban and whether enforcement is keeping pace with platform behavior.",
+    url: "https://www.crikey.com.au/2026/05/01/teen-social-media-ban-australia-changes/" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "How states can enforce social media age limits without sacrificing privacy",
+    outlet: "Route Fifty", region: "United States",
+    summary: "Examines technical and policy approaches that could let states verify ages without comprehensive identity collection.",
+    url: "https://www.route-fifty.com/management/2025/11/how-states-can-enforce-social-media-age-limits-without-sacrificing-privacy/409622/" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Does banning social media for under-16s work?",
+    outlet: "The Spectator Australia", region: "Australia",
+    summary: "Skeptical look at the evidence base for age-based bans and the unintended consequences for teen welfare.",
+    url: "https://www.spectator.com.au/2026/04/does-banning-social-media-for-under-16s-work/" },
+
+  // ─── Journalism ───
+  { tag: "news", tagLabel: "Journalism",
+    title: "Tracking Efforts To Restrict Or Ban Teens from Social Media Across the Globe",
+    outlet: "TechPolicy.Press", region: "Global",
+    summary: "The original global tracker mapping legislative efforts across jurisdictions; updated as legislation moves.",
+    url: "https://www.techpolicy.press/tracking-efforts-to-restrict-or-ban-teens-from-social-media-across-the-globe/" },
+  { tag: "news", tagLabel: "Journalism",
+    title: "Indonesia social media ban for minors comes into effect",
+    outlet: "JURIST", region: "Indonesia",
+    summary: "Reporting on Indonesia becoming the first Southeast Asian country to enforce a social media ban for under-16s.",
+    url: "https://www.jurist.org/news/2026/03/indonesia-social-media-ban-for-minors-comes-into-effect/" },
+  { tag: "news", tagLabel: "Journalism",
+    title: "These are the countries moving to ban social media for children",
+    outlet: "TechCrunch", region: "Global",
+    summary: "Reporter-curated list of jurisdictions moving on age-based social media restrictions in 2026.",
+    url: "https://techcrunch.com/2026/04/23/social-media-ban-children-countries-list/" },
+  { tag: "news", tagLabel: "Journalism",
+    title: "Australia cracks down on tech giants over under-16 social media ban",
+    outlet: "Happy Mag", region: "Australia",
+    summary: "News coverage of the eSafety Commissioner's enforcement actions against major platforms.",
+    url: "https://happymag.tv/australia-social-media-ban-enforcement/" },
+  { tag: "news", tagLabel: "Journalism",
+    title: "Social media ban backed by online harm inquiry, prompting ACT disagreement",
+    outlet: "RNZ News", region: "New Zealand",
+    summary: "New Zealand select committee's recommendations and the political split over the proposed under-16 ban.",
+    url: "https://www.rnz.co.nz/news/political/581442/social-media-ban-backed-by-online-harm-inquiry-prompting-act-disagreement" },
+
+  // ─── Featured experts: Michael Karanicolas (Dalhousie / UCLA ITLP / Yale ISP) ───
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Global Online Safety Regulations Now, and The Way Forward",
+    outlet: "Just Security · Michael Karanicolas", region: "Global",
+    summary: "Comparative analysis of how different jurisdictions are approaching online safety regulation — design-based duties, age verification, and platform liability across major regimes.",
+    url: "https://www.justsecurity.org/110916/global-online-safety-regulations/" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Michael Karanicolas — author archive",
+    outlet: "Just Security · Michael Karanicolas", region: "Global",
+    summary: "Ongoing analysis on platform regulation, free expression, and human-rights frameworks for online safety — useful entry point to follow his work.",
+    url: "https://www.justsecurity.org/author/karanicolasmichael/" },
+
+  // ─── Featured experts: Eric Goldman (Santa Clara Law) ───
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "The 'Segregate-and-Suppress' Approach to Regulating Child Safety Online",
+    outlet: "SSRN · Eric Goldman", region: "United States",
+    summary: "Stanford-published paper coining 'segregate-and-suppress' to describe laws that compel age authentication and then restrict minors' content access; argues these regimes harm minors' rights and run afoul of First Amendment doctrine.",
+    url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5208739" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Why I Emphatically Oppose Online Age Verification Mandates",
+    outlet: "Tech & Marketing Law Blog · Eric Goldman", region: "United States",
+    summary: "First-principles argument against age verification mandates as both unconstitutional and counterproductive — pairs privacy and free-speech concerns with a practical critique of compliance schemes.",
+    url: "https://blog.ericgoldman.org/archives/2025/04/why-i-emphatically-oppose-online-age-verification-mandates.htm" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "My Testimony Against Mandatory Online Age Authentication",
+    outlet: "Tech & Marketing Law Blog · Eric Goldman", region: "United States",
+    summary: "October 2025 legislative testimony summarizing privacy, equity, and constitutional objections to age authentication mandates.",
+    url: "https://blog.ericgoldman.org/archives/2025/10/my-testimony-against-mandatory-online-age-authentication.htm" },
+
+  // ─── Featured experts: Aliya Bhatia (Center for Democracy & Technology) ───
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "Teen and Parent Perspectives on Approaches to Age Verification",
+    outlet: "Center for Democracy & Technology · Aliya Bhatia", region: "United States / Global",
+    summary: "Qualitative research brief — interviews with 17 families (45 participants total) surfacing how teens and parents actually evaluate different age-verification approaches.",
+    url: "https://cdt.org/wp-content/uploads/2025/08/2025-08-22-CDT-Research-Brief-on-Age-Verification-1.pdf" },
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "Mitigating risk to rights with age verification: Privacy-preserving guardrails",
+    outlet: "Center for Democracy & Technology · Aliya Bhatia", region: "Global",
+    summary: "CDT framework laying out the privacy, equity, and free-expression guardrails that should accompany any age-verification deployment.",
+    url: "https://cdt.org/insights/mitigating-risk-to-rights-with-age-verification-privacy-preserving-guardrails-that-should-accompany-deployments-of-age-verification-approaches/" },
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "What Kids and Parents Want: Policy Insights for Social Media Safety Features",
+    outlet: "Center for Democracy & Technology", region: "United States",
+    summary: "CDT research report on what families actually want from social media safety tools — direct evidence base for design-based regulation discussions.",
+    url: "https://cdt.org/wp-content/uploads/2025/11/2025-11-24-CDT-Research-Social-Media-Report-final-1.pdf" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "CDT Testifies Before Colorado Senate on Equity, Free Speech & Privacy in Age Verification",
+    outlet: "Center for Democracy & Technology · Aliya Bhatia", region: "United States (Colorado)",
+    summary: "Bhatia's testimony before Colorado's Senate Business, Labor & Technology Committee raising equity, free expression, and privacy concerns with mandated age verification.",
+    url: "https://cdt.org/insights/cdts-aliya-bhatia-testifies-before-colorado-senate-committee-raising-equity-free-speech-and-privacy-concerns-with-mandating-use-of-age-verification-tech/" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Want to Keep Teens Safe Online? Listen to Them",
+    outlet: "TechPolicy.Press · Aliya Bhatia", region: "Global",
+    summary: "Argues that policy should center teens' actual experiences and preferences rather than imposing top-down restrictions framed by adults.",
+    url: "https://www.techpolicy.press/want-to-keep-teens-safe-online-listen-to-them/" }
+];
+
+// ─── State ───
+let filters = {
+  status: localStorage.getItem("cs2-status") || "all",
+  type: localStorage.getItem("cs2-type") || "all",
+  region: localStorage.getItem("cs2-region") || "all"
+};
+let mediaFilter = localStorage.getItem("cs2-media") || "all";
+let searchTerm = "";
+let sortKey = localStorage.getItem("cs2-sort-key") || "country";
+let sortDir = localStorage.getItem("cs2-sort-dir") || "asc";
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+// ─── Stats ───
+function renderStats() {
+  const counts = { implemented: 0, passed: 0, pending: 0, stalled: 0 };
+  POLICIES.forEach(p => counts[p.status]++);
+  $("#policy-count").textContent = POLICIES.length;
+  $("#stats").innerHTML =
+    `<span><strong>${counts.implemented}</strong>implemented</span>` +
+    `<span><strong>${counts.passed}</strong>passed</span>` +
+    `<span><strong>${counts.pending}</strong>pending</span>` +
+    `<span><strong>${counts.stalled}</strong>stalled</span>`;
+}
+
+// ─── Milestones ───
+function renderMilestones() {
+  const today = new Date().toISOString().slice(0, 10);
+  const sorted = [...MILESTONES].sort((a, b) => a.date.localeCompare(b.date));
+  const upcoming = sorted.filter(m => m.date >= today);
+  const past = sorted.filter(m => m.date < today).reverse().slice(0, 6);
+  const items = [...upcoming, ...past];
+  $("#milestones").innerHTML = items.map(m => {
+    const isPast = m.date < today;
+    const d = new Date(m.date);
+    const dateStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    return `<div class="milestone-row ${isPast ? 'milestone-past' : ''}">
+      <span class="milestone-date">${dateStr}</span>
+      <span class="milestone-flag">${m.flag}</span>
+      <span class="milestone-text">${m.label}</span>
+    </div>`;
+  }).join("");
+}
+
+// ─── Policy table ───
+function renderTable() {
+  const tbody = $("#policy-tbody");
+  const term = searchTerm.toLowerCase();
+  const filtered = POLICIES.filter(p => {
+    if (filters.status !== "all" && p.status !== filters.status) return false;
+    if (filters.type !== "all" && p.regType !== filters.type) return false;
+    if (filters.region !== "all" && p.region !== filters.region) return false;
+    if (term) {
+      const hay = (p.country + " " + p.initiative + " " + p.summary + " " + p.notes + " " + (p.enforcement || "")).toLowerCase();
+      if (!hay.includes(term)) return false;
+    }
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (av == null) av = sortDir === "asc" ? "zzz" : "";
+    if (bv == null) bv = sortDir === "asc" ? "zzz" : "";
+    if (typeof av === "number" && typeof bv === "number") {
+      return sortDir === "asc" ? av - bv : bv - av;
+    }
+    return sortDir === "asc" ? String(av).localeCompare(String(bv)) : String(bv).localeCompare(String(av));
+  });
+
+  $("#empty-state").style.display = filtered.length === 0 ? "block" : "none";
+
+  tbody.innerHTML = filtered.map(p => {
+    const minAgeCell = p.minAge != null
+      ? `<span class="min-age">${p.minAge}</span>`
+      : `<span class="min-age min-age-na">—</span>`;
+    const litDetail = p.litigationDetail ? `<div class="litigation-detail">${p.litigationDetail}</div>` : "";
+    const enforcementMeta = (p.enforcement && p.enforcement !== "tbd")
+      ? `Enforced by ${p.enforcement}` : "";
+    const penaltyMeta = (p.penalties && p.penalties !== "tbd")
+      ? `Penalties: ${p.penalties}` : "";
+    const meta = [enforcementMeta, penaltyMeta].filter(Boolean).join(" · ");
+    return `<tr>
+      <td class="country">${p.country}</td>
+      <td>
+        <div class="initiative-name">${p.initiative}</div>
+        <div class="initiative-summary">${p.summary}</div>
+      </td>
+      <td>${minAgeCell}</td>
+      <td><span class="badge type-${p.regType}">${p.regTypeLabel}</span></td>
+      <td><span class="badge badge-${p.status}">${p.statusLabel}</span></td>
+      <td class="year-cell">${p.year}</td>
+      <td class="latest-update">
+        ${p.notes}
+        ${meta ? `<div class="latest-meta">${meta}</div>` : ""}
+      </td>
+      <td class="litigation-cell">
+        <span class="badge lit-${p.litigation}">${p.litigationLabel}</span>
+        ${litDetail}
+      </td>
+      <td class="source-cell">
+        ${p.primary ? `<a href="${p.primary.url}" target="_blank" rel="noopener">${p.primary.title} ↗</a><div class="source-host">${p.primary.host}</div>` : '—'}
+      </td>
+    </tr>`;
+  }).join("");
+
+  $$("th[data-sort]").forEach(th => {
+    th.innerHTML = th.innerHTML.replace(/ <span class="sort-arrow">.*?<\/span>$/, "");
+    if (th.dataset.sort === sortKey) {
+      th.innerHTML += ` <span class="sort-arrow">${sortDir === "asc" ? "▲" : "▼"}</span>`;
+    }
+  });
+}
+
+// ─── Media ───
+function renderMedia() {
+  const sections = $("#media-sections");
+  const groups = ["research", "advocacy", "industry", "legal", "impact", "news"];
+  const labels = {
+    research: "Research & reviews",
+    advocacy: "Civil society & advocacy",
+    industry: "Industry response",
+    legal: "Legal commentary",
+    impact: "Impact analysis",
+    news: "Journalism"
+  };
+  const visible = mediaFilter === "all" ? groups : [mediaFilter];
+
+  sections.innerHTML = visible.map(g => {
+    const items = MEDIA.filter(m => m.tag === g);
+    if (items.length === 0) return "";
+    return `<h3>${labels[g]} (${items.length})</h3>
+      <div class="media-grid">
+        ${items.map(m => `
+          <div class="media-item">
+            <p class="media-title"><a href="${m.url}" target="_blank" rel="noopener">${m.title} ↗</a></p>
+            <div class="media-meta"><span>${m.outlet}</span><span>${m.region}</span></div>
+            <p class="media-summary">${m.summary}</p>
+          </div>
+        `).join("")}
+      </div>`;
+  }).join("");
+}
+
+// ─── Wiring ───
+$$(".chip[data-filter]").forEach(chip => {
+  const [dim, val] = chip.dataset.filter.split(":");
+  if (filters[dim] === val) {
+    $$(`.chip[data-filter^="${dim}:"]`).forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+  }
+  chip.addEventListener("click", () => {
+    $$(`.chip[data-filter^="${dim}:"]`).forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    filters[dim] = val;
+    localStorage.setItem("cs2-" + dim, val);
+    renderTable();
+  });
+});
+
+$$(".chip[data-mfilter]").forEach(chip => {
+  if (chip.dataset.mfilter === mediaFilter) {
+    $$(".chip[data-mfilter]").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+  }
+  chip.addEventListener("click", () => {
+    $$(".chip[data-mfilter]").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    mediaFilter = chip.dataset.mfilter;
+    localStorage.setItem("cs2-media", mediaFilter);
+    renderMedia();
+  });
+});
+
+$("#search-box").addEventListener("input", (e) => {
+  searchTerm = e.target.value;
+  renderTable();
+});
+
+$$("th[data-sort]").forEach(th => {
+  th.addEventListener("click", () => {
+    const k = th.dataset.sort;
+    if (sortKey === k) sortDir = sortDir === "asc" ? "desc" : "asc";
+    else { sortKey = k; sortDir = "asc"; }
+    localStorage.setItem("cs2-sort-key", sortKey);
+    localStorage.setItem("cs2-sort-dir", sortDir);
+    renderTable();
+  });
+});
+
+$("#refresh-btn").addEventListener("click", () => {
+  if (typeof window.sendPrompt === "function") {
+    window.sendPrompt("Refresh the v2.1 child safety / social media policy tracker — pull the latest news and milestones from the past few days and update the artifact.");
+  } else {
+    alert("Refresh isn't available outside Cowork. Ask Claude in chat to update the tracker.");
+  }
+});
+
+renderStats();
+renderMilestones();
+renderTable();
+renderMedia();
+</script>
+</body>
+</html>
