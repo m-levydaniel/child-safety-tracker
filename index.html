@@ -302,7 +302,7 @@
   <header>
     <h1>🌐 Global Child Safety & Social Media Policy Tracker — v2.1</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">May 6, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">May 7, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
       <button class="refresh-btn" id="refresh-btn">Refresh data</button>
@@ -398,7 +398,7 @@ const POLICIES = [
     enforcement: "eSafety Commissioner",
     penalties: "Up to A$49.5M",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "March 31, 2026: eSafety opened formal investigations into Facebook, Instagram, Snapchat, TikTok, YouTube. ~4.7M under-16 accounts removed by mid-Dec 2025; ~70% of under-16s reportedly still accessing per parents.",
+    notes: "March 31, 2026: eSafety opened formal investigations into Facebook, Instagram, Snapchat, TikTok, YouTube. ~4.7M under-16 accounts removed by mid-Dec 2025; ~70% of under-16s reportedly still accessing per parents. High Court accepted Digital Freedom Project + Reddit constitutional challenge (implied-freedom-of-political-communication argument); cases to proceed jointly, arguments scheduled for 2026.",
     primary: { title: "eSafety Commissioner — official guidance", url: "https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions", host: "esafety.gov.au" }
   },
   {
@@ -880,7 +880,10 @@ const MILESTONES = [
   { date: "2026-04-15", flag: "🇪🇺", label: "<strong>EU</strong> — Age Verification Blueprint became feature-ready" },
   { date: "2026-04-08", flag: "🇬🇦", label: "<strong>Gabon</strong> — Published social media regulation ordinance" },
   { date: "2026-03-28", flag: "🇮🇩", label: "<strong>Indonesia</strong> — Under-16 social media ban took effect" },
-  { date: "2026-03-17", flag: "🇧🇷", label: "<strong>Brazil</strong> — Digital Statute of Children and Adolescents took effect" }
+  { date: "2026-03-17", flag: "🇧🇷", label: "<strong>Brazil</strong> — Digital Statute of Children and Adolescents took effect" },
+  { date: "2026-03-24", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Jury awards $375M against Meta in child safety / unfair practices trial (Phase 1)" },
+  { date: "2026-04-20", flag: "🇺🇸", label: "<strong>US (Arkansas)</strong> — Court enjoins Act 900 'segregate-and-suppress' social media law on First Amendment grounds (NetChoice v. Griffin)" },
+  { date: "2026-05-04", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Phase 2 bench trial begins; AG seeks $3.7B public-nuisance remedy + algorithmic design controls on Meta" }
 ];
 
 const MEDIA = [
@@ -982,6 +985,11 @@ const MEDIA = [
     summary: "Law-firm summary of the Commission's protection-of-minors guidelines and what platforms need to operationalize.",
     url: "https://www.insideprivacy.com/digital-services-act/european-commission-makes-new-announcements-on-the-protection-of-minors-under-the-digital-services-act/" },
   { tag: "legal", tagLabel: "Legal commentary",
+    title: "Court Enjoins Another Arkansas Segregate-and-Suppress Law — NetChoice v. Griffin",
+    outlet: "Technology & Marketing Law Blog (Eric Goldman)", region: "United States (Arkansas)",
+    summary: "Goldman analyzes the April 2026 preliminary injunction blocking Arkansas Act 900, the state's reworked social-media design law, on First Amendment vagueness and content-restriction grounds.",
+    url: "https://blog.ericgoldman.org/archives/2026/04/court-enjoins-another-arkansas-segregate-and-suppress-law-netchoice-v-griffin.htm" },
+  { tag: "legal", tagLabel: "Legal commentary",
     title: "Wave of Federal 'Online Safety' Legislation Hits Congress",
     outlet: "Davis Wright Tremaine", region: "United States",
     summary: "Overview of the federal online-safety bills moving through Congress and how they would interact with state regimes.",
@@ -993,6 +1001,11 @@ const MEDIA = [
     url: "https://www.khlaw.com/insights/kids-and-teens-privacy-2025-look-back-and-2026-predictions-part-ii-state-privacy-patchwork" },
 
   // ─── Impact analysis ───
+  { tag: "impact", tagLabel: "Impact analysis",
+    title: "Meta must pay $375 million for violating New Mexico law in child exploitation case, jury rules",
+    outlet: "CNBC", region: "United States (New Mexico)",
+    summary: "Landmark Phase 1 verdict in New Mexico's child-safety trial against Meta — first US jury finding against a major platform for child exploitation harms. Phase 2 (public nuisance / $3.7B remedy) bench trial began May 4, 2026.",
+    url: "https://www.cnbc.com/2026/03/24/jury-reaches-verdict-in-meta-child-safety-trial-in-new-mexico.html" },
   { tag: "impact", tagLabel: "Impact analysis",
     title: "Mapping the Spread of Child Safety Rules",
     outlet: "CEPA", region: "Global",
