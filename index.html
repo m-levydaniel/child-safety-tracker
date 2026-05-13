@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Global Child Safety & Social Media Policy Tracker — v2.1</title>
+<title>Global Child Safety & Social Media Policy Tracker</title>
 <style>
   :root {
     color-scheme: dark;
@@ -50,17 +50,7 @@
     flex-wrap: wrap;
     margin-top: 4px;
   }
-  .refresh-btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-    font-weight: 500;
-  }
-  .refresh-btn:hover { background: #c97056; }
+
   h2 {
     font-size: 16px;
     font-weight: 600;
@@ -154,12 +144,12 @@
   .milestone-past .milestone-date { color: var(--muted); }
 
   /* Policy table */
-  .table-scroll { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+  .table-scroll { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); min-width: 0; }
   table {
     width: 100%;
     border-collapse: collapse;
     background: var(--card);
-    min-width: 1100px;
+    table-layout: fixed;
   }
   th, td {
     padding: 9px 10px;
@@ -167,6 +157,8 @@
     border-bottom: 1px solid var(--border);
     vertical-align: top;
     font-size: 12.5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   th {
     background: var(--th-bg);
@@ -177,7 +169,6 @@
     letter-spacing: 0.04em;
     cursor: pointer;
     user-select: none;
-    white-space: nowrap;
   }
   th .sort-arrow { color: var(--accent); margin-left: 3px; }
   tbody tr:hover { background: var(--hover); }
@@ -300,20 +291,19 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🌐 Global Child Safety & Social Media Policy Tracker — v2.1</h1>
+    <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
       <span>Last updated: <strong id="last-updated">May 13, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
-      <button class="refresh-btn" id="refresh-btn">Refresh data</button>
     </div>
   </header>
 
-  <h2>📅 Upcoming Milestones</h2>
+  <h2>Upcoming Milestones</h2>
   <p class="subtitle">Key dates ahead — effective dates, consultation deadlines, court dates. Past milestones shown faded.</p>
   <div class="milestones" id="milestones"></div>
 
-  <h2>📋 Policy Tracker</h2>
+  <h2>Policy Tracker</h2>
   <div class="stat-row" id="stats"></div>
 
   <div class="controls">
@@ -345,6 +335,17 @@
 
   <div class="table-scroll">
     <table id="policy-table">
+      <colgroup>
+        <col style="width:11%">  <!-- Country -->
+        <col style="width:18%">  <!-- Initiative -->
+        <col style="width:5%">   <!-- Min age -->
+        <col style="width:8%">   <!-- Type -->
+        <col style="width:8%">   <!-- Status -->
+        <col style="width:7%">   <!-- Year -->
+        <col style="width:22%">  <!-- Latest update -->
+        <col style="width:14%">  <!-- Litigation -->
+        <col style="width:7%">   <!-- Sources -->
+      </colgroup>
       <thead>
         <tr>
           <th data-sort="country">Country</th>
@@ -363,7 +364,7 @@
   </div>
   <div id="empty-state" class="empty" style="display:none;">No matching policies.</div>
 
-  <h2>📰 Media, Research & Civil Society</h2>
+  <h2>Media, Research & Civil Society</h2>
   <p class="subtitle">Split by source type so you can scan the buckets that matter for your work.</p>
   <div class="controls">
     <span class="chip active" data-mfilter="all">All</span>
@@ -1354,13 +1355,7 @@ $$("th[data-sort]").forEach(th => {
   });
 });
 
-$("#refresh-btn").addEventListener("click", () => {
-  if (typeof window.sendPrompt === "function") {
-    window.sendPrompt("Refresh the v2.1 child safety / social media policy tracker — pull the latest news and milestones from the past few days and update the artifact.");
-  } else {
-    alert("Refresh isn't available outside Cowork. Ask Claude in chat to update the tracker.");
-  }
-});
+
 
 renderStats();
 renderMilestones();
