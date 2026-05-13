@@ -302,7 +302,7 @@
   <header>
     <h1>🌐 Global Child Safety & Social Media Policy Tracker — v2.1</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">May 7, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">May 13, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
       <button class="refresh-btn" id="refresh-btn">Refresh data</button>
@@ -471,13 +471,13 @@ const POLICIES = [
     initiative: "Social media time-limit for minors",
     summary: "Limits users under 16 to one hour per day on Instagram, TikTok, Snapchat, YouTube and similar platforms.",
     minAge: 16, regType: "design-rules", regTypeLabel: "Design rules",
-    status: "implemented", statusLabel: "Implemented",
-    year: "2026 (in force Jan 1)", yearSort: 2026,
+    status: "stalled", statusLabel: "Stalled",
+    year: "2026 (in force Jan 1, enjoined Feb 27)", yearSort: 2026,
     enforcement: "VA Attorney General",
     penalties: "Civil penalties under VCDPA",
-    litigation: "active", litigationLabel: "Active",
-    litigationDetail: "NetChoice v. Virginia — First Amendment challenge filed.",
-    notes: "In force January 1, 2026 via amendment to Virginia Consumer Data Protection Act.",
+    litigation: "enjoined", litigationLabel: "Enjoined",
+    litigationDetail: "NetChoice v. Virginia — E.D. Va. granted preliminary injunction Feb 27, 2026 (likely First Amendment violation; content-based restriction). Virginia appealed to 4th Circuit March 3; state's opening brief filed April 15, 2026.",
+    notes: "Took effect January 1, 2026 via amendment to Virginia Consumer Data Protection Act. Halted by federal preliminary injunction Feb 27 — currently not being enforced pending 4th Circuit appeal.",
     primary: { title: "Virginia Legislative Information System", url: "https://lis.virginia.gov/", host: "lis.virginia.gov" }
   },
   {
@@ -534,6 +534,20 @@ const POLICIES = [
     litigationDetail: "NetChoice v. Murrill — M.D. La. struck down Act 456 on First Amendment grounds (summary judgment).",
     notes: "Permanently invalidated by federal district court.",
     primary: { title: "Louisiana State Legislature", url: "https://www.legis.la.gov/", host: "legis.la.gov" }
+  },
+  {
+    country: "🇺🇸 US — Minnesota", region: "Americas",
+    initiative: "Social media health warning labels law",
+    summary: "Requires social media platforms to display health warning pop-ups to users — prominently disclosing potential mental health risks — before accessing algorithmically curated feeds.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "passed", statusLabel: "Passed",
+    year: "2026 (in force July 1)", yearSort: 2026,
+    enforcement: "MN Attorney General",
+    penalties: "tbd",
+    litigation: "active", litigationLabel: "Active",
+    litigationDetail: "NetChoice v. Minnesota — 48-page First Amendment complaint filed April 29, 2026; seeks injunction before July 1 enforcement date.",
+    notes: "Warning labels law effective July 1, 2026. NetChoice filed suit in U.S. District Court on April 29, 2026, arguing the mandatory disclosures compel speech in violation of the First Amendment.",
+    primary: { title: "Minnesota Legislature", url: "https://www.leg.state.mn.us/", host: "leg.state.mn.us" }
   },
   {
     country: "🇺🇸 US — Mississippi", region: "Americas",
@@ -867,6 +881,7 @@ const MILESTONES = [
   { date: "2026-05-26", flag: "🇬🇧", label: "<strong>UK</strong> — Children's Online Safety consultation closes" },
   { date: "2026-06-30", flag: "🇦🇹", label: "<strong>Austria</strong> — Draft under-14 ban proposal due" },
   { date: "2026-07-01", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Parental Rights in Social Media Act takes effect" },
+  { date: "2026-07-01", flag: "🇺🇸", label: "<strong>US (Minnesota)</strong> — Social media health warning labels law takes effect (NetChoice First Amendment challenge pending)" },
   { date: "2026-07-15", flag: "🇲🇸", label: "<strong>US (Mississippi)</strong> — 5th Circuit hears NetChoice appeal (approx.)" },
   { date: "2026-09-01", flag: "🇫🇷", label: "<strong>France</strong> — Under-15 ban takes effect (new accounts)" },
   { date: "2026-12-31", flag: "🇪🇺", label: "<strong>EU</strong> — Age Verification Blueprint full rollout target" },
@@ -883,6 +898,8 @@ const MILESTONES = [
   { date: "2026-03-17", flag: "🇧🇷", label: "<strong>Brazil</strong> — Digital Statute of Children and Adolescents took effect" },
   { date: "2026-03-24", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Jury awards $375M against Meta in child safety / unfair practices trial (Phase 1)" },
   { date: "2026-04-20", flag: "🇺🇸", label: "<strong>US (Arkansas)</strong> — Court enjoins Act 900 'segregate-and-suppress' social media law on First Amendment grounds (NetChoice v. Griffin)" },
+  { date: "2026-04-29", flag: "🇺🇸", label: "<strong>US (Minnesota)</strong> — NetChoice files First Amendment lawsuit against social media health warning labels law" },
+  { date: "2026-02-27", flag: "🇺🇸", label: "<strong>US (Virginia)</strong> — E.D. Va. grants NetChoice preliminary injunction; law halted pending 4th Circuit appeal" },
   { date: "2026-05-04", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Phase 2 bench trial begins; AG seeks $3.7B public-nuisance remedy + algorithmic design controls on Meta" }
 ];
 
@@ -952,6 +969,11 @@ const MEDIA = [
     outlet: "Bloomberg Law", region: "United States (Virginia)",
     summary: "Industry suit against Virginia's screen-time and age-check law on First Amendment grounds.",
     url: "https://news.bloomberglaw.com/litigation/netchoice-sues-virginia-over-social-media-age-verification-law" },
+  { tag: "industry", tagLabel: "Industry response",
+    title: "NetChoice sues Minnesota over social media health warnings law",
+    outlet: "MPR News", region: "United States (Minnesota)",
+    summary: "NetChoice filed a 48-page First Amendment challenge on April 29, 2026 against Minnesota's social media health warning label law, set to take effect July 1, 2026. The suit asks the court to declare the law unconstitutional and block enforcement.",
+    url: "https://www.mprnews.org/story/2026/04/29/netchoice-sues-minnesota-over-social-media-health-warnings-law" },
   { tag: "industry", tagLabel: "Industry response",
     title: "Social Platforms Explore Age Verification Options to Comply With Teen Access Regulations",
     outlet: "Social Media Today", region: "Global",
