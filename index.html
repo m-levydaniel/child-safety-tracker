@@ -143,49 +143,127 @@
   .milestone-past { opacity: 0.55; }
   .milestone-past .milestone-date { color: var(--muted); }
 
-  /* Policy table */
-  .table-scroll { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); min-width: 0; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
+  /* Kanban board */
+  .kanban-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+  .k-col {
     background: var(--card);
-    min-width: 1400px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
   }
-  th, td {
-    padding: 9px 10px;
-    text-align: left;
+  .k-col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--border);
-    vertical-align: top;
-    font-size: 12.5px;
-    overflow-wrap: break-word;
-    word-break: break-word;
   }
-  th {
-    background: var(--th-bg);
-    font-weight: 600;
+  .k-col-title {
     font-size: 11px;
-    color: var(--muted);
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+  }
+  .k-col-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--bg);
+    border-radius: 999px;
+    padding: 1px 8px;
+    border: 1px solid var(--border);
+  }
+  .k-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 9px 10px;
+    margin-bottom: 6px;
     cursor: pointer;
-    user-select: none;
+    transition: border-color 0.15s;
   }
-  th .sort-arrow { color: var(--accent); margin-left: 3px; }
-  tbody tr:hover { background: var(--hover); }
-  tbody tr:last-child td { border-bottom: none; }
-  .country { font-weight: 600; white-space: nowrap; min-width: 130px; }
-  .initiative-cell { min-width: 160px; }
-  .initiative-name { font-weight: 500; }
-  .initiative-summary { color: var(--muted); font-size: 11.5px; margin-top: 2px; }
-  .min-age {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--accent);
-    text-align: center;
-    font-variant-numeric: tabular-nums;
+  .k-card:last-child { margin-bottom: 0; }
+  .k-card:hover { border-color: var(--accent); }
+  .k-card-name { font-size: 12.5px; font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
+  .k-card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .k-empty { color: var(--muted); font-size: 12px; padding: 6px 0; }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 24px;
   }
-  .min-age-na { color: var(--muted); font-weight: 400; font-size: 12px; }
-  .year-cell { color: var(--muted); white-space: nowrap; font-size: 12px; }
+  .modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 620px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 24px;
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .modal-title { font-size: 17px; font-weight: 600; line-height: 1.3; }
+  .modal-initiative { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .modal-close {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 2px 8px;
+    flex-shrink: 0;
+  }
+  .modal-close:hover { color: var(--text); border-color: var(--muted); }
+  .modal-summary { font-size: 13px; color: var(--muted); margin-bottom: 16px; line-height: 1.55; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+  .modal-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 7px 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    align-items: start;
+  }
+  .modal-lbl { color: var(--muted); padding-top: 2px; }
+  .modal-val { line-height: 1.5; }
+  .modal-lit-detail { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+  .modal-notes {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .modal-source {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .modal-source a { color: var(--accent); text-decoration: none; }
+  .modal-source a:hover { text-decoration: underline; }
   .badge {
     display: inline-block;
     padding: 2px 7px;
@@ -212,31 +290,7 @@
   .lit-struckdown { background: var(--gray-soft); color: var(--gray); }
   .lit-none { background: var(--green-soft); color: var(--green); }
 
-  .latest-update { font-size: 12px; line-height: 1.45; min-width: 220px; max-width: 380px; }
-  .latest-meta {
-    color: var(--muted);
-    font-size: 11px;
-    margin-top: 6px;
-    line-height: 1.4;
-  }
-  .litigation-cell { min-width: 180px; max-width: 260px; }
-  .litigation-detail {
-    color: var(--muted);
-    font-size: 11px;
-    margin-top: 4px;
-    line-height: 1.4;
-  }
-  .source-cell a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 12px;
-  }
-  .source-cell a:hover { text-decoration: underline; }
-  .source-cell .source-host {
-    color: var(--muted);
-    font-size: 10.5px;
-    margin-top: 2px;
-  }
+
 
   /* Media */
   .media-grid {
@@ -308,14 +362,6 @@
   <div class="stat-row" id="stats"></div>
 
   <div class="controls">
-    <span class="controls-label">Status</span>
-    <span class="chip active" data-filter="status:all">All</span>
-    <span class="chip" data-filter="status:implemented">Implemented</span>
-    <span class="chip" data-filter="status:passed">Passed</span>
-    <span class="chip" data-filter="status:pending">Pending</span>
-    <span class="chip" data-filter="status:stalled">Stalled</span>
-  </div>
-  <div class="controls">
     <span class="controls-label">Type</span>
     <span class="chip active" data-filter="type:all">All</span>
     <span class="chip" data-filter="type:full-ban">Full ban</span>
@@ -334,25 +380,22 @@
     <input type="search" id="search-box" placeholder="Search country, law, regulator…" />
   </div>
 
-  <div class="table-scroll">
-    <table id="policy-table">
-      <thead>
-        <tr>
-          <th data-sort="country">Country</th>
-          <th data-sort="initiative">Initiative</th>
-          <th data-sort="minAge">Min age</th>
-          <th data-sort="regType">Type</th>
-          <th data-sort="status">Status</th>
-          <th data-sort="yearSort">Year</th>
-          <th>Latest update</th>
-          <th data-sort="litigation">Litigation</th>
-          <th>Sources</th>
-        </tr>
-      </thead>
-      <tbody id="policy-tbody"></tbody>
-    </table>
-  </div>
+  <div class="kanban-board" id="kanban-board"></div>
   <div id="empty-state" class="empty" style="display:none;">No matching policies.</div>
+
+  <div class="modal-backdrop" id="modal-backdrop" style="display:none;" onclick="handleBackdropClick(event)">
+    <div class="modal" id="modal-box">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title"></div>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-initiative" id="modal-initiative"></div>
+      <p class="modal-summary" id="modal-summary"></p>
+      <div class="modal-grid" id="modal-grid"></div>
+      <div class="modal-notes" id="modal-notes"></div>
+      <div class="modal-source" id="modal-source"></div>
+    </div>
+  </div>
 
   <h2>Media, Research & Civil Society</h2>
   <p class="subtitle">Split by source type so you can scan the buckets that matter for your work.</p>
@@ -1190,14 +1233,11 @@ const MEDIA = [
 
 // ─── State ───
 let filters = {
-  status: localStorage.getItem("cs2-status") || "all",
   type: localStorage.getItem("cs2-type") || "all",
   region: localStorage.getItem("cs2-region") || "all"
 };
 let mediaFilter = localStorage.getItem("cs2-media") || "all";
 let searchTerm = "";
-let sortKey = localStorage.getItem("cs2-sort-key") || "country";
-let sortDir = localStorage.getItem("cs2-sort-dir") || "asc";
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -1233,12 +1273,17 @@ function renderMilestones() {
   }).join("");
 }
 
-// ─── Policy table ───
-function renderTable() {
-  const tbody = $("#policy-tbody");
+// ─── Kanban board ───
+const COLS = [
+  { key: "implemented", label: "Implemented", color: "var(--green)" },
+  { key: "passed",      label: "Passed",      color: "var(--blue)" },
+  { key: "pending",     label: "Pending",     color: "var(--amber)" },
+  { key: "stalled",     label: "Stalled",     color: "var(--gray)" },
+];
+
+function getFiltered() {
   const term = searchTerm.toLowerCase();
-  const filtered = POLICIES.filter(p => {
-    if (filters.status !== "all" && p.status !== filters.status) return false;
+  return POLICIES.filter(p => {
     if (filters.type !== "all" && p.regType !== filters.type) return false;
     if (filters.region !== "all" && p.region !== filters.region) return false;
     if (term) {
@@ -1247,60 +1292,82 @@ function renderTable() {
     }
     return true;
   });
+}
 
-  filtered.sort((a, b) => {
-    let av = a[sortKey], bv = b[sortKey];
-    if (av == null) av = sortDir === "asc" ? "zzz" : "";
-    if (bv == null) bv = sortDir === "asc" ? "zzz" : "";
-    if (typeof av === "number" && typeof bv === "number") {
-      return sortDir === "asc" ? av - bv : bv - av;
-    }
-    return sortDir === "asc" ? String(av).localeCompare(String(bv)) : String(bv).localeCompare(String(av));
-  });
-
+function renderKanban() {
+  const board = $("#kanban-board");
+  const filtered = getFiltered();
   $("#empty-state").style.display = filtered.length === 0 ? "block" : "none";
 
-  tbody.innerHTML = filtered.map(p => {
-    const minAgeCell = p.minAge != null
-      ? `<span class="min-age">${p.minAge}</span>`
-      : `<span class="min-age min-age-na">—</span>`;
-    const litDetail = p.litigationDetail ? `<div class="litigation-detail">${p.litigationDetail}</div>` : "";
-    const enforcementMeta = (p.enforcement && p.enforcement !== "tbd")
-      ? `Enforced by ${p.enforcement}` : "";
-    const penaltyMeta = (p.penalties && p.penalties !== "tbd")
-      ? `Penalties: ${p.penalties}` : "";
-    const meta = [enforcementMeta, penaltyMeta].filter(Boolean).join(" · ");
-    return `<tr>
-      <td class="country">${p.country}</td>
-      <td class="initiative-cell">
-        <div class="initiative-name">${p.initiative}</div>
-        <div class="initiative-summary">${p.summary}</div>
-      </td>
-      <td>${minAgeCell}</td>
-      <td><span class="badge type-${p.regType}">${p.regTypeLabel}</span></td>
-      <td><span class="badge badge-${p.status}">${p.statusLabel}</span></td>
-      <td class="year-cell">${p.year}</td>
-      <td class="latest-update">
-        ${p.notes}
-        ${meta ? `<div class="latest-meta">${meta}</div>` : ""}
-      </td>
-      <td class="litigation-cell">
-        <span class="badge lit-${p.litigation}">${p.litigationLabel}</span>
-        ${litDetail}
-      </td>
-      <td class="source-cell">
-        ${p.primary ? `<a href="${p.primary.url}" target="_blank" rel="noopener">${p.primary.title} ↗</a><div class="source-host">${p.primary.host}</div>` : '—'}
-      </td>
-    </tr>`;
+  board.innerHTML = COLS.map(col => {
+    const cards = filtered
+      .filter(p => p.status === col.key)
+      .sort((a, b) => a.country.localeCompare(b.country));
+    return `<div class="k-col">
+      <div class="k-col-header">
+        <span class="k-col-title" style="color:${col.color}">${col.label}</span>
+        <span class="k-col-count">${cards.length}</span>
+      </div>
+      ${cards.length === 0
+        ? '<div class="k-empty">None</div>'
+        : cards.map(p => {
+          const idx = POLICIES.indexOf(p);
+          const litBadge = p.litigation !== "none"
+            ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>` : "";
+          return `<div class="k-card" onclick="openModal(${idx})">
+            <div class="k-card-name">${p.country}</div>
+            <div class="k-card-tags">
+              <span class="badge type-${p.regType}">${p.regTypeLabel}</span>
+              ${litBadge}
+            </div>
+          </div>`;
+        }).join("")}
+    </div>`;
   }).join("");
-
-  $$("th[data-sort]").forEach(th => {
-    th.innerHTML = th.innerHTML.replace(/ <span class="sort-arrow">.*?<\/span>$/, "");
-    if (th.dataset.sort === sortKey) {
-      th.innerHTML += ` <span class="sort-arrow">${sortDir === "asc" ? "▲" : "▼"}</span>`;
-    }
-  });
 }
+
+// ─── Modal ───
+function openModal(idx) {
+  const p = POLICIES[idx];
+  $("#modal-title").textContent = p.country;
+  $("#modal-initiative").textContent = p.initiative;
+  $("#modal-summary").textContent = p.summary;
+
+  const rows = [
+    ["Status",      `<span class="badge badge-${p.status}">${p.statusLabel}</span>`],
+    ["Type",        `<span class="badge type-${p.regType}">${p.regTypeLabel}</span>`],
+    ["Min age",     p.minAge != null ? p.minAge : null],
+    ["Year",        p.year],
+    ["Enforcement", p.enforcement !== "tbd" ? p.enforcement : null],
+    ["Penalties",   p.penalties !== "tbd" ? p.penalties : null],
+    ["Litigation",  p.litigation !== "none"
+      ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>${p.litigationDetail ? '<div class="modal-lit-detail">' + p.litigationDetail + '</div>' : ''}`
+      : null],
+  ].filter(([, v]) => v !== null && v !== undefined);
+
+  $("#modal-grid").innerHTML = rows.map(([l, v]) =>
+    `<span class="modal-lbl">${l}</span><span class="modal-val">${v}</span>`
+  ).join("");
+
+  $("#modal-notes").textContent = p.notes || "";
+  $("#modal-source").innerHTML = p.primary
+    ? `<a href="${p.primary.url}" target="_blank" rel="noopener">${p.primary.title} ↗</a>`
+    : "";
+
+  $("#modal-backdrop").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  $("#modal-backdrop").style.display = "none";
+  document.body.style.overflow = "";
+}
+
+function handleBackdropClick(e) {
+  if (e.target === $("#modal-backdrop")) closeModal();
+}
+
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
 // ─── Media ───
 function renderMedia() {
@@ -1335,16 +1402,17 @@ function renderMedia() {
 // ─── Wiring ───
 $$(".chip[data-filter]").forEach(chip => {
   const [dim, val] = chip.dataset.filter.split(":");
-  if (filters[dim] === val) {
+  if (filters[dim] !== undefined && filters[dim] === val) {
     $$(`.chip[data-filter^="${dim}:"]`).forEach(c => c.classList.remove("active"));
     chip.classList.add("active");
   }
   chip.addEventListener("click", () => {
+    if (filters[dim] === undefined) return;
     $$(`.chip[data-filter^="${dim}:"]`).forEach(c => c.classList.remove("active"));
     chip.classList.add("active");
     filters[dim] = val;
     localStorage.setItem("cs2-" + dim, val);
-    renderTable();
+    renderKanban();
   });
 });
 
@@ -1364,25 +1432,16 @@ $$(".chip[data-mfilter]").forEach(chip => {
 
 $("#search-box").addEventListener("input", (e) => {
   searchTerm = e.target.value;
-  renderTable();
+  renderKanban();
 });
 
-$$("th[data-sort]").forEach(th => {
-  th.addEventListener("click", () => {
-    const k = th.dataset.sort;
-    if (sortKey === k) sortDir = sortDir === "asc" ? "desc" : "asc";
-    else { sortKey = k; sortDir = "asc"; }
-    localStorage.setItem("cs2-sort-key", sortKey);
-    localStorage.setItem("cs2-sort-dir", sortDir);
-    renderTable();
-  });
-});
+
 
 
 
 renderStats();
 renderMilestones();
-renderTable();
+renderKanban();
 renderMedia();
 </script>
 </body>
