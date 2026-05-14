@@ -1323,7 +1323,7 @@ function renderMilestones() {
         ${past.map(m => makeItem(m, true)).join("")}
       </div>
       <button class="tl-show-more" id="tl-past-btn" data-count="${past.length}" onclick="togglePast()">
-        ▾ ${past.length} past milestone${past.length > 1 ? "s" : ""}
+        See ${past.length} past milestone${past.length > 1 ? "s" : ""}
       </button>`
     : "";
 
@@ -1340,8 +1340,8 @@ function togglePast() {
   extra.style.display = open ? "none" : "block";
   const count = btn.dataset.count;
   btn.innerHTML = open
-    ? `▾ ${count} past milestone${count > 1 ? "s" : ""}`
-    : `▴ hide past milestones`;
+    ? `See ${count} past milestone${count > 1 ? "s" : ""}`
+    : `Hide past milestones`;
 }
 
 // ─── Kanban board ───
