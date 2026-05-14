@@ -165,16 +165,21 @@
   .tl-show-more {
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin-top: 12px;
+    padding: 7px 14px;
     font-size: 12px;
-    color: var(--muted);
-    cursor: pointer;
-    background: none;
-    border: none;
     font-family: inherit;
-    padding: 10px 0 0 14px;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
   }
-  .tl-show-more:hover { color: var(--text); }
+  .tl-show-more:hover { color: var(--text); border-color: var(--muted); }
 
   /* Kanban board */
   .kanban-board {
@@ -1314,12 +1319,12 @@ function renderMilestones() {
   }
 
   const pastHtml = past.length > 0
-    ? `<button class="tl-show-more" id="tl-past-btn" data-count="${past.length}" onclick="togglePast()">
-        ▾ ${past.length} past milestone${past.length > 1 ? "s" : ""}
-      </button>
-      <div id="tl-past" style="display:none">
+    ? `<div id="tl-past" style="display:none">
         ${past.map(m => makeItem(m, true)).join("")}
-      </div>`
+      </div>
+      <button class="tl-show-more" id="tl-past-btn" data-count="${past.length}" onclick="togglePast()">
+        ▾ ${past.length} past milestone${past.length > 1 ? "s" : ""}
+      </button>`
     : "";
 
   $("#milestones").innerHTML =
@@ -1336,7 +1341,7 @@ function togglePast() {
   const count = btn.dataset.count;
   btn.innerHTML = open
     ? `▾ ${count} past milestone${count > 1 ? "s" : ""}`
-    : `▴ hide past`;
+    : `▴ hide past milestones`;
 }
 
 // ─── Kanban board ───
