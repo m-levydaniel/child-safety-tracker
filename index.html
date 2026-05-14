@@ -38,7 +38,7 @@
     line-height: 1.5;
     font-size: 14px;
   }
-  .wrap { max-width: 1280px; margin: 0 auto; padding: 24px; }
+  .wrap { max-width: 1600px; margin: 0 auto; padding: 24px; }
   header { margin-bottom: 24px; }
   h1 { font-size: 22px; margin: 0 0 6px 0; font-weight: 600; }
   .meta {
@@ -149,7 +149,7 @@
     width: 100%;
     border-collapse: collapse;
     background: var(--card);
-    table-layout: fixed;
+    min-width: 1400px;
   }
   th, td {
     padding: 9px 10px;
@@ -173,7 +173,8 @@
   th .sort-arrow { color: var(--accent); margin-left: 3px; }
   tbody tr:hover { background: var(--hover); }
   tbody tr:last-child td { border-bottom: none; }
-  .country { font-weight: 600; white-space: nowrap; }
+  .country { font-weight: 600; white-space: nowrap; min-width: 130px; }
+  .initiative-cell { min-width: 160px; }
   .initiative-name { font-weight: 500; }
   .initiative-summary { color: var(--muted); font-size: 11.5px; margin-top: 2px; }
   .min-age {
@@ -211,14 +212,14 @@
   .lit-struckdown { background: var(--gray-soft); color: var(--gray); }
   .lit-none { background: var(--green-soft); color: var(--green); }
 
-  .latest-update { font-size: 12px; line-height: 1.45; max-width: 360px; }
+  .latest-update { font-size: 12px; line-height: 1.45; min-width: 220px; max-width: 380px; }
   .latest-meta {
     color: var(--muted);
     font-size: 11px;
     margin-top: 6px;
     line-height: 1.4;
   }
-  .litigation-cell { min-width: 150px; }
+  .litigation-cell { min-width: 180px; max-width: 260px; }
   .litigation-detail {
     color: var(--muted);
     font-size: 11px;
@@ -335,17 +336,6 @@
 
   <div class="table-scroll">
     <table id="policy-table">
-      <colgroup>
-        <col style="width:11%">  <!-- Country -->
-        <col style="width:18%">  <!-- Initiative -->
-        <col style="width:5%">   <!-- Min age -->
-        <col style="width:8%">   <!-- Type -->
-        <col style="width:8%">   <!-- Status -->
-        <col style="width:7%">   <!-- Year -->
-        <col style="width:22%">  <!-- Latest update -->
-        <col style="width:14%">  <!-- Litigation -->
-        <col style="width:7%">   <!-- Sources -->
-      </colgroup>
       <thead>
         <tr>
           <th data-sort="country">Country</th>
@@ -1249,7 +1239,7 @@ function renderTable() {
     const meta = [enforcementMeta, penaltyMeta].filter(Boolean).join(" · ");
     return `<tr>
       <td class="country">${p.country}</td>
-      <td>
+      <td class="initiative-cell">
         <div class="initiative-name">${p.initiative}</div>
         <div class="initiative-summary">${p.summary}</div>
       </td>
