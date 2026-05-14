@@ -441,7 +441,7 @@ const POLICIES = [
     enforcement: "FTC + state AGs",
     penalties: "Per FTC Act; civil penalties",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim; key senators denouncing House changes. May 12, 2026: Senate Commerce Committee Chair Ted Cruz pledged at Capitol Hill rally to advance KOSA out of committee and pass it in the Senate.",
+    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim. May 12, 2026: Chair Cruz pledged to advance KOSA out of Senate Commerce Committee. Distinct from the narrower KOSMA (S.278, Cruz/Schatz — bars under-13s only), which passed Senate Commerce Committee in June 2025 but has seen no Senate floor action.",
     primary: { title: "Congress.gov — S.1748 (KOSA) text", url: "https://www.congress.gov/bill/119th-congress/senate-bill/1748/text", host: "congress.gov" }
   },
   {
@@ -567,6 +567,32 @@ const POLICIES = [
     litigationDetail: "Preliminary injunction in NetChoice v. Mississippi; 5th Circuit hearing the appeal.",
     notes: "Currently blocked by court order.",
     primary: { title: "Mississippi Legislature — Bill Status", url: "http://billstatus.ls.state.ms.us/", host: "billstatus.ls.state.ms.us" }
+  },
+  {
+    country: "🇺🇸 US — Massachusetts", region: "Americas",
+    initiative: "Under-14 social media ban (advancing)",
+    summary: "Rapidly advancing bill to prohibit all users under 14 from social media platforms.",
+    minAge: 14, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "MA Attorney General",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Described as rapidly advancing as of May 2026. Part of the broader wave of US state outright-ban proposals emboldened by Free Speech Coalition v. Paxton (SCOTUS, June 2025).",
+    primary: { title: "Massachusetts Legislature — Press Release", url: "https://malegislature.gov/PressRoom/Detail?pressReleaseId=359", host: "malegislature.gov" }
+  },
+  {
+    country: "🇺🇸 US — Alabama", region: "Americas",
+    initiative: "HB 161 (app store age verification)",
+    summary: "Requires users to verify their age before downloading apps from app stores, restricting minor access to social media at the distribution level.",
+    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "passed", statusLabel: "Passed",
+    year: "2026", yearSort: 2026,
+    enforcement: "AL Attorney General",
+    penalties: "Civil penalties",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "App store-level approach — rather than banning minors from platforms directly, requires age verification at the point of app download. One of a handful of states taking this distribution-layer strategy.",
+    primary: { title: "LegiScan — Alabama HB 161", url: "https://legiscan.com/AL/bill/HB161/2026", host: "legiscan.com" }
   },
   {
     country: "🇨🇦 Canada", region: "Americas",
@@ -907,7 +933,9 @@ const MILESTONES = [
   { date: "2026-04-29", flag: "🇺🇸", label: "<strong>US (Minnesota)</strong> — NetChoice files First Amendment lawsuit against social media health warning labels law" },
   { date: "2026-02-27", flag: "🇺🇸", label: "<strong>US (Virginia)</strong> — E.D. Va. grants NetChoice preliminary injunction; law halted pending 4th Circuit appeal" },
   { date: "2026-05-04", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Phase 2 bench trial begins; AG seeks $3.7B public-nuisance remedy + algorithmic design controls on Meta" },
-  { date: "2026-05-12", flag: "🇺🇸", label: "<strong>US (Federal / KOSA)</strong> — Senate Commerce Committee Chair Ted Cruz pledges to advance KOSA out of committee at Capitol Hill rally" }
+  { date: "2026-05-12", flag: "🇺🇸", label: "<strong>US (Federal / KOSA)</strong> — Senate Commerce Committee Chair Ted Cruz pledges to advance KOSA out of committee at Capitol Hill rally" },
+  { date: "2025-06-27", flag: "🇺🇸", label: "<strong>US (SCOTUS)</strong> — <em>Free Speech Coalition v. Paxton</em>: Supreme Court upholds Texas age-verification law for adult content under intermediate (not strict) scrutiny, emboldening state legislatures pursuing broader youth social media restrictions" },
+  { date: "2025-06-01", flag: "🇺🇸", label: "<strong>US (Federal / KOSMA)</strong> — Kids Off Social Media Act (S.278, Cruz/Schatz — bars under-13s) passes Senate Commerce Committee with bipartisan support; stalled at Senate floor" }
 ];
 
 const MEDIA = [
@@ -1077,6 +1105,11 @@ const MEDIA = [
     outlet: "TechPolicy.Press", region: "Global",
     summary: "The original global tracker mapping legislative efforts across jurisdictions; updated as legislation moves.",
     url: "https://www.techpolicy.press/tracking-efforts-to-restrict-or-ban-teens-from-social-media-across-the-globe/" },
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "The State by State Push to Restrict Youth Access to Social Media",
+    outlet: "TechPolicy.Press · CJ Larkin & Max Morgan", region: "United States",
+    summary: "Georgetown scholars map the surge in US state legislation: 28 states have introduced bills since 2023 across three models — outright bans, parental consent, and app store-level age requirements. Notes that Free Speech Coalition v. Paxton (SCOTUS, June 2025) applied intermediate scrutiny, emboldening legislatures. Covers Massachusetts (advancing under-14 ban), Alabama HB 161 (app store AV), and the stalled KOSMA federal bill. Also flags equity concerns for LGBTQ+ youth and unhoused minors.",
+    url: "https://www.techpolicy.press/the-state-by-state-push-to-restrict-youth-access-to-social-media/" },
   { tag: "news", tagLabel: "Journalism",
     title: "Indonesia social media ban for minors comes into effect",
     outlet: "JURIST", region: "Indonesia",
