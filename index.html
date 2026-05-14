@@ -1308,7 +1308,7 @@ function renderMilestones() {
     const d = new Date(m.date);
     const dateStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
     const soonTag = isSoon
-      ? `<span class="tl-soon-tag">${daysAway === 0 ? "today" : daysAway + "d"}</span>`
+      ? `<span class="tl-soon-tag">${daysAway === 0 ? "today" : daysAway + " days"}</span>`
       : "";
     const pastStyle = isPast ? "opacity:.45;" : "";
     return `<div class="tl-item" style="${pastStyle}">
