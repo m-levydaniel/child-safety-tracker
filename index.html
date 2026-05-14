@@ -453,7 +453,7 @@
     Sources column links only to primary legal/regulatory text (statute pages, regulator websites, parliamentary bill records). Media section gathers third-party analysis.
     <br /><br />
     <strong>Status:</strong> Implemented = in force and being enforced · Passed = enacted but not yet in force · Pending = in legislative process · Stalled = died, blocked, or stuck.
-    <strong>Type:</strong> Full ban = age-based access prohibition · Parental consent = requires guardian approval · Design rules = duty of care / addictive features rules · Age verification = AV/age assurance only · Mixed = combination.
+    <strong>Type:</strong> Full ban = age-based access prohibition · Parental consent = requires guardian approval · Design rules = duty of care / addictive features rules · Age verification = age assurance / age verification only · Mixed = combination.
     <strong>Litigation:</strong> Active = open challenge · Enjoined = currently blocked by court · Struck down = permanently invalidated · None = no pending challenge / not applicable.
   </div>
 </div>
@@ -490,13 +490,13 @@ const POLICIES = [
     country: "🇪🇺 European Union", region: "Europe",
     initiative: "Digital Services Act + EU Age Verification Blueprint",
     summary: "DSA child-protection guidelines plus a privacy-preserving age verification app using zero-knowledge proofs.",
-    minAge: null, regType: "design-rules", regTypeLabel: "Design rules + AV",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules + Age verification",
     status: "implemented", statusLabel: "Implemented",
-    year: "DSA 2022; AV Blueprint 2026", yearSort: 2022,
+    year: "DSA 2022; Age Verification Blueprint 2026", yearSort: 2022,
     enforcement: "European Commission + national DSCs",
     penalties: "Up to 6% global turnover (DSA)",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "EU AV Blueprint feature-ready April 15, 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026.",
+    notes: "EU Age Verification Blueprint feature-ready April 15, 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026.",
     primary: { title: "EC — EU age verification policy", url: "https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification", host: "ec.europa.eu" }
   },
   {
@@ -570,7 +570,7 @@ const POLICIES = [
     country: "🇺🇸 US — California", region: "Americas",
     initiative: "SB 976 (Protecting Our Kids from Social Media Addiction Act)",
     summary: "Requires age verification and addictive-feed restrictions for minor users.",
-    minAge: 18, regType: "mixed", regTypeLabel: "Design + AV",
+    minAge: 18, regType: "mixed", regTypeLabel: "Design + Age verification",
     status: "passed", statusLabel: "Passed",
     year: "2024 (in force Dec 31, 2026)", yearSort: 2024,
     enforcement: "CA Attorney General",
@@ -639,7 +639,7 @@ const POLICIES = [
     country: "🇺🇸 US — Mississippi", region: "Americas",
     initiative: "HB 1126 (age assurance + parental consent)",
     summary: "Imposed age-verification and parental-consent requirements on social media platforms.",
-    minAge: 18, regType: "mixed", regTypeLabel: "AV + parental consent",
+    minAge: 18, regType: "mixed", regTypeLabel: "Age verification + parental consent",
     status: "stalled", statusLabel: "Stalled",
     year: "2024", yearSort: 2024,
     enforcement: "MS Attorney General",
@@ -718,7 +718,7 @@ const POLICIES = [
     country: "🇲🇾 Malaysia", region: "APAC",
     initiative: "Under-16 social media ban + eKYC age verification",
     summary: "All social media platforms must ban under-16s and implement eKYC-based age verification.",
-    minAge: 16, regType: "mixed", regTypeLabel: "Ban + AV",
+    minAge: 16, regType: "mixed", regTypeLabel: "Ban + Age verification",
     status: "implemented", statusLabel: "Implemented",
     year: "2025 (in force Jan 1, 2026)", yearSort: 2025,
     enforcement: "MCMC",
@@ -782,7 +782,7 @@ const POLICIES = [
   {
     country: "🇬🇷 Greece", region: "Europe",
     initiative: "Social media age restriction (passed)",
-    summary: "EU AV Blueprint pilot member; targeting age-restricted access to social media.",
+    summary: "EU Age Verification Blueprint pilot member; targeting age-restricted access to social media.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "passed", statusLabel: "Passed",
     year: "2026 (in force Jan 2027)", yearSort: 2026,
@@ -795,7 +795,7 @@ const POLICIES = [
   {
     country: "🇪🇸 Spain", region: "Europe",
     initiative: "Social media restrictions for minors",
-    summary: "EU AV Blueprint pilot; considering age-based restrictions on platform access.",
+    summary: "EU Age Verification Blueprint pilot; considering age-based restrictions on platform access.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
     year: "2026", yearSort: 2026,
@@ -808,7 +808,7 @@ const POLICIES = [
   {
     country: "🇮🇹 Italy", region: "Europe",
     initiative: "Social media age restriction proposals",
-    summary: "EU AV Blueprint pilot; restrictions for younger users under consideration.",
+    summary: "EU Age Verification Blueprint pilot; restrictions for younger users under consideration.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
     year: "2026", yearSort: 2026,
@@ -1098,7 +1098,7 @@ const MEDIA = [
   { tag: "industry", tagLabel: "Industry response",
     title: "State laws for social media",
     outlet: "Age Verification Providers Association (AVPA)", region: "United States",
-    summary: "AV-industry association's working tracker of US state social media age-assurance laws.",
+    summary: "Age verification-industry association's working tracker of US state social media age-assurance laws.",
     url: "https://avpassociation.com/us-state-age-assurance-laws-for-social-media/" },
 
   // ─── Legal commentary ───
@@ -1189,7 +1189,7 @@ const MEDIA = [
   { tag: "research", tagLabel: "Research & reviews",
     title: "The State by State Push to Restrict Youth Access to Social Media",
     outlet: "TechPolicy.Press · CJ Larkin & Max Morgan", region: "United States",
-    summary: "Georgetown scholars map the surge in US state legislation: 28 states have introduced bills since 2023 across three models — outright bans, parental consent, and app store-level age requirements. Notes that Free Speech Coalition v. Paxton (SCOTUS, June 2025) applied intermediate scrutiny, emboldening legislatures. Covers Massachusetts (advancing under-14 ban), Alabama HB 161 (app store AV), and the stalled KOSMA federal bill. Also flags equity concerns for LGBTQ+ youth and unhoused minors.",
+    summary: "Georgetown scholars map the surge in US state legislation: 28 states have introduced bills since 2023 across three models — outright bans, parental consent, and app store-level age requirements. Notes that Free Speech Coalition v. Paxton (SCOTUS, June 2025) applied intermediate scrutiny, emboldening legislatures. Covers Massachusetts (advancing under-14 ban), Alabama HB 161 (app store Age verification), and the stalled KOSMA federal bill. Also flags equity concerns for LGBTQ+ youth and unhoused minors.",
     url: "https://www.techpolicy.press/the-state-by-state-push-to-restrict-youth-access-to-social-media/" },
   { tag: "news", tagLabel: "Journalism",
     title: "Indonesia social media ban for minors comes into effect",
