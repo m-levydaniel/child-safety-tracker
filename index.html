@@ -1507,6 +1507,26 @@ function handleBackdropClick(e) {
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
 // ─── Media ───
+function parseMediaDate(s) {
+  if (!s) return 0;
+  if (s === "Ongoing") return Number.POSITIVE_INFINITY;
+  const months = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+  let m;
+  // "Mon DD, YYYY"
+  if ((m = s.match(/^([A-Z][a-z]{2}) (\d{1,2}), (\d{4})$/))) {
+    return new Date(parseInt(m[3]), months[m[1]], parseInt(m[2])).getTime();
+  }
+  // "Mon YYYY"
+  if ((m = s.match(/^([A-Z][a-z]{2}) (\d{4})$/))) {
+    return new Date(parseInt(m[2]), months[m[1]], 1).getTime();
+  }
+  // "YYYY"
+  if ((m = s.match(/^(\d{4})$/))) {
+    return new Date(parseInt(m[1]), 5, 15).getTime();
+  }
+  return 0;
+}
+
 function renderMedia() {
   const sections = $("#media-sections");
   const groups = ["research", "advocacy", "industry", "legal", "impact", "news"];
@@ -1521,7 +1541,9 @@ function renderMedia() {
   const visible = mediaFilter === "all" ? groups : [mediaFilter];
 
   sections.innerHTML = visible.map(g => {
-    const items = MEDIA.filter(m => m.tag === g);
+    const items = MEDIA.filter(m => m.tag === g)
+      .slice()
+      .sort((a, b) => parseMediaDate(b.date) - parseMediaDate(a.date));
     if (items.length === 0) return "";
     return `<h3>${labels[g]} (${items.length})</h3>
       <div class="media-grid">
