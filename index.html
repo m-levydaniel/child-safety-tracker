@@ -386,7 +386,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">May 13, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">May 18, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
     </div>
@@ -496,7 +496,7 @@ const POLICIES = [
     enforcement: "European Commission + national DSCs",
     penalties: "Up to 6% global turnover (DSA)",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "EU Age Verification Blueprint feature-ready April 15, 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026.",
+    notes: "EU Age Verification Blueprint feature-ready April 15, 2026; Commission declared the app technically ready and adopted a recommendation May 11, 2026 urging Member States to deploy by end of 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026.",
     primary: { title: "EC — EU age verification policy", url: "https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification", host: "ec.europa.eu" }
   },
   {
@@ -522,7 +522,7 @@ const POLICIES = [
     enforcement: "FTC + state AGs",
     penalties: "Per FTC Act; civil penalties",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim. May 12, 2026: Chair Cruz pledged to advance KOSA out of Senate Commerce Committee. Distinct from the narrower KOSMA (S.278, Cruz/Schatz — bars under-13s only), which passed Senate Commerce Committee in June 2025 but has seen no Senate floor action.",
+    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim. May 12, 2026: Chair Cruz pledged to advance KOSA out of Senate Commerce Committee. OpenAI publicly endorsed KOSA mid-May 2026 ahead of Senate hearing on landmark social media verdicts. Distinct from the narrower KOSMA (S.278, Cruz/Schatz — bars under-13s only), which passed Senate Commerce Committee in June 2025 but has seen no Senate floor action.",
     primary: { title: "Congress.gov — S.1748 (KOSA) text", url: "https://www.congress.gov/bill/119th-congress/senate-bill/1748/text", host: "congress.gov" }
   },
   {
@@ -582,15 +582,16 @@ const POLICIES = [
   },
   {
     country: "🇺🇸 US — Nebraska", region: "Americas",
-    initiative: "Parental Rights in Social Media Act",
+    initiative: "Parental Rights in Social Media Act (LB 383)",
     summary: "Requires age verification and parental consent for social media users under 18.",
     minAge: 18, regType: "parental-consent", regTypeLabel: "Parental consent",
     status: "passed", statusLabel: "Passed",
     year: "2025 (in force July 2026)", yearSort: 2025,
     enforcement: "NE Attorney General",
     penalties: "Civil penalties",
-    litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Effective July 1, 2026. Likely to face First Amendment challenge similar to other state laws.",
+    litigation: "active", litigationLabel: "Active",
+    litigationDetail: "NetChoice v. Hilgers — complaint filed May 13, 2026 in U.S. District Court for the District of Nebraska. First Amendment challenge ahead of July 1 effective date; NetChoice seeks declaratory judgment and injunction.",
+    notes: "Effective July 1, 2026. NetChoice filed suit May 13, 2026 challenging the law on First Amendment grounds, arguing it forces users to surrender private identification documents to access protected online speech.",
     primary: { title: "Nebraska Legislature", url: "https://nebraskalegislature.gov/", host: "nebraskalegislature.gov" }
   },
   {
@@ -991,6 +992,9 @@ const POLICIES = [
 
 const MILESTONES = [
   { date: "2026-05-13", flag: "🇺🇸", label: "<strong>US (Colorado)</strong> — Colorado files 10th Circuit opening brief urging reinstatement of social media health warning labels law (NetChoice v. Weiser, enjoined Nov. 2025)" },
+  { date: "2026-05-13", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — NetChoice files First Amendment complaint against LB 383 (NetChoice v. Hilgers, U.S. District Court for the District of Nebraska); seeks injunction before July 1 effective date" },
+  { date: "2026-05-11", flag: "🇪🇺", label: "<strong>EU</strong> — Commission declares the age verification app technically ready and adopts recommendation urging Member States to deploy by end of 2026" },
+  { date: "2026-05-22", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Meta Phase 2 bench trial scheduled to conclude (public-nuisance remedy / $3.7B mental health plan)" },
   { date: "2026-05-26", flag: "🇬🇧", label: "<strong>UK</strong> — Children's Online Safety consultation closes" },
   { date: "2026-06-30", flag: "🇦🇹", label: "<strong>Austria</strong> — Draft under-14 ban proposal due" },
   { date: "2026-07-01", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Parental Rights in Social Media Act takes effect" },
@@ -1091,6 +1095,11 @@ const MEDIA = [
     summary: "NetChoice filed a 48-page First Amendment challenge on April 29, 2026 against Minnesota's social media health warning label law, set to take effect July 1, 2026. The suit asks the court to declare the law unconstitutional and block enforcement.",
     url: "https://www.mprnews.org/story/2026/04/29/netchoice-sues-minnesota-over-social-media-health-warnings-law" },
   { tag: "industry", tagLabel: "Industry response",
+    title: "NetChoice v. Hilgers (Nebraska) — case page",
+    outlet: "NetChoice Litigation Center", region: "United States (Nebraska)",
+    summary: "Case page for NetChoice's May 13, 2026 First Amendment challenge to Nebraska's LB 383 (Parental Rights in Social Media Act). NetChoice argues the law forces all Nebraskans to surrender private identification to access protected online speech, and points to prior NetChoice victories in Arkansas, Ohio, and Louisiana.",
+    url: "https://netchoice.org/netchoice-v-hilgers-nebraska/" },
+  { tag: "industry", tagLabel: "Industry response",
     title: "Social Platforms Explore Age Verification Options to Comply With Teen Access Regulations",
     outlet: "Social Media Today", region: "Global",
     summary: "Coverage of platform-side compliance work — what major platforms are building to meet new teen-access rules.",
@@ -1122,6 +1131,11 @@ const MEDIA = [
     outlet: "Inside Privacy (Covington)", region: "EU",
     summary: "Law-firm summary of the Commission's protection-of-minors guidelines and what platforms need to operationalize.",
     url: "https://www.insideprivacy.com/digital-services-act/european-commission-makes-new-announcements-on-the-protection-of-minors-under-the-digital-services-act/" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "EU Sets the Clock on Age Verification: Rollout Urged by End-2026",
+    outlet: "Inside Privacy (Covington)", region: "EU",
+    summary: "Analyzes the Commission's May 2026 recommendation calling on Member States to make at least one EU-compliant age verification solution available by December 31, 2026, alongside the May 11, 2026 announcement that the EU age verification app is technically ready for deployment.",
+    url: "https://www.insideprivacy.com/minors/eu-sets-the-clock-on-age-verification-rollout-urged-by-end%E2%80%912026/" },
   { tag: "legal", tagLabel: "Legal commentary",
     title: "Court Enjoins Another Arkansas Segregate-and-Suppress Law — NetChoice v. Griffin",
     outlet: "Technology & Marketing Law Blog (Eric Goldman)", region: "United States (Arkansas)",
