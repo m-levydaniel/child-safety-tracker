@@ -403,7 +403,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">May 25, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">June 3, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
     </div>
@@ -692,6 +692,20 @@ const POLICIES = [
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "App store-level approach — rather than banning minors from platforms directly, requires age verification at the point of app download. One of a handful of states taking this distribution-layer strategy.",
     primary: { title: "LegiScan — Alabama HB 161", url: "https://legiscan.com/AL/bill/HB161/2026", host: "legiscan.com" }
+  },
+  {
+    country: "🇺🇸 US — Texas", region: "Americas",
+    initiative: "SB 2420 (App Store Age Verification)",
+    summary: "Requires app marketplace operators (Google, Apple) to verify all users' ages and obtain parental consent before minors can download apps or make in-app purchases.",
+    minAge: 18, regType: "age-verification", regTypeLabel: "Age verification",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2026 (in force June 4)", yearSort: 2026,
+    enforcement: "TX Attorney General",
+    penalties: "Civil penalties",
+    litigation: "active", litigationLabel: "Active",
+    litigationDetail: "NetChoice v. Texas — W.D. Tex. issued preliminary injunction Dec. 2025 on First Amendment grounds. 5th Circuit granted administrative stay June 2, 2026, lifting injunction and allowing law to take effect pending merits appeal.",
+    notes: "App store-level approach: requires age assurance at point of download. 5th Circuit administrative stay (June 2, 2026) allowed law to take effect June 4, 2026; merits appeal continues. Apple announced compliance beginning June 4.",
+    primary: { title: "Texas Legislature — SB 2420", url: "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420", host: "capitol.texas.gov" }
   },
   {
     country: "🇨🇦 Canada", region: "Americas",
@@ -1038,7 +1052,9 @@ const MILESTONES = [
   { date: "2026-05-04", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Phase 2 bench trial begins; AG seeks $3.7B public-nuisance remedy + algorithmic design controls on Meta" },
   { date: "2026-05-12", flag: "🇺🇸", label: "<strong>US (Federal / KOSA)</strong> — Senate Commerce Committee Chair Ted Cruz pledges to advance KOSA out of committee at Capitol Hill rally" },
   { date: "2025-06-27", flag: "🇺🇸", label: "<strong>US (SCOTUS)</strong> — <em>Free Speech Coalition v. Paxton</em>: Supreme Court upholds Texas age-verification law for adult content under intermediate (not strict) scrutiny, emboldening state legislatures pursuing broader youth social media restrictions" },
-  { date: "2025-06-01", flag: "🇺🇸", label: "<strong>US (Federal / KOSMA)</strong> — Kids Off Social Media Act (S.278, Cruz/Schatz — bars under-13s) passes Senate Commerce Committee with bipartisan support; stalled at Senate floor" }
+  { date: "2025-06-01", flag: "🇺🇸", label: "<strong>US (Federal / KOSMA)</strong> — Kids Off Social Media Act (S.278, Cruz/Schatz — bars under-13s) passes Senate Commerce Committee with bipartisan support; stalled at Senate floor" },
+  { date: "2026-06-02", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — 5th Circuit grants administrative stay lifting district court injunction on SB 2420; app store age verification law cleared to take effect" },
+  { date: "2026-06-04", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — SB 2420 takes effect: Apple and Google must implement age verification and parental consent for app downloads by minors in Texas" }
 ];
 
 const MEDIA = [
