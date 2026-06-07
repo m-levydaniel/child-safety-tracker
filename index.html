@@ -463,8 +463,8 @@
   <h2>Policy Tracker</h2>
   <div class="stat-row" id="stats"></div>
 
-  <div class="controls">
-    <span class="controls-label">Type</span>
+  <div class="controls" role="group" aria-label="Filter by type">
+    <span class="controls-label" aria-hidden="true">Type</span>
     <span class="chip active" data-filter="type:all">All</span>
     <span class="chip" data-filter="type:full-ban">Full ban</span>
     <span class="chip" data-filter="type:parental-consent">Parental consent</span>
@@ -472,21 +472,21 @@
     <span class="chip" data-filter="type:age-verification">Age verification</span>
     <span class="chip" data-filter="type:mixed">Mixed</span>
   </div>
-  <div class="controls">
-    <span class="controls-label">Region</span>
+  <div class="controls" role="group" aria-label="Filter by region">
+    <span class="controls-label" aria-hidden="true">Region</span>
     <span class="chip active" data-filter="region:all">All</span>
     <span class="chip" data-filter="region:Europe">Europe</span>
     <span class="chip" data-filter="region:Americas">Americas</span>
     <span class="chip" data-filter="region:APAC">APAC</span>
     <span class="chip" data-filter="region:Africa">Africa</span>
-    <input type="search" id="search-box" placeholder="Search country, law, regulator…" />
+    <input type="search" id="search-box" placeholder="Search country, law, regulator…" aria-label="Search policies" />
   </div>
 
   <div class="kanban-board" id="kanban-board"></div>
   <div id="empty-state" class="empty" style="display:none;">No matching policies.</div>
 
-  <div class="modal-backdrop" id="modal-backdrop" style="display:none;" onclick="handleBackdropClick(event)">
-    <div class="modal" id="modal-box">
+  <div class="modal-backdrop" id="modal-backdrop" style="display:none;" onclick="handleBackdropClick(event)" aria-hidden="true">
+    <div class="modal" id="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
       <div class="modal-header">
         <div class="modal-title" id="modal-title"></div>
         <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
@@ -1466,7 +1466,7 @@ function renderMilestones() {
     return `<div class="tl-item" style="${pastStyle}">
       <div class="tl-dot ${dotClass}"></div>
       <span class="tl-date">${dateStr}</span>
-      <span class="tl-text">${tag}${m.flag} ${m.label}</span>
+      <span class="tl-text">${tag}<span aria-hidden="true">${m.flag}</span> ${m.label}</span>
     </div>`;
   }
 
@@ -1537,7 +1537,10 @@ function renderKanban() {
           const idx = POLICIES.indexOf(p);
           const litBadge = p.litigation !== "none"
             ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>` : "";
-          return `<div class="k-card" onclick="openModal(${idx})">
+          return `<div class="k-card" role="button" tabindex="0"
+            onclick="openModal(${idx})"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${idx});}"
+            aria-label="${p.country} — ${p.regTypeLabel}, ${p.statusLabel}">
             <div class="k-card-name">${p.country}</div>
             <div class="k-card-tags">
               <span class="badge type-${p.regType}">${p.regTypeLabel}</span>
@@ -1577,13 +1580,21 @@ function openModal(idx) {
     ? `<a href="${p.primary.url}" target="_blank" rel="noopener noreferrer">${p.primary.title} ↗</a>`
     : "";
 
-  $("#modal-backdrop").style.display = "flex";
+  const backdrop = $("#modal-backdrop");
+  backdrop.style.display = "flex";
+  backdrop.removeAttribute("aria-hidden");
   document.body.style.overflow = "hidden";
+  // Focus modal and remember what triggered it
+  window._modalTrigger = document.activeElement;
+  requestAnimationFrame(() => { $("#modal-box").focus(); });
 }
 
 function closeModal() {
-  $("#modal-backdrop").style.display = "none";
+  const backdrop = $("#modal-backdrop");
+  backdrop.style.display = "none";
+  backdrop.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  if (window._modalTrigger) { window._modalTrigger.focus(); window._modalTrigger = null; }
 }
 
 function handleBackdropClick(e) {
@@ -1646,33 +1657,41 @@ function renderMedia() {
 
 // ─── Wiring ───
 $$(".chip[data-filter]").forEach(chip => {
+  chip.setAttribute("tabindex", "0");
+  chip.setAttribute("role", "button");
   const [dim, val] = chip.dataset.filter.split(":");
   if (filters[dim] !== undefined && filters[dim] === val) {
     $$(`.chip[data-filter^="${dim}:"]`).forEach(c => c.classList.remove("active"));
     chip.classList.add("active");
   }
-  chip.addEventListener("click", () => {
+  function activate() {
     if (filters[dim] === undefined) return;
     $$(`.chip[data-filter^="${dim}:"]`).forEach(c => c.classList.remove("active"));
     chip.classList.add("active");
     filters[dim] = val;
     localStorage.setItem("cs2-" + dim, val);
     renderKanban();
-  });
+  }
+  chip.addEventListener("click", activate);
+  chip.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); } });
 });
 
 $$(".chip[data-mfilter]").forEach(chip => {
+  chip.setAttribute("tabindex", "0");
+  chip.setAttribute("role", "button");
   if (chip.dataset.mfilter === mediaFilter) {
     $$(".chip[data-mfilter]").forEach(c => c.classList.remove("active"));
     chip.classList.add("active");
   }
-  chip.addEventListener("click", () => {
+  function activate() {
     $$(".chip[data-mfilter]").forEach(c => c.classList.remove("active"));
     chip.classList.add("active");
     mediaFilter = chip.dataset.mfilter;
     localStorage.setItem("cs2-media", mediaFilter);
     renderMedia();
-  });
+  }
+  chip.addEventListener("click", activate);
+  chip.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); } });
 });
 
 $("#search-box").addEventListener("input", (e) => {
