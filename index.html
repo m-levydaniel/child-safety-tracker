@@ -1574,7 +1574,7 @@ function openModal(idx) {
 
   $("#modal-notes").textContent = p.notes || "";
   $("#modal-source").innerHTML = p.primary
-    ? `<a href="${p.primary.url}" target="_blank" rel="noopener">${p.primary.title} ↗</a>`
+    ? `<a href="${p.primary.url}" target="_blank" rel="noopener noreferrer">${p.primary.title} ↗</a>`
     : "";
 
   $("#modal-backdrop").style.display = "flex";
@@ -1635,7 +1635,7 @@ function renderMedia() {
       <div class="media-grid">
         ${items.map(m => `
           <div class="media-item">
-            <p class="media-title"><a href="${m.url}" target="_blank" rel="noopener">${m.title} ↗</a></p>
+            <p class="media-title"><a href="${m.url}" target="_blank" rel="noopener noreferrer">${m.title} ↗</a></p>
             <div class="media-meta"><span>${m.outlet}</span><span>${m.region}</span>${m.date ? `<span class="media-date">${m.date}</span>` : ""}</div>
             <p class="media-summary">${m.summary}</p>
           </div>
@@ -1690,7 +1690,7 @@ renderKanban();
 renderMedia();
 </script>
 <footer style="text-align:center;padding:2rem 1rem;margin-top:2rem;border-top:1px solid var(--border, #e5e7eb);color:#6b7280;font-size:0.875rem;">
-  Built by <a href="https://www.maialevydaniel.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Maia Levy Daniel</a>
+  Built by <a href="https://www.maialevydaniel.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Maia Levy Daniel</a>
 </footer>
 </body>
 </html>
