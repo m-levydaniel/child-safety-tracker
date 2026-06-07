@@ -396,6 +396,53 @@
     font-size: 12px;
   }
   .stat-row strong { color: var(--text); margin-right: 4px; }
+
+  /* ── Mobile responsive ── */
+  @media (max-width: 640px) {
+    .wrap { padding: 14px; }
+
+    h1 { font-size: 17px; }
+    h2 { font-size: 14px; margin: 22px 0 10px 0; }
+
+    /* Kanban: 1 column */
+    .kanban-board {
+      grid-template-columns: 1fr;
+    }
+
+    /* Stats row: wrap tightly */
+    .stat-row { gap: 8px; }
+
+    /* Filter chips: smaller, tighter */
+    .controls { gap: 4px; margin-bottom: 10px; }
+    .chip { font-size: 11px; padding: 3px 8px; }
+    input[type="search"] { min-width: 100%; margin-top: 4px; }
+
+    /* Timeline: tighten date column */
+    .tl-date { min-width: 44px; font-size: 10px; }
+    .tl-text { font-size: 12px; }
+
+    /* Modal: full-screen feel */
+    .modal-backdrop { padding: 10px; align-items: flex-end; }
+    .modal {
+      max-height: 92vh;
+      border-radius: 10px 10px 0 0;
+      padding: 18px 16px;
+    }
+    .modal-grid {
+      grid-template-columns: 80px 1fr;
+      gap: 6px 10px;
+    }
+    .modal-title { font-size: 15px; }
+
+    /* Media grid: single column */
+    .media-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Footer: smaller */
+    .footer { font-size: 11px; }
+    footer { font-size: 12px; }
+  }
 </style>
 </head>
 <body>
