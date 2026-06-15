@@ -450,7 +450,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">June 8, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">June 15, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
     </div>
@@ -703,6 +703,20 @@ const POLICIES = [
     primary: { title: "HB24-1136 Healthier Social Media Use by Youth — Colorado General Assembly", url: "https://leg.colorado.gov/bills/hb24-1136", host: "leg.colorado.gov" }
   },
   {
+    country: "🇺🇸 US — Georgia", region: "Americas",
+    initiative: "HB 127 (Social Media Parental Notification Act, 2024)",
+    summary: "Requires covered social media platforms to verify users' ages and obtain parental consent before providing accounts to users under 16.",
+    minAge: 16, regType: "parental-consent", regTypeLabel: "Parental consent",
+    status: "stalled", statusLabel: "Stalled",
+    year: "2024 (enjoined June 2025)", yearSort: 2024,
+    enforcement: "GA Attorney General",
+    penalties: "Civil penalties",
+    litigation: "enjoined", litigationLabel: "Enjoined",
+    litigationDetail: "NetChoice v. Carr — Senior U.S. District Judge Amy Totenberg issued preliminary injunction June 26, 2025 (law restricts minor/anonymous speech, First Amendment violation). Georgia AG appealed; 11th Circuit heard oral arguments March 10, 2026. Panel members pressed NetChoice on standing and whether facial challenge was premature; no ruling yet. Running jointly with Florida's appeal.",
+    notes: "Blocked since June 2025. 11th Circuit panel appeared divided at oral arguments in March 2026 — some judges skeptical of NetChoice's broad facial challenge, which could signal a narrower ruling rather than full uphold or strike. Case running with the Florida appeal (HB 3).",
+    primary: { title: "Georgia HB 127 (Social Media Parental Notification Act) — Georgia General Assembly", url: "https://www.legis.ga.gov/legislation/65795", host: "legis.ga.gov" }
+  },
+  {
     country: "🇺🇸 US — Mississippi", region: "Americas",
     initiative: "HB 1126 (age assurance + parental consent)",
     summary: "Imposed age-verification and parental-consent requirements on social media platforms.",
@@ -765,8 +779,8 @@ const POLICIES = [
     enforcement: "TX Attorney General",
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
-    litigationDetail: "NetChoice v. Texas — W.D. Tex. issued preliminary injunction Dec. 2025 on First Amendment grounds. 5th Circuit granted administrative stay June 2, 2026, lifting injunction and allowing law to take effect pending merits appeal.",
-    notes: "App store-level approach: requires age assurance at point of download. 5th Circuit administrative stay (June 2, 2026) allowed law to take effect June 4, 2026; merits appeal continues. Apple announced compliance beginning June 4.",
+    litigationDetail: "SEAT v. Paxton / NetChoice v. Texas — W.D. Tex. issued preliminary injunction Dec. 2025 on First Amendment grounds. 5th Circuit granted administrative stay June 2, 2026; then issued full opinion June 4–5, 2026 (SEAT v. Paxton, No. 26-50001) finding SB 2420 'likely constitutional' under intermediate scrutiny — age verification and parental consent requirements likely directly advance Texas's substantial interest in child safety. Merits appeal continues.",
+    notes: "App store-level approach: requires age assurance at point of download. 5th Circuit administrative stay (June 2, 2026) allowed law to take effect June 4, 2026; full 5th Circuit opinion (June 4–5, 2026) found the law likely constitutional, strongly signaling how the merits appeal will resolve. Apple and Google implementing compliance. Eric Goldman analyzed the opinion as a sign of the 5th Circuit's expansive approach to state child-safety laws.",
     primary: { title: "Texas Legislature — SB 2420", url: "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420", host: "capitol.texas.gov" }
   },
   {
@@ -1017,6 +1031,19 @@ const POLICIES = [
     primary: { title: "Communiqué du Conseil des Ministres du 26 fév. 2026 (ordonnances réseaux sociaux) — Présidence", url: "https://presidence.ga/2026/02/26/communique-final-du-conseil-des-ministres-du-26-fevrier-2026/", host: "presidence.ga" }
   },
   {
+    country: "🇦🇪 United Arab Emirates", region: "Middle East",
+    initiative: "Federal Decree-Law No. 26 of 2025 on Child Digital Safety",
+    summary: "Requires platforms to implement risk-proportionate age verification; bans collection of under-13 data without parental consent; restricts behavioral tracking and targeted advertising to children.",
+    minAge: 13, regType: "mixed", regTypeLabel: "Design + Age verification",
+    status: "passed", statusLabel: "Passed",
+    year: "2025 (in force Jan 1, 2026; compliance Jan 2027)", yearSort: 2025,
+    enforcement: "UAE regulators (TRA / TDRA)",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Federal Decree-Law No. 26 of 2025 came into force January 1, 2026 with a one-year grace period — platforms must fully comply by January 2027. Scope covers social media, streaming, e-commerce, gaming, messaging apps, search engines, and websites. Age verification strength is proportionate to the platform's risk classification. One of the first comprehensive child digital safety frameworks in the Gulf.",
+    primary: { title: "Federal Decree-Law No. 26 of 2025 on Child Digital Safety — UAE Official Gazette", url: "https://www.bakermckenzie.com/en/insight/publications/2026/01/uae-issues-new-child-digital-safety-law", host: "bakermckenzie.com" }
+  },
+  {
     country: "🇵🇬 Papua New Guinea", region: "APAC",
     initiative: "2025 Social Media Policy (age 14+)",
     summary: "Policy requires users to verify they are at least 14 years old.",
@@ -1117,7 +1144,9 @@ const MILESTONES = [
   { date: "2025-06-01", flag: "🇺🇸", label: "<strong>US (Federal / KOSMA)</strong> — Kids Off Social Media Act (S.278, Cruz/Schatz — bars under-13s) passes Senate Commerce Committee with bipartisan support; stalled at Senate floor" },
   { date: "2026-06-02", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — 5th Circuit grants administrative stay lifting district court injunction on SB 2420; app store age verification law cleared to take effect" },
   { date: "2026-06-02", flag: "🇺🇸", label: "<strong>US (Connecticut)</strong> — Governor Lamont signs Public Act 26-15 (SB 5): parental consent required for minors' algorithmic feeds, age verification mandate, notification blackout 9pm–8am, AI chatbot self-harm safeguards — one of the most comprehensive state omnibus child safety laws" },
-  { date: "2026-06-04", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — SB 2420 takes effect: Apple and Google must implement age verification and parental consent for app downloads by minors in Texas" }
+  { date: "2026-06-04", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — SB 2420 takes effect: Apple and Google must implement age verification and parental consent for app downloads by minors in Texas" },
+  { date: "2026-06-05", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — 5th Circuit issues full opinion in SEAT v. Paxton (No. 26-50001) finding Texas SB 2420 app-store age verification law 'likely constitutional' under intermediate scrutiny — stronger signal than the June 2 admin stay; strengthens Texas's position in merits appeal" },
+  { date: "2026-06-12", flag: "🇺🇸", label: "<strong>US (MDL-3047)</strong> — Breathitt County School District federal bellwether trial (scheduled June 12–15) averted: Meta, Snap, TikTok, and YouTube all settle with the first federal school-district plaintiff ahead of opening statements; over 2,600 cases remain in MDL-3047" }
 ];
 
 const MEDIA = [
@@ -1408,6 +1437,12 @@ const MEDIA = [
     summary: "Analysis of the April 20, 2026 preliminary injunction of Arkansas Act 900 on First Amendment grounds — the second time a federal court blocked Arkansas's attempt to restrict minors' social media access. Three Arkansas social-media statutes are now enjoined.",
     url: "https://blog.ericgoldman.org/archives/2026/04/court-enjoins-another-arkansas-segregate-and-suppress-law-netchoice-v-griffin.htm",
     date: "Apr 2026" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "Fifth Circuit Keeps Doing Fifth Circuit Things — SEAT v. Paxton",
+    outlet: "Tech & Marketing Law Blog · Eric Goldman", region: "United States (Texas)",
+    summary: "Goldman's critical analysis of the 5th Circuit's June 4–5, 2026 opinion finding Texas SB 2420 (app-store age verification) likely constitutional under intermediate scrutiny. Goldman argues the ruling reflects the 5th Circuit's expansive deference to child-safety rationales and contrasts with the more skeptical First Amendment approach in other circuits.",
+    url: "https://blog.ericgoldman.org/archives/2026/06/fifth-circuit-keeps-doing-fifth-circuit-things-%F0%9F%93%89-seat-v-paxton.htm",
+    date: "Jun 8, 2026" },
   // ─── Featured experts: Aliya Bhatia (Center for Democracy & Technology) ───
   { tag: "research", tagLabel: "Research & reviews",
     title: "Teen and Parent Perspectives on Approaches to Age Verification",
