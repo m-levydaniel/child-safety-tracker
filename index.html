@@ -1586,7 +1586,7 @@ function renderMilestones() {
     return `<div class="tl-item" style="${pastStyle}">
       <div class="tl-dot ${dotClass}"></div>
       <span class="tl-date">${dateStr}</span>
-      <span class="tl-text">${tag}<span aria-hidden="true">${m.flag}</span> ${m.label}</span>
+      <span class="tl-text"><span aria-hidden="true">${m.flag}</span> ${m.label} ${tag}</span>
     </div>`;
   }
 
