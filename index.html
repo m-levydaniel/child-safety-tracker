@@ -161,6 +161,7 @@
     font-variant-numeric: tabular-nums;
   }
   .tl-text { font-size: 13px; line-height: 1.45; }
+  .tl-tag-col { min-width: 62px; flex-shrink: 0; }
   .tl-text strong { color: var(--text); font-weight: 600; }
   .tl-soon-tag {
     display: inline-block;
@@ -1586,7 +1587,8 @@ function renderMilestones() {
     return `<div class="tl-item" style="${pastStyle}">
       <div class="tl-dot ${dotClass}"></div>
       <span class="tl-date">${dateStr}</span>
-      <span class="tl-text"><span aria-hidden="true">${m.flag}</span> ${m.label} ${tag}</span>
+      <span class="tl-tag-col">${tag}</span>
+      <span class="tl-text"><span aria-hidden="true">${m.flag}</span> ${m.label}</span>
     </div>`;
   }
 
