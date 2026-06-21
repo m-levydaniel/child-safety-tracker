@@ -4,6 +4,18 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Global Child Safety & Social Media Policy Tracker</title>
+    <meta property="og:image" content="https://childsafety-tracker.netlify.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:title" content="Global Child Safety &amp; Social Media Policy Tracker">
+    <meta property="og:description" content="Laws, bills, court decisions, milestones and research across 40+ jurisdictions. Updated automatically every Monday.">
+    <meta property="og:url" content="https://childsafety-tracker.netlify.app">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Laws, bills, court decisions, milestones and research across 40+ jurisdictions. Updated automatically every Monday.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Global Child Safety &amp; Social Media Policy Tracker">
+    <meta name="twitter:description" content="Laws, bills, court decisions, milestones and research across 40+ jurisdictions. Updated automatically every Monday.">
+    <meta name="twitter:image" content="https://childsafety-tracker.netlify.app/og-image.png">
 <style>
   :root {
     color-scheme: dark;
@@ -118,7 +130,7 @@
   .milestones { position: relative; padding-left: 18px; }
   .tl-spine {
     position: absolute;
-    left: 5px; top: 6px; bottom: 6px;
+    left: 9px; top: 6px; bottom: 6px;
     width: 1.5px;
     background: var(--border);
   }
@@ -244,59 +256,6 @@
   .k-card-name { font-size: 12.5px; font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
   .k-card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
   .k-empty { color: var(--muted); font-size: 12px; padding: 6px 0; }
-
-  /* Platform Impact toggle */
-  .impact-toggle {
-    display: flex; align-items: center; justify-content: space-between;
-    margin: 8px -10px -9px -10px;
-    padding: 6px 10px;
-    border-top: 1px solid var(--border);
-    cursor: pointer;
-    border-radius: 0 0 6px 6px;
-    background: transparent;
-    transition: background 0.12s;
-  }
-  .impact-toggle:hover { background: var(--hover); }
-  .impact-toggle-label {
-    font-size: 11px; color: var(--muted);
-    display: flex; align-items: center; gap: 5px;
-  }
-  .impact-level-badge {
-    font-size: 10px; padding: 1px 6px;
-    border-radius: 4px; font-weight: 600;
-  }
-  .ilb-high  { background: var(--red-soft);   color: var(--red); }
-  .ilb-medium { background: var(--amber-soft); color: var(--amber); }
-  .ilb-low   { background: var(--green-soft);  color: var(--green); }
-
-  .impact-panel {
-    display: none;
-    margin: 8px -10px -9px -10px;
-    padding: 10px;
-    border-top: 1px solid var(--border);
-    background: var(--th-bg);
-    border-radius: 0 0 6px 6px;
-    font-size: 11px;
-  }
-  .impact-panel.open { display: block; }
-  .impact-scope-row {
-    display: flex; align-items: flex-start; gap: 6px;
-    margin-bottom: 6px;
-  }
-  .impact-scope-row:last-of-type { margin-bottom: 0; }
-  .isr-badge {
-    flex-shrink: 0; font-size: 10px; padding: 1px 6px;
-    border-radius: 3px; font-weight: 600; margin-top: 1px;
-  }
-  .isr-in        { background: var(--red-soft);   color: var(--red); }
-  .isr-out       { background: var(--gray-soft);   color: var(--gray); border: 1px solid var(--border); }
-  .isr-contested { background: var(--amber-soft);  color: var(--amber); }
-  .isr-col { display: flex; flex-direction: column; gap: 2px; }
-  .isr-platforms { font-size: 11px; color: var(--text); font-weight: 500; line-height: 1.4; }
-  .isr-note   { font-size: 10px; color: var(--muted); line-height: 1.4; }
-  .isr-source { font-size: 10px; color: var(--muted); }
-  .isr-source.confirmed { color: var(--green); }
-  .impact-divider { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
 
   /* Modal */
   .modal-backdrop {
@@ -497,13 +456,14 @@
     footer { font-size: 12px; }
   }
 </style>
+  <script data-goatcounter="https://maia-levy-daniel.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">June 8, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">June 15, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
     </div>
@@ -570,8 +530,10 @@
     Sources column links only to primary legal/regulatory text (statute pages, regulator websites, parliamentary bill records). Media section gathers third-party analysis.
     <br /><br />
     <strong>Status:</strong> Implemented = in force and being enforced · Passed = enacted but not yet in force · Pending = in legislative process · Stalled = died, blocked, or stuck.
-    <strong>Type:</strong> Full ban = age-based access prohibition · Parental consent = requires guardian approval · Design rules = duty of care / addictive features rules · Age verification = age assurance / age verification only · Mixed = combination.
+    <strong>Type:</strong> Full ban = age-based access prohibition · Parental consent = requires guardian approval · Design rules = duty of care / addictive features rules · Age verification = age assurance / age verification only · Mixed = combination of two or more regulatory approaches.
     <strong>Litigation:</strong> Active = open challenge · Enjoined = currently blocked by court · Struck down = permanently invalidated · None = no pending challenge / not applicable.
+    <br /><br />
+    <strong>Methodology.</strong> This tracker was built using primary legislative and regulatory sources. Each jurisdiction entry links directly to the official statute, bill, or regulator page. Jurisdiction coverage on social media age verification issues was cross-referenced against the <a href="https://www.techpolicy.press/tracker" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">Tech Policy Press Global Social Media Age Restriction Tracker</a>. Litigation data draws on the <a href="https://netchoice.org/litigation/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">NetChoice Litigation Center</a>. Age verification legislation coverage draws on the <a href="https://avpassociation.com/us-state-age-assurance-laws-for-social-media/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">AVPA State Laws Tracker</a>. The tracker is updated weekly via an automated process that monitors legislative and regulatory developments, court decisions, and commentary.
   </div>
 </div>
 
@@ -588,7 +550,7 @@ const POLICIES = [
     penalties: "Up to A$49.5M",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "March 31, 2026: eSafety opened formal investigations into Facebook, Instagram, Snapchat, TikTok, YouTube. ~4.7M under-16 accounts removed by mid-Dec 2025; ~70% of under-16s reportedly still accessing per parents. High Court accepted Digital Freedom Project + Reddit constitutional challenge (implied-freedom-of-political-communication argument); cases to proceed jointly, arguments scheduled for 2026.",
-    primary: { title: "eSafety Commissioner — official guidance", url: "https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions", host: "esafety.gov.au" }
+    primary: { title: "Online Safety Amendment (Social Media Minimum Age) Act 2024 — legislation.gov.au", url: "https://www.legislation.gov.au/C2024A00127/asmade/text", host: "legislation.gov.au" }
   },
   {
     country: "🇬🇧 United Kingdom", region: "Europe",
@@ -600,8 +562,21 @@ const POLICIES = [
     enforcement: "Ofcom",
     penalties: "Up to £18M or 10% global turnover",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Children's Wellbeing & Schools Act got Royal Assent April 29, 2026. Ofcom: 80+ investigations open; £1M fine for age-assurance failure; £520K fine for 4chan (March 2026). Children's online-safety consultation closes May 26, 2026. Ofcom Project Mercury update (May 21, 2026): TikTok and YouTube declined to commit to meaningful changes to recommendation feeds for children despite Ofcom's March 2026 demands; Snap, Meta, and Roblox agreed to new grooming safeguards and account controls. 73% of UK teens report encountering harmful content via recommendation feeds. Ofcom signalled formal OSA enforcement may follow for non-compliant platforms.",
+    notes: "Children's Wellbeing & Schools Act got Royal Assent April 29, 2026. Ofcom: 80+ investigations open; £1M fine for age-assurance failure; £520K fine for 4chan (March 2026). Children's online-safety consultation closed May 26, 2026. Ofcom Project Mercury update (May 21, 2026): TikTok and YouTube declined to commit to meaningful changes to recommendation feeds for children despite Ofcom's March 2026 demands; Snap, Meta, and Roblox agreed to new grooming safeguards and account controls. 73% of UK teens report encountering harmful content via recommendation feeds. Ofcom signalled formal OSA enforcement may follow for non-compliant platforms. June 8: Government gave Apple and Google a three-month deadline to deploy device-level blocking of explicit images for under-16s. June 15: PM Starmer announced a separate proposed full ban on social media for under-16s — see separate tracker entry.",
     primary: { title: "Online Safety Act 2023 (legislation.gov.uk)", url: "https://www.legislation.gov.uk/ukpga/2023/50/contents", host: "legislation.gov.uk" }
+  },
+  {
+    country: "🇬🇧 United Kingdom", region: "Europe",
+    initiative: "Proposed under-16 social media ban",
+    summary: "PM Starmer announced June 15, 2026 a full ban on social media for under-16s — Snapchat, TikTok, YouTube, Instagram, Facebook, X. Messaging apps (WhatsApp, Signal) excluded.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (announced June 15; legislation before Christmas 2026)", yearSort: 2026,
+    enforcement: "Ofcom",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Announced June 15, 2026 by PM Keir Starmer following government consultation (closed May 26). Government aims to pass legislation before end of 2026; ban expected to come into force around spring 2027. Starmer cited children's wellbeing and safety and pledged to fight back against platform resistance. Follows Australia's approach. Separate from the existing OSA / Children's Wellbeing Act framework.",
+    primary: { title: "Britain will ban under-16s from social media apps — NPR", url: "https://www.npr.org/2026/06/15/nx-s1-5858644/britain-social-media-ban", host: "npr.org" }
   },
   {
     country: "🇪🇺 European Union", region: "Europe",
@@ -627,7 +602,7 @@ const POLICIES = [
     penalties: "Significant; tied to EU rules",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "National Assembly approved bill January 2026. Platforms must implement robust age verification by Sept 2026 for new accounts; full compliance Jan 2027. Targets recommendation algorithms; extends school phone ban to high schools.",
-    primary: { title: "Légifrance — French legal database", url: "https://www.legifrance.gouv.fr/", host: "legifrance.gouv.fr" }
+    primary: { title: "LOI n° 2023-566 du 7 juillet 2023 (majorité numérique) — Légifrance", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047799533", host: "legifrance.gouv.fr" }
   },
   {
     country: "🇺🇸 United States (Federal)", region: "Americas",
@@ -653,7 +628,7 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "In force. Part of broader US state trend — at least 19 states had laws addressing minors on social media by April 2026.",
-    primary: { title: "Tennessee General Assembly", url: "https://wapp.capitol.tn.gov/apps/Billinfo/", host: "capitol.tn.gov" }
+    primary: { title: "Public Chapter No. 899 (Protecting Children from Social Media Act) — TN SOS", url: "https://publications.tnsosfiles.com/acts/113/pub/pc0899.pdf", host: "tnsosfiles.com" }
   },
   {
     country: "🇺🇸 US — Virginia", region: "Americas",
@@ -667,7 +642,7 @@ const POLICIES = [
     litigation: "enjoined", litigationLabel: "Enjoined",
     litigationDetail: "NetChoice v. Virginia — E.D. Va. granted preliminary injunction Feb 27, 2026 (likely First Amendment violation; content-based restriction). Virginia appealed to 4th Circuit March 3; state's opening brief filed April 15, 2026.",
     notes: "Took effect January 1, 2026 via amendment to Virginia Consumer Data Protection Act. Halted by federal preliminary injunction Feb 27 — currently not being enforced pending 4th Circuit appeal.",
-    primary: { title: "Virginia Legislative Information System", url: "https://lis.virginia.gov/", host: "lis.virginia.gov" }
+    primary: { title: "§ 59.1-577.1 Social media platforms; responsibilities for minors — LIS Virginia", url: "https://law.lis.virginia.gov/vacode/title59.1/chapter53/section59.1-577.1/", host: "law.lis.virginia.gov" }
   },
   {
     country: "🇺🇸 US — Florida", region: "Americas",
@@ -709,7 +684,7 @@ const POLICIES = [
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Hilgers — complaint filed May 13, 2026 in U.S. District Court for the District of Nebraska. First Amendment challenge ahead of July 1 effective date; NetChoice seeks declaratory judgment and injunction.",
     notes: "Effective July 1, 2026. NetChoice filed suit May 13, 2026 challenging the law on First Amendment grounds, arguing it forces users to surrender private identification documents to access protected online speech.",
-    primary: { title: "Nebraska Legislature", url: "https://nebraskalegislature.gov/", host: "nebraskalegislature.gov" }
+    primary: { title: "LB 383 (Parental Rights in Social Media Act) — Nebraska Legislature", url: "https://nebraskalegislature.gov/FloorDocs/109/PDF/Slip/LB383.pdf", host: "nebraskalegislature.gov" }
   },
   {
     country: "🇺🇸 US — Louisiana", region: "Americas",
@@ -723,7 +698,7 @@ const POLICIES = [
     litigation: "struckdown", litigationLabel: "Struck down",
     litigationDetail: "NetChoice v. Murrill — M.D. La. struck down Act 456 on First Amendment grounds (summary judgment).",
     notes: "Permanently invalidated by federal district court.",
-    primary: { title: "Louisiana State Legislature", url: "https://www.legis.la.gov/", host: "legis.la.gov" }
+    primary: { title: "Act 456 (SB 162, 2023 Regular Session) — Louisiana Legislature", url: "https://www.legis.la.gov/legis/ViewDocument.aspx?d=1333323", host: "legis.la.gov" }
   },
   {
     country: "🇺🇸 US — Minnesota", region: "Americas",
@@ -737,7 +712,7 @@ const POLICIES = [
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Minnesota — 48-page First Amendment complaint filed April 29, 2026; seeks injunction before July 1 enforcement date.",
     notes: "Warning labels law effective July 1, 2026. NetChoice filed suit in U.S. District Court on April 29, 2026, arguing the mandatory disclosures compel speech in violation of the First Amendment.",
-    primary: { title: "Minnesota Legislature", url: "https://www.leg.state.mn.us/", host: "leg.state.mn.us" }
+    primary: { title: "MN Stat. § 325M.335 Mental Health Warning Label — MN Revisor", url: "https://www.revisor.mn.gov/statutes/cite/325M.335", host: "revisor.mn.gov" }
   },
   {
     country: "🇺🇸 US — Colorado", region: "Americas",
@@ -751,7 +726,21 @@ const POLICIES = [
     litigation: "enjoined", litigationLabel: "Enjoined",
     litigationDetail: "NetChoice v. Weiser — D. Colo. granted preliminary injunction Nov. 6, 2025 (compelled speech / First Amendment). Colorado AG appealed to 10th Circuit; Colorado's opening brief filed May 13, 2026 urging reinstatement.",
     notes: "Health warning pop-ups required every 30 minutes once a minor spends 1+ hour/day on a platform, or between 10 p.m. and 6 a.m. Blocked by PI Nov. 2025; 10th Circuit appeal active. Parallel to Minnesota case — both may shape circuit law on mandatory disclosure rules.",
-    primary: { title: "Colorado General Assembly", url: "https://leg.colorado.gov/", host: "leg.colorado.gov" }
+    primary: { title: "HB24-1136 Healthier Social Media Use by Youth — Colorado General Assembly", url: "https://leg.colorado.gov/bills/hb24-1136", host: "leg.colorado.gov" }
+  },
+  {
+    country: "🇺🇸 US — Georgia", region: "Americas",
+    initiative: "HB 127 (Social Media Parental Notification Act, 2024)",
+    summary: "Requires covered social media platforms to verify users' ages and obtain parental consent before providing accounts to users under 16.",
+    minAge: 16, regType: "parental-consent", regTypeLabel: "Parental consent",
+    status: "stalled", statusLabel: "Stalled",
+    year: "2024 (enjoined June 2025)", yearSort: 2024,
+    enforcement: "GA Attorney General",
+    penalties: "Civil penalties",
+    litigation: "enjoined", litigationLabel: "Enjoined",
+    litigationDetail: "NetChoice v. Carr — Senior U.S. District Judge Amy Totenberg issued preliminary injunction June 26, 2025 (law restricts minor/anonymous speech, First Amendment violation). Georgia AG appealed; 11th Circuit heard oral arguments March 10, 2026. Panel members pressed NetChoice on standing and whether facial challenge was premature; no ruling yet. Running jointly with Florida's appeal.",
+    notes: "Blocked since June 2025. 11th Circuit panel appeared divided at oral arguments in March 2026 — some judges skeptical of NetChoice's broad facial challenge, which could signal a narrower ruling rather than full uphold or strike. Case running with the Florida appeal (HB 3).",
+    primary: { title: "Georgia HB 127 (Social Media Parental Notification Act) — Georgia General Assembly", url: "https://www.legis.ga.gov/legislation/65795", host: "legis.ga.gov" }
   },
   {
     country: "🇺🇸 US — Mississippi", region: "Americas",
@@ -765,7 +754,7 @@ const POLICIES = [
     litigation: "enjoined", litigationLabel: "Enjoined",
     litigationDetail: "Preliminary injunction in NetChoice v. Mississippi; 5th Circuit hearing the appeal.",
     notes: "Currently blocked by court order.",
-    primary: { title: "Mississippi Legislature — Bill Status", url: "http://billstatus.ls.state.ms.us/", host: "billstatus.ls.state.ms.us" }
+    primary: { title: "HB 1126 (Walker Montgomery Protecting Children Online Act) — MS Legislature", url: "https://billstatus.ls.state.ms.us/documents/2024/html/HB/1100-1199/HB1126PS.htm", host: "billstatus.ls.state.ms.us" }
   },
   {
     country: "🇺🇸 US — Massachusetts", region: "Americas",
@@ -778,7 +767,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Described as rapidly advancing as of May 2026. Part of the broader wave of US state outright-ban proposals emboldened by Free Speech Coalition v. Paxton (SCOTUS, June 2025).",
-    primary: { title: "Massachusetts Legislature — Press Release", url: "https://malegislature.gov/PressRoom/Detail?pressReleaseId=359", host: "malegislature.gov" }
+    primary: { title: "H.5295 — An Act relative to regulation of minors on social media — MA Legislature", url: "https://malegislature.gov/Bills/194/H5295/House/Bill/Text", host: "malegislature.gov" }
   },
   {
     country: "🇺🇸 US — Alabama", region: "Americas",
@@ -804,7 +793,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Signed by Governor Lamont on June 2, 2026. One of the most comprehensive state omnibus laws to date: combines social media algorithm restrictions, age verification, AI chatbot safety rules, and employment-AI disclosure requirements. Parental consent required before minors can access addictive algorithmic feeds; platforms must default to a 1-hour daily limit adjustable by parents; notification blackout from 9pm–8am for minors. AI chatbot operators must detect suicidal ideation and self-harm signals and connect users to crisis resources.",
-    primary: { title: "Governor's press release — Public Act 26-15", url: "https://portal.ct.gov/governor/news/press-releases/2026/06-2026/governor-lamont-signs-legislation-establishing-youth-online-safety-protections", host: "portal.ct.gov" }
+    primary: { title: "SB 5 / Public Act 26-15 (Youth Online Safety) — Connecticut General Assembly", url: "https://www.cga.ct.gov/2026/TOB/S/PDF/2026SB-00005-R01-SB.PDF", host: "cga.ct.gov" }
   },
   {
     country: "🇺🇸 US — Texas", region: "Americas",
@@ -816,8 +805,8 @@ const POLICIES = [
     enforcement: "TX Attorney General",
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
-    litigationDetail: "NetChoice v. Texas — W.D. Tex. issued preliminary injunction Dec. 2025 on First Amendment grounds. 5th Circuit granted administrative stay June 2, 2026, lifting injunction and allowing law to take effect pending merits appeal.",
-    notes: "App store-level approach: requires age assurance at point of download. 5th Circuit administrative stay (June 2, 2026) allowed law to take effect June 4, 2026; merits appeal continues. Apple announced compliance beginning June 4.",
+    litigationDetail: "SEAT v. Paxton / NetChoice v. Texas — W.D. Tex. issued preliminary injunction Dec. 2025 on First Amendment grounds. 5th Circuit granted administrative stay June 2, 2026; then issued full opinion June 4–5, 2026 (SEAT v. Paxton, No. 26-50001) finding SB 2420 'likely constitutional' under intermediate scrutiny — age verification and parental consent requirements likely directly advance Texas's substantial interest in child safety. Merits appeal continues.",
+    notes: "App store-level approach: requires age assurance at point of download. 5th Circuit administrative stay (June 2, 2026) allowed law to take effect June 4, 2026; full 5th Circuit opinion (June 4–5, 2026) found the law likely constitutional, strongly signaling how the merits appeal will resolve. Apple and Google implementing compliance. Eric Goldman analyzed the opinion as a sign of the 5th Circuit's expansive approach to state child-safety laws.",
     primary: { title: "Texas Legislature — SB 2420", url: "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420", host: "capitol.texas.gov" }
   },
   {
@@ -857,7 +846,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Came into effect March 28, 2026. Initially affected platforms: YouTube, TikTok, X, Facebook, Instagram, Threads, Roblox, Bigo Live.",
-    primary: { title: "Komdigi — Ministry of Communications and Digital", url: "https://www.komdigi.go.id/", host: "komdigi.go.id" }
+    primary: { title: "Permenkomdig No. 9/2026 (under-16 social media ban) — JDIH Komdigi", url: "https://jdih.komdigi.go.id/produk_hukum/unduh/id/1007/t/peraturan+menteri+komunikasi+dan+digital+nomor+9+tahun+2026", host: "jdih.komdigi.go.id" }
   },
   {
     country: "🇲🇾 Malaysia", region: "APAC",
@@ -870,7 +859,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Announced by Communications Minister Nov 2025; took effect Jan 1, 2026. eKYC-based identity verification required.",
-    primary: { title: "MCMC — Malaysian Communications & Multimedia Commission", url: "https://www.mcmc.gov.my/", host: "mcmc.gov.my" }
+    primary: { title: "Communications and Multimedia (Amendment) Act 2025 (A1743) — AGC Malaysia", url: "https://lom.agc.gov.my/act-detail.php?type=amendment&act=A1743&lang=BI", host: "lom.agc.gov.my" }
   },
   {
     country: "🇹🇷 Türkiye", region: "Europe",
@@ -896,7 +885,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "In force March 17, 2026. Combines guardian linking with platform design constraints.",
-    primary: { title: "Câmara dos Deputados — bill records", url: "https://www.camara.leg.br/", host: "camara.leg.br" }
+    primary: { title: "Lei 15.211/2025 — Estatuto Digital da Criança e do Adolescente — Planalto", url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15211.htm", host: "planalto.gov.br" }
   },
   {
     country: "🇵🇹 Portugal", region: "Europe",
@@ -909,7 +898,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Pairs strict under-13 ban with consent-based regime for 13–16 — among the more layered EU approaches.",
-    primary: { title: "Assembleia da República — Parliament", url: "https://www.parlamento.pt/", host: "parlamento.pt" }
+    primary: { title: "Projeto de Lei 398/XVII/1 (menores e redes sociais) — Parlamento", url: "https://www.parlamento.pt/ActividadeParlamentar/Paginas/DetalheIniciativa.aspx?BID=356058", host: "parlamento.pt" }
   },
   {
     country: "🇩🇰 Denmark", region: "Europe",
@@ -922,7 +911,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Could become law as soon as mid-2026. Denmark is also a pilot Member State for the EU Age Verification Blueprint.",
-    primary: { title: "Folketinget — Danish Parliament", url: "https://www.ft.dk/", host: "ft.dk" }
+    primary: { title: "B 95 — Forslag om forbud mod sociale medier for mindreårige — Retsinformation", url: "https://www.retsinformation.dk/eli/ft/20241BB00095", host: "retsinformation.dk" }
   },
   {
     country: "🇬🇷 Greece", region: "Europe",
@@ -948,7 +937,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Pilot Member State for EU age verification system. Restrictions under discussion.",
-    primary: { title: "Congreso de los Diputados", url: "https://www.congreso.es/", host: "congreso.es" }
+    primary: { title: "Proyecto de Ley Orgánica para la protección de menores en entornos digitales — Congreso", url: "https://www.congreso.es/public_oficiales/L15/CONG/BOCG/A/BOCG-15-A-52-1.PDF", host: "congreso.es" }
   },
   {
     country: "🇮🇹 Italy", region: "Europe",
@@ -961,7 +950,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Pilot Member State for EU age verification; specific national restrictions under discussion.",
-    primary: { title: "Parlamento Italiano", url: "https://www.parlamento.it/", host: "parlamento.it" }
+    primary: { title: "AS 1136 — Disposizioni per la tutela dei minori nella dimensione digitale — Senato", url: "https://www.senato.it/show-doc?id=1418922&idoggetto=0&leg=19&tipodoc=DDLPRES", host: "senato.it" }
   },
   {
     country: "🇩🇪 Germany", region: "Europe",
@@ -974,7 +963,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Under active discussion as part of broader EU debate.",
-    primary: { title: "Deutscher Bundestag", url: "https://www.bundestag.de/", host: "bundestag.de" }
+    primary: { title: "2. Gesetz zur Änderung des Jugendschutzgesetzes — DIP Bundestag", url: "https://dip.bundestag.de/vorgang/zweites-gesetz-zur-%C3%A4nderung-des-jugendschutzgesetzes/268540", host: "dip.bundestag.de" }
   },
   {
     country: "🇦🇹 Austria", region: "Europe",
@@ -1065,7 +1054,20 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Published April 8, 2026. One of the first African nations with explicit social media age regulation.",
-    primary: { title: "Présidence de la République Gabonaise", url: "https://www.presidence.gouv.ga/", host: "presidence.gouv.ga" }
+    primary: { title: "Communiqué du Conseil des Ministres du 26 fév. 2026 (ordonnances réseaux sociaux) — Présidence", url: "https://presidence.ga/2026/02/26/communique-final-du-conseil-des-ministres-du-26-fevrier-2026/", host: "presidence.ga" }
+  },
+  {
+    country: "🇦🇪 United Arab Emirates", region: "Middle East",
+    initiative: "Federal Decree-Law No. 26 of 2025 on Child Digital Safety",
+    summary: "Requires platforms to implement risk-proportionate age verification; bans collection of under-13 data without parental consent; restricts behavioral tracking and targeted advertising to children.",
+    minAge: 13, regType: "mixed", regTypeLabel: "Design + Age verification",
+    status: "passed", statusLabel: "Passed",
+    year: "2025 (in force Jan 1, 2026; compliance Jan 2027)", yearSort: 2025,
+    enforcement: "UAE regulators (TRA / TDRA)",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Federal Decree-Law No. 26 of 2025 came into force January 1, 2026 with a one-year grace period — platforms must fully comply by January 2027. Scope covers social media, streaming, e-commerce, gaming, messaging apps, search engines, and websites. Age verification strength is proportionate to the platform's risk classification. One of the first comprehensive child digital safety frameworks in the Gulf.",
+    primary: { title: "Federal Decree-Law No. 26 of 2025 on Child Digital Safety — UAE Official Gazette", url: "https://www.bakermckenzie.com/en/insight/publications/2026/01/uae-issues-new-child-digital-safety-law", host: "bakermckenzie.com" }
   },
   {
     country: "🇵🇬 Papua New Guinea", region: "APAC",
@@ -1078,7 +1080,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Approved 2025; sets digital age threshold of 14.",
-    primary: { title: "Department of Information & Communications Technology", url: "https://www.ict.gov.pg/", host: "ict.gov.pg" }
+    primary: { title: "Papua New Guinea National Social Media Policy 2025 — DICT", url: "https://www.ict.gov.pg/wp-content/uploads/2025/10/Social-Media-Policy-2025-Final-Verson.pdf", host: "ict.gov.pg" }
   },
   {
     country: "🇪🇨 Ecuador", region: "Americas",
@@ -1091,7 +1093,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Government making a national-security case for restrictions; bill in progress.",
-    primary: { title: "Asamblea Nacional del Ecuador", url: "https://www.asambleanacional.gob.ec/", host: "asambleanacional.gob.ec" }
+    primary: { title: "Comisión de la Niñez — normativa redes sociales menores de 15 años — Asamblea", url: "https://www.asambleanacional.gob.ec/es/node/113957", host: "asambleanacional.gob.ec" }
   },
   {
     country: "🇵🇭 Philippines", region: "APAC",
@@ -1104,7 +1106,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Introduced July 2025.",
-    primary: { title: "Congress of the Philippines", url: "https://www.congress.gov.ph/", host: "congress.gov.ph" }
+    primary: { title: "HB 3821 (Social Media Protection for Minors Act) — House of Representatives", url: "https://docs.congress.hrep.online/legisdocs/basic_20/HB03821.pdf", host: "docs.congress.hrep.online" }
   },
   {
     country: "🇮🇳 India", region: "APAC",
@@ -1117,7 +1119,7 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Court-led process; Ministry of Electronics & IT developing response.",
-    primary: { title: "Ministry of Electronics & Information Technology", url: "https://www.meity.gov.in/", host: "meity.gov.in" }
+    primary: { title: "Digital Personal Data Protection Act, 2023 — MeitY", url: "https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf", host: "meity.gov.in" }
   },
   {
     country: "🇿🇼 Zimbabwe", region: "Africa",
@@ -1133,116 +1135,6 @@ const POLICIES = [
     primary: { title: "Parliament of Zimbabwe", url: "https://www.parlzim.gov.zw/", host: "parlzim.gov.zw" }
   }
 ];
-
-// ─── Platform Impact Data ───
-const PLATFORM_IMPACT = {
-  "🇦🇺 Australia": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "Meta (Facebook, Instagram, Threads), TikTok, Snapchat, YouTube, X",
-        note: "~4.7M accounts removed Dec 2025. Formal investigations opened March 2026.",
-        source: "confirmed", sourceLabel: "✓ Confirmed by eSafety Commission" },
-      { type: "contested", platforms: "YouTube",
-        note: "Argued educational exemption; eSafety opened formal investigation anyway.",
-        source: "confirmed", sourceLabel: "✓ eSafety investigation Mar 2026" },
-      { type: "out", platforms: "Discord, WhatsApp, Messenger, YouTube Kids, Roblox, Steam",
-        note: "Exempt under messaging, gaming, or education carve-outs.",
-        source: "confirmed", sourceLabel: "✓ Confirmed by eSafety Commission" },
-    ]
-  },
-  "🇬🇧 United Kingdom": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "Meta (Facebook, Instagram), TikTok, Snapchat, YouTube, X, Reddit",
-        note: "Category 1 (named by Ofcom). Age assurance + Children's Safety Codes required.",
-        source: "confirmed", sourceLabel: "✓ Named by Ofcom" },
-      { type: "in", platforms: "Discord, Roblox, Apple App Store, Google Play",
-        note: "Category 2 — illegal content duties and transparency reporting.",
-        source: "confirmed", sourceLabel: "✓ Named by Ofcom" },
-      { type: "out", platforms: "iMessage, WhatsApp (1-to-1 messaging)",
-        note: "Private messaging with no UGC component exempt.",
-        source: "confirmed", sourceLabel: "✓ Confirmed by Ofcom" },
-    ]
-  },
-  "🇪🇺 European Union": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "Meta (Facebook, Instagram), TikTok, Snapchat, YouTube, X, Pinterest",
-        note: "VLOPs — systemic risk assessments, ban targeted ads to minors, opt-out recommender systems.",
-        source: "confirmed", sourceLabel: "✓ Designated by European Commission" },
-      { type: "in", platforms: "Google Search, Bing",
-        note: "VLOSEs (Very Large Online Search Engines) — parallel obligations.",
-        source: "confirmed", sourceLabel: "✓ Designated by European Commission" },
-    ]
-  },
-  "🇺🇸 US — Tennessee": {
-    level: "Medium", levelClass: "medium",
-    scope: [
-      { type: "in", platforms: "Facebook, Instagram, TikTok, Snapchat, YouTube, X, Reddit",
-        note: "Social media platforms where minors can create accounts and interact publicly.",
-        source: "inferred", sourceLabel: "Based on legal definition" },
-    ]
-  },
-  "🇺🇸 US — Florida": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "Facebook, Instagram, TikTok, Snapchat, YouTube, X",
-        note: "10M+ US monthly active users + addictive design features + UGC. Under-14 ban partially stayed.",
-        source: "inferred", sourceLabel: "Based on legal definition" },
-      { type: "out", platforms: "Discord, Roblox, most gaming platforms",
-        note: "Primary-purpose gaming/messaging exemption.",
-        source: "inferred", sourceLabel: "Based on legal definition" },
-    ]
-  },
-  "🇺🇸 US — Texas": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "Apple App Store, Google Play",
-        note: "App marketplace operators must verify users' ages before minors download apps. Apple announced compliance June 4, 2026.",
-        source: "confirmed", sourceLabel: "✓ Apple statement + TX enforcement" },
-    ]
-  },
-  "🇮🇩 Indonesia": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "YouTube, TikTok, X, Facebook, Instagram, Threads, Roblox, Bigo Live",
-        note: "Platforms named by Komdigi at launch. Under-16s banned from March 28, 2026.",
-        source: "confirmed", sourceLabel: "✓ Named by Komdigi" },
-    ]
-  },
-  "🇲🇾 Malaysia": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "All social media platforms operating in Malaysia",
-        note: "eKYC-based identity verification required. Broad scope — no named exemptions published.",
-        source: "inferred", sourceLabel: "Based on legal definition" },
-    ]
-  },
-  "🇧🇷 Brazil": {
-    level: "High", levelClass: "high",
-    scope: [
-      { type: "in", platforms: "Facebook, Instagram, TikTok, YouTube, X, Snapchat",
-        note: "Must link under-16 accounts to legal guardian; ban addictive design features (infinite scroll, autoplay). In force March 17, 2026.",
-        source: "inferred", sourceLabel: "Based on legal definition" },
-    ]
-  },
-  "🇬🇦 Gabon": {
-    level: "Low", levelClass: "low",
-    scope: [
-      { type: "in", platforms: "Social media platforms operating in Gabon",
-        note: "Age verification required for users under 16. Detailed platform-level enforcement information not yet available.",
-        source: "inferred", sourceLabel: "Based on ordinance text" },
-    ]
-  },
-  "🇵🇬 Papua New Guinea": {
-    level: "Low", levelClass: "low",
-    scope: [
-      { type: "in", platforms: "Social media platforms operating in Papua New Guinea",
-        note: "Policy-level age threshold of 14. Implementation detail not yet available.",
-        source: "inferred", sourceLabel: "Based on policy text" },
-    ]
-  },
-};
 
 const MILESTONES = [
   { date: "2026-05-13", flag: "🇺🇸", label: "<strong>US (Colorado)</strong> — Colorado files 10th Circuit opening brief urging reinstatement of social media health warning labels law (NetChoice v. Weiser, enjoined Nov. 2025)" },
@@ -1278,7 +1170,10 @@ const MILESTONES = [
   { date: "2025-06-01", flag: "🇺🇸", label: "<strong>US (Federal / KOSMA)</strong> — Kids Off Social Media Act (S.278, Cruz/Schatz — bars under-13s) passes Senate Commerce Committee with bipartisan support; stalled at Senate floor" },
   { date: "2026-06-02", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — 5th Circuit grants administrative stay lifting district court injunction on SB 2420; app store age verification law cleared to take effect" },
   { date: "2026-06-02", flag: "🇺🇸", label: "<strong>US (Connecticut)</strong> — Governor Lamont signs Public Act 26-15 (SB 5): parental consent required for minors' algorithmic feeds, age verification mandate, notification blackout 9pm–8am, AI chatbot self-harm safeguards — one of the most comprehensive state omnibus child safety laws" },
-  { date: "2026-06-04", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — SB 2420 takes effect: Apple and Google must implement age verification and parental consent for app downloads by minors in Texas" }
+  { date: "2026-06-04", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — SB 2420 takes effect: Apple and Google must implement age verification and parental consent for app downloads by minors in Texas" },
+  { date: "2026-06-05", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — 5th Circuit issues full opinion in SEAT v. Paxton (No. 26-50001) finding Texas SB 2420 app-store age verification law 'likely constitutional' under intermediate scrutiny — stronger signal than the June 2 admin stay; strengthens Texas's position in merits appeal" },
+  { date: "2026-06-12", flag: "🇺🇸", label: "<strong>US (MDL-3047)</strong> — Breathitt County School District federal bellwether trial (scheduled June 12–15) averted: Meta, Snap, TikTok, and YouTube all settle with the first federal school-district plaintiff ahead of opening statements; over 2,600 cases remain in MDL-3047" },
+  { date: "2026-06-15", flag: "🇬🇧", label: "<strong>UK</strong> — PM Starmer announces proposed full ban on social media for under-16s (Snapchat, TikTok, YouTube, Instagram, Facebook, X); government targets legislation before end of 2026 with ban in force ~spring 2027" }
 ];
 
 const MEDIA = [
@@ -1490,6 +1385,30 @@ const MEDIA = [
     summary: "Ofcom's May 21, 2026 Project Mercury update finds TikTok and YouTube declined to commit to meaningful changes to recommendation feeds despite March 2026 OSA demands; 73% of UK teens still encountering harmful content via feeds. Snap, Meta, and Roblox agreed to new grooming safeguards. Ofcom signals formal enforcement may follow.",
     url: "https://www.itv.com/news/2026-05-21/youtube-and-tiktok-failing-to-protect-children-ofcom",
     date: "May 21, 2026" },
+  { tag: "research", tagLabel: "Research & reviews",
+    title: "Proposals to ban social media for children",
+    outlet: "House of Commons Library · John Woodhouse", region: "UK",
+    summary: "Parliamentary research briefing (CBP-10468) on UK proposals to ban social media for under-16s — background, evidence base, international comparisons, and enforcement challenges. Published one week before PM Starmer's June 15 announcement.",
+    url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10468/",
+    date: "Jun 8, 2026" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "A social media ban is coming to the UK for under-16s. Will it protect kids online?",
+    outlet: "Center for Countering Digital Hate (CCDH)", region: "UK",
+    summary: "CCDH welcomes PM Starmer's June 15, 2026 announcement but warns bans alone are insufficient without robust enforcement. Cites CCDH research showing platforms exposing UK teens to explicit content, eating-disorder recommendations, and self-harm material. Calls for platforms to be held accountable and for safety-by-design obligations to follow.",
+    url: "https://counterhate.com/blog/a-social-media-ban-is-coming-to-the-uk-for-under-16s-will-it-protect-kids-online/",
+    date: "Jun 15, 2026" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "Ada Lovelace Institute response to social media ban for under-16s",
+    outlet: "Ada Lovelace Institute", region: "UK",
+    summary: "Director Gaia Marcus welcomes the UK government's June 15 announcement but argues bans alone don't address the root problem. Warns that harms are built into tech companies' business models and don't end at 16 or 18. Calls for deeper regulation holding platforms accountable — beyond age-based exclusion — and flags unresolved questions around age controls, privacy, and enforcement.",
+    url: "https://www.adalovelaceinstitute.org/press-release/response-social-media-ban/",
+    date: "Jun 15, 2026" },
+  { tag: "news", tagLabel: "Journalism",
+    title: "Britain will ban under-16s from social media apps, including TikTok and YouTube",
+    outlet: "NPR", region: "UK",
+    summary: "News coverage of PM Starmer's June 15, 2026 announcement of a proposed full ban on social media for under-16s in the UK. Covers scope of the ban, implementation timeline (legislation before Christmas, in force spring 2027), platform reactions, and public support polling.",
+    url: "https://www.npr.org/2026/06/15/nx-s1-5858644/britain-social-media-ban",
+    date: "Jun 15, 2026" },
 
   // ─── Journalism ───
   { tag: "news", tagLabel: "Journalism",
@@ -1569,6 +1488,12 @@ const MEDIA = [
     summary: "Analysis of the April 20, 2026 preliminary injunction of Arkansas Act 900 on First Amendment grounds — the second time a federal court blocked Arkansas's attempt to restrict minors' social media access. Three Arkansas social-media statutes are now enjoined.",
     url: "https://blog.ericgoldman.org/archives/2026/04/court-enjoins-another-arkansas-segregate-and-suppress-law-netchoice-v-griffin.htm",
     date: "Apr 2026" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    title: "Fifth Circuit Keeps Doing Fifth Circuit Things — SEAT v. Paxton",
+    outlet: "Tech & Marketing Law Blog · Eric Goldman", region: "United States (Texas)",
+    summary: "Goldman's critical analysis of the 5th Circuit's June 4–5, 2026 opinion finding Texas SB 2420 (app-store age verification) likely constitutional under intermediate scrutiny. Goldman argues the ruling reflects the 5th Circuit's expansive deference to child-safety rationales and contrasts with the more skeptical First Amendment approach in other circuits.",
+    url: "https://blog.ericgoldman.org/archives/2026/06/fifth-circuit-keeps-doing-fifth-circuit-things-%F0%9F%93%89-seat-v-paxton.htm",
+    date: "Jun 8, 2026" },
   // ─── Featured experts: Aliya Bhatia (Center for Democracy & Technology) ───
   { tag: "research", tagLabel: "Research & reviews",
     title: "Teen and Parent Perspectives on Approaches to Age Verification",
@@ -1606,6 +1531,12 @@ const MEDIA = [
     summary: "Warns that government-ID-based age verification creates a surveillance infrastructure threatening anonymous speech online — published amid bipartisan momentum for federal age-verification mandates.",
     url: "https://cdt.org/insights/op-ed-upload-government-papers-to-go-online-that-may-be-our-new-terrifying-future/",
     date: "May 12, 2026" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "To protect kids online, don't ban them from social media. Regulate design.",
+    outlet: "EPIC (Electronic Privacy Information Center) · Megan Iorio", region: "United States / Global",
+    summary: "Argues that social media bans are both unconstitutional under First Amendment precedent and ineffective — because they don't address the core problem of manipulative platform design. Presents design regulation (including EPIC's model age-appropriate design code) as the legally sound, more effective alternative that protects kids without restricting their speech.",
+    url: "https://epic.org/to-protect-kids-online-dont-ban-them-from-social-media-regulate-design/",
+    date: "Apr 30, 2026" },
 ];
 
 // ─── State ───
@@ -1691,6 +1622,7 @@ const COLS = [
   { key: "passed",      label: "Passed",      color: "var(--blue)" },
   { key: "pending",     label: "Pending",     color: "var(--amber)" },
   { key: "stalled",     label: "Stalled",     color: "var(--gray)" },
+
 ];
 
 function getFiltered() {
@@ -1726,24 +1658,6 @@ function renderKanban() {
           const idx = POLICIES.indexOf(p);
           const litBadge = p.litigation !== "none"
             ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>` : "";
-          const impact = PLATFORM_IMPACT[p.country];
-          const impactToggle = impact ? `
-            <div class="impact-toggle" onclick="toggleImpact(event,${idx})" role="button" tabindex="0"
-              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleImpact(event,${idx});}">
-              <span class="impact-toggle-label">▶ Platform scope</span>
-              <span class="impact-level-badge ilb-${impact.levelClass}">${impact.level}</span>
-            </div>
-            <div class="impact-panel" id="impact-panel-${idx}">
-              ${impact.scope.map(s => `
-                <div class="impact-scope-row">
-                  <span class="isr-badge isr-${s.type}">${s.type === 'in' ? 'In scope' : s.type === 'out' ? 'Out of scope' : 'Contested'}</span>
-                  <div class="isr-col">
-                    <div class="isr-platforms">${s.platforms}</div>
-                    ${s.note ? `<div class="isr-note">${s.note}</div>` : ''}
-                    <div class="isr-source ${s.source}">${s.sourceLabel}</div>
-                  </div>
-                </div>`).join('')}
-            </div>` : '';
           return `<div class="k-card" role="button" tabindex="0"
             onclick="openModal(${idx})"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${idx});}"
@@ -1753,22 +1667,10 @@ function renderKanban() {
               <span class="badge type-${p.regType}">${p.regTypeLabel}</span>
               ${litBadge}
             </div>
-            ${impactToggle}
           </div>`;
         }).join("")}
     </div>`;
   }).join("");
-}
-
-// ─── Platform Impact Toggle ───
-function toggleImpact(event, idx) {
-  event.stopPropagation();
-  const panel = document.getElementById('impact-panel-' + idx);
-  const toggle = event.currentTarget;
-  const arrow = toggle.querySelector('.impact-toggle-label');
-  const isOpen = panel.classList.contains('open');
-  panel.classList.toggle('open', !isOpen);
-  arrow.textContent = (isOpen ? '▶' : '▼') + ' Platform scope';
 }
 
 // ─── Modal ───
@@ -1928,7 +1830,7 @@ renderKanban();
 renderMedia();
 </script>
 <footer style="text-align:center;padding:2rem 1rem;margin-top:2rem;border-top:1px solid var(--border, #e5e7eb);color:#6b7280;font-size:0.875rem;">
-  Built by <a href="https://www.maialevydaniel.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Maia Levy Daniel</a>
+  Built and maintained by <a href="https://www.maialevydaniel.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Maia Levy Daniel</a>, with support from <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Claude</a> (Anthropic)
 </footer>
 </body>
 </html>
