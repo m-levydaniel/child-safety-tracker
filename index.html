@@ -396,30 +396,21 @@
     margin: 8px 0 5px 0;
     font-weight: 600;
   }
-  .platform-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 2px; }
-  .platform-chip {
-    font-size: 11px;
-    padding: 3px 7px;
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: baseline;
-    gap: 5px;
-    background: var(--hover);
+  .impact-definition {
+    font-size: 11.5px;
     color: var(--text);
+    line-height: 1.6;
+    margin: 4px 0 8px 0;
   }
-  .platform-chip.out-scope { color: var(--muted); }
-  .chip-name { font-size: 11px; font-weight: 500; }
-  .chip-tag {
-    font-size: 9px;
-    opacity: 0.6;
+  .impact-regulator-note {
+    font-size: 10.5px;
+    color: var(--muted);
     font-style: italic;
-    font-weight: 400;
+    border-left: 2px solid var(--border);
+    padding-left: 8px;
+    margin: 0 0 8px 0;
+    line-height: 1.5;
   }
-  .impact-scope-row { display:flex; align-items:baseline; gap:6px; margin:10px 0 5px 0; }
-  .impact-scope-row:first-child { margin-top:0; }
-  .impact-scope-sub { font-size:10px; color:var(--muted); opacity:.7; font-style:italic; }
-  .source-tag { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-style:italic; color:var(--muted); background:var(--bg); border:1px dashed var(--border); border-radius:3px; padding:2px 7px; margin-top:2px; margin-bottom:8px; }
-  .source-tag .ti { font-size:11px; opacity:.6; }
   .impact-reqs {
     margin: 4px 0 0 0;
     padding-left: 16px;
@@ -435,12 +426,6 @@
     border-top: 1px solid var(--border);
     padding-top: 8px;
     line-height: 1.4;
-  }
-  .impact-scope-empty {
-    font-size: 11px;
-    color: var(--muted);
-    font-style: italic;
-    margin: 4px 0 8px 0;
   }
   .impact-regulator-source {
     margin-top: 6px;
@@ -1275,72 +1260,34 @@ const POLICIES = [
 ];
 
 // ─── Platform Impact ───────────────────────────────────────────────────────────
-// Keyed by p.country. source = the authority that named the platform (regulator name or "law").
 const PLATFORM_IMPACT = {
   "🇦🇺 Australia": {
-    inScope: [
-      { name: "Instagram", source: "eSafety Commissioner" },
-      { name: "TikTok", source: "eSafety Commissioner" },
-      { name: "YouTube", source: "eSafety Commissioner" },
-      { name: "Snapchat", source: "eSafety Commissioner" },
-      { name: "Facebook", source: "eSafety Commissioner" },
-      { name: "X", source: "eSafety Commissioner" },
-      { name: "Threads", source: "eSafety Commissioner" },
-      { name: "Reddit", source: "eSafety Commissioner" },
-      { name: "Kick", source: "eSafety Commissioner" },
-      { name: "Twitch", source: "eSafety Commissioner" },
-    ],
-    outScope: [
-      { name: "WhatsApp", source: "eSafety Commissioner" },
-      { name: "Messenger", source: "eSafety Commissioner" },
-      { name: "Discord", source: "eSafety Commissioner" },
-      { name: "Pinterest", source: "eSafety Commissioner" },
-      { name: "Roblox", source: "eSafety Commissioner" },
-    ],
+    definition: "Designated 'age-restricted social media platforms' under the Online Safety Amendment (Social Media Minimum Age) Act 2024. Applies to services that enable social interaction and content sharing, use algorithmic feeds, and have a significant under-16 user base. A formal designation by the eSafety Commissioner is required for the law to apply to a specific platform.",
+    regulatorNote: "eSafety Commissioner designated 10 platforms (Dec 2025): Instagram, TikTok, YouTube, Snapchat, Facebook, X, Threads, Reddit, Kick, and Twitch. WhatsApp, Messenger, Discord, Pinterest, and Roblox were explicitly assessed and found not to meet the designation criteria.",
     reqs: [
       "Verify that no user is under 16 at account creation",
       "Remove existing under-16 accounts",
       "Maintain a complaints and appeals mechanism for affected users",
       "Respond to eSafety Commissioner investigations and produce compliance evidence",
     ],
-    sourceNote: "eSafety Commissioner ministerial designation (Dec 2025). eSafety published explicit 'not age-restricted' assessments for WhatsApp, Messenger, Discord, Pinterest, and Roblox.",
+    sourceNote: "eSafety Commissioner ministerial designation (Dec 2025).",
     regulatorSource: { label: "eSafety Commissioner — Designated Platforms", url: "https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions/which-platforms-are-age-restricted" }
   },
   "🇬🇧 United Kingdom": {
-    inScope: [
-      { name: "Instagram", source: "Ofcom" },
-      { name: "TikTok", source: "Ofcom" },
-      { name: "YouTube", source: "Ofcom" },
-      { name: "Snapchat", source: "Ofcom" },
-      { name: "Facebook", source: "Ofcom" },
-      { name: "X", source: "Ofcom" },
-      { name: "Reddit", source: "Ofcom" },
-      { name: "Roblox", source: "Ofcom" },
-    ],
-    outScope: [],
+    definition: "Any user-to-user service or search engine accessible to UK users under the Online Safety Act 2023. Platforms 'likely to be accessed by children' face enhanced children's safety duties. No minimum size threshold — compliance obligations scale with a platform's risk profile and reach.",
+    regulatorNote: "Ofcom has specifically targeted Facebook, Instagram, Roblox, Snapchat, TikTok, and YouTube in its children's risk assessment enforcement programme. Messaging apps like WhatsApp are in scope but face narrower obligations than social platforms.",
     reqs: [
       "Complete and publish a Children's Safety Risk Assessment",
       "Implement age assurance (not necessarily full age verification) for under-18 users",
       "Apply safe-by-default settings for children (off by default: profiling, location sharing, DMs from strangers)",
       "Establish in-app reporting and appeals mechanisms accessible to children",
     ],
-    sourceNote: "Ofcom has opened 80+ investigations under the OSA. Note: messaging apps like WhatsApp have narrower obligations than social media platforms under the OSA — they are in scope but treated differently.",
+    sourceNote: "Ofcom has opened 80+ investigations under the OSA.",
     regulatorSource: { label: "Ofcom — Children's Risk Assessment Enforcement", url: "https://www.ofcom.org.uk/online-safety/protecting-children/enforcing-the-online-safety-act-childrens-risk-assessments" }
   },
   "🇪🇺 European Union": {
-    inScope: [
-      { name: "Instagram", source: "European Commission" },
-      { name: "TikTok", source: "European Commission" },
-      { name: "YouTube", source: "European Commission" },
-      { name: "Facebook", source: "European Commission" },
-      { name: "X", source: "European Commission" },
-      { name: "Snapchat", source: "European Commission" },
-      { name: "Pinterest", source: "European Commission" },
-      { name: "LinkedIn", source: "European Commission" },
-    ],
-    outScope: [
-      { name: "Platforms below 45M EU users", source: "law" },
-    ],
+    definition: "'Very Large Online Platforms' (VLOPs) under the Digital Services Act — platforms with 45 million or more average monthly active users in the EU, formally designated by the European Commission. Smaller platforms face lighter-touch DSA obligations.",
+    regulatorNote: "The European Commission has issued individual designation decisions naming 19+ VLOPs, including Instagram, TikTok, YouTube, Facebook, X, Snapchat, Pinterest, LinkedIn, and WhatsApp (designated Jan 2026).",
     reqs: [
       "Ban behavioral targeting and profiling-based advertising to minors",
       "Conduct and publish annual systemic risk assessments covering minors",
@@ -1351,27 +1298,17 @@ const PLATFORM_IMPACT = {
     regulatorSource: { label: "European Commission — List of Designated VLOPs", url: "https://digital-strategy.ec.europa.eu/en/policies/list-designated-vlops-and-vloses" }
   },
   "🇺🇸 US — Tennessee": {
-    inScope: [],
-    outScope: [
-      { name: "WhatsApp", source: "definition" },
-      { name: "iMessage", source: "definition" },
-    ],
+    definition: "Algorithm-driven 'social media companies' with at least 500,000 account holders worldwide where users can create profiles, post content, and interact with others. Excludes services primarily used for professional networking, direct messaging without algorithmic feeds, or email.",
     reqs: [
       "Verify age of all users at account creation",
       "Obtain verifiable parental consent before minors under 18 can hold accounts",
       "Prohibit third-party verifiers from retaining identification data",
     ],
-    sourceNote: "Scope based on legal definition (algorithm-driven social media platforms); TN AG has not published a formal platform list. Private messaging apps (WhatsApp, iMessage) lack the required algorithmic content feed and do not meet the definition."
+    sourceNote: "TN AG has not published a formal platform list. Scope determined by legal definition."
   },
   "🇺🇸 US — Texas": {
-    inScope: [
-      { name: "Apple App Store", source: "TX AG" },
-      { name: "Google Play", source: "TX AG" },
-    ],
-    outScope: [
-      { name: "Individual social apps", source: "law" },
-      { name: "Web browsers", source: "law" },
-    ],
+    definition: "'App marketplace operators' — companies that distribute third-party applications to consumers through a digital storefront. The law (SB 2420) targets app store operators rather than individual social media apps or websites.",
+    regulatorNote: "Texas AG enforcement targets Apple App Store and Google Play as the primary in-scope operators.",
     reqs: [
       "Verify age of all users before allowing app downloads",
       "Obtain parental consent before minors can download apps",
@@ -1381,17 +1318,8 @@ const PLATFORM_IMPACT = {
     regulatorSource: { label: "TX AG — Press Release on SB 2420", url: "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-secures-major-victory-protecting-children-online-requiring-age" }
   },
   "🇮🇩 Indonesia": {
-    inScope: [
-      { name: "YouTube", source: "law" },
-      { name: "TikTok", source: "law" },
-      { name: "X", source: "law" },
-      { name: "Facebook", source: "law" },
-      { name: "Instagram", source: "law" },
-      { name: "Threads", source: "law" },
-      { name: "Roblox", source: "law" },
-      { name: "Bigo Live", source: "law" },
-    ],
-    outScope: [],
+    definition: "Social media platforms classified by risk level under Permenkomdig No. 9/2026. High-risk platforms are blocked entirely for under-16s; low-risk platforms allow access for ages 13–15 with parental consent. Under-13s are banned from all platforms.",
+    regulatorNote: "Komdigi explicitly named 8 high-risk platforms: YouTube, TikTok, X, Facebook, Instagram, Threads, Roblox, and Bigo Live.",
     reqs: [
       "Implement tiered age verification (under-13 / 13–15 / 16+)",
       "Block under-16s from high-risk platforms entirely",
@@ -1400,70 +1328,49 @@ const PLATFORM_IMPACT = {
     sourceNote: "Platforms named in Permenkomdig No. 9/2026 (ministerial regulation issued by Komdigi)."
   },
   "🇲🇾 Malaysia": {
-    inScope: [
-      { name: "Facebook", source: "MCMC" },
-      { name: "Instagram", source: "MCMC" },
-      { name: "TikTok", source: "MCMC" },
-      { name: "YouTube", source: "MCMC" },
-      { name: "WhatsApp", source: "MCMC" },
-      { name: "Telegram", source: "MCMC" },
-      { name: "X", source: "MCMC" },
-    ],
-    outScope: [],
+    definition: "Social media service providers and internet messaging service providers with at least 8 million registered users in Malaysia, required to hold an Applications Service Provider Class (ASP(C)) licence under the Communications and Multimedia Act 1998 (as amended). Effective January 1, 2025.",
+    regulatorNote: "MCMC has explicitly required Facebook, Instagram, TikTok, YouTube, WhatsApp, Telegram, and X to register and comply.",
     reqs: [
       "Implement eKYC age verification using government-issued ID",
       "Ban under-16s from creating accounts without parental consent",
       "Enforce parental supervision requirements for minors",
     ],
-    sourceNote: "MCMC referenced these platforms explicitly in ministerial guidance.",
+    sourceNote: "MCMC licensing framework effective January 2025; child safety provisions effective January 2026.",
     regulatorSource: { label: "MCMC — Regulatory Framework Announcement", url: "https://mcmc.gov.my/en/media/announcements/regulatory-framework-for-internet-messaging-servic" }
   },
   "🇧🇷 Brazil": {
-    inScope: [],
-    outScope: [],
+    definition: "Any information technology product or service targeted at or 'likely to be accessed by' children (under 12) or adolescents (12–18) under Lei 15.211/2025. Covers social networks, gaming platforms, messaging services, app stores, and any service with content feed or chat features. Platforms with over 1 million minor users in Brazil must also publish semi-annual transparency reports.",
+    regulatorNote: "ANPD is monitoring 37 companies identified as having significant, direct, and continuous influence on minors in Brazil. Specific enforcement targets have not been publicly named.",
     reqs: [
       "Link under-16 accounts to a verified legal guardian",
       "Remove infinite scroll, autoplay, and compulsive-use mechanisms for minors",
       "Ban targeted advertising based on emotional or behavioral profiling of minors",
       "Eliminate barriers to account deletion for minors",
     ],
-    sourceNote: "Scope based on Digital Statute (Lei 15.211/2025); ANPD guidance pending."
+    sourceNote: "Digital Statute (Lei 15.211/2025); ANPD enforcement guidance pending."
   },
   "🇺🇸 US — Florida": {
-    inScope: [],
-    outScope: [
-      { name: "WhatsApp", source: "definition" },
-      { name: "iMessage", source: "definition" },
-      { name: "LinkedIn", source: "definition" },
-    ],
+    definition: "'Social media platforms' under HB 3 must meet all four criteria: (1) users can create profiles and view others' content or activity; (2) at least 10% of daily active users are estimated to be under 16; (3) the platform employs addictive design features such as autoplay, infinite scroll, or push notifications; (4) the platform permits minors to create accounts. Services whose primary function is email or direct messaging are excluded.",
     reqs: [
       "Block under-14s from creating accounts entirely",
       "Obtain verifiable parental consent for 14- and 15-year-olds",
       "Delete accounts of users found to be under 14",
       "Allow minors and parents to request account deletion",
     ],
-    sourceNote: "Scope based on HB 3's definition of 'social media platform' (algorithmic feeds, addictive design features, significant minor user base). FL AG has active enforcement; First Amendment challenges ongoing."
+    sourceNote: "FL AG has active enforcement; First Amendment challenges ongoing."
   },
   "🇬🇦 Gabon": {
-    inScope: [
-      { name: "Facebook", source: "HAC" },
-      { name: "TikTok", source: "HAC" },
-    ],
-    outScope: [],
+    definition: "All social media platforms operating in Gabon under Ordinance No. 002/PR/2026. Platforms must register all users with verified identity data (name, address, national ID number). Under-16s require parental consent to hold accounts.",
+    regulatorNote: "The High Authority for Communication (HAC) suspended Facebook and TikTok in February 2026, before the ordinance was formally enacted.",
     reqs: [
       "Collect name, address, and national ID number from all users",
       "Allow under-16s only with parental consent",
     ],
-    sourceNote: "Facebook and TikTok suspended by Gabon's High Authority for Communication (HAC) in Feb 2026 before the ordinance."
+    sourceNote: "Ordinance No. 002/PR/2026 (Apr 2026)."
   },
   "🇵🇬 Papua New Guinea": {
-    inScope: [
-      { name: "Facebook", source: "DICT" },
-      { name: "TikTok", source: "DICT" },
-      { name: "Instagram", source: "DICT" },
-      { name: "X", source: "DICT" },
-    ],
-    outScope: [],
+    definition: "All social media platforms operating in Papua New Guinea, broadly defined to include any platform enabling social interaction and content sharing. Users aged 14 and above must undergo SevisPass digital identity verification.",
+    regulatorNote: "DICT named Facebook, TikTok, Instagram, and X as platforms required to implement SevisPass verification and register with the national e-Safety Directorate.",
     reqs: [
       "Require SevisPass digital ID verification for all users 14+",
       "Register with the national e-Safety Directorate",
@@ -2055,43 +1962,22 @@ function openModal(idx) {
   const impact = PLATFORM_IMPACT[p.country];
   const impactDiv = $("#modal-impact");
   if (impact && p.status === "implemented") {
-    // Group platforms by source, render chips then a single source tag per group
-    const groupBy = (list) => {
-      const map = {};
-      list.forEach(pl => { (map[pl.source] = map[pl.source] || []).push(pl.name); });
-      return Object.entries(map);
-    };
-    const srcLabel = (src) => src === "definition"
-      ? "Outside legal definition"
-      : `Confirmed by ${src}`;
-    const makeSection = (list, cls) => groupBy(list).map(([src, names]) =>
-      `<div class="platform-chips">${names.map(n =>
-        `<span class="platform-chip ${cls}"><span class="chip-name">${n}</span></span>`
-      ).join("")}</div>
-       <div class="source-tag"><i class="ti ti-check" aria-hidden="true"></i> ${srcLabel(src)}</div>`
-    ).join("");
-    const inSection = makeSection(impact.inScope, "in-scope");
-    const outSection = impact.outScope.length ? makeSection(impact.outScope, "out-scope") : "";
+    const definitionHtml = `<div class="impact-scope-label">What's covered</div>
+      <p class="impact-definition">${impact.definition}</p>`;
+    const regulatorNoteHtml = impact.regulatorNote
+      ? `<div class="impact-regulator-note">${impact.regulatorNote}</div>`
+      : "";
     const reqsHtml = impact.reqs && impact.reqs.length
       ? `<div class="impact-scope-label" style="margin-top:10px">What platforms must do <span style="font-size:9px;font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;opacity:.7">— key requirements, not exhaustive</span></div>
          <ul class="impact-reqs">${impact.reqs.map(r => `<li>${r}</li>`).join("")}</ul>`
       : "";
-    const inScopeHtml = impact.inScope.length
-      ? `<div class="impact-scope-row">
-          <span class="impact-scope-label">In scope</span>
-          <span class="impact-scope-sub">— companies expressly named</span>
-        </div>
-        ${inSection}`
-      : `<div class="impact-scope-empty">No companies expressly named — scope defined by law</div>`;
     impactDiv.innerHTML = `
       <button class="impact-btn" onclick="toggleImpact(this)" aria-expanded="false">
         Platform Impact <span class="arrow">▾</span>
       </button>
       <div class="impact-panel">
-        ${inScopeHtml}
-        ${outSection ? `<div class="impact-scope-row" style="margin-top:8px">
-          <span class="impact-scope-label">Out of scope / excluded</span>
-        </div>${outSection}` : ""}
+        ${definitionHtml}
+        ${regulatorNoteHtml}
         ${reqsHtml}
         <div class="impact-source-note">${impact.sourceNote}</div>
         ${impact.regulatorSource ? `<div class="impact-regulator-source"><a href="${impact.regulatorSource.url}" target="_blank" rel="noopener noreferrer">${impact.regulatorSource.label} ↗</a></div>` : ""}
