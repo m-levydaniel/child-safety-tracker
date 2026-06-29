@@ -504,6 +504,17 @@
     gap: 10px;
     flex-wrap: wrap;
   }
+  .media-region-chip {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--hover);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
   .media-date {
     font-style: italic;
     opacity: 0.85;
@@ -2163,7 +2174,7 @@ function renderMedia() {
         ${items.map(m => `
           <div class="media-item">
             <p class="media-title"><a href="${m.url}" target="_blank" rel="noopener noreferrer">${m.title} ↗</a></p>
-            <div class="media-meta"><span>${m.outlet}</span><span>${m.region}</span>${m.date ? `<span class="media-date">${m.date}</span>` : ""}</div>
+            <div class="media-meta"><span>${m.outlet}</span>${m.region && m.region !== "Global" ? `<span class="media-region-chip">${m.region}</span>` : ""}</span>${m.date ? `<span class="media-date">${m.date}</span>` : ""}</div>
             <p class="media-summary">${m.summary}</p>
           </div>
         `).join("")}
