@@ -637,13 +637,13 @@
   <div id="media-sections"></div>
 
   <div class="footer">
-    Sources column links only to primary legal/regulatory text (statute pages, regulator websites, parliamentary bill records). Media section gathers third-party analysis.
+    Sources column links only to primary legal/regulatory text (law pages, regulator websites, parliamentary bill records). Media section gathers third-party analysis.
     <br /><br />
     <strong>Status:</strong> Implemented = in force and being enforced · Passed = enacted but not yet in force · Pending = in legislative process · Stalled = died, blocked, or stuck.
     <strong>Type:</strong> Full ban = age-based access prohibition · Parental consent = requires guardian approval · Design rules = duty of care / addictive features rules · Age verification = age assurance / age verification only · Mixed = combination of two or more regulatory approaches.
     <strong>Litigation:</strong> Active = open challenge · Enjoined = currently blocked by court · Struck down = permanently invalidated · None = no pending challenge / not applicable.
     <br /><br />
-    <strong>Methodology.</strong> This tracker was built using primary legislative and regulatory sources. Each jurisdiction entry links directly to the official statute, bill, or regulator page. Jurisdiction coverage on social media age verification issues was cross-referenced against the <a href="https://www.techpolicy.press/tracker" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">Tech Policy Press Global Social Media Age Restriction Tracker</a>. Litigation data draws on the <a href="https://netchoice.org/litigation/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">NetChoice Litigation Center</a>. Age verification legislation coverage draws on the <a href="https://avpassociation.com/us-state-age-assurance-laws-for-social-media/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">AVPA State Laws Tracker</a>. The tracker is updated weekly via an automated process that monitors legislative and regulatory developments, court decisions, and commentary.
+    <strong>Methodology.</strong> This tracker was built using primary legislative and regulatory sources. Each jurisdiction entry links directly to the official law, bill, or regulator page. Jurisdiction coverage on social media age verification issues was cross-referenced against the <a href="https://www.techpolicy.press/tracker" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">Tech Policy Press Global Social Media Age Restriction Tracker</a>. Litigation data draws on the <a href="https://netchoice.org/litigation/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">NetChoice Litigation Center</a>. Age verification legislation coverage draws on the <a href="https://avpassociation.com/us-state-age-assurance-laws-for-social-media/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">AVPA State Laws Tracker</a>. The tracker is updated weekly via an automated process that monitors legislative and regulatory developments, court decisions, and commentary.
   </div>
 </div>
 
@@ -822,7 +822,7 @@ const POLICIES = [
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Minnesota — 48-page First Amendment complaint filed April 29, 2026; seeks injunction before July 1 enforcement date.",
     notes: "Warning labels law effective July 1, 2026. NetChoice filed suit in U.S. District Court on April 29, 2026, arguing the mandatory disclosures compel speech in violation of the First Amendment.",
-    primary: { title: "MN Stat. § 325M.335 Mental Health Warning Label — MN Revisor", url: "https://www.revisor.mn.gov/statutes/cite/325M.335", host: "revisor.mn.gov" }
+    primary: { title: "MN Stat. § 325M.335 Mental Health Warning Label — MN Revisor", url: "https://www.revisor.mn.gov/laws/cite/325M.335", host: "revisor.mn.gov" }
   },
   {
     country: "🇺🇸 US — Colorado", region: "Americas",
@@ -1247,7 +1247,7 @@ const POLICIES = [
 ];
 
 // ─── Platform Impact ───────────────────────────────────────────────────────────
-// Keyed by p.country. source = the authority that named the platform (regulator name or "statute").
+// Keyed by p.country. source = the authority that named the platform (regulator name or "law").
 const PLATFORM_IMPACT = {
   "🇦🇺 Australia": {
     inScope: [
@@ -1284,9 +1284,9 @@ const PLATFORM_IMPACT = {
       { name: "X", source: "Ofcom" },
       { name: "Reddit", source: "Ofcom" },
       { name: "Roblox", source: "Ofcom" },
-      { name: "Pinterest", source: "statute" },
-      { name: "Discord", source: "statute" },
-      { name: "WhatsApp", source: "statute" },
+      { name: "Pinterest", source: "law" },
+      { name: "Discord", source: "law" },
+      { name: "WhatsApp", source: "law" },
     ],
     outScope: [],
     reqs: [
@@ -1309,7 +1309,7 @@ const PLATFORM_IMPACT = {
       { name: "LinkedIn", source: "European Commission" },
     ],
     outScope: [
-      { name: "Platforms below 45M EU users", source: "statute" },
+      { name: "Platforms below 45M EU users", source: "law" },
     ],
     reqs: [
       "Ban behavioral targeting and profiling-based advertising to minors",
@@ -1321,13 +1321,13 @@ const PLATFORM_IMPACT = {
   },
   "🇺🇸 US — Tennessee": {
     inScope: [
-      { name: "Instagram", source: "statute" },
-      { name: "TikTok", source: "statute" },
-      { name: "Snapchat", source: "statute" },
-      { name: "YouTube", source: "statute" },
-      { name: "Facebook", source: "statute" },
-      { name: "X", source: "statute" },
-      { name: "Discord", source: "statute" },
+      { name: "Instagram", source: "law" },
+      { name: "TikTok", source: "law" },
+      { name: "Snapchat", source: "law" },
+      { name: "YouTube", source: "law" },
+      { name: "Facebook", source: "law" },
+      { name: "X", source: "law" },
+      { name: "Discord", source: "law" },
     ],
     outScope: [
       { name: "WhatsApp", source: "definition" },
@@ -1346,8 +1346,8 @@ const PLATFORM_IMPACT = {
       { name: "Google Play", source: "TX AG" },
     ],
     outScope: [
-      { name: "Individual social apps", source: "statute" },
-      { name: "Web browsers", source: "statute" },
+      { name: "Individual social apps", source: "law" },
+      { name: "Web browsers", source: "law" },
     ],
     reqs: [
       "Verify age of all users before allowing app downloads",
@@ -1395,14 +1395,14 @@ const PLATFORM_IMPACT = {
   },
   "🇧🇷 Brazil": {
     inScope: [
-      { name: "Instagram", source: "statute" },
-      { name: "TikTok", source: "statute" },
-      { name: "YouTube", source: "statute" },
-      { name: "Facebook", source: "statute" },
-      { name: "WhatsApp", source: "statute" },
-      { name: "X", source: "statute" },
-      { name: "Roblox", source: "statute" },
-      { name: "Discord", source: "statute" },
+      { name: "Instagram", source: "law" },
+      { name: "TikTok", source: "law" },
+      { name: "YouTube", source: "law" },
+      { name: "Facebook", source: "law" },
+      { name: "WhatsApp", source: "law" },
+      { name: "X", source: "law" },
+      { name: "Roblox", source: "law" },
+      { name: "Discord", source: "law" },
     ],
     outScope: [],
     reqs: [
@@ -1417,7 +1417,7 @@ const PLATFORM_IMPACT = {
     inScope: [
       { name: "Facebook", source: "HAC" },
       { name: "TikTok", source: "HAC" },
-      { name: "Major social media broadly", source: "statute" },
+      { name: "Major social media broadly", source: "law" },
     ],
     outScope: [],
     reqs: [
@@ -1798,7 +1798,7 @@ const MEDIA = [
   { tag: "impact", tagLabel: "Impact analysis",
     title: "Court Enjoins Another Arkansas Segregate-and-Suppress Law — NetChoice v. Griffin",
     outlet: "Tech & Marketing Law Blog · Eric Goldman", region: "United States",
-    summary: "Analysis of the April 20, 2026 preliminary injunction of Arkansas Act 900 on First Amendment grounds — the second time a federal court blocked Arkansas's attempt to restrict minors' social media access. Three Arkansas social-media statutes are now enjoined.",
+    summary: "Analysis of the April 20, 2026 preliminary injunction of Arkansas Act 900 on First Amendment grounds — the second time a federal court blocked Arkansas's attempt to restrict minors' social media access. Three Arkansas social-media laws are now enjoined.",
     url: "https://blog.ericgoldman.org/archives/2026/04/court-enjoins-another-arkansas-segregate-and-suppress-law-netchoice-v-griffin.htm",
     date: "Apr 2026" },
   { tag: "legal", tagLabel: "Legal commentary",
