@@ -476,7 +476,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">June 22, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">June 29, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
     </div>
@@ -627,7 +627,7 @@ const POLICIES = [
     enforcement: "FTC + state AGs",
     penalties: "Per FTC Act; civil penalties",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim. May 12, 2026: Chair Cruz pledged to advance KOSA out of Senate Commerce Committee. OpenAI publicly endorsed KOSA mid-May 2026 ahead of Senate hearing on landmark social media verdicts. Distinct from the narrower KOSMA (S.278, Cruz/Schatz — bars under-13s only), which passed Senate Commerce Committee in June 2025 but has seen no Senate floor action.",
+    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim. May 12, 2026: Chair Cruz pledged to advance KOSA out of Senate Commerce Committee. OpenAI publicly endorsed KOSA mid-May 2026 ahead of Senate hearing on landmark social media verdicts. June 22, 2026: House Energy and Commerce Committee struck bipartisan deal on KIDS Act — a package of 14+ bills including KOSA (without duty-of-care), age verification for adult content sites, bans on disappearing messages for minors, and AI chatbot disclosure. Senate leaders immediately called the House package 'dead on arrival' for lacking duty-of-care; Senate floor vote timeline unclear. Distinct from the narrower KOSMA (S.278, Cruz/Schatz — bars under-13s only), which passed Senate Commerce Committee in June 2025 but has seen no Senate floor action.",
     primary: { title: "Congress.gov — S.1748 (KOSA) text", url: "https://www.congress.gov/bill/119th-congress/senate-bill/1748/text", host: "congress.gov" }
   },
   {
@@ -695,8 +695,8 @@ const POLICIES = [
     enforcement: "NE Attorney General",
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
-    litigationDetail: "NetChoice v. Hilgers — complaint filed May 13, 2026 in U.S. District Court for the District of Nebraska. First Amendment challenge ahead of July 1 effective date; NetChoice seeks declaratory judgment and injunction.",
-    notes: "Effective July 1, 2026. NetChoice filed suit May 13, 2026 challenging the law on First Amendment grounds, arguing it forces users to surrender private identification documents to access protected online speech.",
+    litigationDetail: "NetChoice v. Hilgers — complaint filed May 13, 2026; Senior U.S. District Judge Gerrard granted preliminary injunction June 28, 2026, blocking age-verification and parental-consent provisions as likely First Amendment violations. Law will not take effect July 1 as scheduled.",
+    notes: "Effective date July 1, 2026 — enjoined. On June 28, 2026, Senior U.S. District Judge John Gerrard partially granted NetChoice's preliminary injunction motion, finding that LB 383's age-verification and parental-consent requirements likely violate the First Amendment rights of both users and platforms. Law is blocked pending merits.",
     primary: { title: "LB 383 (Parental Rights in Social Media Act) — Nebraska Legislature", url: "https://nebraskalegislature.gov/FloorDocs/109/PDF/Slip/LB383.pdf", host: "nebraskalegislature.gov" }
   },
   {
@@ -1150,6 +1150,9 @@ const POLICIES = [
 ];
 
 const MILESTONES = [
+  { date: "2026-06-28", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Senior U.S. District Judge Gerrard grants NetChoice preliminary injunction in <em>NetChoice v. Hilgers</em>, blocking LB 383 age-verification and parental-consent provisions on First Amendment grounds; law will not take effect July 1 as scheduled" },
+  { date: "2026-06-22", flag: "🇺🇸", label: "<strong>US (Federal / KIDS Act)</strong> — House Energy and Commerce Committee announces bipartisan deal packaging KOSA with 13 other child-safety bills; House version drops duty-of-care requirement; Senate leaders immediately call it 'dead on arrival' without duty of care; House floor vote timeline unclear" },
+  { date: "2026-06-18", flag: "🇺🇸", label: "<strong>US (Ohio)</strong> — 6th Circuit vacates preliminary injunction in <em>NetChoice v. Yost</em>, allowing Ohio's Parental Notification by Social Media Operators Act to take effect; court held NetChoice lacked third-party standing to assert minors' First Amendment rights; district court's permanent injunction reversed" },
   { date: "2026-06-18", flag: "🇦🇪", label: "<strong>UAE</strong> — Cabinet issues resolution banning social media for children under 15; parental consent cannot override ban; 12-month compliance period — first Arab country with an explicit under-15 social media ban" },
   { date: "2026-06-10", flag: "🇯🇵", label: "<strong>Japan</strong> — Ministry of Internal Affairs and Communications advisory panel proposes stricter SNS age-verification measures for minors; rejects unified mandatory age-verification law; favors risk-proportionate platform obligations" },
   { date: "2026-05-26", flag: "🇺🇸", label: "<strong>US (New York)</strong> — Governor Hochul signs Safe by Design Act: safe-by-default settings for minors, DM restrictions, AI chatbot limits, AG enforcement; takes effect January 1, 2027" },
@@ -1160,7 +1163,7 @@ const MILESTONES = [
   { date: "2026-05-21", flag: "🇬🇧", label: "<strong>UK</strong> — Ofcom Project Mercury update: TikTok and YouTube decline to commit to safer recommendation feeds for children despite OSA demands; Snap, Meta, Roblox agree to new grooming safeguards. Ofcom signals OSA enforcement may follow." },
   { date: "2026-05-26", flag: "🇬🇧", label: "<strong>UK</strong> — Children's Online Safety consultation closes" },
   { date: "2026-06-30", flag: "🇦🇹", label: "<strong>Austria</strong> — Draft under-14 ban proposal due" },
-  { date: "2026-07-01", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Parental Rights in Social Media Act takes effect" },
+  { date: "2026-07-01", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Parental Rights in Social Media Act takes effect — <em>Enjoined June 28:</em> Judge Gerrard granted NetChoice preliminary injunction blocking age-verification and parental-consent provisions on First Amendment grounds; law will not take effect as scheduled" },
   { date: "2026-07-01", flag: "🇺🇸", label: "<strong>US (Minnesota)</strong> — Social media health warning labels law takes effect (NetChoice First Amendment challenge pending)" },
   { date: "2026-07-15", flag: "🇲🇸", label: "<strong>US (Mississippi)</strong> — 5th Circuit hears NetChoice appeal (approx.)" },
   { date: "2026-09-01", flag: "🇫🇷", label: "<strong>France</strong> — Under-15 ban takes effect (new accounts)" },
@@ -1547,6 +1550,12 @@ const MEDIA = [
     summary: "Warns that government-ID-based age verification creates a surveillance infrastructure threatening anonymous speech online — published amid bipartisan momentum for federal age-verification mandates.",
     url: "https://cdt.org/insights/op-ed-upload-government-papers-to-go-online-that-may-be-our-new-terrifying-future/",
     date: "May 12, 2026" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "Op-ed: Online Age Verification Law Could Kill Whistleblowing",
+    outlet: "The Intercept · Aliya Bhatia (CDT) & Caitlin Vogus (Freedom of the Press Foundation)", region: "United States",
+    summary: "Argues that the KIDS Act's age-verification mandates would expose whistleblowers, journalists, and vulnerable populations to surveillance — warning Congress that the bill's privacy costs far outweigh its child-safety benefits.",
+    url: "https://cdt.org/insights/op-ed-online-age-verification-law-could-kill-whistleblowing/",
+    date: "Jun 28, 2026" },
   { tag: "advocacy", tagLabel: "Civil society & advocacy",
     title: "To protect kids online, don't ban them from social media. Regulate design.",
     outlet: "EPIC (Electronic Privacy Information Center) · Megan Iorio", region: "United States / Global",
