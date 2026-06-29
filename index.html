@@ -436,6 +436,12 @@
     padding-top: 8px;
     line-height: 1.4;
   }
+  .impact-scope-empty {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 4px 0 8px 0;
+  }
   .impact-regulator-source {
     margin-top: 6px;
     font-size: 10.5px;
@@ -1299,9 +1305,6 @@ const PLATFORM_IMPACT = {
       { name: "X", source: "Ofcom" },
       { name: "Reddit", source: "Ofcom" },
       { name: "Roblox", source: "Ofcom" },
-      { name: "Pinterest", source: "law" },
-      { name: "Discord", source: "law" },
-      { name: "WhatsApp", source: "law" },
     ],
     outScope: [],
     reqs: [
@@ -1337,15 +1340,7 @@ const PLATFORM_IMPACT = {
     regulatorSource: { label: "European Commission — List of Designated VLOPs", url: "https://digital-strategy.ec.europa.eu/en/policies/list-designated-vlops-and-vloses" }
   },
   "🇺🇸 US — Tennessee": {
-    inScope: [
-      { name: "Instagram", source: "law" },
-      { name: "TikTok", source: "law" },
-      { name: "Snapchat", source: "law" },
-      { name: "YouTube", source: "law" },
-      { name: "Facebook", source: "law" },
-      { name: "X", source: "law" },
-      { name: "Discord", source: "law" },
-    ],
+    inScope: [],
     outScope: [
       { name: "WhatsApp", source: "definition" },
       { name: "iMessage", source: "definition" },
@@ -1413,16 +1408,7 @@ const PLATFORM_IMPACT = {
     regulatorSource: { label: "MCMC — Regulatory Framework Announcement", url: "https://mcmc.gov.my/en/media/announcements/regulatory-framework-for-internet-messaging-servic" }
   },
   "🇧🇷 Brazil": {
-    inScope: [
-      { name: "Instagram", source: "law" },
-      { name: "TikTok", source: "law" },
-      { name: "YouTube", source: "law" },
-      { name: "Facebook", source: "law" },
-      { name: "WhatsApp", source: "law" },
-      { name: "X", source: "law" },
-      { name: "Roblox", source: "law" },
-      { name: "Discord", source: "law" },
-    ],
+    inScope: [],
     outScope: [],
     reqs: [
       "Link under-16 accounts to a verified legal guardian",
@@ -1433,15 +1419,7 @@ const PLATFORM_IMPACT = {
     sourceNote: "Scope based on Digital Statute (Lei 15.211/2025); ANPD guidance pending."
   },
   "🇺🇸 US — Florida": {
-    inScope: [
-      { name: "Instagram", source: "law" },
-      { name: "TikTok", source: "law" },
-      { name: "Snapchat", source: "law" },
-      { name: "YouTube", source: "law" },
-      { name: "Facebook", source: "law" },
-      { name: "X", source: "law" },
-      { name: "Discord", source: "law" },
-    ],
+    inScope: [],
     outScope: [
       { name: "WhatsApp", source: "definition" },
       { name: "iMessage", source: "definition" },
@@ -1459,7 +1437,6 @@ const PLATFORM_IMPACT = {
     inScope: [
       { name: "Facebook", source: "HAC" },
       { name: "TikTok", source: "HAC" },
-      { name: "Major social media broadly", source: "law" },
     ],
     outScope: [],
     reqs: [
@@ -2088,16 +2065,19 @@ function openModal(idx) {
       ? `<div class="impact-scope-label" style="margin-top:10px">What platforms must do <span style="font-size:9px;font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;opacity:.7">— key requirements, not exhaustive</span></div>
          <ul class="impact-reqs">${impact.reqs.map(r => `<li>${r}</li>`).join("")}</ul>`
       : "";
+    const inScopeHtml = impact.inScope.length
+      ? `<div class="impact-scope-row">
+          <span class="impact-scope-label">In scope</span>
+          <span class="impact-scope-sub">— companies expressly named</span>
+        </div>
+        ${inSection}`
+      : `<div class="impact-scope-empty">No companies expressly named — scope defined by law</div>`;
     impactDiv.innerHTML = `
       <button class="impact-btn" onclick="toggleImpact(this)" aria-expanded="false">
         Platform Impact <span class="arrow">▾</span>
       </button>
       <div class="impact-panel">
-        <div class="impact-scope-row">
-          <span class="impact-scope-label">In scope</span>
-          <span class="impact-scope-sub">— companies expressly named</span>
-        </div>
-        ${inSection}
+        ${inScopeHtml}
         ${outSection ? `<div class="impact-scope-row" style="margin-top:8px">
           <span class="impact-scope-label">Out of scope / excluded</span>
         </div>${outSection}` : ""}
