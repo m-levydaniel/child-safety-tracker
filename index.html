@@ -340,6 +340,102 @@
   }
   .modal-source a { color: var(--accent); text-decoration: none; }
   .modal-source a:hover { text-decoration: underline; }
+
+  /* Platform Impact */
+  .impact-btn {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .impact-btn:hover { color: var(--text); border-color: var(--muted); }
+  .impact-btn .arrow { font-size: 9px; transition: transform 0.2s; }
+  .impact-btn.open .arrow { transform: rotate(180deg); }
+  .impact-panel {
+    display: none;
+    margin-top: 10px;
+    padding: 12px;
+    background: var(--hover);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .impact-panel.open { display: block; }
+  .impact-level-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .impact-level {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .impact-high { background: var(--red-soft); color: var(--red); }
+  .impact-medium { background: var(--amber-soft); color: var(--amber); }
+  .impact-low { background: var(--gray-soft); color: var(--gray); }
+  .impact-scope-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 8px 0 5px 0;
+    font-weight: 600;
+  }
+  .platform-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 2px; }
+  .platform-chip {
+    font-size: 11px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+    background: var(--hover);
+    color: var(--text);
+  }
+  .platform-chip.out-scope { color: var(--muted); }
+  .chip-name { font-size: 11px; font-weight: 500; }
+  .chip-tag {
+    font-size: 9px;
+    opacity: 0.6;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .impact-scope-row { display:flex; align-items:baseline; gap:6px; margin:10px 0 5px 0; }
+  .impact-scope-row:first-child { margin-top:0; }
+  .impact-scope-sub { font-size:10px; color:var(--muted); opacity:.7; font-style:italic; }
+  .source-tag { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-style:italic; color:var(--muted); background:var(--bg); border:1px dashed var(--border); border-radius:3px; padding:2px 7px; margin-top:2px; margin-bottom:8px; }
+  .source-tag .ti { font-size:11px; opacity:.6; }
+  .impact-reqs {
+    margin: 4px 0 0 0;
+    padding-left: 16px;
+    font-size: 11px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .impact-reqs li { margin-bottom: 2px; }
+  .impact-source-note {
+    margin-top: 10px;
+    font-size: 10.5px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    line-height: 1.4;
+  }
   .badge {
     display: inline-block;
     padding: 2px 7px;
@@ -522,6 +618,7 @@
       <div class="modal-grid" id="modal-grid"></div>
       <div class="modal-notes" id="modal-notes"></div>
       <div class="modal-source" id="modal-source"></div>
+      <div id="modal-impact"></div>
     </div>
   </div>
 
@@ -1149,6 +1246,203 @@ const POLICIES = [
   }
 ];
 
+// ─── Platform Impact ───────────────────────────────────────────────────────────
+// Keyed by p.country. source = the authority that named the platform (regulator name or "statute").
+const PLATFORM_IMPACT = {
+  "🇦🇺 Australia": {
+    inScope: [
+      { name: "Instagram", source: "eSafety Commissioner" },
+      { name: "TikTok", source: "eSafety Commissioner" },
+      { name: "YouTube", source: "eSafety Commissioner" },
+      { name: "Snapchat", source: "eSafety Commissioner" },
+      { name: "Facebook", source: "eSafety Commissioner" },
+      { name: "X", source: "eSafety Commissioner" },
+      { name: "Threads", source: "eSafety Commissioner" },
+      { name: "Reddit", source: "eSafety Commissioner" },
+      { name: "Kick", source: "eSafety Commissioner" },
+      { name: "Twitch", source: "eSafety Commissioner" },
+    ],
+    outScope: [
+      { name: "WhatsApp", source: "definition" },
+      { name: "iMessage", source: "definition" },
+    ],
+    reqs: [
+      "Verify that no user is under 16 at account creation",
+      "Remove existing under-16 accounts",
+      "Maintain a complaints and appeals mechanism for affected users",
+      "Respond to eSafety Commissioner investigations and produce compliance evidence",
+    ],
+    sourceNote: "eSafety Commissioner ministerial designation (Dec 2025). The law applies only to designated 'age-restricted social media platforms' — private messaging services (WhatsApp, iMessage) do not meet this definition. Platforms not designated (e.g. Discord) are not currently in scope but have not been formally excluded."
+  },
+  "🇬🇧 United Kingdom": {
+    inScope: [
+      { name: "Instagram", source: "Ofcom" },
+      { name: "TikTok", source: "Ofcom" },
+      { name: "YouTube", source: "Ofcom" },
+      { name: "Snapchat", source: "Ofcom" },
+      { name: "Facebook", source: "Ofcom" },
+      { name: "X", source: "Ofcom" },
+      { name: "Reddit", source: "Ofcom" },
+      { name: "Roblox", source: "Ofcom" },
+      { name: "Pinterest", source: "statute" },
+      { name: "Discord", source: "statute" },
+      { name: "WhatsApp", source: "statute" },
+    ],
+    outScope: [],
+    reqs: [
+      "Complete and publish a Children's Safety Risk Assessment",
+      "Implement age assurance (not necessarily full age verification) for under-18 users",
+      "Apply safe-by-default settings for children (off by default: profiling, location sharing, DMs from strangers)",
+      "Establish in-app reporting and appeals mechanisms accessible to children",
+    ],
+    sourceNote: "Ofcom has opened 80+ investigations under the OSA. Note: messaging apps like WhatsApp have narrower obligations than social media platforms under the OSA — they are in scope but treated differently."
+  },
+  "🇪🇺 European Union": {
+    inScope: [
+      { name: "Instagram", source: "European Commission" },
+      { name: "TikTok", source: "European Commission" },
+      { name: "YouTube", source: "European Commission" },
+      { name: "Facebook", source: "European Commission" },
+      { name: "X", source: "European Commission" },
+      { name: "Snapchat", source: "European Commission" },
+      { name: "Pinterest", source: "European Commission" },
+      { name: "LinkedIn", source: "European Commission" },
+    ],
+    outScope: [
+      { name: "Platforms below 45M EU users", source: "statute" },
+    ],
+    reqs: [
+      "Ban behavioral targeting and profiling-based advertising to minors",
+      "Conduct and publish annual systemic risk assessments covering minors",
+      "Implement privacy-preserving age verification (EU Blueprint)",
+      "Exclude minors' data from recommendation algorithms",
+    ],
+    sourceNote: "DSA Very Large Online Platforms designated by European Commission."
+  },
+  "🇺🇸 US — Tennessee": {
+    inScope: [
+      { name: "Instagram", source: "statute" },
+      { name: "TikTok", source: "statute" },
+      { name: "Snapchat", source: "statute" },
+      { name: "YouTube", source: "statute" },
+      { name: "Facebook", source: "statute" },
+      { name: "X", source: "statute" },
+      { name: "Discord", source: "statute" },
+    ],
+    outScope: [
+      { name: "WhatsApp", source: "definition" },
+      { name: "iMessage", source: "definition" },
+    ],
+    reqs: [
+      "Verify age of all users at account creation",
+      "Obtain verifiable parental consent before minors under 18 can hold accounts",
+      "Prohibit third-party verifiers from retaining identification data",
+    ],
+    sourceNote: "Scope based on legal definition (algorithm-driven social media platforms); TN AG has not published a formal platform list. Private messaging apps (WhatsApp, iMessage) lack the required algorithmic content feed and do not meet the definition."
+  },
+  "🇺🇸 US — Texas": {
+    inScope: [
+      { name: "Apple App Store", source: "TX AG" },
+      { name: "Google Play", source: "TX AG" },
+    ],
+    outScope: [
+      { name: "Individual social apps", source: "statute" },
+      { name: "Web browsers", source: "statute" },
+    ],
+    reqs: [
+      "Verify age of all users before allowing app downloads",
+      "Obtain parental consent before minors can download apps",
+      "Block in-app purchases by minors without parental consent",
+    ],
+    sourceNote: "SB 2420 targets app marketplace operators. 5th Circuit found law 'likely constitutional' (June 2026)."
+  },
+  "🇮🇩 Indonesia": {
+    inScope: [
+      { name: "YouTube", source: "Komdigi" },
+      { name: "TikTok", source: "Komdigi" },
+      { name: "X", source: "Komdigi" },
+      { name: "Facebook", source: "Komdigi" },
+      { name: "Instagram", source: "Komdigi" },
+      { name: "Threads", source: "Komdigi" },
+      { name: "Roblox", source: "Komdigi" },
+      { name: "Bigo Live", source: "Komdigi" },
+    ],
+    outScope: [],
+    reqs: [
+      "Implement tiered age verification (under-13 / 13–15 / 16+)",
+      "Block under-16s from high-risk platforms entirely",
+      "Allow 13–15 access only on low-risk platforms with parental consent",
+    ],
+    sourceNote: "Platforms named in Permenkomdig No. 9/2026 by Komdigi."
+  },
+  "🇲🇾 Malaysia": {
+    inScope: [
+      { name: "Facebook", source: "MCMC" },
+      { name: "Instagram", source: "MCMC" },
+      { name: "TikTok", source: "MCMC" },
+      { name: "YouTube", source: "MCMC" },
+      { name: "WhatsApp", source: "MCMC" },
+      { name: "Telegram", source: "MCMC" },
+      { name: "X", source: "MCMC" },
+    ],
+    outScope: [],
+    reqs: [
+      "Implement eKYC age verification using government-issued ID",
+      "Ban under-16s from creating accounts without parental consent",
+      "Enforce parental supervision requirements for minors",
+    ],
+    sourceNote: "MCMC referenced these platforms explicitly in ministerial guidance."
+  },
+  "🇧🇷 Brazil": {
+    inScope: [
+      { name: "Instagram", source: "statute" },
+      { name: "TikTok", source: "statute" },
+      { name: "YouTube", source: "statute" },
+      { name: "Facebook", source: "statute" },
+      { name: "WhatsApp", source: "statute" },
+      { name: "X", source: "statute" },
+      { name: "Roblox", source: "statute" },
+      { name: "Discord", source: "statute" },
+    ],
+    outScope: [],
+    reqs: [
+      "Link under-16 accounts to a verified legal guardian",
+      "Remove infinite scroll, autoplay, and compulsive-use mechanisms for minors",
+      "Ban targeted advertising based on emotional or behavioral profiling of minors",
+      "Eliminate barriers to account deletion for minors",
+    ],
+    sourceNote: "Scope based on Digital Statute (Lei 15.211/2025); ANPD guidance pending."
+  },
+  "🇬🇦 Gabon": {
+    inScope: [
+      { name: "Facebook", source: "HAC" },
+      { name: "TikTok", source: "HAC" },
+      { name: "Major social media broadly", source: "statute" },
+    ],
+    outScope: [],
+    reqs: [
+      "Collect name, address, and national ID number from all users",
+      "Allow under-16s only with parental consent",
+    ],
+    sourceNote: "Facebook and TikTok suspended by Gabon's High Authority for Communication (HAC) in Feb 2026 before the ordinance."
+  },
+  "🇵🇬 Papua New Guinea": {
+    inScope: [
+      { name: "Facebook", source: "DICT" },
+      { name: "TikTok", source: "DICT" },
+      { name: "Instagram", source: "DICT" },
+      { name: "X", source: "DICT" },
+    ],
+    outScope: [],
+    reqs: [
+      "Require SevisPass digital ID verification for all users 14+",
+      "Register with the national e-Safety Directorate",
+      "Block under-14s from accessing the platform",
+    ],
+    sourceNote: "Policy-level instrument (2025); enabling legislation pending."
+  },
+};
+
 const MILESTONES = [
   { date: "2026-06-28", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Senior U.S. District Judge Gerrard grants NetChoice preliminary injunction in <em>NetChoice v. Hilgers</em>, blocking LB 383 age-verification and parental-consent provisions on First Amendment grounds; law will not take effect July 1 as scheduled" },
   { date: "2026-06-22", flag: "🇺🇸", label: "<strong>US (Federal / KIDS Act)</strong> — House Energy and Commerce Committee announces bipartisan deal packaging KOSA with 13 other child-safety bills; House version drops duty-of-care requirement; Senate leaders immediately call it 'dead on arrival' without duty of care; House floor vote timeline unclear" },
@@ -1726,6 +2020,51 @@ function openModal(idx) {
     ? `<a href="${p.primary.url}" target="_blank" rel="noopener noreferrer">${p.primary.title} ↗</a>`
     : "";
 
+  // Platform Impact
+  const impact = PLATFORM_IMPACT[p.country];
+  const impactDiv = $("#modal-impact");
+  if (impact && p.status === "implemented") {
+    // Group platforms by source, render chips then a single source tag per group
+    const groupBy = (list) => {
+      const map = {};
+      list.forEach(pl => { (map[pl.source] = map[pl.source] || []).push(pl.name); });
+      return Object.entries(map);
+    };
+    const srcLabel = (src) => src === "definition"
+      ? "Outside legal definition"
+      : `Confirmed by ${src}`;
+    const makeSection = (list, cls) => groupBy(list).map(([src, names]) =>
+      `<div class="platform-chips">${names.map(n =>
+        `<span class="platform-chip ${cls}"><span class="chip-name">${n}</span></span>`
+      ).join("")}</div>
+       <div class="source-tag"><i class="ti ti-check" aria-hidden="true"></i> ${srcLabel(src)}</div>`
+    ).join("");
+    const inSection = makeSection(impact.inScope, "in-scope");
+    const outSection = impact.outScope.length ? makeSection(impact.outScope, "out-scope") : "";
+    const reqsHtml = impact.reqs && impact.reqs.length
+      ? `<div class="impact-scope-label" style="margin-top:10px">What platforms must do <span style="font-size:9px;font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;opacity:.7">— key requirements, not exhaustive</span></div>
+         <ul class="impact-reqs">${impact.reqs.map(r => `<li>${r}</li>`).join("")}</ul>`
+      : "";
+    impactDiv.innerHTML = `
+      <button class="impact-btn" onclick="toggleImpact(this)" aria-expanded="false">
+        Platform Impact <span class="arrow">▾</span>
+      </button>
+      <div class="impact-panel">
+        <div class="impact-scope-row">
+          <span class="impact-scope-label">In scope</span>
+          <span class="impact-scope-sub">— companies expressly named</span>
+        </div>
+        ${inSection}
+        ${outSection ? `<div class="impact-scope-row" style="margin-top:8px">
+          <span class="impact-scope-label">Out of scope / excluded</span>
+        </div>${outSection}` : ""}
+        ${reqsHtml}
+        <div class="impact-source-note">${impact.sourceNote}</div>
+      </div>`;
+  } else {
+    impactDiv.innerHTML = "";
+  }
+
   const backdrop = $("#modal-backdrop");
   backdrop.style.display = "flex";
   backdrop.removeAttribute("aria-hidden");
@@ -1733,6 +2072,13 @@ function openModal(idx) {
   // Focus modal and remember what triggered it
   window._modalTrigger = document.activeElement;
   requestAnimationFrame(() => { $("#modal-box").focus(); });
+}
+
+function toggleImpact(btn) {
+  const panel = btn.nextElementSibling;
+  const open = panel.classList.toggle("open");
+  btn.classList.toggle("open", open);
+  btn.setAttribute("aria-expanded", open);
 }
 
 function closeModal() {
