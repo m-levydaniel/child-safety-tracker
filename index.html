@@ -1931,10 +1931,12 @@ function renderStats() {
 // ─── Milestones ───
 function renderMilestones() {
   const today = new Date().toISOString().slice(0, 10);
+  const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
   const todayMs = Date.now();
   const all = [...MILESTONES].sort((a, b) => a.date.localeCompare(b.date));
   const upcoming = all.filter(m => m.date >= today);
-  const past     = all.filter(m => m.date < today).reverse();
+  const recent   = all.filter(m => m.date >= sevenDaysAgo && m.date < today).reverse();
+  const past     = all.filter(m => m.date < sevenDaysAgo).reverse();
 
   function makeItem(m, isPast) {
     const dMs = new Date(m.date).getTime();
@@ -1968,6 +1970,7 @@ function renderMilestones() {
   $("#milestones").innerHTML =
     `<div class="tl-spine"></div>` +
     upcoming.map(m => makeItem(m, false)).join("") +
+    recent.map(m => makeItem(m, true)).join("") +
     pastHtml;
 }
 
