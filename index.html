@@ -1256,6 +1256,19 @@ const POLICIES = [
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Early-stage consideration.",
     primary: { title: "Parliament of Zimbabwe", url: "https://www.parlzim.gov.zw/", host: "parlzim.gov.zw" }
+  },
+  {
+    country: "🇺🇸 US — New Jersey", region: "Americas",
+    initiative: "New Jersey Kids Code Act (A4015)",
+    summary: "Prohibits online companies from engaging in data and design practices that harm minors. Modeled on the UK Age-Appropriate Design Code — requires data minimization, default highest-privacy settings, prohibition on surveillance data in algorithmic feeds, notification limits, and a duty of care for compulsive use. Includes a private right of action. Notably does not impose an affirmative age verification requirement.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "passed", statusLabel: "Passed",
+    year: "2026", yearSort: 2026,
+    enforcement: "NJ Attorney General + private right of action",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Passed New Jersey legislature June 30, 2026; awaiting signature from Governor Mikie Sherrill. Key provisions: strong data minimization and use limits; default highest-privacy settings for minors; minors' control over feeds and unwanted adult contact; prohibition on using surveillance data to drive engagement in algorithmic feeds; push notification restrictions; duty of care requiring companies to prevent compulsive use; strong private right of action allowing NJ residents to enforce rights in court. Explicitly does not require age verification — any data voluntarily collected for age assurance is subject to strong privacy protections. EPIC collaborated with the Kids Code Coalition and NJ lawmakers on the bill. NJ joins Vermont, Illinois, California, Nebraska, and South Carolina in enacting AADC-style design code legislation.",
+    primary: { title: "A4015 — New Jersey Kids Code Act — NJ Legislature", url: "https://www.njleg.state.nj.us/bill-search/2026/A4015", host: "njleg.state.nj.us" }
   }
 ];
 
@@ -1382,6 +1395,7 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-06-30", flag: "🇺🇸", label: "<strong>US (New Jersey)</strong> — Legislature passes the New Jersey Kids Code Act (A4015): AADC-style design rules requiring data minimization, default highest-privacy settings for minors, prohibition on using surveillance data in algorithmic feeds, notification limits, duty of care for compulsive use, and a private right of action. No affirmative age verification required. Now awaiting signature from Gov. Mikie Sherrill." },
   { date: "2026-06-28", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — Senior U.S. District Judge Gerrard grants NetChoice preliminary injunction in <em>NetChoice v. Hilgers</em>, blocking LB 383 age-verification and parental-consent provisions on First Amendment grounds; law will not take effect July 1 as scheduled" },
   { date: "2026-06-22", flag: "🇺🇸", label: "<strong>US (Federal / KIDS Act)</strong> — House Energy and Commerce Committee announces bipartisan deal packaging KOSA with 13 other child-safety bills; House version drops duty-of-care requirement; Senate leaders immediately call it 'dead on arrival' without duty of care; House floor vote timeline unclear" },
   { date: "2026-06-18", flag: "🇺🇸", label: "<strong>US (Ohio)</strong> — 6th Circuit vacates preliminary injunction in <em>NetChoice v. Yost</em>, allowing Ohio's Parental Notification by Social Media Operators Act to take effect; court held NetChoice lacked third-party standing to assert minors' First Amendment rights; district court's permanent injunction reversed" },
@@ -1811,6 +1825,12 @@ const MEDIA = [
     outlet: "LSE British Politics · Kim Ringmar Sylwander", region: "UK",
     summary: "Postdoctoral researcher at LSE's Digital Futures for Children centre argues the UK under-16 ban was rushed (announced weeks after consultation closed) and is not supported by evidence. Notes that most prominent child rights organizations oppose or urge caution, citing Australia's experience where ~70% of under-16s retained platform access three months after the ban. Calls instead for safety-by-design obligations, prohibition of compulsive-use features, and feature-level regulation.",
     url: "https://blogs.lse.ac.uk/politicsandpolicy/a-social-media-ban-for-under-16s-doesnt-protect-children/",
+    date: "Jun 30, 2026" },
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    title: "EPIC Applauds Passage of the New Jersey Kids Code Act",
+    outlet: "EPIC (Electronic Privacy Information Center)", region: "United States (New Jersey)",
+    summary: "EPIC press release welcoming the NJ legislature's June 30, 2026 passage of the Kids Code Act — an AADC-style design rules law developed in collaboration with the Kids Code Coalition. Highlights key provisions: data minimization, default highest-privacy settings for minors, prohibition on surveillance data in algorithmic feeds, notification limits, duty of care for compulsive use, and a private right of action. Notes that the law explicitly does not require affirmative age verification. NJ joins Vermont, Illinois, California, Nebraska, and South Carolina in enacting AADC-style legislation.",
+    url: "https://epic.org/epic-applauds-passage-of-the-new-jersey-kids-code-act/",
     date: "Jun 30, 2026" },
 ];
 
