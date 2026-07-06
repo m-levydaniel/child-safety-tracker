@@ -585,7 +585,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">June 29, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">July 6, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
     </div>
@@ -737,7 +737,7 @@ const POLICIES = [
     enforcement: "FTC + state AGs",
     penalties: "Per FTC Act; civil penalties",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. Senate prospects dim. May 12, 2026: Chair Cruz pledged to advance KOSA out of Senate Commerce Committee. OpenAI publicly endorsed KOSA mid-May 2026 ahead of Senate hearing on landmark social media verdicts. June 22, 2026: House Energy and Commerce Committee struck bipartisan deal on KIDS Act — a package of 14+ bills including KOSA (without duty-of-care), age verification for adult content sites, bans on disappearing messages for minors, and AI chatbot disclosure. Senate leaders immediately called the House package 'dead on arrival' for lacking duty-of-care; Senate floor vote timeline unclear. Distinct from the narrower KOSMA (S.278, Cruz/Schatz — bars under-13s only), which passed Senate Commerce Committee in June 2025 but has seen no Senate floor action.",
+    notes: "House subcommittee advanced KIDS Act (incorporating KOSA) in March 2026 but stripped duty-of-care provision. May 12, 2026: Chair Cruz pledged to advance KOSA out of Senate Commerce Committee. OpenAI publicly endorsed KOSA mid-May 2026 ahead of Senate hearing on landmark social media verdicts. June 22, 2026: House Energy and Commerce Committee struck bipartisan deal on KIDS Act — a package of 14+ bills including KOSA (without duty-of-care), age verification for adult content sites, bans on disappearing messages for minors, and AI chatbot disclosure. June 29, 2026: House passed the renamed Kids Internet and Digital Safety Act (H.R. 7757) 267-117, packaging KOSA (without duty of care) with 13 other child-safety bills, a data broker registry, and a preemption floor (not ceiling) allowing stronger state laws. Senators Blackburn, Cantwell, and Blumenthal immediately objected to the missing duty-of-care language, calling the House package dead on arrival. Senate Commerce Chair Cruz has not set a firm markup date; industry watchers expect a Senate Commerce markup of Blackburn's KOSA bill in July 2026. Blackburn has been negotiating with the White House on a broader package tying KOSA to federal preemption of some state AI laws and a deepfake/right-of-publicity bill. Distinct from the narrower KOSMA (S.278, Cruz/Schatz — bars under-13s only), which passed Senate Commerce Committee in June 2025 but has seen no Senate floor action.",
     primary: { title: "Congress.gov — S.1748 (KOSA) text", url: "https://www.congress.gov/bill/119th-congress/senate-bill/1748/text", host: "congress.gov" }
   },
   {
@@ -934,16 +934,16 @@ const POLICIES = [
   },
   {
     country: "🇨🇦 Canada", region: "Americas",
-    initiative: "Online Harms Act (Bill C-63 / C-216)",
-    summary: "Would impose duties on platforms re: harmful content, age-appropriate design, and CSAM. C-63 died at dissolution; C-216 introduced in 45th Parliament.",
-    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
-    status: "stalled", statusLabel: "Stalled",
-    year: "2024 (died 2025)", yearSort: 2024,
-    enforcement: "Digital Safety Commission (proposed)",
-    penalties: "Up to 6% global revenue (proposed)",
+    initiative: "Safe Social Media Act (Bill C-34)",
+    summary: "National minimum age of 16 for social media accounts, modeled on Australia's ban; creates a new Digital Safety Commission of Canada and also regulates AI chatbots. Supersedes the earlier Online Harms Act efforts (C-63, died 2025; C-216, private member's bill).",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (tabled June 10)", yearSort: 2026,
+    enforcement: "Digital Safety Commission of Canada (proposed)",
+    penalties: "Greater of 3% global revenue or C$10M (proposed)",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "C-63 died on the Order Paper January 2025. As of February 2026, advocacy groups pressing for re-introduction; private member's Bill C-216 also in play.",
-    primary: { title: "Parliament of Canada — Bill C-216", url: "https://www.parl.ca/DocumentViewer/en/45-1/bill/C-216/first-reading", host: "parl.ca" }
+    notes: "Tabled June 10, 2026: bars under-16s from holding accounts on regulated social media services unless a platform proves adequate safeguards; operators must implement age verification/estimation; new Digital Safety Act + Digital Safety Commission created. Doesn't name specific platforms — designation of 'regulated services' left to future regulation. Still needs to pass House and Senate, receive Royal Assent, then be brought into force by regulation; realistic timeline for the ban actually applying is late 2027 or early 2028. Civil-liberties groups (CCLA) and legal experts have raised Charter of Rights concerns. C-63 died on the Order Paper January 2025; private member's Bill C-216 remains in play but is now overshadowed by C-34.",
+    primary: { title: "Bill C-34, the Safe Social Media Act — Parliament of Canada", url: "https://www.parl.ca/DocumentViewer/en/45-1/bill/C-34/first-reading", host: "parl.ca" }
   },
   {
     country: "🇳🇿 New Zealand", region: "APAC",
@@ -1523,7 +1523,8 @@ const MILESTONES = [
   { date: "2026-06-04", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — SB 2420 takes effect: Apple and Google must implement age verification and parental consent for app downloads by minors in Texas" },
   { date: "2026-06-05", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — 5th Circuit issues full opinion in SEAT v. Paxton (No. 26-50001) finding Texas SB 2420 app-store age verification law 'likely constitutional' under intermediate scrutiny — stronger signal than the June 2 admin stay; strengthens Texas's position in merits appeal" },
   { date: "2026-06-12", flag: "🇺🇸", label: "<strong>US (MDL-3047)</strong> — Breathitt County School District federal bellwether trial (scheduled June 12–15) averted: Meta, Snap, TikTok, and YouTube all settle with the first federal school-district plaintiff ahead of opening statements; over 2,600 cases remain in MDL-3047" },
-  { date: "2026-06-15", flag: "🇬🇧", label: "<strong>UK</strong> — PM Starmer announces proposed full ban on social media for under-16s (Snapchat, TikTok, YouTube, Instagram, Facebook, X); government targets legislation before end of 2026 with ban in force ~spring 2027" }
+  { date: "2026-06-15", flag: "🇬🇧", label: "<strong>UK</strong> — PM Starmer announces proposed full ban on social media for under-16s (Snapchat, TikTok, YouTube, Instagram, Facebook, X); government targets legislation before end of 2026 with ban in force ~spring 2027" },
+  { date: "2026-06-10", flag: "🇨🇦", label: "<strong>Canada</strong> — Federal government tables Bill C-34, the Safe Social Media Act: national under-16 minimum age for social media accounts modeled on Australia's ban, plus a new Digital Safety Commission of Canada and AI chatbot rules; supersedes the stalled Online Harms Act (C-63/C-216); still needs House and Senate passage — realistic in-force timeline late 2027/early 2028" }
 ];
 
 const MEDIA = [
