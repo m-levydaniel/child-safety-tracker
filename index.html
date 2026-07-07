@@ -117,26 +117,27 @@
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 16px 18px;
+    padding: 10px 12px;
     margin: -4px 0 20px 0;
+    max-width: 260px;
   }
   .cal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .cal-month-label {
-    font-size: 13px;
+    font-size: 11.5px;
     font-weight: 600;
   }
   .cal-nav {
     background: none;
     border: none;
     color: var(--muted);
-    font-size: 16px;
+    font-size: 13px;
     cursor: pointer;
-    padding: 2px 10px;
+    padding: 2px 6px;
     font-family: inherit;
   }
   .cal-nav:hover { color: var(--text); }
@@ -144,16 +145,16 @@
   .cal-weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 3px;
-    font-size: 10px;
+    gap: 2px;
+    font-size: 9px;
     color: var(--muted);
     text-align: center;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 3px;
+    gap: 2px;
   }
   .cal-day {
     aspect-ratio: 1;
@@ -161,9 +162,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 9.5px;
     color: var(--muted);
-    border-radius: 5px;
+    border-radius: 4px;
   }
   .cal-day.has-milestone {
     color: var(--text);
@@ -183,16 +184,23 @@
   .cal-day.has-milestone:hover { opacity: .8; }
   .cal-day.today { background: var(--hover); font-weight: 600; color: var(--text); }
   .cal-day.selected { outline: 2px solid var(--text); outline-offset: -1px; }
-  .cal-dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; margin-top: 1px; }
+  .cal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 1px var(--card);
+    margin-top: 1px;
+  }
   .cal-day-detail {
-    margin-top: 14px;
-    padding-top: 12px;
+    margin-top: 10px;
+    padding-top: 8px;
     border-top: 1px solid var(--border);
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted);
   }
-  .cal-detail-date { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-  .cal-detail-item { color: var(--text); margin-bottom: 4px; }
+  .cal-detail-date { font-size: 10.5px; color: var(--muted); margin-bottom: 5px; }
+  .cal-detail-item { color: var(--text); margin-bottom: 3px; }
   h3 {
     font-size: 13px;
     font-weight: 600;
@@ -755,9 +763,7 @@
       margin-right: 2px;
     }
 
-    /* Calendar: tighten padding and text on narrow screens */
-    .calendar-view { padding: 12px 10px; }
-    .cal-day { font-size: 10px; }
+    /* Calendar: already compact via max-width; just let the header wrap */
     .section-header { flex-wrap: wrap; gap: 6px; }
   }
 </style>
@@ -2240,6 +2246,20 @@ let calSelectedDate = null;
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
 
+// Parse a "YYYY-MM-DD" string as a local-time date (avoids the UTC-midnight
+// parsing that new Date("YYYY-MM-DD") does, which shifts the displayed date
+// back a day for anyone west of UTC).
+function parseLocalDate(dateStr) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+function todayLocalStr() {
+  return dateToLocalStr(new Date());
+}
+function dateToLocalStr(d) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
 // ─── Stats ───
 function renderStats() {
   const counts = { implemented: 0, passed: 0, pending: 0, stalled: 0 };
@@ -2254,20 +2274,22 @@ function renderStats() {
 
 // ─── Milestones ───
 function renderMilestones() {
-  const today = new Date().toISOString().slice(0, 10);
-  const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
-  const todayMs = Date.now();
+  const today = todayLocalStr();
+  const todayMs = parseLocalDate(today).getTime();
+  const sevenDaysAgoDate = parseLocalDate(today);
+  sevenDaysAgoDate.setDate(sevenDaysAgoDate.getDate() - 7);
+  const sevenDaysAgo = dateToLocalStr(sevenDaysAgoDate);
   const all = [...MILESTONES].sort((a, b) => a.date.localeCompare(b.date));
   const upcoming = all.filter(m => m.date >= today);
   const recent   = all.filter(m => m.date >= sevenDaysAgo && m.date < today).reverse();
   const past     = all.filter(m => m.date < sevenDaysAgo).reverse();
 
   function makeItem(m, isPast) {
-    const dMs = new Date(m.date).getTime();
+    const dMs = parseLocalDate(m.date).getTime();
     const daysAway = Math.round((dMs - todayMs) / 86400000);
     const isSoon = !isPast && daysAway <= 30;
     const dotClass = isPast ? "tl-dot-past" : (isSoon ? "tl-dot-soon" : "tl-dot-up");
-    const d = new Date(m.date);
+    const d = parseLocalDate(m.date);
     const dateStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
     const tag = isPast
       ? `<span class="tl-done-tag">✓ done</span>`
@@ -2314,8 +2336,8 @@ function renderCalendar() {
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const todayStr = now.toISOString().slice(0, 10);
-  const todayMs = new Date(todayStr).getTime();
+  const todayStr = todayLocalStr();
+  const todayMs = parseLocalDate(todayStr).getTime();
 
   const byDate = {};
   MILESTONES.forEach(m => {
@@ -2331,7 +2353,7 @@ function renderCalendar() {
     if (dateStr === todayStr) cls += " today";
     if (items.length > 0) {
       cls += " has-milestone";
-      const dMs = new Date(dateStr).getTime();
+      const dMs = parseLocalDate(dateStr).getTime();
       if (dMs < todayMs) cls += " past";
       else if (Math.round((dMs - todayMs) / 86400000) <= 30) cls += " soon";
     }
@@ -2358,7 +2380,7 @@ function showDayDetail(dateStr, reRender = true) {
   const items = MILESTONES.filter(m => m.date === dateStr);
   if (items.length === 0) return;
   calSelectedDate = dateStr;
-  const label = new Date(dateStr).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  const label = parseLocalDate(dateStr).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
   $("#cal-day-detail").innerHTML =
     `<div class="cal-detail-date">${label} · ${items.length} milestone${items.length > 1 ? "s" : ""}</div>` +
     items.map(m => `<div class="cal-detail-item"><span aria-hidden="true">${m.flag}</span> ${m.label}</div>`).join("");
