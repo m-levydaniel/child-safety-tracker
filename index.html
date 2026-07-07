@@ -83,6 +83,116 @@
     padding-bottom: 6px;
     border-bottom: 1px solid var(--border);
   }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 32px 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header h2 {
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .btn-cal-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 5px 11px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .btn-cal-toggle:hover { background: var(--hover); }
+  .btn-cal-toggle.active { background: var(--hover); border-color: var(--muted); }
+  .calendar-view {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: -4px 0 20px 0;
+  }
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .cal-month-label {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .cal-nav {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 10px;
+    font-family: inherit;
+  }
+  .cal-nav:hover { color: var(--text); }
+  .cal-nav:disabled { opacity: .3; cursor: default; }
+  .cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--muted);
+    border-radius: 5px;
+  }
+  .cal-day.has-milestone {
+    color: var(--text);
+    cursor: pointer;
+    border: 1px solid var(--blue);
+    background: var(--blue-soft);
+  }
+  .cal-day.has-milestone.soon {
+    border-color: var(--green);
+    background: var(--green-soft);
+  }
+  .cal-day.has-milestone.past {
+    border-color: var(--muted);
+    background: var(--gray-soft);
+    opacity: .6;
+  }
+  .cal-day.has-milestone:hover { opacity: .8; }
+  .cal-day.today { background: var(--hover); font-weight: 600; color: var(--text); }
+  .cal-day.selected { outline: 2px solid var(--text); outline-offset: -1px; }
+  .cal-dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; margin-top: 1px; }
+  .cal-day-detail {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .cal-detail-date { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .cal-detail-item { color: var(--text); margin-bottom: 4px; }
   h3 {
     font-size: 13px;
     font-weight: 600;
@@ -644,6 +754,11 @@
       width: auto;
       margin-right: 2px;
     }
+
+    /* Calendar: tighten padding and text on narrow screens */
+    .calendar-view { padding: 12px 10px; }
+    .cal-day { font-size: 10px; }
+    .section-header { flex-wrap: wrap; gap: 6px; }
   }
 </style>
   <script data-goatcounter="https://maia-levy-daniel.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -659,9 +774,27 @@
     </div>
   </header>
 
-  <h2>Upcoming Milestones</h2>
+  <div class="section-header">
+    <h2>Upcoming Milestones</h2>
+    <button id="calendar-toggle" class="btn-cal-toggle" type="button" aria-expanded="false" aria-controls="calendar-view">
+      <span aria-hidden="true">📅</span> Calendar view
+    </button>
+  </div>
   <p class="subtitle">Key dates ahead — effective dates, consultation deadlines, court dates.</p>
   <div class="milestones" id="milestones"></div>
+
+  <div class="calendar-view" id="calendar-view" style="display:none;">
+    <div class="cal-header">
+      <button class="cal-nav" id="cal-prev" type="button" aria-label="Previous month">&lsaquo;</button>
+      <span class="cal-month-label" id="cal-month-label"></span>
+      <button class="cal-nav" id="cal-next" type="button" aria-label="Next month">&rsaquo;</button>
+    </div>
+    <div class="cal-weekdays">
+      <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div class="cal-day-detail" id="cal-day-detail"></div>
+  </div>
 
   <h2>Policy Tracker</h2>
   <div class="stat-row" id="stats"></div>
@@ -2100,6 +2233,9 @@ let filters = {
 let mediaFilter = localStorage.getItem("cs2-media") || "all";
 let activeTopics = new Set(JSON.parse(localStorage.getItem("cs2-topics") || "[]"));
 let searchTerm = "";
+let calVisible = false;
+let calMonthOffset = 0;
+let calSelectedDate = null;
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -2160,6 +2296,77 @@ function renderMilestones() {
     upcoming.map(m => makeItem(m, false)).join("") +
     recent.map(m => makeItem(m, true)).join("") +
     pastHtml;
+}
+
+// ─── Calendar view ───
+const CAL_MIN_OFFSET = -6;
+const CAL_MAX_OFFSET = 6;
+
+function renderCalendar() {
+  const now = new Date();
+  const base = new Date(now.getFullYear(), now.getMonth() + calMonthOffset, 1);
+  const year = base.getFullYear();
+  const month = base.getMonth();
+
+  $("#cal-month-label").textContent = base.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  $("#cal-prev").disabled = calMonthOffset <= CAL_MIN_OFFSET;
+  $("#cal-next").disabled = calMonthOffset >= CAL_MAX_OFFSET;
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const todayStr = now.toISOString().slice(0, 10);
+  const todayMs = new Date(todayStr).getTime();
+
+  const byDate = {};
+  MILESTONES.forEach(m => {
+    (byDate[m.date] = byDate[m.date] || []).push(m);
+  });
+
+  let cellsHtml = "";
+  for (let i = 0; i < firstDay; i++) cellsHtml += `<div class="cal-day"></div>`;
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const items = byDate[dateStr] || [];
+    let cls = "cal-day";
+    if (dateStr === todayStr) cls += " today";
+    if (items.length > 0) {
+      cls += " has-milestone";
+      const dMs = new Date(dateStr).getTime();
+      if (dMs < todayMs) cls += " past";
+      else if (Math.round((dMs - todayMs) / 86400000) <= 30) cls += " soon";
+    }
+    if (dateStr === calSelectedDate) cls += " selected";
+    cellsHtml += `<div class="${cls}" ${items.length ? `data-date="${dateStr}" tabindex="0" role="button" aria-label="${items.length} milestone${items.length > 1 ? "s" : ""} on ${dateStr}"` : ""}>${day}${items.length ? `<span class="cal-dot"></span>` : ""}</div>`;
+  }
+
+  $("#cal-grid").innerHTML = cellsHtml;
+
+  $$(".cal-day[data-date]").forEach(cell => {
+    cell.addEventListener("click", () => showDayDetail(cell.dataset.date));
+    cell.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showDayDetail(cell.dataset.date); } });
+  });
+
+  if (calSelectedDate && byDate[calSelectedDate]) {
+    showDayDetail(calSelectedDate, false);
+  } else {
+    calSelectedDate = null;
+    $("#cal-day-detail").innerHTML = "";
+  }
+}
+
+function showDayDetail(dateStr, reRender = true) {
+  const items = MILESTONES.filter(m => m.date === dateStr);
+  if (items.length === 0) return;
+  calSelectedDate = dateStr;
+  const label = new Date(dateStr).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  $("#cal-day-detail").innerHTML =
+    `<div class="cal-detail-date">${label} · ${items.length} milestone${items.length > 1 ? "s" : ""}</div>` +
+    items.map(m => `<div class="cal-detail-item"><span aria-hidden="true">${m.flag}</span> ${m.label}</div>`).join("");
+  if (reRender) {
+    $$(".cal-day").forEach(c => c.classList.remove("selected"));
+    const cell = $$(".cal-day[data-date]").find(c => c.dataset.date === dateStr);
+    if (cell) cell.classList.add("selected");
+  }
 }
 
 function togglePast() {
@@ -2447,6 +2654,23 @@ $$(".badge-hint").forEach(badge => {
 });
 document.addEventListener("click", () => {
   $$(".badge-hint.show-tip").forEach(b => b.classList.remove("show-tip"));
+});
+
+$("#calendar-toggle").addEventListener("click", () => {
+  calVisible = !calVisible;
+  $("#calendar-view").style.display = calVisible ? "block" : "none";
+  $("#calendar-toggle").setAttribute("aria-expanded", calVisible ? "true" : "false");
+  $("#calendar-toggle").classList.toggle("active", calVisible);
+  $("#calendar-toggle").innerHTML = calVisible
+    ? `<span aria-hidden="true">📅</span> Hide calendar`
+    : `<span aria-hidden="true">📅</span> Calendar view`;
+  if (calVisible) renderCalendar();
+});
+$("#cal-prev").addEventListener("click", () => {
+  if (calMonthOffset > CAL_MIN_OFFSET) { calMonthOffset--; calSelectedDate = null; renderCalendar(); }
+});
+$("#cal-next").addEventListener("click", () => {
+  if (calMonthOffset < CAL_MAX_OFFSET) { calMonthOffset++; calSelectedDate = null; renderCalendar(); }
 });
 
 
