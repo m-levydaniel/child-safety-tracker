@@ -545,8 +545,35 @@
     border: 0;
   }
   .badge-hint {
+    position: relative;
     cursor: help;
     border-bottom: 1px dotted currentColor;
+  }
+  .badge-hint::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6px);
+    transform: translateX(-50%);
+    background: var(--th-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    white-space: nowrap;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+  }
+  .badge-hint:hover::after,
+  .badge-hint:focus::after,
+  .badge-hint.show-tip::after {
+    opacity: 1;
   }
   .empty {
     padding: 18px;
@@ -702,25 +729,25 @@
     <div class="legend-box">
       <div class="legend-row">
         <span class="legend-label">Status</span>
-        <span class="badge-hint badge badge-implemented" tabindex="0" title="in force and being enforced">Implemented<span class="sr-only"> — in force and being enforced</span></span>
-        <span class="badge-hint badge badge-passed" tabindex="0" title="enacted, not yet in force">Passed<span class="sr-only"> — enacted, not yet in force</span></span>
-        <span class="badge-hint badge badge-pending" tabindex="0" title="in legislative process">Pending<span class="sr-only"> — in legislative process</span></span>
-        <span class="badge-hint badge badge-stalled" tabindex="0" title="died, blocked, or stuck">Stalled<span class="sr-only"> — died, blocked, or stuck</span></span>
+        <span class="badge-hint badge badge-implemented" tabindex="0" data-tip="in force and being enforced">Implemented<span class="sr-only"> — in force and being enforced</span></span>
+        <span class="badge-hint badge badge-passed" tabindex="0" data-tip="enacted, not yet in force">Passed<span class="sr-only"> — enacted, not yet in force</span></span>
+        <span class="badge-hint badge badge-pending" tabindex="0" data-tip="in legislative process">Pending<span class="sr-only"> — in legislative process</span></span>
+        <span class="badge-hint badge badge-stalled" tabindex="0" data-tip="died, blocked, or stuck">Stalled<span class="sr-only"> — died, blocked, or stuck</span></span>
       </div>
       <div class="legend-row">
         <span class="legend-label">Type</span>
-        <span class="badge-hint badge type-full-ban" tabindex="0" title="age-based access prohibition">Full ban<span class="sr-only"> — age-based access prohibition</span></span>
-        <span class="badge-hint badge type-parental-consent" tabindex="0" title="requires guardian approval">Parental consent<span class="sr-only"> — requires guardian approval</span></span>
-        <span class="badge-hint badge type-design-rules" tabindex="0" title="duty of care, addictive-feature rules">Design rules<span class="sr-only"> — duty of care, addictive-feature rules</span></span>
-        <span class="badge-hint badge type-age-verification" tabindex="0" title="age assurance only">Age verification<span class="sr-only"> — age assurance only</span></span>
-        <span class="badge-hint badge type-mixed" tabindex="0" title="two or more approaches combined">Mixed<span class="sr-only"> — two or more approaches combined</span></span>
+        <span class="badge-hint badge type-full-ban" tabindex="0" data-tip="age-based access prohibition">Full ban<span class="sr-only"> — age-based access prohibition</span></span>
+        <span class="badge-hint badge type-parental-consent" tabindex="0" data-tip="requires guardian approval">Parental consent<span class="sr-only"> — requires guardian approval</span></span>
+        <span class="badge-hint badge type-design-rules" tabindex="0" data-tip="duty of care, addictive-feature rules">Design rules<span class="sr-only"> — duty of care, addictive-feature rules</span></span>
+        <span class="badge-hint badge type-age-verification" tabindex="0" data-tip="age assurance only">Age verification<span class="sr-only"> — age assurance only</span></span>
+        <span class="badge-hint badge type-mixed" tabindex="0" data-tip="two or more approaches combined">Mixed<span class="sr-only"> — two or more approaches combined</span></span>
       </div>
       <div class="legend-row last">
         <span class="legend-label">Litigation</span>
-        <span class="badge-hint badge lit-active" tabindex="0" title="open challenge">Active<span class="sr-only"> — open challenge</span></span>
-        <span class="badge-hint badge lit-enjoined" tabindex="0" title="currently blocked by court">Enjoined<span class="sr-only"> — currently blocked by court</span></span>
-        <span class="badge-hint badge lit-struckdown" tabindex="0" title="permanently invalidated">Struck down<span class="sr-only"> — permanently invalidated</span></span>
-        <span class="badge-hint badge lit-none" tabindex="0" title="no pending challenge">None<span class="sr-only"> — no pending challenge</span></span>
+        <span class="badge-hint badge lit-active" tabindex="0" data-tip="open challenge">Active<span class="sr-only"> — open challenge</span></span>
+        <span class="badge-hint badge lit-enjoined" tabindex="0" data-tip="currently blocked by court">Enjoined<span class="sr-only"> — currently blocked by court</span></span>
+        <span class="badge-hint badge lit-struckdown" tabindex="0" data-tip="permanently invalidated">Struck down<span class="sr-only"> — permanently invalidated</span></span>
+        <span class="badge-hint badge lit-none" tabindex="0" data-tip="no pending challenge">None<span class="sr-only"> — no pending challenge</span></span>
       </div>
     </div>
     Sources column links only to primary legal/regulatory text (law pages, regulator websites, parliamentary bill records). Media section gathers third-party analysis.
@@ -2408,6 +2435,18 @@ $$(".chip[data-topic]").forEach(chip => {
 $("#search-box").addEventListener("input", (e) => {
   searchTerm = e.target.value;
   renderKanban();
+});
+
+$$(".badge-hint").forEach(badge => {
+  badge.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const wasOpen = badge.classList.contains("show-tip");
+    $$(".badge-hint.show-tip").forEach(b => b.classList.remove("show-tip"));
+    if (!wasOpen) badge.classList.add("show-tip");
+  });
+});
+document.addEventListener("click", () => {
+  $$(".badge-hint.show-tip").forEach(b => b.classList.remove("show-tip"));
 });
 
 
