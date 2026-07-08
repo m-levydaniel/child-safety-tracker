@@ -118,6 +118,20 @@
   }
   .view-toggle-btn:hover { color: var(--text); }
   .view-toggle-btn.active { background: var(--hover); color: var(--text); font-weight: 600; }
+  .btn-toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .btn-toggle:hover { background: var(--hover); }
+  .btn-toggle.active { background: var(--hover); border-color: var(--muted); }
   .calendar-view {
     background: var(--card);
     border: 1px solid var(--border);
@@ -823,7 +837,38 @@
     </div>
   </div>
 
-  <h2>Policy Tracker</h2>
+  <div class="section-header">
+    <h2>Policy Tracker</h2>
+    <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
+      Legend
+    </button>
+  </div>
+
+  <div class="legend-box" id="legend-box" style="display:none;">
+    <div class="legend-row">
+      <span class="legend-label">Status</span>
+      <span class="badge-hint badge badge-implemented" tabindex="0" data-tip="in force and being enforced">Implemented<span class="sr-only"> — in force and being enforced</span></span>
+      <span class="badge-hint badge badge-passed" tabindex="0" data-tip="enacted, not yet in force">Passed<span class="sr-only"> — enacted, not yet in force</span></span>
+      <span class="badge-hint badge badge-pending" tabindex="0" data-tip="in legislative process">Pending<span class="sr-only"> — in legislative process</span></span>
+      <span class="badge-hint badge badge-stalled" tabindex="0" data-tip="died, blocked, or stuck">Stalled<span class="sr-only"> — died, blocked, or stuck</span></span>
+    </div>
+    <div class="legend-row">
+      <span class="legend-label">Type</span>
+      <span class="badge-hint badge type-full-ban" tabindex="0" data-tip="age-based access prohibition">Full ban<span class="sr-only"> — age-based access prohibition</span></span>
+      <span class="badge-hint badge type-parental-consent" tabindex="0" data-tip="requires guardian approval">Parental consent<span class="sr-only"> — requires guardian approval</span></span>
+      <span class="badge-hint badge type-design-rules" tabindex="0" data-tip="duty of care, addictive-feature rules">Design rules<span class="sr-only"> — duty of care, addictive-feature rules</span></span>
+      <span class="badge-hint badge type-age-verification" tabindex="0" data-tip="age assurance only">Age verification<span class="sr-only"> — age assurance only</span></span>
+      <span class="badge-hint badge type-mixed" tabindex="0" data-tip="two or more approaches combined">Mixed<span class="sr-only"> — two or more approaches combined</span></span>
+    </div>
+    <div class="legend-row last">
+      <span class="legend-label">Litigation</span>
+      <span class="badge-hint badge lit-active" tabindex="0" data-tip="open challenge">Active<span class="sr-only"> — open challenge</span></span>
+      <span class="badge-hint badge lit-enjoined" tabindex="0" data-tip="currently blocked by court">Enjoined<span class="sr-only"> — currently blocked by court</span></span>
+      <span class="badge-hint badge lit-struckdown" tabindex="0" data-tip="permanently invalidated">Struck down<span class="sr-only"> — permanently invalidated</span></span>
+      <span class="badge-hint badge lit-none" tabindex="0" data-tip="no pending challenge">None<span class="sr-only"> — no pending challenge</span></span>
+    </div>
+  </div>
+
   <div class="stat-row" id="stats"></div>
 
   <div class="controls" role="group" aria-label="Filter by type">
@@ -886,30 +931,6 @@
   <div id="media-sections"></div>
 
   <div class="footer">
-    <div class="legend-box">
-      <div class="legend-row">
-        <span class="legend-label">Status</span>
-        <span class="badge-hint badge badge-implemented" tabindex="0" data-tip="in force and being enforced">Implemented<span class="sr-only"> — in force and being enforced</span></span>
-        <span class="badge-hint badge badge-passed" tabindex="0" data-tip="enacted, not yet in force">Passed<span class="sr-only"> — enacted, not yet in force</span></span>
-        <span class="badge-hint badge badge-pending" tabindex="0" data-tip="in legislative process">Pending<span class="sr-only"> — in legislative process</span></span>
-        <span class="badge-hint badge badge-stalled" tabindex="0" data-tip="died, blocked, or stuck">Stalled<span class="sr-only"> — died, blocked, or stuck</span></span>
-      </div>
-      <div class="legend-row">
-        <span class="legend-label">Type</span>
-        <span class="badge-hint badge type-full-ban" tabindex="0" data-tip="age-based access prohibition">Full ban<span class="sr-only"> — age-based access prohibition</span></span>
-        <span class="badge-hint badge type-parental-consent" tabindex="0" data-tip="requires guardian approval">Parental consent<span class="sr-only"> — requires guardian approval</span></span>
-        <span class="badge-hint badge type-design-rules" tabindex="0" data-tip="duty of care, addictive-feature rules">Design rules<span class="sr-only"> — duty of care, addictive-feature rules</span></span>
-        <span class="badge-hint badge type-age-verification" tabindex="0" data-tip="age assurance only">Age verification<span class="sr-only"> — age assurance only</span></span>
-        <span class="badge-hint badge type-mixed" tabindex="0" data-tip="two or more approaches combined">Mixed<span class="sr-only"> — two or more approaches combined</span></span>
-      </div>
-      <div class="legend-row last">
-        <span class="legend-label">Litigation</span>
-        <span class="badge-hint badge lit-active" tabindex="0" data-tip="open challenge">Active<span class="sr-only"> — open challenge</span></span>
-        <span class="badge-hint badge lit-enjoined" tabindex="0" data-tip="currently blocked by court">Enjoined<span class="sr-only"> — currently blocked by court</span></span>
-        <span class="badge-hint badge lit-struckdown" tabindex="0" data-tip="permanently invalidated">Struck down<span class="sr-only"> — permanently invalidated</span></span>
-        <span class="badge-hint badge lit-none" tabindex="0" data-tip="no pending challenge">None<span class="sr-only"> — no pending challenge</span></span>
-      </div>
-    </div>
     Sources column links only to primary legal/regulatory text (law pages, regulator websites, parliamentary bill records). Media section gathers third-party analysis.
     <br /><br />
     <strong>Methodology.</strong> This tracker was built using primary legislative and regulatory sources. Each jurisdiction entry links directly to the official law, bill, or regulator page. Jurisdiction coverage on social media age verification issues was cross-referenced against the <a href="https://www.techpolicy.press/tracker" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">Tech Policy Press Global Social Media Age Restriction Tracker</a>. Litigation data draws on the <a href="https://netchoice.org/litigation/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">NetChoice Litigation Center</a>. Age verification legislation coverage draws on the <a href="https://avpassociation.com/us-state-age-assurance-laws-for-social-media/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">AVPA State Laws Tracker</a>. The tracker is updated weekly via an automated process that monitors legislative and regulatory developments, court decisions, and commentary.
@@ -2715,6 +2736,15 @@ $$(".view-toggle-btn").forEach(btn => {
   btn.addEventListener("click", () => setMilestonesView(btn.dataset.view));
 });
 setMilestonesView(milestonesView);
+
+$("#legend-toggle").addEventListener("click", () => {
+  const box = $("#legend-box");
+  const btn = $("#legend-toggle");
+  const willShow = box.style.display === "none";
+  box.style.display = willShow ? "block" : "none";
+  btn.classList.toggle("active", willShow);
+  btn.setAttribute("aria-expanded", willShow ? "true" : "false");
+});
 $("#cal-prev").addEventListener("click", () => {
   if (calMonthOffset > CAL_MIN_OFFSET) { calMonthOffset--; calSelectedDate = null; renderCalendar(); }
 });
