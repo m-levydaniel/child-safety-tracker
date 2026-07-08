@@ -238,6 +238,19 @@
     letter-spacing: 0.05em;
     margin-right: 4px;
   }
+  .controls-multi {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .controls-hint {
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+    color: var(--muted);
+    margin-left: 5px;
+  }
+  .controls-hint::before { content: "— "; }
   .chip {
     background: var(--card);
     border: 1px solid var(--border);
@@ -866,8 +879,8 @@
     <span class="chip" data-mfilter="impact">Impact analysis</span>
     <span class="chip" data-mfilter="news">Journalism</span>
   </div>
-  <div class="controls" role="group" aria-label="Filter by topic">
-    <span class="controls-label" aria-hidden="true">Topic</span>
+  <div class="controls controls-multi" role="group" aria-label="Filter by topic, multiple selections allowed">
+    <span class="controls-label" aria-hidden="true">Topic<span class="controls-hint">select any that apply</span></span>
     <span class="chip" data-topic="verification">Age verification</span>
     <span class="chip" data-topic="bans">Full bans</span>
     <span class="chip" data-topic="litigation">Litigation & courts</span>
