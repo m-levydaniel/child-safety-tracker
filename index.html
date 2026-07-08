@@ -122,9 +122,11 @@
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 14px 16px;
+    padding: 18px 20px;
     margin: 20px 0 20px 0;
-    max-width: 340px;
+  }
+  .cal-body {
+    max-width: 460px;
   }
   .cal-header {
     display: flex;
@@ -197,30 +199,16 @@
     box-shadow: 0 0 0 1px var(--card);
     margin-top: 2px;
   }
-  .cal-month-list {
-    margin-top: 12px;
-    padding-top: 10px;
+  .cal-day-detail {
+    margin-top: 14px;
+    padding-top: 12px;
     border-top: 1px solid var(--border);
-    max-height: 240px;
-    overflow-y: auto;
-  }
-  .cal-empty { font-size: 12px; color: var(--muted); }
-  .cal-list-item {
-    display: flex;
-    gap: 10px;
-    padding: 5px 4px;
-    border-radius: 5px;
     font-size: 12px;
-  }
-  .cal-list-item.selected { background: var(--hover); }
-  .cal-list-date {
-    flex-shrink: 0;
-    width: 44px;
     color: var(--muted);
-    font-size: 11px;
-    padding-top: 1px;
   }
-  .cal-list-text { color: var(--text); line-height: 1.5; }
+  .cal-detail-placeholder { font-size: 12px; color: var(--muted); }
+  .cal-detail-date { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .cal-detail-item { color: var(--text); margin-bottom: 4px; line-height: 1.5; }
   h3 {
     font-size: 13px;
     font-weight: 600;
@@ -811,16 +799,18 @@
   <div class="milestones" id="milestones"></div>
 
   <div class="calendar-view" id="calendar-view" style="display:none;">
-    <div class="cal-header">
-      <button class="cal-nav" id="cal-prev" type="button" aria-label="Previous month">&lsaquo;</button>
-      <span class="cal-month-label" id="cal-month-label"></span>
-      <button class="cal-nav" id="cal-next" type="button" aria-label="Next month">&rsaquo;</button>
+    <div class="cal-body">
+      <div class="cal-header">
+        <button class="cal-nav" id="cal-prev" type="button" aria-label="Previous month">&lsaquo;</button>
+        <span class="cal-month-label" id="cal-month-label"></span>
+        <button class="cal-nav" id="cal-next" type="button" aria-label="Next month">&rsaquo;</button>
+      </div>
+      <div class="cal-weekdays">
+        <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-day-detail" id="cal-day-detail"><span class="cal-detail-placeholder">Click a date to see its milestone.</span></div>
     </div>
-    <div class="cal-weekdays">
-      <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
-    </div>
-    <div class="cal-grid" id="cal-grid"></div>
-    <div class="cal-month-list" id="cal-month-list"></div>
   </div>
 
   <h2>Policy Tracker</h2>
@@ -2367,7 +2357,6 @@ function renderCalendar() {
 
   let cellsHtml = "";
   for (let i = 0; i < firstDay; i++) cellsHtml += `<div class="cal-day"></div>`;
-  const monthDates = [];
   for (let day = 1; day <= daysInMonth; day++) {
     const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
     const items = byDate[dateStr] || [];
@@ -2375,7 +2364,6 @@ function renderCalendar() {
     if (dateStr === todayStr) cls += " today";
     if (items.length > 0) {
       cls += " has-milestone";
-      monthDates.push(dateStr);
       const dMs = parseLocalDate(dateStr).getTime();
       if (dMs < todayMs) cls += " past";
       else if (Math.round((dMs - todayMs) / 86400000) <= 30) cls += " soon";
@@ -2387,40 +2375,31 @@ function renderCalendar() {
   $("#cal-grid").innerHTML = cellsHtml;
 
   $$(".cal-day[data-date]").forEach(cell => {
-    cell.addEventListener("click", () => highlightDay(cell.dataset.date));
-    cell.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); highlightDay(cell.dataset.date); } });
+    cell.addEventListener("click", () => showDayDetail(cell.dataset.date));
+    cell.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showDayDetail(cell.dataset.date); } });
   });
 
-  // Always list every milestone in the visible month — no click required.
-  if (monthDates.length === 0) {
-    $("#cal-month-list").innerHTML = `<div class="cal-empty">No milestones this month.</div>`;
-  } else {
-    $("#cal-month-list").innerHTML = monthDates.map(dateStr => {
-      const items = byDate[dateStr];
-      const label = parseLocalDate(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-      return items.map(m => `<div class="cal-list-item" data-date="${dateStr}">
-        <span class="cal-list-date">${label}</span>
-        <span class="cal-list-text"><span aria-hidden="true">${m.flag}</span> ${m.label}</span>
-      </div>`).join("");
-    }).join("");
-  }
-
   if (calSelectedDate && byDate[calSelectedDate]) {
-    highlightDay(calSelectedDate, false);
+    showDayDetail(calSelectedDate, false);
   } else {
     calSelectedDate = null;
+    $("#cal-day-detail").innerHTML = `<span class="cal-detail-placeholder">Click a date to see its milestone.</span>`;
   }
 }
 
-function highlightDay(dateStr, scroll = true) {
+function showDayDetail(dateStr, reRender = true) {
+  const items = MILESTONES.filter(m => m.date === dateStr);
+  if (items.length === 0) return;
   calSelectedDate = dateStr;
-  $$(".cal-day").forEach(c => c.classList.remove("selected"));
-  const cell = $$(".cal-day[data-date]").find(c => c.dataset.date === dateStr);
-  if (cell) cell.classList.add("selected");
-  $$(".cal-list-item").forEach(el => el.classList.remove("selected"));
-  const listItems = $$(`.cal-list-item[data-date="${dateStr}"]`);
-  listItems.forEach(el => el.classList.add("selected"));
-  if (scroll && listItems[0]) listItems[0].scrollIntoView({ block: "nearest", behavior: "smooth" });
+  const label = parseLocalDate(dateStr).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  $("#cal-day-detail").innerHTML =
+    `<div class="cal-detail-date">${label} · ${items.length} milestone${items.length > 1 ? "s" : ""}</div>` +
+    items.map(m => `<div class="cal-detail-item"><span aria-hidden="true">${m.flag}</span> ${m.label}</div>`).join("");
+  if (reRender) {
+    $$(".cal-day").forEach(c => c.classList.remove("selected"));
+    const cell = $$(".cal-day[data-date]").find(c => c.dataset.date === dateStr);
+    if (cell) cell.classList.add("selected");
+  }
 }
 
 function togglePast() {
