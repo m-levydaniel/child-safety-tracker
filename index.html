@@ -151,9 +151,14 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 3px;
     font-size: 10px;
+    font-weight: 600;
     color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     text-align: center;
-    margin-bottom: 4px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
   }
   .cal-grid {
     display: grid;
@@ -803,7 +808,7 @@
         <button class="cal-nav" id="cal-next" type="button" aria-label="Next month">&rsaquo;</button>
       </div>
       <div class="cal-weekdays">
-        <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
       </div>
       <div class="cal-grid" id="cal-grid"></div>
       <div class="cal-day-detail" id="cal-day-detail"><span class="cal-detail-placeholder">Click a date to see its milestone.</span></div>
