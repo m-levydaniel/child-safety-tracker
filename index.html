@@ -97,22 +97,27 @@
     padding-bottom: 0;
     border-bottom: none;
   }
-  .btn-cal-toggle {
+  .view-toggle {
     display: inline-flex;
-    align-items: center;
-    gap: 5px;
     background: var(--card);
     border: 1px solid var(--border);
-    color: var(--text);
-    padding: 5px 11px;
     border-radius: 6px;
+    padding: 2px;
+    flex-shrink: 0;
+  }
+  .view-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    padding: 4px 11px;
+    border-radius: 4px;
     font-size: 12px;
     cursor: pointer;
     font-family: inherit;
     white-space: nowrap;
   }
-  .btn-cal-toggle:hover { background: var(--hover); }
-  .btn-cal-toggle.active { background: var(--hover); border-color: var(--muted); }
+  .view-toggle-btn:hover { color: var(--text); }
+  .view-toggle-btn.active { background: var(--hover); color: var(--text); font-weight: 600; }
   .calendar-view {
     background: var(--card);
     border: 1px solid var(--border);
@@ -797,9 +802,10 @@
 
   <div class="section-header">
     <h2>Upcoming Milestones</h2>
-    <button id="calendar-toggle" class="btn-cal-toggle" type="button" aria-expanded="false" aria-controls="calendar-view">
-      <span aria-hidden="true">📅</span> Calendar view
-    </button>
+    <div class="view-toggle" role="group" aria-label="Milestones view">
+      <button type="button" class="view-toggle-btn active" data-view="timeline" aria-pressed="true">Timeline</button>
+      <button type="button" class="view-toggle-btn" data-view="calendar" aria-pressed="false">Calendar</button>
+    </div>
   </div>
   <p class="subtitle">Key dates ahead — effective dates, consultation deadlines, court dates.</p>
   <div class="milestones" id="milestones"></div>
@@ -2254,7 +2260,7 @@ let filters = {
 let mediaFilter = localStorage.getItem("cs2-media") || "all";
 let activeTopics = new Set(JSON.parse(localStorage.getItem("cs2-topics") || "[]"));
 let searchTerm = "";
-let calVisible = false;
+let milestonesView = localStorage.getItem("cs2-milestones-view") || "timeline";
 let calMonthOffset = 0;
 let calSelectedDate = null;
 
@@ -2704,16 +2710,22 @@ document.addEventListener("click", () => {
   $$(".badge-hint.show-tip").forEach(b => b.classList.remove("show-tip"));
 });
 
-$("#calendar-toggle").addEventListener("click", () => {
-  calVisible = !calVisible;
-  $("#calendar-view").style.display = calVisible ? "block" : "none";
-  $("#calendar-toggle").setAttribute("aria-expanded", calVisible ? "true" : "false");
-  $("#calendar-toggle").classList.toggle("active", calVisible);
-  $("#calendar-toggle").innerHTML = calVisible
-    ? `<span aria-hidden="true">📅</span> Hide calendar`
-    : `<span aria-hidden="true">📅</span> Calendar view`;
-  if (calVisible) renderCalendar();
+function setMilestonesView(view) {
+  milestonesView = view;
+  localStorage.setItem("cs2-milestones-view", view);
+  $$(".view-toggle-btn").forEach(b => {
+    const active = b.dataset.view === view;
+    b.classList.toggle("active", active);
+    b.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+  $("#milestones").style.display = view === "timeline" ? "block" : "none";
+  $("#calendar-view").style.display = view === "calendar" ? "block" : "none";
+  if (view === "calendar") renderCalendar();
+}
+$$(".view-toggle-btn").forEach(btn => {
+  btn.addEventListener("click", () => setMilestonesView(btn.dataset.view));
 });
+setMilestonesView(milestonesView);
 $("#cal-prev").addEventListener("click", () => {
   if (calMonthOffset > CAL_MIN_OFFSET) { calMonthOffset--; calSelectedDate = null; renderCalendar(); }
 });
