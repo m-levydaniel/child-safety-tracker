@@ -1587,6 +1587,20 @@ const POLICIES = [
     primary: { title: "HB 5511 — Illinois General Assembly", url: "https://ilga.gov/Legislation/BillStatus?DocNum=5511&GAID=18&DocTypeID=HB&LegId=167486&SessionID=114", host: "ilga.gov" }
   },
   {
+    country: "🇺🇸 US — Maryland", region: "Americas",
+    initiative: "Age-Appropriate Design Code Act (HB 603, \"Maryland Kids Code\")",
+    summary: "Requires default highest-privacy settings for minors under 18, mandates data protection impact assessments (DPIAs), and prohibits using minors' personal data in ways not in their best interests. Builds on the Maryland Online Data Privacy Act. Notably does not require age estimation or age verification.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "implemented", statusLabel: "Implemented",
+    year: "2024 (signed May 9; in force Oct 1)", yearSort: 2024,
+    enforcement: "Maryland Division of Consumer Protection (Office of the Attorney General)",
+    penalties: "$2,500–$7,500 per child per violation; UDAP penalties up to $25,000 for repeat violations",
+    litigation: "active", litigationLabel: "Active",
+    litigationDetail: "NetChoice v. Brown — filed Feb 3, 2025 in U.S. District Court for the District of Maryland; motion to dismiss denied Nov 24, 2025 (court found NetChoice plausibly alleged First/Fourteenth Amendment and preemption violations); amended complaint filed April 2026; July 7, 2026 ruling granted NetChoice leave to add a dormant Commerce Clause claim.",
+    notes: "Signed by Gov. Wes Moore May 9, 2024; effective October 1, 2024. No private right of action — enforcement is exclusive to the AG's Division of Consumer Protection, with a 90-day cure period for companies that have completed a DPIA. First DPIA deadline was April 1, 2026. Law remains in force while litigation proceeds.",
+    primary: { title: "HB 603 (2024) — Maryland General Assembly", url: "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB0603", host: "mgaleg.maryland.gov" }
+  },
+  {
     country: "🇺🇸 US — Nebraska (AADC)", region: "Americas",
     initiative: "LB 504 — Age-Appropriate Online Design Code Act (as amended by LB 838)",
     summary: "Design-rules law requiring online services to apply default highest-privacy settings for minors, allow minors to opt out of unnecessary covered design features (including infinite scroll, autoplay, engagement quantification, gamification, and AI chatbot intimacy features), disable push notifications during nighttime and school hours, minimize data collection, and protect precise geolocation. Amended by LB 838 (effective July 17, 2026) to significantly broaden applicability — removing the restrictive 50%-data-revenue threshold — and expand prohibited design features. Separate from Nebraska LB 383 (age-verification/parental-consent law, currently enjoined).",
@@ -1801,7 +1815,12 @@ const MILESTONES = [
   { date: "2026-06-05", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — 5th Circuit issues full opinion in SEAT v. Paxton (No. 26-50001) finding Texas SB 2420 app-store age verification law 'likely constitutional' under intermediate scrutiny — stronger signal than the June 2 admin stay; strengthens Texas's position in merits appeal" },
   { date: "2026-06-12", flag: "🇺🇸", label: "<strong>US (MDL-3047)</strong> — Breathitt County School District federal bellwether trial (scheduled June 12–15) averted: Meta, Snap, TikTok, and YouTube all settle with the first federal school-district plaintiff ahead of opening statements; over 2,600 cases remain in MDL-3047" },
   { date: "2026-06-15", flag: "🇬🇧", label: "<strong>UK</strong> — PM Starmer announces proposed full ban on social media for under-16s (Snapchat, TikTok, YouTube, Instagram, Facebook, X); government targets legislation before end of 2026 with ban in force ~spring 2027" },
-  { date: "2026-06-10", flag: "🇨🇦", label: "<strong>Canada</strong> — Federal government tables Bill C-34, the Safe Social Media Act: national under-16 minimum age for social media accounts modeled on Australia's ban, plus a new Digital Safety Commission of Canada and AI chatbot rules; supersedes the stalled Online Harms Act (C-63/C-216); still needs House and Senate passage — realistic in-force timeline late 2027/early 2028" }
+  { date: "2026-06-10", flag: "🇨🇦", label: "<strong>Canada</strong> — Federal government tables Bill C-34, the Safe Social Media Act: national under-16 minimum age for social media accounts modeled on Australia's ban, plus a new Digital Safety Commission of Canada and AI chatbot rules; supersedes the stalled Online Harms Act (C-63/C-216); still needs House and Senate passage — realistic in-force timeline late 2027/early 2028" },
+  { date: "2024-05-09", flag: "🇺🇸", label: "<strong>US (Maryland)</strong> — Governor Wes Moore signs HB 603, the Age-Appropriate Design Code Act (\"Maryland Kids Code\"); takes effect October 1, 2024" },
+  { date: "2025-02-03", flag: "🇺🇸", label: "<strong>US (Maryland)</strong> — NetChoice files suit (NetChoice v. Brown) in U.S. District Court for the District of Maryland challenging the Kids Code on First Amendment and preemption grounds" },
+  { date: "2025-11-24", flag: "🇺🇸", label: "<strong>US (Maryland)</strong> — District Court denies Maryland's motion to dismiss in NetChoice v. Brown, finding NetChoice plausibly alleged First/Fourteenth Amendment and preemption violations; case moves to discovery, law remains in force" },
+  { date: "2026-04-01", flag: "🇺🇸", label: "<strong>US (Maryland)</strong> — Deadline for covered entities to complete their first data protection impact assessments (DPIAs) required under the Kids Code" },
+  { date: "2026-07-07", flag: "🇺🇸", label: "<strong>US (Maryland)</strong> — Judge Bennett grants NetChoice leave to add a dormant Commerce Clause claim to its challenge against the Kids Code, alongside its existing First Amendment and preemption claims" }
 ];
 
 const MEDIA = [
@@ -2165,6 +2184,13 @@ const MEDIA = [
     summary: "Analysis of the April 20, 2026 preliminary injunction of Arkansas Act 900 on First Amendment grounds — the second time a federal court blocked Arkansas's attempt to restrict minors' social media access. Three Arkansas social-media laws are now enjoined.",
     url: "https://blog.ericgoldman.org/archives/2026/04/court-enjoins-another-arkansas-segregate-and-suppress-law-netchoice-v-griffin.htm",
     date: "Apr 2026" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    topics: ["litigation", "design"],
+    title: "Challenge to Maryland's \"Kid Code\" Survives Motion to Dismiss — NetChoice v. Brown",
+    outlet: "Tech & Marketing Law Blog · Eric Goldman", region: "United States (Maryland)",
+    summary: "Goldman's analysis of the November 24, 2025 ruling denying Maryland's motion to dismiss NetChoice's First Amendment and preemption challenge to the Maryland Kids Code — a rare design-rules law that doesn't require age verification, now facing an expanded challenge that in July 2026 added a dormant Commerce Clause claim.",
+    url: "https://blog.ericgoldman.org/archives/2025/11/challenge-to-marylands-kid-code-survives-motion-to-dismiss-netchoice-v-brown.htm",
+    date: "Nov 2025" },
   { tag: "legal", tagLabel: "Legal commentary",
     topics: ["litigation", "verification"],
     title: "Fifth Circuit Keeps Doing Fifth Circuit Things — SEAT v. Paxton",
