@@ -1378,8 +1378,47 @@ const POLICIES = [
     enforcement: "ANPD + relevant agencies",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "In force March 17, 2026. Combines guardian linking with platform design constraints.",
+    notes: "In force March 17, 2026. Combines guardian linking with platform design constraints. First enforcement stage (from March 2026) prioritizes app stores and device-level operating systems as gatekeepers for age assurance and parental supervision. ANPD published updated preliminary age-assurance guidance in June 2026 addressing technical approaches including biometric facial age estimation and document verification; a second enforcement stage, with a transition period from August to November 2026, will expand monitoring to other sectors by risk level.",
     primary: { title: "Lei 15.211/2025 — Estatuto Digital da Criança e do Adolescente — Planalto", url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15211.htm", host: "planalto.gov.br" }
+  },
+  {
+    country: "🇨🇱 Chile", region: "Americas",
+    initiative: "Under-16 social media ban bill (Boletín 18246-18)",
+    summary: "Would bar under-16s from digital platforms outright (no parental override), restrict gambling, live-streaming, pornography and violent-videogame platforms for minors, and bar AI chatbots from simulating relationships with children.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "3,000–5,000 UTM, doubled for repeat violations, plus possible service suspension",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Boletín 18246-18, currently before the Chamber of Deputies' Comisión de Ciencias. Bars registration and use of digital platforms for under-16s even with parental consent; bars under-18s from online gambling, unsupervised live-streaming, pornography, and extremely violent video games; bars algorithmic recommendation feeds and engagement features (autoplay, scheduled notifications) for minors; and bars AI chatbots from simulating companionship, romantic relationships, or therapy with minors, generating sexual content involving minors, or encouraging self-harm, suicide, or eating disorders. A separate, earlier-stage Senate bill (Boletín 18277-04) would instead set the ban threshold at under-14; the Senate's Comisión de Desafíos del Futuro began debating it in June 2026. Communications Minister Wulf has floated using Chile's national ClaveÚnica digital-ID system for age verification.",
+    primary: { title: "Boletín 18246-18 — Cámara de Diputadas y Diputados de Chile", url: "https://camara.cl/legislacion/ProyectosDeLey/oficios.aspx?prmID=18908&prmBOLETIN=18246-18", host: "camara.cl" }
+  },
+  {
+    country: "🇦🇷 Argentina", region: "Americas",
+    initiative: "Age-tiered social media access bill (1114-D-2026) + platform accountability bill",
+    summary: "Would bar social media accounts for under-13s, require parental consent for 14- to 16-year-olds, and mandate robust age verification; a parallel bill targets addictive design, grooming, and gambling mechanics.",
+    minAge: 13, regType: "mixed", regTypeLabel: "Ban + parental consent",
+    status: "pending", statusLabel: "Pending",
+    year: "2026", yearSort: 2026,
+    enforcement: "tbd (autoridad de aplicación to be designated)",
+    penalties: "Fines up to 30% of the company's prior-year monthly billing; possible ban from operating in the country",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Bill 1114-D-2026, introduced by Deputy María Jimena López, would bar social media accounts for under-13s (with best-interest-of-the-child exceptions), allow 14- to 16-year-olds only with parental consent, and permit free access from 16-18 absent judicial disqualification; platforms would need robust, traceable age-verification and parental-consent systems and would have to publish free plain-language safe-use guides. A separate bill led by Deputy Nicolás Trotta (presented June 9, 2026 at UMET, with deputies Monzón, Yedlin and Yasky) instead targets addictive design, gambling mechanics, and grooming: it would bar engagement-maximizing algorithms for minors, require platforms to use AI to detect grooming, fake accounts, and self-harm risk signals, and require international platforms to maintain a legal domicile and permanent tax presence in Argentina so they can be held accountable in Argentine courts.",
+    primary: { title: "Expediente 1114-D-2026 — Honorable Cámara de Diputados de la Nación", url: "https://rest.hcdn.gob.ar/web/proyectos/290679/adjuntos/105021", host: "hcdn.gob.ar" }
+  },
+  {
+    country: "🇨🇴 Colombia", region: "Americas",
+    initiative: "Ley 2489 de 2025 (entornos digitales sanos y seguros)",
+    summary: "Framework law creating a co-responsibility system among government, platforms, and families; a draft implementing decree would add 'safe by default' settings, a minors' mode, and a four-tier content classification system.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "passed", statusLabel: "Passed",
+    year: "2025 (implementing decree pending)", yearSort: 2025,
+    enforcement: "MinTIC + Communications Regulatory Commission (CRC) + Superintendence of Industry and Commerce (age assurance/data oversight)",
+    penalties: "tbd (to be set in implementing decree)",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Enacted July 17, 2025. Creates a National Committee on Technology, Childhood and Adolescence, a best-practices repository, and an integrated monitoring/evaluation system; does not ban minors from platforms outright. MinTIC released a draft implementing decree in December 2025 for comment (still pending as of mid-2026) that would require 'secure design by default' and a 'minors' mode' applying the most restrictive privacy, content-exposure, and algorithmic-recommendation settings by default; a four-tier content classification system (all ages / 7+ / 13+ / 18+) with mandatory labeling; and annual externally-audited compliance reports to MinTIC. Age-assurance mechanisms must prioritize data minimization and anonymous estimation techniques, with oversight from the Superintendence of Industry and Commerce. Colombia's government has said it does not plan to ban minors from social media outright, distinguishing its approach from Australia- or Chile-style bans.",
+    primary: { title: "Ley 2489 de 2025 — Función Pública (Gestor Normativo)", url: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260756", host: "funcionpublica.gov.co" }
   },
   {
     country: "🇵🇹 Portugal", region: "Europe",
@@ -1859,6 +1898,8 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-06-09", flag: "🇦🇷", label: "<strong>Argentina</strong> — Deputy Nicolás Trotta presents a social media platform-accountability bill targeting addictive design, gambling mechanics, and grooming, alongside deputies Monzón, Yedlin, and Yasky" },
+  { date: "2026-06-15", flag: "🇨🇱", label: "<strong>Chile</strong> — Chamber of Deputies' Comisión de Ciencias debates Boletín 18246-18, which would bar under-16s from digital platforms outright and restrict AI companion chatbots for minors" },
   { date: "2026-07-13", flag: "🇪🇺", label: "<strong>EU</strong> — Special Panel on Child Safety Online delivers final report to Commission President von der Leyen: recommends EU-wide minimum age of 13 for social media and 'social media plus' services, reversing the burden of proof onto platforms to demonstrate safety-by-design, binding design-rules, and zero-knowledge-proof age verification; legislation expected after summer" },
   { date: "2026-08-10", flag: "🇫🇷", label: "<strong>France</strong> — Deadline for France to revise its under-15 social media ban to resolve the European Commission's DSA conflict objection" },
   { date: "2026-07-06", flag: "🇫🇷", label: "<strong>France</strong> — European Commission tells France its under-15 social media ban conflicts with the DSA (age-limit enforcement is EU, not national, competence); France must revise the law by Aug. 10, 2026. Denmark, Greece, Germany, Spain, Austria, and Sweden face the same constraint on their own national measures" },
@@ -1925,6 +1966,27 @@ const MILESTONES = [
 
 const MEDIA = [
   // ─── This week ───
+  { tag: "legal", tagLabel: "Legal commentary",
+    topics: ["design", "verification"],
+    title: "Colombia's law 2489 of 2025 and its draft implementing decree: a new frontier in children's online safety regulation in Latin America",
+    outlet: "International Bar Association · Brigard Urrutia", region: "Colombia",
+    summary: "Law-firm analysis of Colombia's Ley 2489 co-responsibility framework and its draft implementing decree (safe-by-default settings, minors' mode, four-tier content classification), situating it against the DSA, UK AADC, and Australia's ban, and flagging open questions on regulatory scope, proportionality, and data privacy.",
+    url: "https://www.ibanet.org/Colombia-new-frontier-in-online-safety-regulation",
+    date: "Mar 26, 2026" },
+  { tag: "legal", tagLabel: "Legal commentary",
+    topics: ["bans", "design"],
+    title: "Redes sociales y menores en la Argentina: proyecto de ley",
+    outlet: "Marval, O'Farrell & Mairal", region: "Argentina",
+    summary: "Law-firm summary of Bill 1114-D-2026, which would bar social media accounts for under-13s, require parental consent for 14- to 16-year-olds, and mandate robust age-verification systems, with fines of up to 30% of monthly billing for non-compliance.",
+    url: "https://www.marval.com/Publicacion/redes-sociales-y-menores-en-la-argentina-proyecto-de-ley-17555",
+    date: "Apr 21, 2026" },
+  { tag: "news", tagLabel: "Journalism",
+    topics: ["bans", "verification"],
+    title: "Las claves del proyecto de ley que busca restringir el uso de redes sociales hasta los 16 años",
+    outlet: "BioBioChile", region: "Chile",
+    summary: "Explainer on Chile's Boletín 18246-18, covering the under-16 platform ban, restrictions on gambling, live-streaming, pornography and violent-videogame platforms for minors, the AI-chatbot companionship ban, and the parallel Senate bill setting a under-14 threshold.",
+    url: "https://www.biobiochile.cl/noticias/bbcl-explica/bbcl-explica-notas/2026/06/15/las-claves-del-proyecto-de-ley-que-busca-restringir-el-uso-de-redes-sociales-hasta-los-16-anos.shtml",
+    date: "Jun 15, 2026" },
   { tag: "news", tagLabel: "Journalism",
     topics: ["bans", "design", "verification"],
     title: "Europe Wants Platforms to Prove They Are Safe for Children",
