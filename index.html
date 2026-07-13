@@ -1895,6 +1895,44 @@ const PLATFORM_IMPACT = {
     sourceNote: "S.431 enacted February 6, 2026; immediately effective. Enforcement by SC AG; private right of action available via SC Unfair Trade Practices Act.",
     regulatorSource: { label: "SC Legislature — S.431", url: "https://www.scstatehouse.gov/sess126_2025-2026/prever/3431_20260114.htm" }
   },
+  "🇺🇸 US — Maryland": {
+    definition: "Any 'online product, service, or feature' reasonably likely to be accessed by children under 18, covered under the Age-Appropriate Design Code Act (HB 603, the \"Maryland Kids Code\"). Modeled on the UK AADC — scope turns on likely child audience, not a minimum user-count threshold. Builds on, and applies alongside, the broader Maryland Online Data Privacy Act.",
+    regulatorNote: "No private right of action — enforcement is exclusive to the AG's Division of Consumer Protection, with a 90-day cure period for companies that have completed a Data Protection Impact Assessment (DPIA). The law remains in force while NetChoice v. Brown proceeds through discovery.",
+    reqs: [
+      "Apply default highest-privacy settings for users identified as minors",
+      "Complete a Data Protection Impact Assessment (DPIA) for any feature likely to be accessed by children (first deadline was April 1, 2026)",
+      "Refrain from using minors' personal data in ways not in their best interests",
+      "Cure identified violations within 90 days of AG notice where a DPIA has been completed",
+    ],
+    sourceNote: "HB 603 (2024) signed May 9, 2024; effective October 1, 2024. Penalties: $2,500–$7,500 per child per violation; UDAP penalties up to $25,000 for repeat violations.",
+    regulatorSource: { label: "Maryland General Assembly — HB 603", url: "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB0603" }
+  },
+  "🇺🇸 US — Nebraska (AADC)": {
+    definition: "Online services covered under the Age-Appropriate Online Design Code Act (LB 504). As amended by LB 838 (effective July 17, 2026), coverage extends to any company generating a majority of revenue from online services with either $25M+ annual revenue or 50,000+ users' personal data processed — the earlier 50%-of-data-revenue threshold was removed. Services where fewer than 2% of users are minors remain exempt.",
+    regulatorNote: "Operative January 1, 2026; civil penalty enforcement began July 1, 2026. Separate from Nebraska's LB 383 (age-verification/parental-consent law), which is currently enjoined.",
+    reqs: [
+      "Apply default highest-privacy settings for minors",
+      "Let minors opt out of covered design features — infinite scroll, autoplay, engagement quantification (likes/views), gamification, AI chatbot intimacy features",
+      "Disable push notifications during nighttime and school hours",
+      "Minimize data collection and protect precise geolocation for minors",
+      "Provide a 15-day account deletion/unpublishing tool for minors (added by LB 838)",
+      "Refrain from single-click bulk privacy downgrades (prohibited by LB 838)",
+    ],
+    sourceNote: "LB 504 signed May 30, 2025; LB 838 amendments signed April 17, 2026. Penalties up to $50,000 per violation, enforced by the Nebraska Attorney General.",
+    regulatorSource: { label: "Nebraska Legislature — LB 504 (signed slip)", url: "https://nebraskalegislature.gov/FloorDocs/109/PDF/Slip/LB504.pdf" }
+  },
+  "🇺🇸 US — Ohio": {
+    definition: "'Operators' of social media platforms as defined by Ohio Revised Code § 1349.09 — services enabling users under 16 to create accounts, interact socially, and share content. The 6th Circuit's June 18, 2026 ruling in NetChoice v. Yost allows the law to take effect after a district court had permanently enjoined it.",
+    regulatorNote: "The 6th Circuit reversed 2-1, holding NetChoice lacked third-party standing to assert minors' First Amendment rights and that the law survives strict scrutiny; Judge Ritz dissented, calling it a 'breathtakingly blunt instrument.' Ohio AG enforcement can now proceed following the reversal.",
+    reqs: [
+      "Obtain verifiable parental consent before minors under 16 can create an account",
+      "Verify user age at account registration",
+      "Give parents tools to access and control a minor's account privacy and use settings",
+      "Restrict engagement-maximizing design features — like infinite scroll and push notifications — for minor accounts absent parental consent",
+    ],
+    sourceNote: "Ohio Revised Code § 1349.09, signed 2023 by Gov. Mike DeWine; took effect following the 6th Circuit's June 18, 2026 reversal of the permanent injunction. Civil penalty enforcement by the Ohio Attorney General.",
+    regulatorSource: { label: "Ohio Revised Code § 1349.09", url: "https://codes.ohio.gov/ohio-revised-code/section-1349.09" }
+  },
 };
 
 const MILESTONES = [
