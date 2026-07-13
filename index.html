@@ -975,7 +975,7 @@ const POLICIES = [
     enforcement: "European Commission + national DSCs",
     penalties: "Up to 6% global turnover (DSA)",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "EU Age Verification Blueprint feature-ready April 15, 2026; Commission declared the app technically ready and adopted a recommendation May 11, 2026 urging Member States to deploy by end of 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026.",
+    notes: "EU Age Verification Blueprint feature-ready April 15, 2026; Commission declared the app technically ready and adopted a recommendation May 11, 2026 urging Member States to deploy by end of 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026. July 13, 2026: the Commission's Special Panel on Child Safety Online delivered its final report to President von der Leyen, recommending an EU-wide minimum age of 13 for social media and 'social media plus' services (gaming, messaging, AI companions), a reversal of the burden of proof so platforms must demonstrate safety-by-design before children can access their services, binding (not just guideline) design rules against infinite scroll/autoplay/engagement-tuned recommendations by default, and zero-knowledge-proof age verification (no ID or biometric processing). The European Parliament has called for a higher EU-wide floor of 16. Commission legislation is expected after summer 2026. On July 6, 2026 the Commission issued preliminary DSA findings that Meta's Facebook and Instagram breached the DSA through addictive design features, the second such finding after TikTok in February 2026.",
     primary: { title: "EC — EU age verification policy", url: "https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification", host: "ec.europa.eu" }
   },
   {
@@ -988,7 +988,7 @@ const POLICIES = [
     enforcement: "Arcom",
     penalties: "Significant; tied to EU rules",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "National Assembly approved bill January 2026. Platforms must implement robust age verification by Sept 2026 for new accounts; full compliance Jan 2027. Targets recommendation algorithms; extends school phone ban to high schools.",
+    notes: "National Assembly approved bill January 2026. Platforms must implement robust age verification by Sept 2026 for new accounts; full compliance Jan 2027. Targets recommendation algorithms; extends school phone ban to high schools. July 6, 2026: the European Commission notified France that platform-enforced age limits are a matter of EU (not national) competence under the DSA and that the under-15 ban conflicts with it; France must revise the law by August 10, 2026, or face further Commission action. Denmark, Greece, Germany, Spain, Austria, and Sweden face the same EU-jurisdiction constraint on their own national age-restriction measures.",
     primary: { title: "LOI n° 2023-566 du 7 juillet 2023 (majorité numérique) — Légifrance", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047799533", host: "legifrance.gouv.fr" }
   },
   {
@@ -1859,6 +1859,10 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-07-13", flag: "🇪🇺", label: "<strong>EU</strong> — Special Panel on Child Safety Online delivers final report to Commission President von der Leyen: recommends EU-wide minimum age of 13 for social media and 'social media plus' services, reversing the burden of proof onto platforms to demonstrate safety-by-design, binding design-rules, and zero-knowledge-proof age verification; legislation expected after summer" },
+  { date: "2026-08-10", flag: "🇫🇷", label: "<strong>France</strong> — Deadline for France to revise its under-15 social media ban to resolve the European Commission's DSA conflict objection" },
+  { date: "2026-07-06", flag: "🇫🇷", label: "<strong>France</strong> — European Commission tells France its under-15 social media ban conflicts with the DSA (age-limit enforcement is EU, not national, competence); France must revise the law by Aug. 10, 2026. Denmark, Greece, Germany, Spain, Austria, and Sweden face the same constraint on their own national measures" },
+  { date: "2026-07-06", flag: "🇪🇺", label: "<strong>EU</strong> — Commission issues preliminary DSA findings that Meta's Facebook and Instagram breached the DSA through addictive design features — the second such finding after TikTok in February 2026" },
   { date: "2026-07-06", flag: "🇺🇸", label: "<strong>US (Texas)</strong> — Supreme Court declines, on its emergency docket, to block SB 2420 (app store age verification); unsigned order, no dissents, no stated reasoning. Merits appeal continues before the 5th Circuit, expedited hearing expected early August 2026" },
   { date: "2026-06-22", flag: "🇬🇧", label: "<strong>UK</strong> — PM Keir Starmer resigns as Labour leader one week after announcing the under-16 social media ban; remains caretaker PM pending a leadership contest (nominations opened July 9, resolution expected before the July 16 recess); Andy Burnham is the frontrunner and widely expected to take over by mid-to-late July" },
   { date: "2026-06-30", flag: "🇺🇸", label: "<strong>US (New Jersey)</strong> — Legislature passes the New Jersey Kids Code Act (A4015): AADC-style design rules requiring data minimization, default highest-privacy settings for minors, prohibition on using surveillance data in algorithmic feeds, notification limits, duty of care for compulsive use, and a private right of action. No affirmative age verification required. Now awaiting signature from Gov. Mikie Sherrill." },
@@ -1921,6 +1925,13 @@ const MILESTONES = [
 
 const MEDIA = [
   // ─── This week ───
+  { tag: "news", tagLabel: "Journalism",
+    topics: ["bans", "design", "verification"],
+    title: "Europe Wants Platforms to Prove They Are Safe for Children",
+    outlet: "Tech Policy Press · Ramsha Jahangir", region: "EU",
+    summary: "Covers the EU Special Panel on Child Safety Online's July 13, 2026 final report recommending an EU-wide minimum age of 13, a reversal of the burden of proof onto platforms, binding safety-by-design rules, and zero-knowledge-proof age verification; also covers the Commission's DSA conflict objection to France's under-15 ban and preliminary DSA findings against Meta.",
+    url: "https://www.techpolicy.press/europe-wants-platforms-to-prove-they-are-safe-for-children/",
+    date: "Jul 13, 2026" },
   { tag: "news", tagLabel: "Journalism",
     topics: ["verification", "litigation"],
     title: "U.S. Supreme Court declines request to block Texas' app age verification law",
