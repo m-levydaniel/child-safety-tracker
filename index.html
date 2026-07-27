@@ -872,7 +872,10 @@
       <button type="button" class="view-toggle-btn" data-view="table" aria-pressed="false">Compare Implemented Laws</button>
     </div>
   </div>
-  <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
+  <div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:10px;">
+    <button id="policy-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="policy-filters-box">
+      Filters
+    </button>
     <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
       Legend
     </button>
@@ -912,23 +915,25 @@
 
   <div class="stat-row" id="stats"></div>
 
-  <div class="controls" role="group" aria-label="Filter by type">
-    <span class="controls-label" aria-hidden="true">Type</span>
-    <span class="chip active" data-filter="type:all">All</span>
-    <span class="chip" data-filter="type:full-ban">Full ban</span>
-    <span class="chip" data-filter="type:parental-consent">Parental consent</span>
-    <span class="chip" data-filter="type:design-rules">Design rules</span>
-    <span class="chip" data-filter="type:age-verification">Age verification</span>
-    <span class="chip" data-filter="type:mixed">Mixed</span>
-  </div>
-  <div class="controls" role="group" aria-label="Filter by region">
-    <span class="controls-label" aria-hidden="true">Region</span>
-    <span class="chip active" data-filter="region:all">All</span>
-    <span class="chip" data-filter="region:Europe">Europe</span>
-    <span class="chip" data-filter="region:Americas">Americas</span>
-    <span class="chip" data-filter="region:APAC">APAC</span>
-    <span class="chip" data-filter="region:Africa">Africa</span>
-    <input type="search" id="search-box" placeholder="Search country, law, regulator…" aria-label="Search policies" />
+  <div class="legend-box" id="policy-filters-box" style="display:none;">
+    <div class="controls" role="group" aria-label="Filter by type">
+      <span class="controls-label" aria-hidden="true">Type</span>
+      <span class="chip active" data-filter="type:all">All</span>
+      <span class="chip" data-filter="type:full-ban">Full ban</span>
+      <span class="chip" data-filter="type:parental-consent">Parental consent</span>
+      <span class="chip" data-filter="type:design-rules">Design rules</span>
+      <span class="chip" data-filter="type:age-verification">Age verification</span>
+      <span class="chip" data-filter="type:mixed">Mixed</span>
+    </div>
+    <div class="controls" role="group" aria-label="Filter by region">
+      <span class="controls-label" aria-hidden="true">Region</span>
+      <span class="chip active" data-filter="region:all">All</span>
+      <span class="chip" data-filter="region:Europe">Europe</span>
+      <span class="chip" data-filter="region:Americas">Americas</span>
+      <span class="chip" data-filter="region:APAC">APAC</span>
+      <span class="chip" data-filter="region:Africa">Africa</span>
+      <input type="search" id="search-box" placeholder="Search country, law, regulator…" aria-label="Search policies" />
+    </div>
   </div>
 
   <div class="kanban-board" id="kanban-board"></div>
@@ -963,8 +968,14 @@
     </div>
   </div>
 
-  <h2>Media, Research & Civil Society</h2>
+  <div class="section-header">
+    <h2>Media, Research & Civil Society</h2>
+    <button id="media-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="media-filters-box">
+      Filters
+    </button>
+  </div>
   <p class="subtitle">Split by source type so you can scan the buckets that matter for your work.</p>
+  <div class="legend-box" id="media-filters-box" style="display:none;">
   <div class="controls">
     <span class="chip active" data-mfilter="all">All</span>
     <span class="chip" data-mfilter="research">Research & reviews</span>
@@ -981,6 +992,7 @@
     <span class="chip" data-topic="litigation">Litigation & courts</span>
     <span class="chip" data-topic="design">Design rules & legislation</span>
     <span class="chip" data-topic="privacy">Privacy & free speech</span>
+  </div>
   </div>
 
   <div id="media-sections"></div>
@@ -3242,14 +3254,20 @@ $$(".compare-table th[data-sort]").forEach(th => {
 });
 setPolicyView(policyView);
 
-$("#legend-toggle").addEventListener("click", () => {
-  const box = $("#legend-box");
-  const btn = $("#legend-toggle");
-  const willShow = box.style.display === "none";
-  box.style.display = willShow ? "block" : "none";
-  btn.classList.toggle("active", willShow);
-  btn.setAttribute("aria-expanded", willShow ? "true" : "false");
-});
+function wireCollapsibleToggle(btnId, boxId) {
+  const btn = $(btnId);
+  const box = $(boxId);
+  if (!btn || !box) return;
+  btn.addEventListener("click", () => {
+    const willShow = box.style.display === "none";
+    box.style.display = willShow ? "block" : "none";
+    btn.classList.toggle("active", willShow);
+    btn.setAttribute("aria-expanded", willShow ? "true" : "false");
+  });
+}
+wireCollapsibleToggle("#legend-toggle", "#legend-box");
+wireCollapsibleToggle("#policy-filters-toggle", "#policy-filters-box");
+wireCollapsibleToggle("#media-filters-toggle", "#media-filters-box");
 $("#cal-prev").addEventListener("click", () => {
   if (calMonthOffset > CAL_MIN_OFFSET) { calMonthOffset--; calSelectedDate = null; renderCalendar(); }
 });
