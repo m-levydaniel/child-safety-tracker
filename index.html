@@ -968,14 +968,8 @@
     </div>
   </div>
 
-  <div class="section-header">
-    <h2>Media, Research & Civil Society</h2>
-    <button id="media-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="media-filters-box">
-      Filters
-    </button>
-  </div>
+  <h2>Media, Research & Civil Society</h2>
   <p class="subtitle">Split by source type so you can scan the buckets that matter for your work.</p>
-  <div class="legend-box" id="media-filters-box" style="display:none;">
   <div class="controls">
     <span class="chip active" data-mfilter="all">All</span>
     <span class="chip" data-mfilter="research">Research & reviews</span>
@@ -992,7 +986,6 @@
     <span class="chip" data-topic="litigation">Litigation & courts</span>
     <span class="chip" data-topic="design">Design rules & legislation</span>
     <span class="chip" data-topic="privacy">Privacy & free speech</span>
-  </div>
   </div>
 
   <div id="media-sections"></div>
@@ -3267,7 +3260,6 @@ function wireCollapsibleToggle(btnId, boxId) {
 }
 wireCollapsibleToggle("#legend-toggle", "#legend-box");
 wireCollapsibleToggle("#policy-filters-toggle", "#policy-filters-box");
-wireCollapsibleToggle("#media-filters-toggle", "#media-filters-box");
 $("#cal-prev").addEventListener("click", () => {
   if (calMonthOffset > CAL_MIN_OFFSET) { calMonthOffset--; calSelectedDate = null; renderCalendar(); }
 });
