@@ -867,24 +867,24 @@
 
   <div class="section-header">
     <h2>Policy Tracker</h2>
-    <div style="display:flex; gap:8px; align-items:center;">
-      <div class="view-toggle" id="policy-view-toggle" role="group" aria-label="Policy Tracker view">
-        <button type="button" class="view-toggle-btn active" data-view="board" aria-pressed="true">Board</button>
-        <button type="button" class="view-toggle-btn" data-view="table" aria-pressed="false">Table</button>
-      </div>
-      <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
-        Legend
-      </button>
+    <div class="view-toggle" id="policy-view-toggle" role="group" aria-label="Policy Tracker view">
+      <button type="button" class="view-toggle-btn active" data-view="board" aria-pressed="true">Board</button>
+      <button type="button" class="view-toggle-btn" data-view="table" aria-pressed="false">Compare Implemented Laws</button>
     </div>
   </div>
-  <p class="subtitle" id="table-view-subtitle" style="display:none;">Table view compares the 14 laws currently in force — how each defines which platforms it covers, and at what age.</p>
+  <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
+    <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
+      Legend
+    </button>
+  </div>
+  <p class="subtitle" id="table-view-subtitle" style="display:none;">Comparing the 14 laws currently in force — how each defines which platforms it covers, and at what age.</p>
 
   <div class="legend-box" id="legend-box" style="display:none;">
     <div class="legend-row">
       <span class="legend-label">Status</span>
       <span class="badge-hint badge badge-implemented" tabindex="0" data-tip="in force and being enforced">Implemented<span class="sr-only"> — in force and being enforced</span></span>
       <span class="badge-hint badge badge-passed" tabindex="0" data-tip="enacted, not yet in force">Passed<span class="sr-only"> — enacted, not yet in force</span></span>
-      <span class="badge-hint badge badge-pending" tabindex="0" data-tip="in legislative process">Pending<span class="sr-only"> — in legislative process</span></span>
+      <span class="badge-hint badge badge-pending" tabindex="0" data-tip="proposed or in the legislative process">Pending<span class="sr-only"> — proposed or in the legislative process</span></span>
       <span class="badge-hint badge badge-stalled" tabindex="0" data-tip="died, blocked, or stuck">Stalled<span class="sr-only"> — died, blocked, or stuck</span></span>
     </div>
     <div class="legend-row">
