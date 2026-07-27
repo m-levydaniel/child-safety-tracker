@@ -589,6 +589,12 @@
   .badge-passed { background: var(--blue-soft); color: var(--blue); }
   .badge-pending { background: var(--amber-soft); color: var(--amber); }
   .badge-stalled { background: var(--gray-soft); color: var(--gray); }
+  .badge-stage {
+    background: none;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    font-weight: 500;
+  }
 
   .type-full-ban { background: var(--red-soft); color: var(--red); }
   .type-parental-consent { background: var(--purple-soft); color: var(--purple); }
@@ -840,6 +846,12 @@
       <span class="badge-hint badge badge-stalled" tabindex="0" data-tip="died, blocked, or stuck">Stalled<span class="sr-only"> — died, blocked, or stuck</span></span>
     </div>
     <div class="legend-row">
+      <span class="legend-label">Pending stage</span>
+      <span class="badge-hint badge badge-stage" tabindex="0" data-tip="announced or under discussion — no bill has been filed yet">Proposed<span class="sr-only"> — announced or under discussion, no bill filed yet</span></span>
+      <span class="badge-hint badge badge-stage" tabindex="0" data-tip="a formal bill has been filed and is moving through the legislature (may be in committee or have passed one chamber)">Introduced<span class="sr-only"> — a formal bill has been filed and is moving through the legislature</span></span>
+      <span class="controls-hint">shown alongside the Pending badge — hover either for specifics</span>
+    </div>
+    <div class="legend-row">
       <span class="legend-label">Type</span>
       <span class="badge-hint badge type-full-ban" tabindex="0" data-tip="age-based access prohibition">Full ban<span class="sr-only"> — age-based access prohibition</span></span>
       <span class="badge-hint badge type-parental-consent" tabindex="0" data-tip="requires guardian approval">Parental consent<span class="sr-only"> — requires guardian approval</span></span>
@@ -955,6 +967,7 @@ const POLICIES = [
   {
     country: "🇬🇧 United Kingdom", region: "Europe",
     initiative: "Proposed under-16 social media ban",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Announced by the PM; no bill text introduced yet",
     summary: "PM Starmer announced June 15, 2026 a full ban on social media for under-16s — Snapchat, TikTok, YouTube, Instagram, Facebook, X. Messaging apps (WhatsApp, Signal) excluded. Billed as stricter than Australia's model: also bars under-18s from romantic/sexual AI chatbots and brings gaming platforms within scope.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1146,6 +1159,7 @@ const POLICIES = [
   {
     country: "🇺🇸 US — Massachusetts", region: "Americas",
     initiative: "Under-14 social media ban (advancing)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill advancing through the state legislature",
     summary: "Rapidly advancing bill to prohibit all users under 14 from social media platforms.",
     minAge: 14, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1185,6 +1199,7 @@ const POLICIES = [
   {
     country: "🇺🇸 US — Utah", region: "Americas",
     initiative: "Minor Protection in Social Media Act (SB 194 + HB 464)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "SB 194 + HB 464 filed in the state legislature",
     summary: "Replaced the original Utah Social Media Regulation Act after a First Amendment challenge; imposes default privacy/curfew settings for minors and a private right of action for algorithm-related harms.",
     minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
     status: "pending", statusLabel: "Pending",
@@ -1201,7 +1216,7 @@ const POLICIES = [
     initiative: "Act 900 of 2025 (successor to Social Media Safety Act / Act 689)",
     summary: "Requires age verification and parental consent for minors on social media; redrafted after predecessor law (Act 689, 2023) was permanently struck down.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
-    status: "pending", statusLabel: "Pending",
+    status: "passed", statusLabel: "Passed",
     year: "2025", yearSort: 2025,
     enforcement: "AR Attorney General",
     penalties: "tbd",
@@ -1227,6 +1242,7 @@ const POLICIES = [
   {
     country: "🇺🇸 US — Michigan", region: "Americas",
     initiative: "Digital Age Assurance Act (SB 284 / HB 4429)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "SB 284 / HB 4429 filed; neither has advanced out of committee",
     summary: "Would require device manufacturers to verify users' ages and share age-range signals with apps; platforms with 5M+ users would need parental consent for minors, nighttime access limits (10:30pm–6:30am), and restrictions on algorithmic recommendations and data collection for minors.",
     minAge: 18, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
@@ -1280,6 +1296,7 @@ const POLICIES = [
   {
     country: "🇨🇦 Canada", region: "Americas",
     initiative: "Safe Social Media Act (Bill C-34)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill C-34 tabled in Parliament; still needs House and Senate passage",
     summary: "National minimum age of 16 for social media accounts, modeled on Australia's ban; creates a new Digital Safety Commission of Canada and also regulates AI chatbots. Supersedes the earlier Online Harms Act efforts (C-63, died 2025; C-216, private member's bill).",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1295,7 +1312,7 @@ const POLICIES = [
     initiative: "Social media minor-safety bills (National Assembly)",
     summary: "Package of seven bills covering a ban on social media use by under-14s, parental consent for under-16s, and a ban on algorithmic recommendation feeds for under-19s.",
     minAge: 14, regType: "mixed", regTypeLabel: "Mixed",
-    status: "pending", statusLabel: "Pending",
+    status: "stalled", statusLabel: "Stalled",
     year: "2025–2026", yearSort: 2025,
     enforcement: "tbd (proposed platform penalties for failure to verify age)",
     penalties: "tbd",
@@ -1306,6 +1323,7 @@ const POLICIES = [
   {
     country: "🇯🇵 Japan", region: "APAC",
     initiative: "SNS age-verification measures (MIC advisory panel proposal)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Advisory panel recommendation only; no bill introduced",
     summary: "Ministry of Internal Affairs and Communications advisory panel proposes stricter SNS age-verification measures for minors; explicitly rejects a unified mandatory age-verification law in favor of risk-proportionate platform obligations.",
     minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
     status: "pending", statusLabel: "Pending",
@@ -1319,6 +1337,7 @@ const POLICIES = [
   {
     country: "🇳🇿 New Zealand", region: "APAC",
     initiative: "Social Media (Age-Restricted Users) Bill",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill before select committee; government plans passage in 2026",
     summary: "Member's bill to ban under-16s from social media via mandatory age verification.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1384,6 +1403,7 @@ const POLICIES = [
   {
     country: "🇨🇱 Chile", region: "Americas",
     initiative: "Under-16 social media ban bill (Boletín 18246-18)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Boletín 18246-18 before the Chamber of Deputies' Comisión de Ciencias",
     summary: "Would bar under-16s from digital platforms outright (no parental override), restrict gambling, live-streaming, pornography and violent-videogame platforms for minors, and bar AI chatbots from simulating relationships with children.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1397,6 +1417,7 @@ const POLICIES = [
   {
     country: "🇦🇷 Argentina", region: "Americas",
     initiative: "Age-tiered social media access bill (1114-D-2026) + platform accountability bill",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill 1114-D-2026 introduced by Deputy María Jimena López",
     summary: "Would bar social media accounts for under-13s, require parental consent for 14- to 16-year-olds, and mandate robust age verification; a parallel bill targets addictive design, grooming, and gambling mechanics.",
     minAge: 13, regType: "mixed", regTypeLabel: "Ban + parental consent",
     status: "pending", statusLabel: "Pending",
@@ -1462,6 +1483,7 @@ const POLICIES = [
   {
     country: "🇪🇸 Spain", region: "Europe",
     initiative: "Social media restrictions for minors",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Restrictions under discussion; no bill filed yet",
     summary: "EU Age Verification Blueprint pilot; considering age-based restrictions on platform access.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
@@ -1475,6 +1497,7 @@ const POLICIES = [
   {
     country: "🇮🇹 Italy", region: "Europe",
     initiative: "Social media age restriction proposals",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Restrictions under discussion; no bill filed yet",
     summary: "EU Age Verification Blueprint pilot; restrictions for younger users under consideration.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
@@ -1488,6 +1511,7 @@ const POLICIES = [
   {
     country: "🇩🇪 Germany", region: "Europe",
     initiative: "Social media age restriction proposals",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Under active discussion as part of broader EU debate; no bill filed",
     summary: "Age-based restrictions under discussion at federal level.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
@@ -1501,6 +1525,7 @@ const POLICIES = [
   {
     country: "🇦🇹 Austria", region: "Europe",
     initiative: "Under-14 social media ban (proposed)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Draft legislation targeted for end of June 2026; not yet filed",
     summary: "Considering a ban for under-14s with 'technically modern' age verification.",
     minAge: 14, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1514,6 +1539,7 @@ const POLICIES = [
   {
     country: "🇳🇴 Norway", region: "Europe",
     initiative: "Under-16 social media ban (proposed)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Ban announced; legislation expected by end of 2026, not yet drafted",
     summary: "Government plan to ban under-16s; tech companies responsible for age verification.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1527,6 +1553,7 @@ const POLICIES = [
   {
     country: "🇸🇮 Slovenia", region: "Europe",
     initiative: "Under-15 social media ban (drafting)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "In drafting stage; not yet introduced",
     summary: "Drafting law to prohibit children under 15 from accessing social media.",
     minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1540,6 +1567,7 @@ const POLICIES = [
   {
     country: "🇨🇿 Czechia", region: "Europe",
     initiative: "Social media age proposals",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Part of the broader European wave of national-level proposals; no bill filed",
     summary: "Age-based access restrictions under discussion.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
@@ -1553,6 +1581,7 @@ const POLICIES = [
   {
     country: "🇵🇱 Poland", region: "Europe",
     initiative: "Under-15 social media ban (proposed)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Plan presented by the Minister of Education; no bill filed",
     summary: "Education Minister's plan to ban under-15s; non-compliance fines up to 6% of annual revenue.",
     minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1566,6 +1595,7 @@ const POLICIES = [
   {
     country: "🇳🇱 Netherlands", region: "Europe",
     initiative: "Social media restrictions (under consideration)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Early-stage consideration; no bill filed",
     summary: "Reviewing age-based social media restrictions for minors.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
@@ -1618,6 +1648,7 @@ const POLICIES = [
   {
     country: "🇪🇨 Ecuador", region: "Americas",
     initiative: "Teen social media restrictions",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Government making a national-security case for restrictions; no bill filed yet",
     summary: "National security framing for restricting teen social media use.",
     minAge: null, regType: "mixed", regTypeLabel: "Mixed",
     status: "pending", statusLabel: "Pending",
@@ -1631,6 +1662,7 @@ const POLICIES = [
   {
     country: "🇵🇭 Philippines", region: "APAC",
     initiative: "Under-18 social media ban (bill)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill introduced July 2025",
     summary: "Bill introduced 2025 that would ban social media for minors under 18 — highest minimum-age threshold of any major proposal.",
     minAge: 18, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1644,6 +1676,7 @@ const POLICIES = [
   {
     country: "🇮🇳 India", region: "APAC",
     initiative: "Age verification proposals (Supreme Court)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Court-led process; no bill filed, ministry developing response",
     summary: "Supreme Court granted request to propose age verification requirements to the Central Government.",
     minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
@@ -1657,6 +1690,7 @@ const POLICIES = [
   {
     country: "🇿🇼 Zimbabwe", region: "Africa",
     initiative: "Under-18 social media access ban (considering)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Early-stage consideration; no bill filed",
     summary: "Considering a ban on social media access for minors under 18.",
     minAge: 18, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1749,6 +1783,7 @@ const POLICIES = [
   {
     country: "🇺🇸 US — Federal", region: "Americas",
     initiative: "Kids Internet and Digital Safety Act (KIDS Act, H.R. 7757) / Kids Online Safety Act (KOSA, S.1748)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Passed the full House 267–117; awaiting Senate Commerce markup and floor action",
     summary: "Two competing proposals in Congress. The House passed its KIDS Act package (H.R. 7757) on June 29, 2026 (267–117): requires platforms to establish 'reasonable policies, practices, and procedures' to prevent physical violence threats, sexual exploitation, drugs, gambling, and financial harm to minors; includes parental controls for gaming, messaging, and AI chatbots; data privacy protections; a new data broker registry. Preemption provision sets a floor — states may enact stronger laws — but critics argue it could still preempt state tort suits against platforms. The Senate version (KOSA, S.1748, Blackburn/Blumenthal) retains a stronger 'duty of care' standard and is awaiting Senate Commerce Committee markup under Chairman Cruz, expected July 2026. Key dispute: duty of care vs. reasonableness standard; preemption scope; and whether the bill could be tied to AI preemption legislation backed by the White House and tech industry.",
     minAge: null, regType: "mixed", regTypeLabel: "Mixed",
     status: "pending", statusLabel: "Pending",
@@ -2796,13 +2831,16 @@ function renderKanban() {
           const idx = POLICIES.indexOf(p);
           const litBadge = p.litigation !== "none"
             ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>` : "";
+          const stageBadge = p.stage
+            ? `<span class="badge badge-stage badge-hint" tabindex="0" data-tip="${p.stageNote}">${p.stageLabel}<span class="sr-only"> — ${p.stageNote}</span></span>` : "";
           return `<div class="k-card" role="button" tabindex="0"
             onclick="openModal(${idx})"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${idx});}"
-            aria-label="${p.country} — ${p.regTypeLabel}, ${p.statusLabel}">
+            aria-label="${p.country} — ${p.regTypeLabel}, ${p.statusLabel}${p.stage ? ' · ' + p.stageLabel : ''}">
             <div class="k-card-name">${p.country}</div>
             <div class="k-card-tags">
               <span class="badge type-${p.regType}">${p.regTypeLabel}</span>
+              ${stageBadge}
               ${litBadge}
             </div>
           </div>`;
@@ -2818,8 +2856,12 @@ function openModal(idx) {
   $("#modal-initiative").textContent = p.initiative;
   $("#modal-summary").textContent = p.summary;
 
+  const statusBadge = p.stage
+    ? `<span class="badge badge-${p.status} badge-hint" tabindex="0" data-tip="${p.stageNote}">${p.statusLabel} · ${p.stageLabel}<span class="sr-only"> — ${p.stageNote}</span></span>`
+    : `<span class="badge badge-${p.status}">${p.statusLabel}</span>`;
+
   const rows = [
-    ["Status",      `<span class="badge badge-${p.status}">${p.statusLabel}</span>`],
+    ["Status",      statusBadge],
     ["Type",        `<span class="badge type-${p.regType}">${p.regTypeLabel}</span>`],
     ["Min age",     p.minAge != null ? p.minAge : null],
     ["Year",        p.year],
