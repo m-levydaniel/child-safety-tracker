@@ -867,22 +867,22 @@
 
   <div class="section-header">
     <h2>Policy Tracker</h2>
-    <div style="display:flex; gap:8px;">
-      <button id="policy-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="policy-filters-box">
-        Filters
-      </button>
-      <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
-        Legend
-      </button>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <label for="policy-compare-toggle" style="display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); cursor:pointer; user-select:none;">
+        <input type="checkbox" id="policy-compare-toggle" style="accent-color:var(--accent); cursor:pointer;" />
+        Compare Implemented Laws
+      </label>
+      <div style="display:flex; gap:8px;">
+        <button id="policy-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="policy-filters-box">
+          Filters
+        </button>
+        <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
+          Legend
+        </button>
+      </div>
     </div>
   </div>
-  <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
-    <div class="stat-row" id="stats" style="margin-bottom:0;"></div>
-    <label for="policy-compare-toggle" style="display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); cursor:pointer; user-select:none; flex-shrink:0; margin-bottom:14px;">
-      <input type="checkbox" id="policy-compare-toggle" style="accent-color:var(--accent); cursor:pointer;" />
-      Compare Implemented Laws
-    </label>
-  </div>
+  <div class="stat-row" id="stats"></div>
   <p class="subtitle" id="table-view-subtitle" style="display:none;">Comparing the 14 laws currently in force — how each defines which platforms it covers, and at what age.</p>
 
   <div class="legend-box" id="legend-box" style="display:none;">
