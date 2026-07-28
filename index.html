@@ -946,7 +946,7 @@
           <th data-sort="regType">Approach</th>
           <th data-sort="coverageTrigger">Coverage trigger</th>
           <th data-sort="minAge">Min age</th>
-          <th data-sort="litigation">Litigation</th>
+          <th data-sort="penalties">Fines</th>
         </tr>
       </thead>
       <tbody id="compare-body"></tbody>
@@ -2937,7 +2937,7 @@ function renderCompareTable() {
   const sorted = rows.slice().sort((a, b) => {
     let av, bv;
     if (f === "minAge") { av = a.minAge ?? -1; bv = b.minAge ?? -1; }
-    else if (f === "litigation") { av = a.litigationLabel; bv = b.litigationLabel; }
+    else if (f === "penalties") { av = a.penalties || ""; bv = b.penalties || ""; }
     else if (f === "regType") { av = a.regTypeLabel; bv = b.regTypeLabel; }
     else if (f === "coverageTrigger") { av = a.coverageTrigger || ""; bv = b.coverageTrigger || ""; }
     else { av = a.country; bv = b.country; }
@@ -2959,7 +2959,6 @@ function renderCompareTable() {
     ? `<tr><td colspan="5" style="text-align:center; color:var(--muted); padding:20px;">No matching laws.</td></tr>`
     : sorted.map(p => {
         const idx = POLICIES.indexOf(p);
-        const litBadge = `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>`;
         return `<tr role="button" tabindex="0"
           onclick="openModal(${idx})"
           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${idx});}"
@@ -2968,7 +2967,7 @@ function renderCompareTable() {
           <td><span class="badge type-${p.regType}">${p.regTypeLabel}</span></td>
           <td class="ct-trigger">${p.coverageTrigger || "—"}</td>
           <td class="ct-age">${p.minAge != null ? p.minAge : "—"}</td>
-          <td>${litBadge}</td>
+          <td class="ct-trigger">${p.penalties || "—"}</td>
         </tr>`;
       }).join("");
 }
