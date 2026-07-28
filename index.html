@@ -867,22 +867,19 @@
 
   <div class="section-header">
     <h2>Policy Tracker</h2>
-  </div>
-  <div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:10px;">
-    <button id="policy-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="policy-filters-box">
-      Filters
-    </button>
-    <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
-      Legend
-    </button>
+    <div style="display:flex; gap:8px;">
+      <button id="policy-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="policy-filters-box">
+        Filters
+      </button>
+      <button id="legend-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="legend-box">
+        Legend
+      </button>
+    </div>
   </div>
   <div style="margin-bottom:10px;">
     <button id="policy-compare-toggle" class="btn-toggle" type="button">Compare Implemented Laws</button>
   </div>
-  <div id="table-view-header" style="display:none; justify-content:space-between; align-items:center; gap:12px; margin:-8px 0 12px 0;">
-    <p class="subtitle" id="table-view-subtitle" style="margin:0;">Comparing the 14 laws currently in force — how each defines which platforms it covers, and at what age.</p>
-    <button id="policy-back-to-board" class="btn-toggle" type="button">&larr; Board view</button>
-  </div>
+  <p class="subtitle" id="table-view-subtitle" style="display:none;">Comparing the 14 laws currently in force — how each defines which platforms it covers, and at what age.</p>
 
   <div class="legend-box" id="legend-box" style="display:none;">
     <div class="legend-row">
@@ -3224,11 +3221,13 @@ function setPolicyView(view) {
   localStorage.setItem("cs2-policy-view", view);
   $("#kanban-board").style.display = view === "board" ? "grid" : "none";
   $("#compare-view").style.display = view === "table" ? "block" : "none";
-  $("#table-view-header").style.display = view === "table" ? "flex" : "none";
+  $("#table-view-subtitle").style.display = view === "table" ? "block" : "none";
+  $("#policy-compare-toggle").textContent = view === "table" ? "Board view" : "Compare Implemented Laws";
   renderPolicySection();
 }
-$("#policy-compare-toggle").addEventListener("click", () => setPolicyView("table"));
-$("#policy-back-to-board").addEventListener("click", () => setPolicyView("board"));
+$("#policy-compare-toggle").addEventListener("click", () => {
+  setPolicyView(policyView === "table" ? "board" : "table");
+});
 $$(".compare-table th[data-sort]").forEach(th => {
   th.addEventListener("click", () => {
     const field = th.dataset.sort;
