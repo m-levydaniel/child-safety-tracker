@@ -867,10 +867,6 @@
 
   <div class="section-header">
     <h2>Policy Tracker</h2>
-    <div class="view-toggle" id="policy-view-toggle" role="group" aria-label="Policy Tracker view">
-      <button type="button" class="view-toggle-btn active" data-view="board" aria-pressed="true">Board</button>
-      <button type="button" class="view-toggle-btn" data-view="table" aria-pressed="false">Compare Implemented Laws</button>
-    </div>
   </div>
   <div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:10px;">
     <button id="policy-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="policy-filters-box">
@@ -880,7 +876,10 @@
       Legend
     </button>
   </div>
-  <p class="subtitle" id="table-view-subtitle" style="display:none;">Comparing the 14 laws currently in force — how each defines which platforms it covers, and at what age.</p>
+  <div id="table-view-header" style="display:none; justify-content:space-between; align-items:center; gap:12px; margin:-8px 0 12px 0;">
+    <p class="subtitle" id="table-view-subtitle" style="margin:0;">Comparing the 14 laws currently in force — how each defines which platforms it covers, and at what age.</p>
+    <button id="policy-back-to-board" class="btn-toggle" type="button">&larr; Board view</button>
+  </div>
 
   <div class="legend-box" id="legend-box" style="display:none;">
     <div class="legend-row">
@@ -2901,9 +2900,12 @@ function renderKanban() {
     const cards = filtered
       .filter(p => p.status === col.key)
       .sort((a, b) => a.country.localeCompare(b.country));
+    const compareBtn = col.key === "implemented"
+      ? `<button class="btn-toggle" id="policy-compare-toggle" type="button" style="margin-left:8px; padding:2px 7px; font-size:10.5px; text-transform:none; letter-spacing:normal; vertical-align:1px;">Compare Implemented Laws</button>`
+      : "";
     return `<div class="k-col">
       <div class="k-col-header">
-        <span class="k-col-title" style="color:${col.color}">${col.label}</span>
+        <span class="k-col-title" style="color:${col.color}">${col.label}${compareBtn}</span>
         <span class="k-col-count">${cards.length}</span>
       </div>
       ${cards.length === 0
@@ -3220,19 +3222,15 @@ setMilestonesView(milestonesView);
 function setPolicyView(view) {
   policyView = view;
   localStorage.setItem("cs2-policy-view", view);
-  $$("#policy-view-toggle .view-toggle-btn").forEach(b => {
-    const active = b.dataset.view === view;
-    b.classList.toggle("active", active);
-    b.setAttribute("aria-pressed", active ? "true" : "false");
-  });
   $("#kanban-board").style.display = view === "board" ? "grid" : "none";
   $("#compare-view").style.display = view === "table" ? "block" : "none";
-  $("#table-view-subtitle").style.display = view === "table" ? "block" : "none";
+  $("#table-view-header").style.display = view === "table" ? "flex" : "none";
   renderPolicySection();
 }
-$$("#policy-view-toggle .view-toggle-btn").forEach(btn => {
-  btn.addEventListener("click", () => setPolicyView(btn.dataset.view));
+$("#kanban-board").addEventListener("click", (e) => {
+  if (e.target.closest("#policy-compare-toggle")) setPolicyView("table");
 });
+$("#policy-back-to-board").addEventListener("click", () => setPolicyView("board"));
 $$(".compare-table th[data-sort]").forEach(th => {
   th.addEventListener("click", () => {
     const field = th.dataset.sort;
