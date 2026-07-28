@@ -868,6 +868,9 @@
   <div class="section-header">
     <h2>Policy Tracker</h2>
   </div>
+  <div style="margin-bottom:10px;">
+    <button id="policy-compare-toggle" class="btn-toggle" type="button">Compare Implemented Laws</button>
+  </div>
   <div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:10px;">
     <button id="policy-filters-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="policy-filters-box">
       Filters
@@ -2900,12 +2903,9 @@ function renderKanban() {
     const cards = filtered
       .filter(p => p.status === col.key)
       .sort((a, b) => a.country.localeCompare(b.country));
-    const compareBtn = col.key === "implemented"
-      ? `<button class="btn-toggle" id="policy-compare-toggle" type="button" style="margin-left:8px; padding:2px 7px; font-size:10.5px; text-transform:none; letter-spacing:normal; vertical-align:1px;">Compare Implemented Laws</button>`
-      : "";
     return `<div class="k-col">
       <div class="k-col-header">
-        <span class="k-col-title" style="color:${col.color}">${col.label}${compareBtn}</span>
+        <span class="k-col-title" style="color:${col.color}">${col.label}</span>
         <span class="k-col-count">${cards.length}</span>
       </div>
       ${cards.length === 0
@@ -3227,9 +3227,7 @@ function setPolicyView(view) {
   $("#table-view-header").style.display = view === "table" ? "flex" : "none";
   renderPolicySection();
 }
-$("#kanban-board").addEventListener("click", (e) => {
-  if (e.target.closest("#policy-compare-toggle")) setPolicyView("table");
-});
+$("#policy-compare-toggle").addEventListener("click", () => setPolicyView("table"));
 $("#policy-back-to-board").addEventListener("click", () => setPolicyView("board"));
 $$(".compare-table th[data-sort]").forEach(th => {
   th.addEventListener("click", () => {
