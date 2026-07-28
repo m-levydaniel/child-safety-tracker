@@ -2933,7 +2933,7 @@ function renderKanban() {
 }
 
 function renderCompareTable() {
-  const rows = getFiltered().filter(p => p.status === "implemented");
+  const rows = POLICIES.filter(p => p.status === "implemented");
   const f = compareSort.field;
   const sorted = rows.slice().sort((a, b) => {
     let av, bv;
@@ -3226,6 +3226,15 @@ function setPolicyView(view) {
   $("#compare-view").style.display = view === "table" ? "block" : "none";
   $("#table-view-subtitle").style.display = view === "table" ? "block" : "none";
   $("#policy-compare-toggle").checked = view === "table";
+  const filtersBtn = $("#policy-filters-toggle");
+  filtersBtn.disabled = view === "table";
+  filtersBtn.style.opacity = view === "table" ? "0.4" : "";
+  filtersBtn.style.cursor = view === "table" ? "not-allowed" : "";
+  if (view === "table") {
+    $("#policy-filters-box").style.display = "none";
+    filtersBtn.classList.remove("active");
+    filtersBtn.setAttribute("aria-expanded", "false");
+  }
   renderPolicySection();
 }
 $("#policy-compare-toggle").addEventListener("change", (e) => {
