@@ -1257,8 +1257,21 @@ const POLICIES = [
     enforcement: "NY Attorney General",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Signed by Governor Hochul on May 26, 2026 as part of the state budget package. Builds on prior NY laws (SAFE for Kids Act, Child Data Protection Act). Prohibits unknown adults from messaging minors, bars platforms from recommending minor profiles to others, limits AI chatbot / companion access for minors, and establishes AG enforcement authority. Takes effect January 1, 2027.",
+    notes: "Signed by Governor Hochul on May 26, 2026 as part of the state budget package. Builds on prior NY laws (SAFE for Kids Act, Child Data Protection Act — see separate SAFE for Kids Act entry for that law's July 2026 final rules). Prohibits unknown adults from messaging minors, bars platforms from recommending minor profiles to others, limits AI chatbot / companion access for minors, and establishes AG enforcement authority. Takes effect January 1, 2027.",
     primary: { title: "Governor Hochul — Press Release: Signing of Youth Social Media Safety Legislation", url: "https://www.governor.ny.gov/news/what-they-are-saying-governor-hochul-signs-nation-leading-legislation-restrict-addictive", host: "governor.ny.gov" }
+  },
+  {
+    country: "🇺🇸 US — New York", region: "Americas",
+    initiative: "SAFE for Kids Act",
+    summary: "Requires social media platforms to restrict algorithmically personalized ('addictive') feeds and nighttime notifications (12am-6am) for users under 18 unless the platform obtains parental consent; minors keep full access to chronological/followed-account content regardless of consent status.",
+    minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
+    status: "passed", statusLabel: "Passed",
+    year: "2024 (final rules July 2026; in force Jan 25, 2027)", yearSort: 2024,
+    enforcement: "NY Attorney General",
+    penalties: "Up to $5,000 per violation",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Signed into law by Governor Hochul in June 2024 alongside the Child Data Protection Act (which is already in effect). The law authorized the AG's office to write implementing rules before the statute takes effect. OAG issued an advance notice of proposed rulemaking August 1, 2024, published proposed rules for comment September 15, 2025, and released final rules July 28, 2026 (publishing in the State Register July 29, 2026). Applies to 'Addictive Online Platforms' — platforms with user-generated content where users spend at least 20% of their time in algorithmic feeds. Final rules set age-assurance standards (platforms must offer at least one age-verification option that isn't a government ID; age-assurance data must be minimized and deleted/de-identified after use; annual accuracy testing required, results retained 10 years) and parental-consent mechanics (minors must affirmatively seek access to restricted features; platforms can't otherwise block general access for withholding consent). Law takes effect January 25, 2027 (180 days after final-rule publication). NetChoice has publicly criticized the final rules as unconstitutional, drawing on its prior wins against California's AADC and other state design-code laws, but has not yet filed suit as of early August 2026.",
+    primary: { title: "NY AG — Final SAFE for Kids Act Rules (press release)", url: "https://ag.ny.gov/press-release/2026/attorney-general-james-and-governor-hochul-release-final-safe-kids-act-rules", host: "ag.ny.gov" }
   },
   {
     country: "🇺🇸 US — Utah", region: "Americas",
@@ -2046,6 +2059,8 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-08-06", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Judge Bryan Biedscheid rules Meta's platforms constitute a public nuisance in the Phase 2 bench trial, ordering $567M (short of the $3.7B/$1B sought) plus a 5-year injunctive decree: monthly usage limits for teens, notification restrictions, tighter controls on adult contact with minors, AI chatbot safeguards, and enhanced CSAM-report review. Adds to the March 2026 jury verdict of $375M in Phase 1. Meta says it will appeal." },
+  { date: "2026-07-28", flag: "🇺🇸", label: "<strong>US (New York)</strong> — AG James and Gov. Hochul release final SAFE for Kids Act implementing rules (age-assurance and parental-consent standards for restricting addictive feeds and nighttime notifications for under-18s); published in the State Register July 29; law takes effect January 25, 2027" },
   { date: "2026-08-05", flag: "🇺🇸", label: "<strong>US (Federal / KOSA)</strong> — Senate Commerce Committee passes S.1748 (Kids Online Safety Act) by unanimous voice vote, sending it to the full Senate floor; also advances S.4199 (Youth AI Privacy Act) and S.5171 (Children's AI Toy Safety Act). Kids Off Social Media Act (S.278) was not on the agenda; broader AI legislative framework postponed to after the August recess. Sets up a chamber clash with the House's KIDS Act, which Blumenthal and Blackburn call 'dead on arrival' over its missing duty-of-care language." },
   { date: "2026-07-31", flag: "🇺🇸", label: "<strong>US (Illinois)</strong> — Governor Pritzker signs HB 5511, the Children's Online Social Media Safety Act, into law over a NetChoice veto request; takes effect 2028" },
   { date: "2026-07-23", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — NetChoice appeals to the 8th Circuit (No. 26-2478) the portion of Judge Gerrard's June 28 order that declined to enjoin LB 383's parental-monitoring-tools provisions; briefing due September 11, 2026" },
@@ -2073,7 +2088,7 @@ const MILESTONES = [
   { date: "2026-05-13", flag: "🇺🇸", label: "<strong>US (Colorado)</strong> — Colorado files 10th Circuit opening brief urging reinstatement of social media health warning labels law (NetChoice v. Weiser, enjoined Nov. 2025)" },
   { date: "2026-05-13", flag: "🇺🇸", label: "<strong>US (Nebraska)</strong> — NetChoice files First Amendment complaint against LB 383 (NetChoice v. Hilgers, U.S. District Court for the District of Nebraska); seeks injunction before July 1 effective date" },
   { date: "2026-05-11", flag: "🇪🇺", label: "<strong>EU</strong> — Commission declares the age verification app technically ready and adopts recommendation urging Member States to deploy by end of 2026" },
-  { date: "2026-05-22", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Meta Phase 2 bench trial concludes; Judge Biedscheid deliberating on public-nuisance ruling ($3.7B remedy + algorithmic design changes sought by NM AG)" },
+  { date: "2026-05-22", flag: "🇺🇸", label: "<strong>US (New Mexico)</strong> — Meta Phase 2 bench trial concludes ($3.7B remedy + algorithmic design changes sought by NM AG); ruling issued August 6 — see separate milestone entry" },
   { date: "2026-05-21", flag: "🇬🇧", label: "<strong>UK</strong> — Ofcom Project Mercury update: TikTok and YouTube decline to commit to safer recommendation feeds for children despite OSA demands; Snap, Meta, Roblox agree to new grooming safeguards. Ofcom signals OSA enforcement may follow." },
   { date: "2026-05-26", flag: "🇬🇧", label: "<strong>UK</strong> — Children's Online Safety consultation closes" },
   { date: "2026-06-30", flag: "🇦🇹", label: "<strong>Austria</strong> — Draft under-14 ban proposal due" },
@@ -2122,6 +2137,13 @@ const MILESTONES = [
 
 const MEDIA = [
   // ─── This week ───
+  { tag: "news", tagLabel: "Journalism",
+    topics: ["litigation", "design"],
+    title: "New Mexico court orders Meta to pay $567m over harm to youths",
+    outlet: "Al Jazeera (Reuters/AP)", region: "United States (New Mexico)",
+    summary: "Reports Judge Bryan Biedscheid's August 6, 2026 Phase 2 ruling finding Meta's platforms a public nuisance under New Mexico law: $567M ($420M for youth treatment services, the rest for prevention/screening over five years) plus a five-year injunctive decree requiring in-app banners on protective features, addressing addictive design, age verification, and default privacy settings against child sexual exploitation. Adds to the March 2026 jury's $375M Phase 1 verdict. Meta says it will appeal, maintaining confidence in its 'record of protecting teens online.'",
+    url: "https://www.aljazeera.com/news/2026/8/7/new-mexico-court-orders-meta-to-pay-567m-over-harm-to-youths",
+    date: "Aug 7, 2026" },
   { tag: "legal", tagLabel: "Legal commentary",
     topics: ["verification"],
     title: "More Data on Online Age Authentication Balk Rates",
