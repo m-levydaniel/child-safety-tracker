@@ -842,7 +842,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">August 10, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">August 14, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
     </div>
@@ -1082,15 +1082,16 @@ const POLICIES = [
   {
     country: "🇫🇷 France", region: "Europe",
     initiative: "Under-15 social media ban",
-    summary: "Bans social media for children under 15; mandates age verification and platform fines for non-compliance.",
+    summary: "Would have banned social media for children under 15; the ban's core provision was struck down by the Conseil constitutionnel on August 14, 2026 as a disproportionate infringement on minors' freedom of expression.",
     minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
-    status: "passed", statusLabel: "Passed",
-    year: "2026 (in force Sept 2026)", yearSort: 2026,
+    status: "stalled", statusLabel: "Stalled",
+    year: "2026 (Article 1 struck down Aug 14, 2026; redraft targeted spring 2027)", yearSort: 2026,
     enforcement: "Arcom",
     penalties: "Significant; tied to EU rules",
-    litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "National Assembly approved bill on first reading January 2026. July 6, 2026: the European Commission notified France that platform-enforced age limits are a matter of EU (not national) competence under the DSA and that the under-15 ban conflicts with it; France was given until August 10, 2026 to revise the law or face further Commission action. July 21, 2026: the Senate approved the bill and the National Assembly gave final passage 279-81 the same day, clearing both chambers ahead of the Commission's deadline — but lawmakers pre-emptively stripped the bill's national sanctions/enforcement mechanism against platforms to sidestep the DSA conflict rather than waiting for the Aug. 10 deadline. Senate rapporteur Catherine Morin-Desailly acknowledged the law is now largely symbolic, intended to pressure the Commission rather than independently enforceable — the ban applies to minors' own conduct, with no platform-side penalty specified, leaving the DSA as the only real enforcement lever. Rollout unchanged: new accounts blocked for under-15s from Sept 1, 2026 (start of school year); existing non-compliant accounts must be deactivated by Dec 31, 2026/Jan 2027. President Macron has framed the ban as a flagship reform and pledged enforcement by September, though the enforcement gap raises doubts about how that will work in practice. Denmark, Greece, Germany, Spain, Austria, and Sweden face the same EU-jurisdiction constraint on their own national age-restriction measures.",
-    primary: { title: "LOI n° 2023-566 du 7 juillet 2023 (majorité numérique) — Légifrance", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047799533", host: "legifrance.gouv.fr" }
+    litigation: "struckdown", litigationLabel: "Struck down",
+    litigationDetail: "Conseil constitutionnel, Décision n° 2026-911 DC du 14 août 2026 — struck down Article 1 (the core under-15 ban) as a disproportionate infringement on freedom of expression and communication: the near-total prohibition (exceptions limited essentially to collaborative encyclopedias, open-source platforms, and school/university services) failed to account for each minor's individual situation or each platform's specific risk profile, and the age-verification proof it would have required of all users (including adults) lacked adequate legal safeguards on how that proof must be conducted.",
+    notes: "National Assembly approved bill on first reading January 2026. July 6, 2026: the European Commission notified France that platform-enforced age limits are a matter of EU (not national) competence under the DSA and that the under-15 ban conflicts with it; France was given until August 10, 2026 to revise the law or face further Commission action. July 21, 2026: the Senate approved the bill and the National Assembly gave final passage 279-81 the same day, clearing both chambers ahead of the Commission's deadline — but lawmakers pre-emptively stripped the bill's national sanctions/enforcement mechanism against platforms to sidestep the DSA conflict rather than waiting for the Aug. 10 deadline. Senate rapporteur Catherine Morin-Desailly acknowledged the law was already largely symbolic at that point, intended to pressure the Commission rather than independently enforceable. <strong>August 14, 2026: the Conseil constitutionnel struck down Article 1</strong> (the under-15 ban itself) on referral, finding it a disproportionate infringement on freedom of expression and communication — separate from, and in addition to, the DSA-competence conflict the Commission had already flagged. President Macron tasked Prime Minister Sébastien Lecornu with drafting a 'legally robust' replacement text that accounts for both the Council's ruling and the EU framework, while maintaining his goal of implementing a ban 'by spring 2027.' Denmark, Greece, Germany, Spain, Austria, and Sweden face the same EU-jurisdiction constraint on their own national age-restriction measures, and now have a French constitutional precedent to weigh as well.",
+    primary: { title: "Conseil constitutionnel — Décision n° 2026-911 DC du 14 août 2026", url: "https://www.conseil-constitutionnel.fr/decision/2026/2026911DC.htm", host: "conseil-constitutionnel.fr" }
   },
   {
     country: "🇺🇸 US — Tennessee", region: "Americas",
@@ -2101,6 +2102,7 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-08-14", flag: "🇫🇷", label: "<strong>France</strong> — Conseil constitutionnel strikes down Article 1 of the under-15 social media ban (Décision n° 2026-911 DC), ruling it a disproportionate infringement on freedom of expression and communication; Macron tasks PM Lecornu with a 'legally robust' redraft, still targeting spring 2027" },
   { date: "2026-07-14", flag: "🇮🇸", label: "<strong>Iceland</strong> — Ministry of Education and Children publishes 'legislative intentions' notice (Mál S-132/2026) for public consultation, proposing to bar under-15s from social media (access from Jan 1 of the year they turn 15); framed as child protection, no criminal penalties" },
   { date: "2026-04-15", flag: "🇨🇷", label: "<strong>Costa Rica</strong> — Legislative Assembly's Youth, Childhood and Adolescence Commission unanimously approves Expediente 25.336 (under-14 social media ban + age verification for 14-18), sending it to the Plenary for a floor vote" },
   { date: "2026-03-18", flag: "🇵🇦", label: "<strong>Panama</strong> — Asamblea Nacional subcommittee holds a technical session on Proyecto de Ley 426 (Digital Protection System for minors), with input from the Ministry of Education, SENNIAF, SENACYT, and the Ombudsman's Office" },
@@ -2182,6 +2184,13 @@ const MILESTONES = [
 
 const MEDIA = [
   // ─── This week ───
+  { tag: "news", tagLabel: "Journalism",
+    topics: ["bans", "verification", "litigation"],
+    title: "France's top court rules social media ban curtails freedom of expression",
+    outlet: "Reuters", region: "France",
+    summary: "Reports the Conseil constitutionnel's August 14, 2026 decision (n° 2026-911 DC) striking down Article 1 of France's under-15 social media ban. The Council found the near-total prohibition — with exceptions limited essentially to collaborative encyclopedias, open-source platforms, and school/university services — a disproportionate infringement on minors' freedom of expression and communication that failed to account for each minor's individual situation or each platform's specific risk profile, and flagged inadequate legal safeguards around the age-verification proof the ban would have required of all users, including adults. Macron tasked PM Sébastien Lecornu with drafting a 'legally robust' replacement accounting for the ruling and the EU's DSA framework, still targeting spring 2027.",
+    url: "https://www.reuters.com/world/frances-top-court-rules-social-media-ban-curtails-freedom-expression-2026-08-14/",
+    date: "Aug 14, 2026" },
   { tag: "news", tagLabel: "Journalism",
     topics: ["litigation", "design"],
     title: "New Mexico court orders Meta to pay $567m over harm to youths",
