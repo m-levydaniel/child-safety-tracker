@@ -845,6 +845,12 @@
       <span>Last updated: <strong id="last-updated">August 31, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
+      <span>·</span>
+      <button id="whats-new-toggle" class="btn-toggle" type="button" aria-expanded="false" aria-controls="whats-new-box">See what's new</button>
+    </div>
+    <div class="legend-box" id="whats-new-box" style="display:none;">
+      <div style="font-size:11.5px; color:var(--muted); margin-bottom:6px;">New this week (<span id="whats-new-week"></span>)</div>
+      <ul id="whats-new-list" style="margin:0; padding-left:18px; font-size:12.5px; line-height:1.6;"></ul>
     </div>
   </header>
 
@@ -1007,6 +1013,13 @@
 </div>
 
 <script>
+const WHATS_NEW = {
+  weekOf: "August 31, 2026",
+  items: [
+    "🇺🇸 US (Tennessee): 6th Circuit revives NetChoice's First Amendment challenge to the parental-consent law (2-1), vacating the district court's denial of a preliminary injunction and remanding for full review."
+  ]
+};
+
 const POLICIES = [
   {
     country: "🇦🇺 Australia", region: "APAC",
@@ -3456,6 +3469,18 @@ function wireCollapsibleToggle(btnId, boxId) {
 }
 wireCollapsibleToggle("#legend-toggle", "#legend-box");
 wireCollapsibleToggle("#policy-filters-toggle", "#policy-filters-box");
+wireCollapsibleToggle("#whats-new-toggle", "#whats-new-box");
+
+function renderWhatsNew() {
+  const list = $("#whats-new-list");
+  const week = $("#whats-new-week");
+  if (!list || !week) return;
+  week.textContent = WHATS_NEW.weekOf;
+  list.innerHTML = WHATS_NEW.items.length
+    ? WHATS_NEW.items.map(i => `<li>${i}</li>`).join("")
+    : "<li>No new developments this week.</li>";
+}
+renderWhatsNew();
 $("#cal-prev").addEventListener("click", () => {
   if (calMonthOffset > CAL_MIN_OFFSET) { calMonthOffset--; calSelectedDate = null; renderCalendar(); }
 });
