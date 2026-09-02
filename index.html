@@ -988,6 +988,7 @@
       <div class="modal-notes" id="modal-notes"></div>
       <div class="modal-source" id="modal-source"></div>
       <div id="modal-impact"></div>
+      <div id="modal-ai-note"></div>
     </div>
   </div>
 
@@ -1062,6 +1063,7 @@ const POLICIES = [
     country: "🇬🇧 United Kingdom", region: "Europe",
     initiative: "Proposed under-16 social media ban",
     tags: ["ai"],
+    aiNote: "Alongside the under-16 platform ban, would separately bar under-18s from romantic/sexual AI chatbots — the first UK proposal to name AI companion apps specifically, rather than just social media accounts.",
     stage: "proposed", stageLabel: "Proposed", stageNote: "Announced by the PM; no bill text introduced yet",
     summary: "PM Starmer announced June 15, 2026 a full ban on social media for under-16s — Snapchat, TikTok, YouTube, Instagram, Facebook, X. Messaging apps (WhatsApp, Signal) excluded. Billed as stricter than Australia's model: also bars under-18s from romantic/sexual AI chatbots and brings gaming platforms within scope.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
@@ -1090,6 +1092,7 @@ const POLICIES = [
   {
     country: "🇪🇺 European Union", region: "Europe",
     tags: ["ai"],
+    aiNote: "The Commission's Special Panel on Child Safety Online (final report delivered July 13, 2026) recommended extending the proposed EU-wide minimum age of 13 to 'social media plus' services, explicitly including AI companion apps alongside gaming and messaging — not yet enacted; legislation was expected after summer 2026.",
     initiative: "Digital Services Act + EU Age Verification Blueprint",
     coverageTrigger: "Size threshold — 45M+ EU users (VLOP)",
     summary: "DSA child-protection guidelines plus a privacy-preserving age verification app using zero-knowledge proofs.",
@@ -1289,6 +1292,7 @@ const POLICIES = [
     country: "🇺🇸 US — New York", region: "Americas",
     initiative: "Safe by Design Act (2026 Budget)",
     tags: ["ai"],
+    aiNote: "Limits AI companion/chatbot features for minors as part of its safe-by-default settings package, alongside restrictions on DMs from unknown adults and on platforms recommending minor profiles to strangers.",
     summary: "Requires social media platforms to implement safe-by-default settings for minors: restricts direct messaging from non-connections, prohibits platforms from recommending minor profiles to unknown adults, limits AI companion features, mandates notification safeguards.",
     minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
     status: "passed", statusLabel: "Passed",
@@ -1386,6 +1390,7 @@ const POLICIES = [
   {
     country: "🇺🇸 US — Connecticut", region: "Americas",
     tags: ["ai"],
+    aiNote: "Requires AI chatbot operators to detect suicidal-ideation and self-harm signals in conversations with minors and connect them to crisis resources — one of the first state laws to impose an affirmative AI chatbot safety duty, distinct from its social-media algorithmic-feed and age-verification provisions.",
     initiative: "Public Act 26-15 (SB 5) — Youth Social Media & AI Safety",
     summary: "Requires age verification and parental consent before minors can access algorithmic feeds; restricts notifications for minors to 8am–9pm; defaults to one-hour daily limit on algorithmically curated content; mandates AI chatbot safeguards for self-harm detection.",
     minAge: null, regType: "mixed", regTypeLabel: "Mixed",
@@ -1415,6 +1420,7 @@ const POLICIES = [
   {
     country: "🇨🇦 Canada", region: "Americas",
     tags: ["ai"],
+    aiNote: "Alongside the national under-16 minimum age for social media accounts, creates a new Digital Safety Commission of Canada with authority to regulate AI chatbots.",
     initiative: "Safe Social Media Act (Bill C-34)",
     stage: "introduced", stageLabel: "Introduced", stageNote: "Bill C-34 tabled in Parliament; still needs House and Senate passage",
     summary: "National minimum age of 16 for social media accounts, modeled on Australia's ban; creates a new Digital Safety Commission of Canada and also regulates AI chatbots. Supersedes the earlier Online Harms Act efforts (C-63, died 2025; C-216, private member's bill).",
@@ -1526,6 +1532,7 @@ const POLICIES = [
   {
     country: "🇨🇱 Chile", region: "Americas",
     tags: ["ai"],
+    aiNote: "Would bar AI chatbots from simulating companionship, romantic relationships, or therapy with minors, and separately prohibit chatbots from generating sexual content involving minors or encouraging self-harm, suicide, or eating disorders — the only tracked bill to explicitly reach AI-generated sexual content involving minors.",
     initiative: "Under-16 social media ban bill (Boletín 18246-18)",
     stage: "introduced", stageLabel: "Introduced", stageNote: "Boletín 18246-18 before the Chamber of Deputies' Comisión de Ciencias",
     summary: "Would bar under-16s from digital platforms outright (no parental override), restrict gambling, live-streaming, pornography and violent-videogame platforms for minors, and bar AI chatbots from simulating relationships with children.",
@@ -1541,6 +1548,7 @@ const POLICIES = [
   {
     country: "🇦🇷 Argentina", region: "Americas",
     tags: ["ai"],
+    aiNote: "A companion bill led by Deputy Nicolás Trotta would require platforms to use AI systems to detect grooming, fake accounts, and self-harm risk signals — an AI-as-safeguard mandate, rather than a restriction on AI features aimed at minors.",
     initiative: "Age-tiered social media access bill (1114-D-2026) + platform accountability bill",
     stage: "introduced", stageLabel: "Introduced", stageNote: "Bill 1114-D-2026 introduced by Deputy María Jimena López",
     summary: "Would bar social media accounts for under-13s, require parental consent for 14- to 16-year-olds, and mandate robust age verification; a parallel bill targets addictive design, grooming, and gambling mechanics.",
@@ -1928,6 +1936,7 @@ const POLICIES = [
   {
     country: "🇺🇸 US — Nebraska (AADC)", region: "Americas",
     tags: ["ai"],
+    aiNote: "As amended by LB 838 (effective July 17, 2026), lets minors opt out of 'AI chatbot intimacy features' as one of an expanded list of covered design features, alongside autoplay, gamification, and engagement quantification (likes/views).",
     initiative: "LB 504 — Age-Appropriate Online Design Code Act (as amended by LB 838)",
     coverageTrigger: "Size/revenue threshold",
     summary: "Design-rules law requiring online services to apply default highest-privacy settings for minors, allow minors to opt out of unnecessary covered design features (including infinite scroll, autoplay, engagement quantification, gamification, and AI chatbot intimacy features), disable push notifications during nighttime and school hours, minimize data collection, and protect precise geolocation. Amended by LB 838 (effective July 17, 2026) to significantly broaden applicability — removing the restrictive 50%-data-revenue threshold — and expand prohibited design features. Separate from Nebraska LB 383 (age-verification/parental-consent law, currently enjoined).",
@@ -1943,6 +1952,7 @@ const POLICIES = [
   {
     country: "🇺🇸 United States (Federal)", region: "Americas",
     tags: ["ai"],
+    aiNote: "The House's KIDS Act (H.R. 7757) includes parental controls specifically for AI chatbots. The Senate Commerce Committee's August 5, 2026 markup advanced KOSA (S.1748) alongside three AI-specific child-safety bills on the same agenda: the Youth AI Privacy Act (S.4199), the CHATBOT Act (S.4407), and the Children's Artificial Intelligence Toy Safety Act (S.5171).",
     initiative: "Kids Internet and Digital Safety Act (KIDS Act, H.R. 7757) / Kids Online Safety Act (KOSA, S.1748)",
     stage: "introduced", stageLabel: "Introduced", stageNote: "KOSA passed Senate Commerce Committee Aug 5, 2026 (unanimous voice vote) and now awaits a full Senate floor vote; the House's rival KIDS Act already passed the full House 267–117. Neither bill has passed both chambers — this is why the tracker still shows 'Pending,' not 'Passed': 'Passed' status is reserved for bills enacted into law.",
     summary: "Two competing proposals in Congress. The House passed its KIDS Act package (H.R. 7757) on June 29, 2026 (267–117): requires platforms to establish 'reasonable policies, practices, and procedures' to prevent physical violence threats, sexual exploitation, drugs, gambling, and financial harm to minors; includes parental controls for gaming, messaging, and AI chatbots; data privacy protections; a new data broker registry. Preemption provision sets a floor — states may enact stronger laws. The Senate version (KOSA, S.1748, Blackburn/Blumenthal) retains a stronger 'duty of care' standard and passed the Senate Commerce Committee Aug 5, 2026, sending it to the full Senate floor. Key dispute: duty of care vs. reasonableness standard; preemption scope; and whether the bill could be tied to AI preemption legislation backed by the White House and tech industry.",
@@ -3138,8 +3148,6 @@ function renderKanban() {
             ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>` : "";
           const stageBadge = p.stage
             ? `<span class="badge badge-stage badge-hint" tabindex="0" data-tip="${p.stageNote}">${p.stageLabel}<span class="sr-only"> — ${p.stageNote}</span></span>` : "";
-          const aiBadge = (p.tags || []).includes("ai")
-            ? `<span class="badge badge-ai">AI / GenAI</span>` : "";
           return `<div class="k-card" role="button" tabindex="0"
             onclick="openModal(${idx})"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${idx});}"
@@ -3149,7 +3157,6 @@ function renderKanban() {
               <span class="badge type-${p.regType}">${p.regTypeLabel}</span>
               ${stageBadge}
               ${litBadge}
-              ${aiBadge}
             </div>
           </div>`;
         }).join("")}
@@ -3224,7 +3231,6 @@ function openModal(idx) {
     ["Litigation",  p.litigation !== "none"
       ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>${p.litigationDetail ? '<div class="modal-lit-detail">' + p.litigationDetail + '</div>' : ''}`
       : null],
-    ["Tags",        (p.tags || []).includes("ai") ? `<span class="badge badge-ai">AI / GenAI</span>` : null],
   ].filter(([, v]) => v !== null && v !== undefined);
 
   $("#modal-grid").innerHTML = rows.map(([l, v]) =>
@@ -3262,6 +3268,20 @@ function openModal(idx) {
       </div>`;
   } else {
     impactDiv.innerHTML = "";
+  }
+
+  // AI & GenAI note
+  const aiDiv = $("#modal-ai-note");
+  if ((p.tags || []).includes("ai") && p.aiNote) {
+    aiDiv.innerHTML = `
+      <button class="impact-btn" onclick="toggleImpact(this)" aria-expanded="false">
+        AI &amp; GenAI <span class="arrow">▾</span>
+      </button>
+      <div class="impact-panel">
+        <p class="impact-definition">${p.aiNote}</p>
+      </div>`;
+  } else {
+    aiDiv.innerHTML = "";
   }
 
   const backdrop = $("#modal-backdrop");
