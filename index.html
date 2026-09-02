@@ -48,6 +48,8 @@
     --th-bg: #181818;
     --purple: #b48ad9;
     --purple-soft: #2c1f3a;
+    --teal: #5fc4b8;
+    --teal-soft: #163431;
   }
   * { box-sizing: border-box; }
   body {
@@ -644,6 +646,7 @@
   .type-design-rules { background: var(--blue-soft); color: var(--blue); }
   .type-age-verification { background: var(--amber-soft); color: var(--amber); }
   .type-mixed { background: var(--accent-soft); color: var(--accent); }
+  .badge-ai { background: var(--teal-soft); color: var(--teal); }
 
   .lit-active { background: var(--red-soft); color: var(--red); }
   .lit-enjoined { background: var(--gray-soft); color: var(--gray); }
@@ -949,6 +952,11 @@
       <span class="chip" data-filter="region:Africa">Africa</span>
       <input type="search" id="search-box" placeholder="Search country, law, regulator…" aria-label="Search policies" />
     </div>
+    <div class="controls" role="group" aria-label="Filter by AI/GenAI/chatbot mention">
+      <span class="controls-label" aria-hidden="true">Tags</span>
+      <span class="chip active" data-filter="tag:all">All</span>
+      <span class="chip badge-hint" data-filter="tag:ai" tabindex="0" data-tip="Laws/bills that mention AI, generative AI, or AI chatbots/companions">AI / GenAI / Chatbots</span>
+    </div>
   </div>
 
   <div class="kanban-board" id="kanban-board"></div>
@@ -1053,6 +1061,7 @@ const POLICIES = [
   {
     country: "🇬🇧 United Kingdom", region: "Europe",
     initiative: "Proposed under-16 social media ban",
+    tags: ["ai"],
     stage: "proposed", stageLabel: "Proposed", stageNote: "Announced by the PM; no bill text introduced yet",
     summary: "PM Starmer announced June 15, 2026 a full ban on social media for under-16s — Snapchat, TikTok, YouTube, Instagram, Facebook, X. Messaging apps (WhatsApp, Signal) excluded. Billed as stricter than Australia's model: also bars under-18s from romantic/sexual AI chatbots and brings gaming platforms within scope.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
@@ -1080,6 +1089,7 @@ const POLICIES = [
   },
   {
     country: "🇪🇺 European Union", region: "Europe",
+    tags: ["ai"],
     initiative: "Digital Services Act + EU Age Verification Blueprint",
     coverageTrigger: "Size threshold — 45M+ EU users (VLOP)",
     summary: "DSA child-protection guidelines plus a privacy-preserving age verification app using zero-knowledge proofs.",
@@ -1278,6 +1288,7 @@ const POLICIES = [
   {
     country: "🇺🇸 US — New York", region: "Americas",
     initiative: "Safe by Design Act (2026 Budget)",
+    tags: ["ai"],
     summary: "Requires social media platforms to implement safe-by-default settings for minors: restricts direct messaging from non-connections, prohibits platforms from recommending minor profiles to unknown adults, limits AI companion features, mandates notification safeguards.",
     minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
     status: "passed", statusLabel: "Passed",
@@ -1374,6 +1385,7 @@ const POLICIES = [
   },
   {
     country: "🇺🇸 US — Connecticut", region: "Americas",
+    tags: ["ai"],
     initiative: "Public Act 26-15 (SB 5) — Youth Social Media & AI Safety",
     summary: "Requires age verification and parental consent before minors can access algorithmic feeds; restricts notifications for minors to 8am–9pm; defaults to one-hour daily limit on algorithmically curated content; mandates AI chatbot safeguards for self-harm detection.",
     minAge: null, regType: "mixed", regTypeLabel: "Mixed",
@@ -1402,6 +1414,7 @@ const POLICIES = [
   },
   {
     country: "🇨🇦 Canada", region: "Americas",
+    tags: ["ai"],
     initiative: "Safe Social Media Act (Bill C-34)",
     stage: "introduced", stageLabel: "Introduced", stageNote: "Bill C-34 tabled in Parliament; still needs House and Senate passage",
     summary: "National minimum age of 16 for social media accounts, modeled on Australia's ban; creates a new Digital Safety Commission of Canada and also regulates AI chatbots. Supersedes the earlier Online Harms Act efforts (C-63, died 2025; C-216, private member's bill).",
@@ -1512,6 +1525,7 @@ const POLICIES = [
   },
   {
     country: "🇨🇱 Chile", region: "Americas",
+    tags: ["ai"],
     initiative: "Under-16 social media ban bill (Boletín 18246-18)",
     stage: "introduced", stageLabel: "Introduced", stageNote: "Boletín 18246-18 before the Chamber of Deputies' Comisión de Ciencias",
     summary: "Would bar under-16s from digital platforms outright (no parental override), restrict gambling, live-streaming, pornography and violent-videogame platforms for minors, and bar AI chatbots from simulating relationships with children.",
@@ -1526,6 +1540,7 @@ const POLICIES = [
   },
   {
     country: "🇦🇷 Argentina", region: "Americas",
+    tags: ["ai"],
     initiative: "Age-tiered social media access bill (1114-D-2026) + platform accountability bill",
     stage: "introduced", stageLabel: "Introduced", stageNote: "Bill 1114-D-2026 introduced by Deputy María Jimena López",
     summary: "Would bar social media accounts for under-13s, require parental consent for 14- to 16-year-olds, and mandate robust age verification; a parallel bill targets addictive design, grooming, and gambling mechanics.",
@@ -1912,6 +1927,7 @@ const POLICIES = [
   },
   {
     country: "🇺🇸 US — Nebraska (AADC)", region: "Americas",
+    tags: ["ai"],
     initiative: "LB 504 — Age-Appropriate Online Design Code Act (as amended by LB 838)",
     coverageTrigger: "Size/revenue threshold",
     summary: "Design-rules law requiring online services to apply default highest-privacy settings for minors, allow minors to opt out of unnecessary covered design features (including infinite scroll, autoplay, engagement quantification, gamification, and AI chatbot intimacy features), disable push notifications during nighttime and school hours, minimize data collection, and protect precise geolocation. Amended by LB 838 (effective July 17, 2026) to significantly broaden applicability — removing the restrictive 50%-data-revenue threshold — and expand prohibited design features. Separate from Nebraska LB 383 (age-verification/parental-consent law, currently enjoined).",
@@ -1926,6 +1942,7 @@ const POLICIES = [
   },
   {
     country: "🇺🇸 United States (Federal)", region: "Americas",
+    tags: ["ai"],
     initiative: "Kids Internet and Digital Safety Act (KIDS Act, H.R. 7757) / Kids Online Safety Act (KOSA, S.1748)",
     stage: "introduced", stageLabel: "Introduced", stageNote: "KOSA passed Senate Commerce Committee Aug 5, 2026 (unanimous voice vote) and now awaits a full Senate floor vote; the House's rival KIDS Act already passed the full House 267–117. Neither bill has passed both chambers — this is why the tracker still shows 'Pending,' not 'Passed': 'Passed' status is reserved for bills enacted into law.",
     summary: "Two competing proposals in Congress. The House passed its KIDS Act package (H.R. 7757) on June 29, 2026 (267–117): requires platforms to establish 'reasonable policies, practices, and procedures' to prevent physical violence threats, sexual exploitation, drugs, gambling, and financial harm to minors; includes parental controls for gaming, messaging, and AI chatbots; data privacy protections; a new data broker registry. Preemption provision sets a floor — states may enact stronger laws. The Senate version (KOSA, S.1748, Blackburn/Blumenthal) retains a stronger 'duty of care' standard and passed the Senate Commerce Committee Aug 5, 2026, sending it to the full Senate floor. Key dispute: duty of care vs. reasonableness standard; preemption scope; and whether the bill could be tied to AI preemption legislation backed by the White House and tech industry.",
@@ -2905,7 +2922,8 @@ const MEDIA = [
 // ─── State ───
 let filters = {
   type: localStorage.getItem("cs2-type") || "all",
-  region: localStorage.getItem("cs2-region") || "all"
+  region: localStorage.getItem("cs2-region") || "all",
+  tag: localStorage.getItem("cs2-tag") || "all"
 };
 let mediaFilter = localStorage.getItem("cs2-media") || "all";
 let activeTopics = new Set(JSON.parse(localStorage.getItem("cs2-topics") || "[]"));
@@ -3089,6 +3107,7 @@ function getFiltered() {
   return POLICIES.filter(p => {
     if (filters.type !== "all" && p.regType !== filters.type) return false;
     if (filters.region !== "all" && p.region !== filters.region) return false;
+    if (filters.tag === "ai" && !(p.tags || []).includes("ai")) return false;
     if (term) {
       const hay = (p.country + " " + p.initiative + " " + p.summary + " " + p.notes + " " + (p.enforcement || "")).toLowerCase();
       if (!hay.includes(term)) return false;
@@ -3119,6 +3138,8 @@ function renderKanban() {
             ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>` : "";
           const stageBadge = p.stage
             ? `<span class="badge badge-stage badge-hint" tabindex="0" data-tip="${p.stageNote}">${p.stageLabel}<span class="sr-only"> — ${p.stageNote}</span></span>` : "";
+          const aiBadge = (p.tags || []).includes("ai")
+            ? `<span class="badge badge-ai">AI / GenAI</span>` : "";
           return `<div class="k-card" role="button" tabindex="0"
             onclick="openModal(${idx})"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${idx});}"
@@ -3128,6 +3149,7 @@ function renderKanban() {
               <span class="badge type-${p.regType}">${p.regTypeLabel}</span>
               ${stageBadge}
               ${litBadge}
+              ${aiBadge}
             </div>
           </div>`;
         }).join("")}
@@ -3202,6 +3224,7 @@ function openModal(idx) {
     ["Litigation",  p.litigation !== "none"
       ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>${p.litigationDetail ? '<div class="modal-lit-detail">' + p.litigationDetail + '</div>' : ''}`
       : null],
+    ["Tags",        (p.tags || []).includes("ai") ? `<span class="badge badge-ai">AI / GenAI</span>` : null],
   ].filter(([, v]) => v !== null && v !== undefined);
 
   $("#modal-grid").innerHTML = rows.map(([l, v]) =>
