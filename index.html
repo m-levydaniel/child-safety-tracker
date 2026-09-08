@@ -1025,6 +1025,7 @@
 const WHATS_NEW = {
   weekOf: "September 8, 2026",
   items: [
+    "🇵🇰 New jurisdiction added: Pakistan — no federal bill currently pending, but three tracks are converging on an under-16 ban: a withdrawn 2025 Senate bill, a Sept 1 Punjab Assembly resolution urging Parliament to act, and an active Islamabad High Court petition with a Sept 29 hearing.",
     "🇺🇾 New jurisdiction added: Uruguay — Deputy Felipe Schipani presents a bill (Aug 17) setting the minimum age for social media accounts at 15, with platform-side age verification.",
     "🇲🇹 New jurisdiction added: Malta — PM Robert Abela has announced plans for under-13 social media restrictions modelled on Australia's law; still pre-bill, in public consultation.",
     "🇨🇾 New jurisdiction added: Cyprus — President Christodoulides has announced a proposed under-15 minimum age, with verification planned through the national Digital Citizen app; implementing bill not yet published.",
@@ -2067,6 +2068,20 @@ const POLICIES = [
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Verification is planned to run through the existing (non-mandatory) Digital Citizen app, which would let users confirm age via passport/driving-licence scan or connection to bank or educational records; this raised early privacy questions in local press about scope creep beyond minors. Implementing bill — expected to define scope, verification mandate, and transitional/penalty provisions — not yet published as of this entry.",
     primary: { title: "Presidency of the Republic of Cyprus — official portal (search: social media age policy)", url: "https://www.gov.cy/presidency/en/", host: "gov.cy" }
+  },
+  {
+    country: "🇵🇰 Pakistan", region: "APAC",
+    initiative: "Under-16 social media restrictions (no bill currently before Parliament)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "No federal bill pending; a prior Senate bill was withdrawn, a provincial resolution now urges Parliament to legislate, and a court petition is pushing for the same",
+    summary: "No federal law or pending bill sets a minimum social media age. Three separate tracks are pushing toward one: a 2025 Senate bill that stalled and was withdrawn, a September 2026 Punjab Assembly resolution urging Parliament to act, and an Islamabad High Court petition seeking a court-ordered legislative and age-verification mandate.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban (proposed)",
+    status: "pending", statusLabel: "Pending",
+    year: "2025–2026 (no bill currently filed federally)", yearSort: 2026,
+    enforcement: "tbd — Punjab Assembly resolution recommends PTA build the verification system",
+    penalties: "tbd (withdrawn 2025 Senate bill had proposed Rs 50,000–5 million platform fines and up to 6 months' imprisonment for adults facilitating underage accounts)",
+    litigation: "active", litigationLabel: "Active", litigationDetail: "Islamabad High Court — constitutional petition (Art. 199) filed by citizen Waqas Nasir via advocates Muhammad Jalal Haider and Yahya Farid Khwaja, seeking a court order compelling federal legislation and a PTA/NADRA age-verification mechanism for under-16 accounts. Chief Justice Sardar Muhammad Sarfaraz Dogar issued notices Aug 31, 2026 to the Ministries of IT & Telecommunication, Information & Broadcasting, Interior, and Law & Justice, plus PTA and PEMRA, with replies due within 15 days. Next hearing: September 29, 2026.",
+    notes: "Senator Syed Masroor Ahsan introduced a Senate bill in June 2025 proposing an under-16 social media ban (fines of Rs 50,000–5 million for non-compliant platforms; up to 6 months' imprisonment for adults who help minors open accounts); it did not clear committee and was withdrawn in August 2025, though Ahsan has said it could be reintroduced after further consultation. On September 1, 2026, the Punjab Assembly unanimously passed a resolution (moved by MPA Sarah Ahmed) urging the federal government — telecom regulation is a federal, not provincial, competence — to legislate an under-16 ban and have PTA build an age-verification system; it cited Australia, France, China, and the US as models. Neither the Senate bill nor the Punjab resolution is legally binding on its own; the IHC petition is the only track with a concrete near-term date (Sept 29 hearing).",
+    primary: { title: "Provincial Assembly of the Punjab — Resolutions Passed (Sept 1, 2026 resolution on social media restrictions for under-16s, moved by MPA Sarah Ahmed)", url: "https://www.pap.gov.pk/assembly_business/resolutions/en", host: "pap.gov.pk" }
   }
 ];
 
@@ -2257,6 +2272,9 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-09-29", flag: "🇵🇰", label: "<strong>Pakistan</strong> — Islamabad High Court's next hearing on the Waqas Nasir petition seeking a court-ordered under-16 social media ban and PTA/NADRA age-verification mandate; government replies (from IT, Information, Interior, and Law ministries plus PTA and PEMRA) due beforehand" },
+  { date: "2026-09-01", flag: "🇵🇰", label: "<strong>Pakistan (Punjab)</strong> — Punjab Assembly unanimously passes a resolution (moved by MPA Sarah Ahmed) urging the federal government to legislate an under-16 social media ban and have PTA build an age-verification system; non-binding, as telecom regulation is a federal competence" },
+  { date: "2026-08-31", flag: "🇵🇰", label: "<strong>Pakistan</strong> — Islamabad High Court Chief Justice Sardar Muhammad Sarfaraz Dogar issues notices on a constitutional petition (Waqas Nasir) seeking legislation and age verification for under-16 social media accounts; replies due from six federal bodies within 15 days" },
   { date: "2026-08-17", flag: "🇺🇾", label: "<strong>Uruguay</strong> — Deputy Felipe Schipani (Partido Colorado) presents a bill to the Parliament setting the minimum age for personal social media accounts at 15, with platform-side age-verification duties; some legislators publicly urge a slower process rather than fast-tracking" },
   { date: "2026-08-04", flag: "🇺🇸", label: "<strong>US (Federal)</strong> — Senator Ruben Gallego introduces the Parental Approval for Youth Social Media Act (S.5226): would bar under-16s from creating or keeping social media accounts by default absent parental authorization, with platform age-verification duties; exempts email, texting, educational platforms, video conferencing, and gaming" },
   { date: "2026-08-28", flag: "🇺🇸", label: "<strong>US (Tennessee)</strong> — 6th Circuit panel votes 2-1 (<em>NetChoice v. Skrmetti</em>) to vacate a district court's June 2025 denial of NetChoice's preliminary-injunction motion against the Protecting Children from Social Media Act (age verification + parental consent), holding the lower court improperly rejected NetChoice's injury claims without weighing likelihood of success on the merits. Judge Batchelder wrote for the majority, joined by Judge Ritz; Judge Clay dissented, arguing NetChoice showed no imminent enforcement threat. Case remanded to district court to fully assess the injunction factors; law remains in force in the meantime. Second 6th Circuit ruling against a state parental-consent law after a similar result against Ohio in June 2026." },
