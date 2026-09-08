@@ -845,7 +845,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">August 31, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">September 8, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
       <span>·</span>
@@ -1023,9 +1023,14 @@
 
 <script>
 const WHATS_NEW = {
-  weekOf: "August 31, 2026",
+  weekOf: "September 8, 2026",
   items: [
-    "🇺🇸 US (Tennessee): 6th Circuit revives NetChoice's First Amendment challenge to the parental-consent law (2-1), vacating the district court's denial of a preliminary injunction and remanding for full review."
+    "🇺🇾 New jurisdiction added: Uruguay — Deputy Felipe Schipani presents a bill (Aug 17) setting the minimum age for social media accounts at 15, with platform-side age verification.",
+    "🇲🇹 New jurisdiction added: Malta — PM Robert Abela has announced plans for under-13 social media restrictions modelled on Australia's law; still pre-bill, in public consultation.",
+    "🇨🇾 New jurisdiction added: Cyprus — President Christodoulides has announced a proposed under-15 minimum age, with verification planned through the national Digital Citizen app; implementing bill not yet published.",
+    "🇳🇴 Norway: policy entry updated with the government's official April 24 design details — age cutoff tied to Jan 1 of the year a child turns 16, bill still planned for introduction before year-end.",
+    "🇺🇸 US (Federal): catching up a missed entry — Sen. Ruben Gallego introduced the Parental Approval for Youth Social Media Act (S.5226) on Aug 4, requiring parental consent for under-16 accounts.",
+    "📰 Media: EFF publishes a detailed critique (Sep 1) arguing Meta's $17B multistate settlement embeds more data collection and broader age-gating rather than reducing platform surveillance of teens."
   ]
 };
 
@@ -1699,17 +1704,17 @@ const POLICIES = [
   },
   {
     country: "🇳🇴 Norway", region: "Europe",
-    initiative: "Under-16 social media ban (proposed)",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Ban announced; legislation expected by end of 2026, not yet drafted",
-    summary: "Government plan to ban under-16s; tech companies responsible for age verification.",
+    initiative: "Under-16 social media age limit (bill planned)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Government confirmed plan to submit a bill to the Storting before end of 2026; EEA consultation to precede introduction",
+    summary: "Government-confirmed plan for an age limit tied to January 1 of the year a child turns 16 (so full school cohorts gain access together); platforms responsible for age verification at login.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
-    year: "2026 (legislation late 2026)", yearSort: 2026,
-    enforcement: "tbd",
+    year: "2026 (bill planned by year-end)", yearSort: 2026,
+    enforcement: "tbd — tied to DSA transposition into Norwegian law",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Latest European country to announce a ban; legislation expected by end of 2026.",
-    primary: { title: "Stortinget — Norwegian Parliament", url: "https://www.stortinget.no/", host: "stortinget.no" }
+    notes: "April 24, 2026 press release (Ministry of Children and Families, Ministry of Digitalisation and Public Governance, PM's Office) confirmed the age-limit design: cutoff set to Jan 1 of the year a child turns 16, rather than exact birthdate, so entire school cohorts gain access at the same time. Government says it expects platforms to comply from day one, though formal enforcement activates once the EU's DSA is transposed into Norwegian law. Proposal to be sent for EEA notification/consultation (normally 3 months) before introduction to the Storting.",
+    primary: { title: "Ministry of Children and Families — press release on the planned age-limit bill", url: "https://www.regjeringen.no/en/whats-new/norwegian-social-media-age-restrictions-law-on-track-to-be-introduced-this-year-this-is-how-the-age-limit-for-social-media-will-work/id3157276/", host: "regjeringen.no" }
   },
   {
     country: "🇸🇮 Slovenia", region: "Europe",
@@ -2020,6 +2025,48 @@ const POLICIES = [
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "Singapore's Online Safety Commission began operating in June 2026. IMDA's most recent Online Safety Assessment Report evaluated six Designated Social Media Services; HardwareZone's age-verification system uses the sgID service within the national Singpass digital-identity app. Extension of age-assurance duties from app stores to DSMSs directly has been signaled but not yet formally mandated as of August 2026.",
     primary: { title: "IMDA — Online Safety Assessment Report 2025: Designated Social Media Services", url: "https://www.imda.gov.sg/-/media/imda/files/regulations-and-licensing/regulations/online-safety/2025/online-safety-assessment-report-designated-social-media-services.pdf", host: "imda.gov.sg" }
+  },
+  {
+    country: "🇺🇾 Uruguay", region: "Americas",
+    initiative: "Under-15 social media ban (proposed)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Bill presented by an opposition deputy; still early in parliamentary process, not yet through committee",
+    summary: "Bill would set the minimum age to create and hold personal social media accounts at 15, placing responsibility on platforms to implement age-verification mechanisms and barring access to those below the threshold.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (presented August)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "Range from warnings up to fines of nearly $1M and potential platform suspension in Uruguay, per press reporting; not yet confirmed against bill text",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Presented by Partido Colorado deputy Felipe Schipani, framed around cyberbullying, online sexual harassment, sextortion, non-consensual intimate imagery, and impersonation risks to minors. Requires age-verification mechanisms described as 'reasonable, proportionate, effective, and auditable.' Some legislators have publicly urged a slower, more deliberate process rather than fast-tracking. Still needs committee review and floor votes in both chambers; not yet in force.",
+    primary: { title: "Parlamento del Uruguay — iniciativas legislativas de Felipe Schipani (redes sociales, menores de 15 años)", url: "https://parlamento.gub.uy/", host: "parlamento.gub.uy" }
+  },
+  {
+    country: "🇲🇹 Malta", region: "Europe",
+    initiative: "Under-13 social media restrictions (proposed)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "PM has announced intent and opened public consultation; no bill text or formal mechanism published yet",
+    summary: "Prime Minister Robert Abela has said Malta will introduce social media restrictions modelled on Australia's law, starting with an under-13 threshold that he has said could later be extended to older minors.",
+    minAge: 13, regType: "full-ban", regTypeLabel: "Full ban (proposed)",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (announced; consultation ongoing)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "tbd",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "As of this entry, Malta has not published draft legislation, an age-verification mechanism, or an enforcement/penalty framework; the government has described itself as still in a public 'listening phase' before a final policy decision. Details to be confirmed as the consultation concludes.",
+    primary: { title: "Government of Malta — official portal (search: social media age restrictions)", url: "https://www.gov.mt/en/pages/home.aspx", host: "gov.mt" }
+  },
+  {
+    country: "🇨🇾 Cyprus", region: "Europe",
+    initiative: "Under-15 social media ban (proposed)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "President has announced the policy; implementing bill not yet published",
+    summary: "President Nikos Christodoulides has announced a minimum age of 15 to create social media accounts, with age verification to run through the national 'Digital Citizen' app (integrating the EU's age-verification approach), enforced by the platforms themselves.",
+    minAge: 15, regType: "verification", regTypeLabel: "Age verification",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (announced April)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "Transitional provisions and non-compliance penalties described as forthcoming in the implementing bill; not yet published",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Verification is planned to run through the existing (non-mandatory) Digital Citizen app, which would let users confirm age via passport/driving-licence scan or connection to bank or educational records; this raised early privacy questions in local press about scope creep beyond minors. Implementing bill — expected to define scope, verification mandate, and transitional/penalty provisions — not yet published as of this entry.",
+    primary: { title: "Presidency of the Republic of Cyprus — official portal (search: social media age policy)", url: "https://www.gov.cy/presidency/en/", host: "gov.cy" }
   }
 ];
 
@@ -2210,6 +2257,8 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-08-17", flag: "🇺🇾", label: "<strong>Uruguay</strong> — Deputy Felipe Schipani (Partido Colorado) presents a bill to the Parliament setting the minimum age for personal social media accounts at 15, with platform-side age-verification duties; some legislators publicly urge a slower process rather than fast-tracking" },
+  { date: "2026-08-04", flag: "🇺🇸", label: "<strong>US (Federal)</strong> — Senator Ruben Gallego introduces the Parental Approval for Youth Social Media Act (S.5226): would bar under-16s from creating or keeping social media accounts by default absent parental authorization, with platform age-verification duties; exempts email, texting, educational platforms, video conferencing, and gaming" },
   { date: "2026-08-28", flag: "🇺🇸", label: "<strong>US (Tennessee)</strong> — 6th Circuit panel votes 2-1 (<em>NetChoice v. Skrmetti</em>) to vacate a district court's June 2025 denial of NetChoice's preliminary-injunction motion against the Protecting Children from Social Media Act (age verification + parental consent), holding the lower court improperly rejected NetChoice's injury claims without weighing likelihood of success on the merits. Judge Batchelder wrote for the majority, joined by Judge Ritz; Judge Clay dissented, arguing NetChoice showed no imminent enforcement threat. Case remanded to district court to fully assess the injunction factors; law remains in force in the meantime. Second 6th Circuit ruling against a state parental-consent law after a similar result against Ohio in June 2026." },
   { date: "2026-08-26", flag: "🇺🇸", label: "<strong>US (Multistate)</strong> — Meta settles consolidated litigation brought by a coalition of state attorneys general (accounts vary: 51-52 AG offices, led by California, Colorado, Kentucky, and New Jersey; New Mexico, Texas, and Florida are not part of the deal) over claims its platforms were designed to be addictive to minors. Meta commits up to $17.1B over 10 years — rising toward $18B, with roughly $5B more unlocked, if TikTok and YouTube adopt matching terms — plus platform changes for US under-18 Facebook/Instagram users: a default 2-hour daily time limit (dropping to 1 hour if TikTok/YouTube join), a midnight-6am access block, muted notifications during school hours and at night, hidden like/reaction counts, a ban on cosmetic-surgery/extreme-makeup filters, an optional non-algorithmic feed, and a 5-year independent auditor with AG access. Judge Yvonne Gonzalez Rogers (N.D. Cal.) approved the settlement the same day it was filed, ending a trial that had opened August 17. New Mexico AG Raúl Torrez, whose state secured a separate ~$942M judgment via trial, said the national deal does not match protections New Mexico won on its own, including a ban on romantic/sexualized AI-chatbot interactions with minors." },
   { date: "2026-07-09", flag: "🇧🇬", label: "<strong>Bulgaria</strong> — GERB-SDS MP Kostadin Angelov tables a Child Protection Act amendment bill in the National Assembly: under-16 social media ban, 16-18 nighttime curfew (11pm-6am), and a government-built 'digital wallet' age-verification app tied to the GRAO civil registry; second attempt after an earlier version was rejected in committee" },
@@ -2299,6 +2348,13 @@ const MILESTONES = [
 
 const MEDIA = [
   // ─── This week ───
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    topics: ["litigation", "privacy", "verification", "design"],
+    title: "Meta's $17 Billion Settlement is a Bad Deal for Teens and All Social Media Users",
+    outlet: "Electronic Frontier Foundation · David Greene", region: "United States",
+    summary: "Argues the multistate Meta settlement trades teens' privacy for restrictions parents can override, while giving attorneys general enforcement leverage over Meta's 'age-inappropriate content' categories — categories EFF says have previously swept in information about sexuality and reproductive healthcare. Contends the deal requires Meta to collect and retain more teen data rather than reducing data collection, criticizes a $5 billion bonus structure that rewards states for pushing YouTube, TikTok, and Snap into matching terms (creating an incentive to litigate against them), and warns the settlement further embeds age-assurance technology and age-gating that would burden all users, not just minors, with a rights-affecting age-estimation process.",
+    url: "https://www.eff.org/deeplinks/2026/09/metas-17-billion-settlement-bad-deal-teens-and-all-social-media-users",
+    date: "Sep 1, 2026" },
   { tag: "news", tagLabel: "Journalism",
     topics: ["litigation", "design"],
     title: "Meta, states agree to $17 billion settlement in child safety trial",
