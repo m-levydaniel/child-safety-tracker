@@ -845,7 +845,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">September 14, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">September 21, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
       <span>·</span>
@@ -1023,14 +1023,12 @@
 
 <script>
 const WHATS_NEW = {
-  weekOf: "September 14, 2026",
+  weekOf: "September 21, 2026",
   items: [
-    "🇺🇸 US (New Jersey): correction — the Kids Code Act package was awaiting signature as of last week's update; Governor Sherrill actually signed it Aug 11, alongside two companion bills creating a Social Media Research Center and directing a warning-label study. AADC effective date confirmed: Sept 1, 2027. Penalties confirmed: $5,000/violation or treble damages, plus a private right of action.",
-    "🇱🇰 New jurisdiction added: Sri Lanka — MP Faiszer Musthapha's private member's bill (presented June 24) would bar under-16s from social media; still in legal drafting, but Musthapha is publicly pushing Parliament to fast-track it as of Sept 9.",
-    "🇵🇾 New jurisdiction added: Paraguay — a Senate bill amending Law 5653/2016 would require age verification barring under-16s from social media; under Human Rights Commission review since March, with a Judiciary opinion requested before it proceeds.",
-    "🇸🇦 New jurisdiction added: Saudi Arabia — the Shoura Council (an advisory body) recommended in June that the telecom regulator introduce age verification and usage restrictions for under-16s on social media; not yet a binding rule.",
-    "🇦🇺 Australia: new entry added for the Online Safety Amendment (Digital Duty of Care) Bill 2026 — exposure draft released Sept 8, would force platforms to proactively reduce foreseeable harms and offer an algorithm opt-out, plus disable algorithmic feeds/infinite scroll for under-16s; consultation closes Sept 22.",
-    "🇦🇺 Australia: existing ban entry updated with eSafety's Aug 3 compliance study — over 8 in 10 under-16s still using at least one age-restricted platform three months in, mainly because platforms weren't checking ages."
+    "🇪🇺 EU: new entry added — the European Commission published the EU KIDS Act legislative proposal Sept 17, bans under-13s from social media, gives 13-14 year-olds a parent-managed 'mini account' capped at 1 hour/day, allows self-managed accounts from age 15, requires safety-by-design defaults and age checks, and covers AI companion chatbots; heads to the European Parliament and Council next.",
+    "🇩🇰 Denmark: correction — the entry's 'Passed, target mid-2026' status was stale. Minister Christina Egelund issued a draft bill Sept 7 setting a 15-year age limit with a parental override for 13-14 year-olds; the actual plan is Folketing presentation in early 2027 and entry into force July 1, 2027.",
+    "🇬🇧 UK: proposed under-16 ban entry updated — some parliamentarians are pushing to add VPN restrictions to the eventual bill, citing Australia's ~60% teen VPN-bypass rate; no bill text published yet and enforcement mechanics remain unclear.",
+    "Two new Media entries on the EU KIDS Act: EFF's critique of its privacy and age-verification implications, and Forbes' reporting on implementation-timeline concerns."
   ]
 };
 
@@ -1091,7 +1089,7 @@ const POLICIES = [
     enforcement: "Ofcom",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Announced June 15, 2026 by then-PM Keir Starmer following government consultation (closed May 26). Government aims to pass legislation before end of 2026; ban expected to come into force around spring 2027. Follows Australia's approach. Separate from the existing OSA / Children's Wellbeing Act framework. Starmer resigned as Labour leader and PM on June 22, 2026; Andy Burnham was acclaimed unopposed as Labour leader July 17, 2026 (379 nominations, over 94% of Labour MPs) and became Prime Minister July 20, 2026. Burnham has signaled he intends to keep the under-16 ban plans and has spoken favorably about regulating social media for teenagers. Legislative timeline for the ban itself remains tbd as the new government settles in.",
+    notes: "Announced June 15, 2026 by then-PM Keir Starmer following government consultation (closed May 26). Government aims to pass legislation before end of 2026; ban expected to come into force around spring 2027. Follows Australia's approach. Separate from the existing OSA / Children's Wellbeing Act framework. Starmer resigned as Labour leader and PM on June 22, 2026; Andy Burnham was acclaimed unopposed as Labour leader July 17, 2026 (379 nominations, over 94% of Labour MPs) and became Prime Minister July 20, 2026. Burnham has signaled he intends to keep the under-16 ban plans and has spoken favorably about regulating social media for teenagers. Some parliamentarians are pushing to add VPN restrictions to the eventual bill, pointing to reports that around 60% of under-16s in Australia bypass that country's ban using VPNs; as of Sept 2026, no bill text has been published and it remains unclear whether or how VPN enforcement would be implemented. Legislative timeline for the ban itself remains tbd as the new government settles in.",
     primary: { title: "Britain will ban under-16s from social media apps — NPR", url: "https://www.npr.org/2026/06/15/nx-s1-5858644/britain-social-media-ban", host: "npr.org" }
   },
   {
@@ -1111,7 +1109,7 @@ const POLICIES = [
   {
     country: "🇪🇺 European Union", region: "Europe",
     tags: ["ai"],
-    aiNote: "The Commission's Special Panel on Child Safety Online (final report delivered July 13, 2026) recommended extending the proposed EU-wide minimum age of 13 to 'social media plus' services, explicitly including AI companion apps alongside gaming and messaging — not yet enacted; legislation was expected after summer 2026.",
+    aiNote: "The Commission's Special Panel on Child Safety Online (final report delivered July 13, 2026) recommended extending the proposed EU-wide minimum age of 13 to 'social media plus' services, explicitly including AI companion apps alongside gaming and messaging; the Special Panel's recommendations were carried into the EU KIDS Act proposal published Sept 17, 2026 — see separate tracker entry, which also requires AI chatbots/companions to be off by default for minors.",
     initiative: "Digital Services Act + EU Age Verification Blueprint",
     coverageTrigger: "Size threshold — 45M+ EU users (VLOP)",
     summary: "DSA child-protection guidelines plus a privacy-preserving age verification app using zero-knowledge proofs.",
@@ -1121,8 +1119,25 @@ const POLICIES = [
     enforcement: "European Commission + national DSCs",
     penalties: "Up to 6% global turnover (DSA)",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "EU Age Verification Blueprint feature-ready April 15, 2026; Commission declared the app technically ready and adopted a recommendation May 11, 2026 urging Member States to deploy by end of 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026. July 13, 2026: the Commission's Special Panel on Child Safety Online delivered its final report to President von der Leyen, recommending an EU-wide minimum age of 13 for social media and 'social media plus' services (gaming, messaging, AI companions), a reversal of the burden of proof so platforms must demonstrate safety-by-design before children can access their services, binding (not just guideline) design rules against infinite scroll/autoplay/engagement-tuned recommendations by default, and zero-knowledge-proof age verification (no ID or biometric processing). The European Parliament has called for a higher EU-wide floor of 16. Commission legislation is expected after summer 2026. On July 6, 2026 the Commission issued preliminary DSA findings that Meta's Facebook and Instagram breached the DSA through addictive design features, the second such finding after TikTok in February 2026.",
+    notes: "EU Age Verification Blueprint feature-ready April 15, 2026; Commission declared the app technically ready and adopted a recommendation May 11, 2026 urging Member States to deploy by end of 2026. Pilot Member States: France, Denmark, Greece, Italy, Spain, Cyprus, Ireland. Target: privacy-preserving age verification across EU by Dec 31, 2026. July 13, 2026: the Commission's Special Panel on Child Safety Online delivered its final report to President von der Leyen, recommending an EU-wide minimum age of 13 for social media and 'social media plus' services (gaming, messaging, AI companions), a reversal of the burden of proof so platforms must demonstrate safety-by-design before children can access their services, binding (not just guideline) design rules against infinite scroll/autoplay/engagement-tuned recommendations by default, and zero-knowledge-proof age verification (no ID or biometric processing). The European Parliament has called for a higher EU-wide floor of 16. On July 6, 2026 the Commission issued preliminary DSA findings that Meta's Facebook and Instagram breached the DSA through addictive design features, the second such finding after TikTok in February 2026. September 17, 2026: the Special Panel's recommendations formed the basis of the Commission's EU KIDS Act legislative proposal — see separate tracker entry for that instrument's provisions.",
     primary: { title: "EC — EU age verification policy", url: "https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification", host: "ec.europa.eu" }
+  },
+  {
+    country: "🇪🇺 European Union", region: "Europe",
+    tags: ["ai"],
+    aiNote: "AI companion apps and chatbots are explicitly in scope: the proposal would require them to be turned off by default for minors and bars them from being designed in ways that foster emotional dependency in children.",
+    initiative: "EU KIDS Act (Keeping Internet Digital Spaces Accountable and Trustworthy)",
+    coverageTrigger: "Online services used by minors, incl. social media, video-sharing, gaming, and AI companions/chatbots",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Legislative proposal published Sept 17, 2026; now goes to the European Parliament and Council for negotiation before it can become law",
+    summary: "Tiered age-gating for social media across the EU: no access under 13; a parent/guardian-managed 'mini account' with a 1-hour daily time limit for ages 13-14; full self-managed accounts from age 15. Requires safety-by-design defaults (no infinite scroll/reward mechanics/nighttime push notifications for minors, private-by-default profiles, no unsolicited contact from strangers) and age checks at account creation, and shifts the burden of proof onto very large platforms to demonstrate their services are safe for children.",
+    minAge: 13, regType: "mixed", regTypeLabel: "Mixed",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (proposal published Sept 17, 2026)", yearSort: 2026,
+    enforcement: "European Commission + national Digital Services Coordinators",
+    penalties: "tbd — expected to align with DSA's up-to-6%-global-turnover framework",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Published Sept 17, 2026, building on the Special Panel on Child Safety Online's July 13, 2026 final report to President von der Leyen. Under-13s barred from social media accounts outright (can still use child-friendly video-sharing services via a parent/guardian-managed account); 13-14 year-olds get a parent/guardian-managed 'mini account' with limited features and a 1-hour/day time restriction; from age 15, minors can open and manage their own account. Applies to online games and AI companions/chatbots as well as social media and video-sharing platforms; AI chatbots/companions must be off by default for minors and may not be designed to foster emotional dependency. Age checks required at new-account creation for social media and video-sharing services, with the EU's own privacy-preserving age-verification app (expected to be released by year-end) as one compliant method. Now goes to the European Parliament and the Council of the EU, who will negotiate the final text; no adoption timeline set. EFF published a critical analysis September 2026 arguing the proposal expands privacy-intrusive age verification EU-wide, hands parents an added layer of account-verification control over teenagers, and was not put through a full impact assessment — see Media section.",
+    primary: { title: "European Commission — EU KIDS Act press release", url: "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1890", host: "ec.europa.eu" }
   },
   {
     country: "🇫🇷 France", region: "Europe",
@@ -1636,15 +1651,15 @@ const POLICIES = [
   },
   {
     country: "🇩🇰 Denmark", region: "Europe",
-    initiative: "Under-15 social media ban",
-    summary: "Government agreement to ban under-15s from social media — among the strongest EU steps.",
+    initiative: "Under-15 social media age limit",
+    summary: "Government draft bill would set a national age limit of 15 for social media platforms that may expose children to harmful content or features; parents can override the rule for 13-14 year-olds.",
     minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
-    status: "passed", statusLabel: "Passed",
-    year: "2026 (target mid-2026)", yearSort: 2026,
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (draft bill issued Sept 2026; planned Folketing presentation early 2027, in force July 1, 2027)", yearSort: 2026,
     enforcement: "tbd",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Could become law as soon as mid-2026. Denmark is also a pilot Member State for the EU Age Verification Blueprint.",
+    notes: "Builds on a Nov 7, 2025 political agreement on digital child protection that allocated DKK 160M across 14 child-online-safety initiatives. Sept 7, 2026: Minister for Digitalization Christina Egelund issued a draft bill setting the age limit at 15 for platforms that may expose children to harmful content or features; parents can override the rule for 13-14 year-olds. Plan is to present the bill to the Folketing in early 2027, targeting entry into force July 1, 2027 — a later timeline than the tracker's prior mid-2026 target, which this entry corrects. Denmark is also a pilot Member State for the EU Age Verification Blueprint.",
     primary: { title: "B 95 — Forslag om forbud mod sociale medier for mindreårige — Retsinformation", url: "https://www.retsinformation.dk/eli/ft/20241BB00095", host: "retsinformation.dk" }
   },
   {
@@ -2327,6 +2342,8 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-09-17", flag: "🇪🇺", label: "<strong>EU</strong> — European Commission publishes the EU KIDS Act legislative proposal: bars under-13s from social media outright, gives 13-14 year-olds a parent-managed 'mini account' capped at 1 hour/day, allows self-managed accounts from age 15, requires safety-by-design defaults and age checks at account creation, and covers AI companion chatbots (off by default for minors); goes next to the European Parliament and Council for negotiation" },
+  { date: "2026-09-07", flag: "🇩🇰", label: "<strong>Denmark</strong> — Minister for Digitalization Christina Egelund issues a draft bill setting a national age limit of 15 for social media platforms that may expose children to harmful content, with a parental override for 13-14 year-olds; plan is to present the bill to the Folketing in early 2027, targeting entry into force July 1, 2027" },
   { date: "2026-09-08", flag: "🇦🇺", label: "<strong>Australia</strong> — Government releases the exposure draft of the Online Safety Amendment (Digital Duty of Care) Bill 2026 for public consultation (closes Sept 22); would require platforms to proactively reduce foreseeable harms and offer an algorithm opt-out, plus disable algorithmic feeds and infinite scroll for under-16s" },
   { date: "2026-08-03", flag: "🇦🇺", label: "<strong>Australia</strong> — eSafety Commissioner publishes a three-month compliance study of the under-16 ban: over 8 in 10 under-16s were still using at least one age-restricted platform (down only slightly from ~86% pre-ban), mostly because platforms did not check ages; officials cite ~4.7M accounts revoked as evidence of impact" },
   { date: "2026-09-09", flag: "🇱🇰", label: "<strong>Sri Lanka</strong> — MP Faiszer Musthapha publicly urges Parliament to fast-track his Social Media Minimum Age Bill (presented June 24), warning of risks to youth mental health, safety, and education; bill remains in legal drafting stage" },
@@ -2428,6 +2445,20 @@ const MILESTONES = [
 
 const MEDIA = [
   // ─── This week ───
+  { tag: "advocacy", tagLabel: "Civil society & advocacy",
+    topics: ["verification", "privacy", "design"],
+    title: "EU Kids Act Won't Keep the Internet Accountable and Trustworthy",
+    outlet: "Electronic Frontier Foundation", region: "European Union",
+    summary: "Argues the Commission's Sept 17, 2026 EU KIDS Act proposal will put online services behind age gates and expand intrusive age verification EU-wide, undermining the privacy of all users, not just minors. Criticizes the parent-managed 'mini account' model for 13-14 year-olds as handing parents an additional, problematic layer of identity verification, and argues the Commission intermingled a digital-fairness agenda with fundamental-rights-heavy questions of age assurance and access to information without a full impact assessment or systemic review of alternative policy options.",
+    url: "https://www.eff.org/deeplinks/2026/09/eu-kids-act-wont-keep-internet-accountable-and-trustworthy",
+    date: "Sep 2026" },
+  { tag: "impact", tagLabel: "Impact analysis",
+    topics: ["verification", "design"],
+    title: "Rushed EU Kids Act May Be A Nightmare To Implement",
+    outlet: "Forbes · Emma Woollacott", region: "European Union",
+    summary: "Reports industry and legal concerns that the EU KIDS Act's compressed timeline and reliance on the not-yet-released EU age-verification app could make compliance difficult for platforms, given the proposal has yet to go through European Parliament and Council negotiation and no adoption date has been set.",
+    url: "https://www.forbes.com/sites/emmawoollacott/2026/09/18/rushed-eu-kids-act-may-be-a-nightmare-to-implement/",
+    date: "Sep 18, 2026" },
   { tag: "advocacy", tagLabel: "Civil society & advocacy",
     topics: ["litigation", "privacy", "verification", "design"],
     title: "Meta's $17 Billion Settlement is a Bad Deal for Teens and All Social Media Users",
