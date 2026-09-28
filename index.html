@@ -1033,7 +1033,8 @@ const WHATS_NEW = {
     "🇵🇰 Pakistan: the Islamabad High Court's next hearing on the under-16 petition is Sept 29.",
     "New Media entry: Allens' legal analysis of Australia's Digital Duty of Care exposure draft.",
     "Stage audit of every 'Proposed' card against its source: 🇮🇹 Italy (DDL S. 1136, filed 2024) and 🇪🇨 Ecuador (under-15 bill filed Dec 2025) were wrongly marked 'no bill filed' and are now Introduced. 🇺🇾 Uruguay, 🇵🇾 Paraguay and the 🇪🇺 EU KIDS Act also move to Introduced because formal bills or proposals have been filed.",
-    "Stale cards updated: 🇦🇹 Austria's under-14 draft finished public review Sept 21 (proposed start Jan 1, 2027). 🇩🇪 Germany's Expert Commission reported Sept 11, recommending a minimum age of 13; the card's source link had pointed to an unrelated 2021 law. 🇳🇱 Netherlands is pursuing an EU-wide minimum age of 15 with Spain. 🇨🇾 Cyprus plans to submit its under-15 bill in December."
+    "Stale cards updated: 🇦🇹 Austria's under-14 draft finished public review Sept 21 (proposed start Jan 1, 2027). 🇩🇪 Germany's Expert Commission reported Sept 11, recommending a minimum age of 13; the card's source link had pointed to an unrelated 2021 law. 🇳🇱 Netherlands is pursuing an EU-wide minimum age of 15 with Spain. 🇨🇾 Cyprus plans to submit its under-15 bill in December.",
+    "Audit of every 'Introduced' card: 🇺🇸 Utah (SB 194 / HB 464) was wrongly listed as a pending bill; it was enacted in 2024 and is blocked by a preliminary injunction, now marked Passed. Stale cards updated: 🇺🇸 Massachusetts (House passed the under-14 ban 129–25 in April; back in the Senate), 🇳🇿 New Zealand (government bill introduced Aug 24), 🇵🇭 Philippines (House panel's under-13 substitute bill; Senate SB 2424 sets 16), 🇨🇦 Canada (C-34 at second reading)."
   ]
 };
 
@@ -1302,17 +1303,17 @@ const POLICIES = [
   },
   {
     country: "🇺🇸 US — Massachusetts", region: "Americas",
-    initiative: "Under-14 social media ban (advancing)",
-    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill advancing through the state legislature",
-    summary: "Rapidly advancing bill to prohibit all users under 14 from social media platforms.",
-    minAge: 14, regType: "full-ban", regTypeLabel: "Full ban",
+    initiative: "Under-14 social media ban + parental consent for 14–15 year-olds (House-passed bill)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Passed the House 129–25 on April 8, 2026; returned to the Senate, whose earlier version covered only school cellphones; not enacted",
+    summary: "House-passed bill that would require platforms to use an age-verification system to bar users under 14, terminating their accounts and deleting associated personal data. Platforms would need verifiable parental consent for 14- and 15-year-olds and would have to publish age-verification statistics. The bill also bans student cellphone use from school arrival to dismissal. The Attorney General would issue regulations, review the definition of 'social media platform' annually, and run a public reporting portal.",
+    minAge: 14, regType: "mixed", regTypeLabel: "Ban + parental consent",
     status: "pending", statusLabel: "Pending",
     year: "2026", yearSort: 2026,
     enforcement: "MA Attorney General",
-    penalties: "tbd",
+    penalties: "Civil fines (amounts not specified in the House summary)",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Described as rapidly advancing as of May 2026. Part of the broader wave of US state outright-ban proposals emboldened by Free Speech Coalition v. Paxton (SCOTUS, June 2025).",
-    primary: { title: "H.5295 — An Act relative to regulation of minors on social media — MA Legislature", url: "https://malegislature.gov/Bills/194/H5295/House/Bill/Text", host: "malegislature.gov" }
+    notes: "April 8, 2026: the House passed the bill 129–25. The House text sets Oct 1, 2026 as the date for terminating under-14 accounts, but that date applies only if the bill is enacted. The Senate passed a school-cellphone bill in 2025 without the social media provisions; the bill has gone back to the Senate. As of Sept 28, 2026 it has not been enacted.",
+    primary: { title: "House Passes Bill to Protect Children from Social Media, Prohibit Cell Phones in Schools — Massachusetts Legislature Press Room (April 8, 2026)", url: "https://malegislature.gov/PressRoom/Detail?pressReleaseId=359", host: "malegislature.gov" }
   },
   {
     country: "🇺🇸 US — Alabama", region: "Americas",
@@ -1358,16 +1359,15 @@ const POLICIES = [
   {
     country: "🇺🇸 US — Utah", region: "Americas",
     initiative: "Minor Protection in Social Media Act (SB 194 + HB 464)",
-    stage: "introduced", stageLabel: "Introduced", stageNote: "SB 194 + HB 464 filed in the state legislature",
-    summary: "Replaced the original Utah Social Media Regulation Act after a First Amendment challenge; imposes default privacy/curfew settings for minors and a private right of action for algorithm-related harms.",
+    summary: "Enacted in March 2024 to replace the 2023 Utah Social Media Regulation Act. SB 194 requires age assurance, sets default privacy settings for minors' accounts and disables certain features for minors; HB 464 creates a private right of action for harms tied to minors' use of algorithmically curated social media. Enforcement is blocked by a federal preliminary injunction pending appeal.",
     minAge: null, regType: "design-rules", regTypeLabel: "Design rules",
-    status: "pending", statusLabel: "Pending",
-    year: "2024", yearSort: 2024,
+    status: "passed", statusLabel: "Passed",
+    year: "2024 (signed March 2024; enjoined Sept 2024)", yearSort: 2024,
     enforcement: "UT Attorney General",
     penalties: "Civil penalties; private right of action (HB 464)",
     litigation: "enjoined", litigationLabel: "Enjoined",
-    litigationDetail: "NetChoice v. Reyes — federal district court granted a preliminary injunction Sept. 10, 2024. Utah appealed to the 10th Circuit (filed Oct. 11, 2024); panel heard oral argument Nov. 2025; decision pending.",
-    notes: "Replaced the original 2023 Utah Social Media Regulation Act (curfews + parental consent), which was repealed after its own NetChoice challenge. SB 194 carries the bulk of the substantive provisions; HB 464 adds a private right of action for harms tied to algorithmically curated feeds. Case pending before the 10th Circuit as of mid-2026.",
+    litigationDetail: "NetChoice v. Brown (originally NetChoice v. Reyes): Judge Robert Shelby of the U.S. District Court for the District of Utah granted a preliminary injunction on Sept. 10, 2024. Utah appealed to the 10th Circuit. As of Sept 2026 the injunction remains in place and no appellate decision has been issued.",
+    notes: "Correction (Sept 28, 2026): an earlier version of this card listed SB 194 / HB 464 as 'Pending · Introduced'. Both bills were enacted in 2024; the law is not in force because of the preliminary injunction. They replaced the 2023 Utah Social Media Regulation Act (curfews and parental consent), which was repealed after its own NetChoice challenge.",
     primary: { title: "S.B. 194 Social Media Regulation Amendments — Utah State Legislature", url: "https://le.utah.gov/~2024/bills/static/SB0194.html", host: "le.utah.gov" }
   },
   {
@@ -1461,7 +1461,7 @@ const POLICIES = [
     tags: ["ai"],
     aiNote: "Alongside the national under-16 minimum age for social media accounts, creates a new Digital Safety Commission of Canada with authority to regulate AI chatbots.",
     initiative: "Safe Social Media Act (Bill C-34)",
-    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill C-34 tabled in Parliament; still needs House and Senate passage",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill C-34 tabled June 10, 2026; at second reading in the House of Commons as of late Sept 2026; still needs House and Senate passage",
     summary: "National minimum age of 16 for social media accounts, modeled on Australia's ban; creates a new Digital Safety Commission of Canada and also regulates AI chatbots. Supersedes the earlier Online Harms Act efforts (C-63, died 2025; C-216, private member's bill).",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -1501,17 +1501,17 @@ const POLICIES = [
   },
   {
     country: "🇳🇿 New Zealand", region: "APAC",
-    initiative: "Social Media (Age-Restricted Users) Bill",
-    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill before select committee; government plans passage in 2026",
-    summary: "Member's bill to ban under-16s from social media via mandatory age verification.",
+    initiative: "Online Safety (Minimum Age and Child Safety Risk Assessment) Bill (government bill) + Social Media (Age-Restricted Users) Bill (member's bill)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Government bill introduced Aug 24, 2026, awaiting first reading; earlier member's bill went through select committee (report Dec 10, 2025)",
+    summary: "Government bill introduced by Education Minister Erica Stanford. It would require platforms with features associated with risk of harm to children (recommender systems, endless feeds, feedback features, time-limited content) and social AI companion services to take reasonable steps to keep under-16s off. Self-declared date of birth does not satisfy the duty. Platforms would have to carry out regular child safety risk assessments covering all under-18 users. Messaging, professional networking, gaming, music, educational and health services are excluded. A dedicated online safety regulator would sit within the Department of Internal Affairs.",
     minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
-    year: "2025", yearSort: 2025,
-    enforcement: "tbd",
-    penalties: "Up to NZ$2M",
+    year: "2025 (member's bill); 2026 (government bill introduced Aug 24)", yearSort: 2025,
+    enforcement: "Online safety regulator within the Department of Internal Affairs (proposed)",
+    penalties: "Up to 10% of global revenue (government bill)",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Select committee made 12 recommendations Dec 10, 2025. PM Christopher Luxon supportive; government plans bill in 2026 before general election. ACT Party opposed. Government advertising for a dedicated implementation director before the bill has even passed, signaling strong commitment to enactment.",
-    primary: { title: "NZ Legislation — Bill 216 text", url: "https://www.legislation.govt.nz/bill/member/2025/0216/latest/whole.html", host: "legislation.govt.nz" }
+    notes: "Updated Sept 28, 2026: the card previously tracked only Catherine Wedd's member's bill (Social Media (Age-Restricted Users) Bill, No. 216-1, select committee report with 12 recommendations Dec 10, 2025). On Aug 24, 2026 the government introduced its own bill. As of late August it had not had its first reading, and reports said a first reading was unlikely before Parliament rose ahead of the general election.",
+    primary: { title: "Online Safety (Minimum Age and Child Safety Risk Assessment) Bill — NZ Legislation (government bill 2026/339)", url: "https://www.legislation.govt.nz/bill/government/2026/339/en/latest/", host: "legislation.govt.nz" }
   },
   {
     country: "🇮🇩 Indonesia", region: "APAC",
@@ -1863,17 +1863,17 @@ const POLICIES = [
   },
   {
     country: "🇵🇭 Philippines", region: "APAC",
-    initiative: "Under-18 social media ban (bill)",
-    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill introduced July 2025",
-    summary: "Bill introduced 2025 that would ban social media for minors under 18 — highest minimum-age threshold of any major proposal.",
-    minAge: 18, regType: "full-ban", regTypeLabel: "Full ban",
+    initiative: "Social media restrictions for minors — House substitute bill + Senate Bill No. 2424 (Child Online Safety and Protection Act)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "House committee approved a substitute bill consolidating 10 proposals (Sept 2026); Senate Bill No. 2424 reported to the plenary Aug 26, 2026; neither chamber has passed a bill",
+    summary: "Two versions are moving. The House substitute bill, presented by Rep. Roman Romulo, would ban all social media for under-13s. For users aged 13 to under 18 it would restrict short-form video scrolling, group chats and content defined as harmful, such as violence or sexual content. It would also require platforms to register a Philippine presence. Senate Bill No. 2424 sets 16 as the minimum age for social media use. Differences would go to a bicameral conference committee if both chambers pass their versions.",
+    minAge: 13, regType: "mixed", regTypeLabel: "Ban + design rules",
     status: "pending", statusLabel: "Pending",
-    year: "2025", yearSort: 2025,
+    year: "2025 (first bills filed); 2026 (committee approvals)", yearSort: 2025,
     enforcement: "tbd",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Introduced July 2025.",
-    primary: { title: "HB 3821 (Social Media Protection for Minors Act) — House of Representatives", url: "https://docs.congress.hrep.online/legisdocs/basic_20/HB03821.pdf", host: "docs.congress.hrep.online" }
+    notes: "Updated Sept 28, 2026: the card previously described only HB 3821 (under-18 ban, filed July 2025), which is one of the 10 House bills now consolidated into the substitute. The House committee's technical working group left parental-consent and screen-time provisions for plenary amendments. SB 2424 was approved by the Senate Committee on Public Information and Mass Media and reported to the plenary on Aug 26, 2026.",
+    primary: { title: "HB 3821 (Social Media Protection for Minors Act) — House of Representatives (one of the bills consolidated into the 2026 substitute bill)", url: "https://docs.congress.hrep.online/legisdocs/basic_20/HB03821.pdf", host: "docs.congress.hrep.online" }
   },
   {
     country: "🇮🇳 India", region: "APAC",
