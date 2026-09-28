@@ -1031,7 +1031,9 @@ const WHATS_NEW = {
     "🇻🇳 Vietnam: new entry for the Ministry of Culture, Sports and Tourism's draft amendments to Decree 147. Under the latest draft, parents would register and supervise under-16 accounts, and platforms would block posting, commenting and sharing for under-13s. The draft is not yet adopted.",
     "🇲🇽 Mexico: new entry. President Sheinbaum's three regional forums on regulating minors' use of social media and AI wrapped up Sept 17 (Guerrero). The government plans to send a proposal to Congress, but no bill text exists yet.",
     "🇵🇰 Pakistan: the Islamabad High Court's next hearing on the under-16 petition is Sept 29.",
-    "New Media entry: Allens' legal analysis of Australia's Digital Duty of Care exposure draft."
+    "New Media entry: Allens' legal analysis of Australia's Digital Duty of Care exposure draft.",
+    "Stage audit of every 'Proposed' card against its source: 🇮🇹 Italy (DDL S. 1136, filed 2024) and 🇪🇨 Ecuador (under-15 bill filed Dec 2025) were wrongly marked 'no bill filed' and are now Introduced. 🇺🇾 Uruguay, 🇵🇾 Paraguay and the 🇪🇺 EU KIDS Act also move to Introduced because formal bills or proposals have been filed.",
+    "Stale cards updated: 🇦🇹 Austria's under-14 draft finished public review Sept 21 (proposed start Jan 1, 2027). 🇩🇪 Germany's Expert Commission reported Sept 11, recommending a minimum age of 13; the card's source link had pointed to an unrelated 2021 law. 🇳🇱 Netherlands is pursuing an EU-wide minimum age of 15 with Spain. 🇨🇾 Cyprus plans to submit its under-15 bill in December."
   ]
 };
 
@@ -1131,7 +1133,7 @@ const POLICIES = [
     aiNote: "AI companion apps and chatbots are explicitly in scope: the proposal would require them to be turned off by default for minors and bars them from being designed in ways that foster emotional dependency in children.",
     initiative: "EU KIDS Act (Keeping Internet Digital Spaces Accountable and Trustworthy)",
     coverageTrigger: "Online services used by minors, incl. social media, video-sharing, gaming, and AI companions/chatbots",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Legislative proposal published Sept 17, 2026; now goes to the European Parliament and Council for negotiation before it can become law",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Commission legislative proposal published Sept 17, 2026; now before the European Parliament and Council under the ordinary legislative procedure",
     summary: "Tiered age-gating for social media across the EU: no access under 13; a parent/guardian-managed 'mini account' with a 1-hour daily time limit for ages 13-14; full self-managed accounts from age 15. Requires safety-by-design defaults (no infinite scroll/reward mechanics/nighttime push notifications for minors, private-by-default profiles, no unsolicited contact from strangers) and age checks at account creation, and shifts the burden of proof onto very large platforms to demonstrate their services are safe for children.",
     minAge: 13, regType: "mixed", regTypeLabel: "Mixed",
     status: "pending", statusLabel: "Pending",
@@ -1694,45 +1696,45 @@ const POLICIES = [
   },
   {
     country: "🇮🇹 Italy", region: "Europe",
-    initiative: "Social media age restriction proposals",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Restrictions under discussion; no bill filed yet",
-    summary: "EU Age Verification Blueprint pilot; restrictions for younger users under consideration.",
-    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    initiative: "DDL S. 1136 — Disposizioni per la tutela dei minori nella dimensione digitale",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Senate bill filed May 13, 2024; new text adopted by the Senate's 8th Standing Committee, awaiting committee completion; not yet passed by either chamber",
+    summary: "Cross-party Senate bill (first signatory Sen. Lavinia Mennuni, FdI; a twin text was filed in the Chamber by Dep. Marianna Madia) that would allow minors to activate social network and video-sharing accounts only from age 15. Contracts concluded with digital service providers by under-15s would be void. Providers would verify age through a national 'mini-wallet' implementing the EU age-verification solution, under methods set by AGCOM.",
+    minAge: 15, regType: "mixed", regTypeLabel: "Ban + Age verification",
     status: "pending", statusLabel: "Pending",
-    year: "2026", yearSort: 2026,
-    enforcement: "tbd",
+    year: "2024 (filed); 2025–26 (in committee)", yearSort: 2024,
+    enforcement: "AGCOM (age-verification methods)",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Pilot Member State for EU age verification; specific national restrictions under discussion.",
-    primary: { title: "AS 1136 — Disposizioni per la tutela dei minori nella dimensione digitale — Senato", url: "https://www.senato.it/show-doc?id=1418922&idoggetto=0&leg=19&tipodoc=DDLPRES", host: "senato.it" }
+    notes: "Correction (Sept 28, 2026): an earlier version of this card said no bill had been filed. DDL S. 1136 was filed in the Senate on May 13, 2024 and is before the 8th Standing Committee, which adopted a new text (NT). The text sets June 30, 2026 as the date for the national age-verification mini-wallet to be made available. The Garante per la protezione dei dati personali was heard on the committee's new text. As of 2026 the bill had not completed committee stage; press reports say the government has also considered moving the provisions by amendment or decree-law. Italy is also a pilot Member State for the EU age verification app.",
+    primary: { title: "DDL S. 1136 — Disegno di legge scheda — Senato della Repubblica (19ª Legislatura)", url: "https://www.senato.it/leggi-e-documenti/disegni-di-legge/scheda-ddl?tab=testiEmendamenti&did=58233", host: "senato.it" }
   },
   {
     country: "🇩🇪 Germany", region: "Europe",
-    initiative: "Social media age restriction proposals",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Under active discussion as part of broader EU debate; no bill filed",
-    summary: "Age-based restrictions under discussion at federal level.",
-    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    initiative: "Social media minimum age (federal draft law announced; Expert Commission report delivered)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Expert Commission final report delivered Sept 11, 2026; Family Minister has announced a draft law, not yet published or filed",
+    summary: "The federal Expert Commission on Child and Youth Protection in the Digital World, set up in September 2025 by the Federal Ministry of Education, Family, Senior Citizens, Women and Youth (BMBFSFJ), delivered its final report on Sept 11, 2026 with 56 recommendations. These include either a minimum age of 13 for social media or service-by-service restrictions based on risk level. Federal Minister Karin Prien (CDU) has said she will present a draft law.",
+    minAge: 13, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
     year: "2026", yearSort: 2026,
     enforcement: "tbd",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Under active discussion as part of broader EU debate.",
-    primary: { title: "2. Gesetz zur Änderung des Jugendschutzgesetzes — DIP Bundestag", url: "https://dip.bundestag.de/vorgang/zweites-gesetz-zur-%C3%A4nderung-des-jugendschutzgesetzes/268540", host: "dip.bundestag.de" }
+    notes: "Correction (Sept 28, 2026): this card's source link previously pointed to the Second Act amending the Youth Protection Act (JuSchG), which was enacted in 2021 and does not set a social media minimum age. The link now points to the Expert Commission's final report. The commission published its interim stock-take on April 20, 2026. Minister Prien said a legal age limit of 13 for independent social media use is in principle the right approach, and has said a draft law will be presented by the end of 2026. As of Sept 28, 2026, no draft has been published.",
+    primary: { title: "Expertenkommission legt Abschlussbericht vor — BMBFSFJ (Sept 11, 2026)", url: "https://www.bmbfsfj.bund.de/bmbfsfj/expertenkommission-legt-abschlussbericht-vor-294112", host: "bmbfsfj.bund.de" }
   },
   {
     country: "🇦🇹 Austria", region: "Europe",
     initiative: "Under-14 social media ban (proposed)",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Draft legislation targeted for end of June 2026; not yet filed",
-    summary: "Considering a ban for under-14s with 'technically modern' age verification.",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Government draft law (Ministerialentwurf) completed public review (Begutachtung) Sept 21, 2026 and was notified to the European Commission; not yet submitted to the Nationalrat",
+    summary: "Government draft law barring under-14s from platforms that use any of the listed addictive features: recommender algorithms showing mainly content from strangers, endless scroll or autoplay, rewards for continuous use, or push notifications during non-use. Named examples are TikTok, Instagram, YouTube and Snapchat; messaging services such as WhatsApp are excluded, and platforms may offer child-appropriate areas. Age is verified once at account creation, and existing accounts must be checked when the law takes effect. The draft uses a double-blind, zero-knowledge-proof model that passes only an 'over 14: yes/no' signal. ID Austria is one option among several and is not mandatory.",
     minAge: 14, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
-    year: "2026 (draft by end June)", yearSort: 2026,
-    enforcement: "tbd",
-    penalties: "tbd",
+    year: "2026 (draft published July 27; proposed entry into force Jan 1, 2027)", yearSort: 2026,
+    enforcement: "tbd in final text",
+    penalties: "Up to 6% of global annual turnover for very large platforms",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Draft proposal targeted for end of June 2026.",
-    primary: { title: "Österreichisches Parlament", url: "https://www.parlament.gv.at/", host: "parlament.gv.at" }
+    notes: "Correction (Sept 28, 2026): the card previously said the draft was due by end of June 2026 and not yet filed. The Federal Chancellery sent the draft to public review (Begutachtung) and to the European Commission for TRIS notification on July 27, 2026. The review period closed Sept 21, 2026, with 221 submissions reported. Proposed entry into force is Jan 1, 2027. The government has said it continues to support an EU-wide minimum age alongside the national measure.",
+    primary: { title: "Gesetzesentwurf für Social-Media-Verbot unter 14 geht mit dem heutigen Tag in Begutachtung — Bundeskanzleramt (July 27, 2026)", url: "https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2026/07/gesetzesentwurf-fuer-social-media-verbot-unter-14-geht-mit-dem-heutigen-tag-in-begutachtung.html", host: "bundeskanzleramt.gv.at" }
   },
   {
     country: "🇳🇴 Norway", region: "Europe",
@@ -1792,17 +1794,17 @@ const POLICIES = [
   },
   {
     country: "🇳🇱 Netherlands", region: "Europe",
-    initiative: "Social media restrictions (under consideration)",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Early-stage consideration; no bill filed",
-    summary: "Reviewing age-based social media restrictions for minors.",
-    minAge: null, regType: "age-verification", regTypeLabel: "Age verification",
+    initiative: "Minimum age of 15 for social media (pursued via EU regulation)",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Coalition-agreement commitment; government is pursuing an EU-level regulation rather than a national bill",
+    summary: "The 2026–2030 coalition agreement (D66, VVD, CDA) includes a mandatory minimum age of 15 for social media. On Sept 11, 2026 the government, jointly with Spain, submitted proposals to the European Commission for an EU-wide minimum age set in an EU regulation, with as few national derogations as possible and enforcement at EU level. The proposals call for privacy-preserving age verification that confirms only whether the threshold is met, and for an independent EU assessment framework under which platforms shown to be safe for children could be exempted.",
+    minAge: 15, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
     year: "2026", yearSort: 2026,
     enforcement: "tbd",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Under early-stage consideration.",
-    primary: { title: "Tweede Kamer — House of Representatives", url: "https://www.tweedekamer.nl/", host: "tweedekamer.nl" }
+    notes: "Minister for Digital Economy and Sovereignty Willemijn Aerdts submitted the Dutch–Spanish proposals on Sept 11, 2026. The proposals suggest the Children's Rights Impact Assessment (KIA) and Digital Services Act rules as a basis for the EU safety-assessment framework. No national bill has been filed as of Sept 28, 2026.",
+    primary: { title: "Dutch Government Advocates for EU-Wide Minimum Age for Social Media — Government.nl (Sept 11, 2026)", url: "https://www.government.nl/latest/news/2026/09/11/dutch-government-advocates-for-eu-wide-minimum-age-for-social-media", host: "government.nl" }
   },
   {
     country: "🇬🇦 Gabon", region: "Africa",
@@ -1847,17 +1849,17 @@ const POLICIES = [
   },
   {
     country: "🇪🇨 Ecuador", region: "Americas",
-    initiative: "Teen social media restrictions",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Government making a national-security case for restrictions; no bill filed yet",
-    summary: "National security framing for restricting teen social media use.",
-    minAge: null, regType: "mixed", regTypeLabel: "Mixed",
+    initiative: "Reform to Art. 52 of the Código de la Niñez y Adolescencia — under-15 social media ban (bill)",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill filed Dec 2025; under review in the National Assembly's Children and Adolescents Commission since Feb 24, 2026; requires two plenary debates",
+    summary: "Bill by Assembly member Katherine Pacheco Machuca (ADN) reforming Article 52 of the Children and Adolescents Code to bar under-15s from accessing or using social networks. Providers would have 18 months to implement verifiable mechanisms preventing under-15s from creating or accessing accounts, and would have to cancel or suspend accounts identified as belonging to under-15s.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
-    year: "2026", yearSort: 2026,
+    year: "2025 (filed Dec); 2026 (in committee)", yearSort: 2025,
     enforcement: "tbd",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Government making a national-security case for restrictions; bill in progress.",
-    primary: { title: "Comisión de la Niñez — normativa redes sociales menores de 15 años — Asamblea", url: "https://www.asambleanacional.gob.ec/es/node/113957", host: "asambleanacional.gob.ec" }
+    notes: "Correction (Sept 28, 2026): an earlier version of this card said no bill had been filed. The bill was filed in late December 2025, and the Comisión de Niñez y Adolescencia began considering it on Feb 24, 2026. It must pass two debates in the Assembly plenary before adoption.",
+    primary: { title: "Comisión de Niñez conoció sobre proyecto de ley que prohíbe el uso de redes sociales para menores de 15 años — Asamblea Nacional del Ecuador", url: "https://www.asambleanacional.gob.ec/es/noticia/114077-comision-de-ninez-conocio-sobre-proyecto-de-ley-que", host: "asambleanacional.gob.ec" }
   },
   {
     country: "🇵🇭 Philippines", region: "APAC",
@@ -2061,7 +2063,7 @@ const POLICIES = [
   {
     country: "🇺🇾 Uruguay", region: "Americas",
     initiative: "Under-15 social media ban (proposed)",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Bill presented by an opposition deputy; still early in parliamentary process, not yet through committee",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill filed in the Chamber of Representatives in August 2026 by Dep. Felipe Schipani (Partido Colorado); not yet through committee",
     summary: "Bill would set the minimum age to create and hold personal social media accounts at 15, placing responsibility on platforms to implement age-verification mechanisms and barring access to those below the threshold.",
     minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
     status: "pending", statusLabel: "Pending",
@@ -2089,15 +2091,15 @@ const POLICIES = [
   {
     country: "🇨🇾 Cyprus", region: "Europe",
     initiative: "Under-15 social media ban (proposed)",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "President has announced the policy; implementing bill not yet published",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Cabinet adopted a social media action plan Sept 16, 2026; bill to go to public consultation, with submission to the House of Representatives planned for December 2026",
     summary: "President Nikos Christodoulides has announced a minimum age of 15 to create social media accounts, with age verification to run through the national 'Digital Citizen' app (integrating the EU's age-verification approach), enforced by the platforms themselves.",
     minAge: 15, regType: "verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
-    year: "2026 (announced April)", yearSort: 2026,
+    year: "2026 (announced April; bill due December)", yearSort: 2026,
     enforcement: "tbd",
     penalties: "Transitional provisions and non-compliance penalties described as forthcoming in the implementing bill; not yet published",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Verification is planned to run through the existing (non-mandatory) Digital Citizen app, which would let users confirm age via passport/driving-licence scan or connection to bank or educational records; this raised early privacy questions in local press about scope creep beyond minors. Implementing bill — expected to define scope, verification mandate, and transitional/penalty provisions — not yet published as of this entry.",
+    notes: "Sept 17, 2026: Deputy Minister of Research Nicodemos Damianou said the bill is at a fairly advanced stage. It will go to public consultation on the government's citizen's voice platform before submission to parliament in December, and the Commissioner for Children's Rights will carry out an impact assessment. Under the planned model, platforms would query the EU age verification blueprint embedded in the Digital Citizen app, which checks age against the population registry and returns only a yes/no answer. Platforms would get a few months to adapt and would have to verify the age of existing users retroactively. Damianou said non-compliance would be addressed under the EU Digital Services Act.",
     primary: { title: "Presidency of the Republic of Cyprus — official portal (search: social media age policy)", url: "https://www.gov.cy/presidency/en/", host: "gov.cy" }
   },
   {
@@ -2131,7 +2133,7 @@ const POLICIES = [
   {
     country: "🇵🇾 Paraguay", region: "Americas",
     initiative: "Amendment to Law 5653/2016 — under-16 social media restrictions",
-    stage: "proposed", stageLabel: "Proposed", stageNote: "Bill under review in Senate Human Rights Commission; judiciary's opinion requested before further review",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill filed in the Senate; under review in the Senate Human Rights Commission; judiciary's opinion requested before further review",
     summary: "Senate bill amending Law 5653/2016 (protection of children and adolescents from harmful internet content) would require platforms to use effective age-verification systems preventing account creation and access for under-16s, and require parental or guardian consent for 16-17 year-olds.",
     minAge: 16, regType: "age-verification", regTypeLabel: "Age verification",
     status: "pending", statusLabel: "Pending",
