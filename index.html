@@ -1027,6 +1027,8 @@ const WHATS_NEW = {
   items: [
     "🇺🇸 Georgia: on Oct 15 the 11th Circuit (NetChoice v. Attorney General of Georgia, opinion by Judge Newsom) reversed the injunction against SB 351, finding NetChoice had not made out a facial First Amendment challenge. The law can be enforced; NetChoice said it is evaluating next steps.",
     "🇦🇺 Australia: the Online Safety Amendment (Digital Duty of Care) Bill 2026 was introduced in the House of Representatives on Oct 15. Reporting indicates the introduced bill drops the minister's power to add harm categories and exempts professional news; a Senate inquiry is to report before the end of the parliamentary year.",
+    "🇵🇪 Peru (new): Proyecto de Ley 00498/2026-CR would bar under-16s from personal social media accounts; filed by Dep. Marino Lavado Valdivia, not yet through committee.",
+    "🇫🇮 Finland (new): a Ministry of Social Affairs and Health working group is studying children's social media harms, including a possible under-15 limit; no bill yet.",
     "🇬🇷 Greece: bill is before Parliament with a plenary vote expected Oct 22; it applies from Jan 1, 2027 and names Facebook, Instagram and TikTok."
   ]
 };
@@ -2193,7 +2195,35 @@ const POLICIES = [
     litigation: "none", litigationLabel: "None", litigationDetail: "",
     notes: "The forums were announced at the July 20, 2026 morning press conference, with Education Secretary Mario Delgado and UNESCO's Mexico representative taking part. Sheinbaum said the aim is a consensus-based regulatory proposal rather than an outright ban. The last forum took place Sept 17, 2026. As of Sept 28, 2026, no initiative had been formally sent to Congress. Separately, PAN deputies have renewed their own proposals to restrict platform access for under-16s and ban phones in schools. About 16 Mexican states already have some related rules, such as school phone restrictions, but there is no national framework.",
     primary: { title: "Presidencia de la República — Presidenta anuncia foros para crear propuesta de regulación del uso de plataformas digitales y redes sociales en niñas, niños y adolescentes", url: "https://www.gob.mx/presidencia/prensa/presidenta-anuncia-foros-para-crear-propuesta-de-regulacion-del-uso-de-plataformas-digitales-y-redes-sociales-en-ninas-ninos-y-adolescentes", host: "gob.mx" }
-  }
+  },
+  {
+    country: "🇵🇪 Peru", region: "Americas",
+    initiative: "Proyecto de Ley 00498/2026-CR — minimum age for social media accounts",
+    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill filed in the Congress by Dep. Marino Lavado Valdivia (Juntos por el Perú); presentation date and committee assignment not confirmed from the sources reviewed",
+    summary: "Bill titled 'Ley que establece medidas de protección y una edad mínima para el uso de cuentas en redes sociales por niñas, niños y adolescentes.' Providers must apply reasonable, proportionate age assurance and prevent people under 16 from creating or keeping personal accounts. For users aged 16-17 it requires default protections (private profiles, limits on contact from unknown users, geolocation off). It bans behavior-based targeted advertising to minors, requires risk assessment of recommendation feeds, autoplay and endless scrolling, bans loot boxes in video games, and requires free parental-control tools and annual transparency reports. Foreign providers must have a representative in Peru.",
+    minAge: 16, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (introduced)", yearSort: 2026,
+    enforcement: "INDECOPI (consumer protection); Autoridad Nacional de Protección de Datos Personales for age-check data obligations",
+    penalties: "Administrative infractions; the bill text does not specify fine amounts",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "Age-verification methods must be reliable, non-discriminatory and confidential; ID documents cannot be the only option, and data collected only for age checks cannot be used for advertising, profiling or recommendations, cannot be sold or shared, and must be deleted after the check. Reported by LP Derecho on Oct 3, 2026. Not yet through committee or a floor vote.",
+    primary: { title: "Congreso de la República del Perú — Proposiciones Legislativas (search for Proyecto de Ley 00498/2026-CR)", url: "https://wb2server.congreso.gob.pe/spley-portal/", host: "congreso.gob.pe" }
+  },
+  {
+    country: "🇫🇮 Finland", region: "Europe",
+    initiative: "Working group on protecting children and young people from the harms of social media",
+    stage: "proposed", stageLabel: "Proposed", stageNote: "Government working group under study; no bill or age limit adopted",
+    summary: "The Ministry of Social Affairs and Health has a project working group, 'Protecting Children and Young People from the Harmful Effects of Social Media,' studying the issue, including a possible under-15 age limit. The ministry ran an online survey of parents and guardians, open in Finnish, Swedish and English until Oct 11, 2026, to inform the group's work.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "pending", statusLabel: "Pending",
+    year: "2026 (under study)", yearSort: 2026,
+    enforcement: "tbd",
+    penalties: "None set",
+    litigation: "none", litigationLabel: "None", litigationDetail: "",
+    notes: "No bill text has been published and the age the government would choose has not been announced. An August 2026 survey cited by Yle found more than half of Finns support barring under-15s from social media. The working group's reporting date was not confirmed from the sources reviewed.",
+    primary: { title: "Project Working Group for Protecting Children and Young People from the Harmful Effects of Social Media — Finnish Government", url: "https://valtioneuvosto.fi/en/projects-and-legislation/project?tunnus=STM021%3A00%2F2026", host: "valtioneuvosto.fi" }
+  },
 ];
 
 // ─── Platform Impact ───────────────────────────────────────────────────────────
