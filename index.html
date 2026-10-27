@@ -1025,6 +1025,7 @@
 const WHATS_NEW = {
   weekOf: "October 27, 2026",
   items: [
+    "🇹🇷 Türkiye: the implementing regulation for the under-15 restriction was published in the Resmi Gazete on Oct 10 and takes effect Nov 1; platforms must verify age through e-Devlet, with existing accounts verified by Mar 31, 2027.",
     "🇬🇷 Greece: Parliament passed the under-15 social media law on Oct 23 (applies from Jan 1, 2027); platforms have about 2.5 months to put age verification in place. The card moves from Pending to Passed.",
     "🇺🇸 California: NetChoice sued in federal court (reported Oct 23) to block the state's social media warning-label law on First Amendment grounds.",
     "🇺🇸 Florida: AG James Uthmeier proposed a Safe Screens Act (app-store age checks and parental consent, teen account defaults, daily time limits, AI chatbot age checks); proposal only, no bill number yet."
@@ -1540,12 +1541,12 @@ const POLICIES = [
     summary: "Restricts social media access for children under 15; broader platform regulations and 'controlled digital environments' for younger users.",
     minAge: 15, regType: "mixed", regTypeLabel: "Ban + design rules",
     status: "passed", statusLabel: "Passed",
-    year: "2026 (passed April 23)", yearSort: 2026,
-    enforcement: "BTK / RTÜK",
+    year: "2026 (law passed April 23; regulation effective Nov 1)", yearSort: 2026,
+    enforcement: "BTK / RTÜK (regulation prepared by the Cyber Security Presidency)",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Passed by Turkish parliament April 23, 2026. Promotes regulated digital environments for under-15s.",
-    primary: { title: "BTK — Information and Communication Technologies Authority", url: "https://www.btk.gov.tr/", host: "btk.gov.tr" }
+    notes: "Passed by Turkish parliament April 23, 2026. Implementing regulation (yönetmelik), prepared by the Cyber Security Presidency, published in the Resmi Gazete on Oct 10, 2026 and effective Nov 1, 2026: platforms must refuse accounts for under-15s, verifying age through an e-Devlet-generated document; existing accounts must complete verification by Mar 31, 2027, and accounts found to belong to under-15s will be closed. Penalties were not reported.",
+    primary: { title: "Resmi Gazete (Official Gazette) — issue of Oct 10, 2026", url: "https://www.resmigazete.gov.tr/", host: "resmigazete.gov.tr" }
   },
   {
     country: "🇧🇷 Brazil", region: "Americas",
@@ -2410,6 +2411,9 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-10-10", flag: "🇹🇷", label: "<strong>Türkiye</strong> — Implementing regulation for the under-15 social media restriction published in the Resmi Gazete (prepared by the Cyber Security Presidency); platforms must refuse under-15 accounts using e-Devlet age verification; effective Nov 1, 2026" },
+  { date: "2026-11-01", flag: "🇹🇷", label: "<strong>Türkiye</strong> — Under-15 social media regulation takes effect for new accounts" },
+  { date: "2027-03-31", flag: "🇹🇷", label: "<strong>Türkiye</strong> — Deadline for existing accounts to complete age verification; accounts of under-15s will be closed" },
   { date: "2026-10-23", flag: "🇬🇷", label: "<strong>Greece</strong> — Parliament passes the under-15 social media law (New Democracy majority; PASOK abstained; other left-wing and nationalist parties voted against); applies from Jan 1, 2027, with platforms given about 2.5 months to set up age verification" },
   { date: "2026-10-23", flag: "🇺🇸", label: "<strong>US (California)</strong> — NetChoice sues in federal court to block California's social media warning-label law, arguing it violates the First Amendment (court and docket details not yet confirmed)" },
   { date: "2026-10-23", flag: "🇺🇸", label: "<strong>US (Florida)</strong> — Attorney General James Uthmeier proposes a 'Safe Screens Act': age determination and parental consent for minors' app downloads, default-off autoplay/infinite scroll for teens, a 2-hour daily/60-hour monthly limit, quiet hours (11pm–7am and school hours), age checks for AI chatbots, and fines up to $50,000 per knowing or reckless violation; proposal only, no bill number reported" },
