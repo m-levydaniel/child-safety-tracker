@@ -845,7 +845,7 @@
   <header>
     <h1>Global Child Safety & Social Media Policy Tracker</h1>
     <div class="meta">
-      <span>Last updated: <strong id="last-updated">October 19, 2026</strong></span>
+      <span>Last updated: <strong id="last-updated">October 27, 2026</strong></span>
       <span>·</span>
       <span><span id="policy-count">—</span> jurisdictions tracked</span>
       <span>·</span>
@@ -1023,13 +1023,11 @@
 
 <script>
 const WHATS_NEW = {
-  weekOf: "October 19, 2026",
+  weekOf: "October 27, 2026",
   items: [
-    "🇺🇸 Georgia: on Oct 15 the 11th Circuit (NetChoice v. Attorney General of Georgia, opinion by Judge Newsom) reversed the injunction against SB 351, finding NetChoice had not made out a facial First Amendment challenge. The law can be enforced; NetChoice said it is evaluating next steps.",
-    "🇦🇺 Australia: the Online Safety Amendment (Digital Duty of Care) Bill 2026 was introduced in the House of Representatives on Oct 15. Reporting indicates the introduced bill drops the minister's power to add harm categories and exempts professional news; a Senate inquiry is to report before the end of the parliamentary year.",
-    "🇵🇪 Peru (new): Proyecto de Ley 00498/2026-CR would bar under-16s from personal social media accounts; filed by Dep. Marino Lavado Valdivia, not yet through committee.",
-    "🇫🇮 Finland (new): a Ministry of Social Affairs and Health working group is studying children's social media harms, including a possible under-15 limit; no bill yet.",
-    "🇬🇷 Greece: bill is before Parliament with a plenary vote expected Oct 22; it applies from Jan 1, 2027 and names Facebook, Instagram and TikTok."
+    "🇬🇷 Greece: Parliament passed the under-15 social media law on Oct 23 (applies from Jan 1, 2027); platforms have about 2.5 months to put age verification in place. The card moves from Pending to Passed.",
+    "🇺🇸 California: NetChoice sued in federal court (reported Oct 23) to block the state's social media warning-label law on First Amendment grounds.",
+    "🇺🇸 Florida: AG James Uthmeier proposed a Safe Screens Act (app-store age checks and parental consent, teen account defaults, daily time limits, AI chatbot age checks); proposal only, no bill number yet."
   ]
 };
 
@@ -1664,16 +1662,15 @@ const POLICIES = [
   },
   {
     country: "🇬🇷 Greece", region: "Europe",
-    initiative: "Under-15 social media age limit (national legislation planned)",
-    stage: "introduced", stageLabel: "Introduced", stageNote: "Bill provisions presented Oct 12, 2026; parliamentary committees from Oct 13, plenary vote scheduled Oct 22",
-    summary: "Government bill to set 15 as the minimum age for social media accounts from Jan 1, 2027, ahead of the EU KIDS Act. Age verification would use the state Kids Wallet (Gov.gr Wallet), which returns only an over/under-age signal to platforms, not a date of birth or identity data.",
-    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban (proposed)",
-    status: "pending", statusLabel: "Pending",
-    year: "2026 (announced Apr 2026; target start Jan 1, 2027)", yearSort: 2026,
+    initiative: "Under-15 social media age limit",
+    summary: "Law setting 15 as the minimum age for social media accounts from Jan 1, 2027, ahead of the EU KIDS Act. Age verification is expected to use the state Kids Wallet (Gov.gr Wallet), which returns only an over/under-age signal to platforms, not a date of birth or identity data.",
+    minAge: 15, regType: "full-ban", regTypeLabel: "Full ban",
+    status: "passed", statusLabel: "Passed",
+    year: "2026 (passed Oct 23; applies from Jan 1, 2027)", yearSort: 2026,
     enforcement: "EETT (Hellenic Telecommunications and Post Commission), referring cases to the platform's DSA country-of-establishment regulator",
     penalties: "tbd",
     litigation: "none", litigationLabel: "None", litigationDetail: "",
-    notes: "Correction (Oct 5, 2026): an earlier version of this card listed the restriction as passed. PM Kyriakos Mitsotakis announced the under-15 plan on Apr 8, 2026. Ministers Akis Skertsos and Dimitris Papastergiou presented the framework to Cabinet in early October 2026; Papastergiou said the bill, originally planned for Parliament in August, was held back two months pending the EU KIDS Act proposal (Sept 17) and would be introduced 'in the coming period', with Greek law to be adjusted later to the final EU text. On Oct 12, 2026, Ministers Akis Skertsos, Adonis Georgiadis and Dimitris Papastergiou presented the bill's provisions: under-15s barred from social networking services (Instagram, TikTok and Facebook named as examples) from Jan 1, 2027; platforms must use 'appropriate, proportionate and reliable' age verification, with the Kids Wallet / Gov.gr Wallet and age tokens expected to play a key role. The bill is reported to go to parliamentary committees on Oct 13, with a plenary vote scheduled for Oct 22. Enforcement sits within the DSA framework (EETT as Digital Services Coordinator, with a role for the National Council for Radio and Television and the Hellenic Data Protection Authority). Penalties were not reported. Greece is among the EU front-runner countries piloting the Age Verification Blueprint.",
+    notes: "Passed by the Hellenic Parliament on Oct 23, 2026 (reported: governing New Democracy majority in favour, PASOK abstaining, other left-wing and nationalist parties against; full tally not reported). PM Mitsotakis said platforms have about 2.5 months to put an age-verification method in place; penalties and enforcement detail beyond the below were not reported. Background: PM Kyriakos Mitsotakis announced the under-15 plan on Apr 8, 2026. Ministers Akis Skertsos and Dimitris Papastergiou presented the framework to Cabinet in early October 2026; Papastergiou said the bill, originally planned for Parliament in August, was held back two months pending the EU KIDS Act proposal (Sept 17) and would be introduced 'in the coming period', with Greek law to be adjusted later to the final EU text. On Oct 12, 2026, Ministers Akis Skertsos, Adonis Georgiadis and Dimitris Papastergiou presented the bill's provisions: under-15s barred from social networking services (Instagram, TikTok and Facebook named as examples) from Jan 1, 2027; platforms must use 'appropriate, proportionate and reliable' age verification, with the Kids Wallet / Gov.gr Wallet and age tokens expected to play a key role. The bill went to parliamentary committees from Oct 13. Enforcement sits within the DSA framework (EETT as Digital Services Coordinator, with a role for the National Council for Radio and Television and the Hellenic Data Protection Authority). Penalties were not reported. Greece is among the EU front-runner countries piloting the Age Verification Blueprint.",
     primary: { title: "Hellenic Parliament", url: "https://www.hellenicparliament.gr/en/", host: "hellenicparliament.gr" }
   },
   {
@@ -2413,6 +2410,9 @@ const PLATFORM_IMPACT = {
 };
 
 const MILESTONES = [
+  { date: "2026-10-23", flag: "🇬🇷", label: "<strong>Greece</strong> — Parliament passes the under-15 social media law (New Democracy majority; PASOK abstained; other left-wing and nationalist parties voted against); applies from Jan 1, 2027, with platforms given about 2.5 months to set up age verification" },
+  { date: "2026-10-23", flag: "🇺🇸", label: "<strong>US (California)</strong> — NetChoice sues in federal court to block California's social media warning-label law, arguing it violates the First Amendment (court and docket details not yet confirmed)" },
+  { date: "2026-10-23", flag: "🇺🇸", label: "<strong>US (Florida)</strong> — Attorney General James Uthmeier proposes a 'Safe Screens Act': age determination and parental consent for minors' app downloads, default-off autoplay/infinite scroll for teens, a 2-hour daily/60-hour monthly limit, quiet hours (11pm–7am and school hours), age checks for AI chatbots, and fines up to $50,000 per knowing or reckless violation; proposal only, no bill number reported" },
   { date: "2026-10-15", flag: "🇺🇸", label: "<strong>US (Georgia)</strong> — 11th Circuit reverses the preliminary injunction against SB 351 in <em>NetChoice v. Attorney General of Georgia</em> (opinion by Judge Newsom): NetChoice had not made out a facial First Amendment challenge; the law can be enforced while NetChoice evaluates next steps" },
   { date: "2026-10-15", flag: "🇦🇺", label: "<strong>Australia</strong> — Online Safety Amendment (Digital Duty of Care) Bill 2026 introduced in the House of Representatives; a Senate inquiry is to report before the end of the parliamentary year" },
   { date: "2026-10-13", flag: "🇬🇷", label: "<strong>Greece</strong> — Under-15 social media bill due before parliamentary committees (provisions presented Oct 12); plenary vote scheduled Oct 22" },
