@@ -3548,13 +3548,15 @@ function getFiltered() {
 
 // While-in-court note: shown for Implemented and Passed cards with litigation.
 // inEffect: true (not blocked), false (on hold), "partial" (some provisions blocked)
-function effectHtml(p, cls) {
+function effectHtml(p, cls, withNote) {
   if (!["implemented", "passed"].includes(p.status) || p.litigation === "none" || !p.inEffectNote) return "";
   let label, tone;
   if (p.inEffect === "partial") { label = "Partly on hold during litigation"; tone = "effect-partial"; }
   else if (p.inEffect) { label = p.status === "implemented" ? "In force during litigation" : "Not blocked by the court"; tone = "effect-yes"; }
   else { label = "On hold until litigation is resolved"; tone = "effect-no"; }
-  return `<div class="${cls} ${tone}"><strong>${label}.</strong> ${p.inEffectNote}</div>`;
+  return withNote
+    ? `<div class="${cls} ${tone}"><strong>${label}.</strong> ${p.inEffectNote}</div>`
+    : `<div class="${cls} ${tone}"><strong>${label}</strong></div>`;
 }
 
 function renderKanban() {
@@ -3589,7 +3591,7 @@ function renderKanban() {
               ${stageBadge}
               ${litBadge}
             </div>
-            ${effectHtml(p, "k-card-effect")}
+            ${effectHtml(p, "k-card-effect", false)}
           </div>`;
         }).join("")}
     </div>`;
@@ -3663,7 +3665,7 @@ function openModal(idx) {
     ["Litigation",  p.litigation !== "none"
       ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>${p.litigationDetail ? '<div class="modal-lit-detail">' + p.litigationDetail + '</div>' : ''}`
       : null],
-    ["While in court", effectHtml(p, "modal-lit-detail") || null],
+    ["While in court", effectHtml(p, "modal-lit-detail", true) || null],
   ].filter(([, v]) => v !== null && v !== undefined);
 
   $("#modal-grid").innerHTML = rows.map(([l, v]) =>
