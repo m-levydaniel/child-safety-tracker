@@ -450,6 +450,10 @@
   .k-card:hover { border-color: var(--accent); }
   .k-card-name { font-size: 12.5px; font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
   .k-card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .k-card-effect { margin-top: 6px; font-size: 11px; line-height: 1.35; color: var(--muted); }
+  .k-card-effect strong { font-weight: 600; }
+  .effect-yes strong { color: var(--green); }
+  .effect-no strong { color: var(--red); }
   .k-empty { color: var(--muted); font-size: 12px; padding: 6px 0; }
 
   /* Modal */
@@ -1046,6 +1050,8 @@ const POLICIES = [
     penalties: "Up to A$49.5M (30,000 penalty units); Parliament passed amendments on Sept 10, 2026 doubling the maximum to ~A$99M (60,000 penalty units)",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "The Digital Freedom Project Incorporated v. Commonwealth — filed Nov 26, 2025 by two teenagers and the Digital Freedom Project (run by NSW MLC John Ruddick), arguing the ban violates the implied freedom of political communication. High Court agreed Dec 4, 2025 to hear the case; Reddit separately launched its own High Court challenge, with the cases proceeding jointly. No ruling yet as of mid-2026; the law remains in force pending the outcome.",
+    inEffect: true,
+    inEffectNote: "No court order has paused the ban while the joint High Court challenge proceeds; no ruling yet.",
     notes: "March 31, 2026: eSafety opened formal investigations into Facebook, Instagram, Snapchat, TikTok, YouTube. ~4.7M under-16 accounts removed by mid-Dec 2025. eSafety's March 2026 compliance report identified four recurring gaps: platforms nudging under-16s to keep attempting age assurance after self-declaring as underage, unlimited repeat attempts at the same age-assurance method until it passes, poorly accessible reporting pathways for parents to flag age-restricted accounts, and insufficient action to prevent under-16 signups outright. A follow-up eSafety study published Aug 3, 2026 found that, three months after commencement, over 8 in 10 under-16s were still using at least one age-restricted platform (down only slightly from ~86% pre-ban), with about half of those who kept accounts saying the platform simply never checked their age; daily teen usage was roughly unchanged (58% vs. 60% pre-ban). eSafety attributed this mainly to platforms' age-assurance enforcement. Sept 10, 2026: Parliament passed the Online Safety Amendment (Strengthening Enforcement for the Social Media Minimum Age) Bill 2026, after the House of Representatives agreed to the Senate's message on the bill (division 96–36). The bill doubles the maximum civil penalty for breaches of the minimum-age obligation from 30,000 to 60,000 penalty units (~A$49.5M to ~A$99M) and lets eSafety compel information and documents from platforms and from third parties such as age-assurance providers and app-store operators. The Senate had referred the bill to a committee inquiry (reporting date Aug 25) before passage; the House second-reading division on July 1, 2026 was recorded on party lines. High Court accepted Digital Freedom Project + Reddit constitutional challenge (implied-freedom-of-political-communication argument); cases to proceed jointly, arguments scheduled for 2026; no ruling yet. See separate Digital Duty of Care Bill entry (exposure draft released Sept 8, 2026) for the companion harm-prevention legislation.",
     primary: { title: "Online Safety Amendment (Social Media Minimum Age) Act 2024 — legislation.gov.au", url: "https://www.legislation.gov.au/C2024A00127/asmade/text", host: "legislation.gov.au" }
   },
@@ -1166,6 +1172,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice sued on First Amendment grounds; a federal district court denied NetChoice's motion for a preliminary injunction in June 2025, and the law remained in force pending appeal. On August 28, 2026, a 6th Circuit panel voted 2-1 to vacate that denial, holding the district court improperly dismissed NetChoice's injury claims without weighing likelihood of success on the merits; the case is remanded to the district court to fully assess the preliminary injunction factors.",
+    inEffect: true,
+    inEffectNote: "The district court denied a preliminary injunction in June 2025. After the 6th Circuit vacated that denial (Aug 28, 2026), NetChoice's renewed request is pending in the district court; no injunction has been reported.",
     notes: "In force. Part of broader US state trend — at least 19 states had laws addressing minors on social media by April 2026.",
     primary: { title: "Public Chapter No. 899 (Protecting Children from Social Media Act) — TN SOS", url: "https://publications.tnsosfiles.com/acts/113/pub/pc0899.pdf", host: "tnsosfiles.com" }
   },
@@ -1195,6 +1203,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "CCIA & NetChoice v. Uthmeier (N.D. Fla.) — the district court granted a preliminary injunction on June 3, 2025; the 11th Circuit stayed it on Nov 25, 2025 (2–1), and in a 3–0 opinion reported Oct 16, 2026 vacated the injunction, finding the law likely content-neutral and likely to survive. The case returns to the federal district court in Tallahassee; NetChoice said it is evaluating its options.",
+    inEffect: true,
+    inEffectNote: "The 11th Circuit stayed the preliminary injunction on Nov 25, 2025 and vacated it in an opinion reported Oct 16, 2026; the case continues in the district court.",
     notes: "In force. The 11th Circuit panel opinion (reported Oct 16, 2026) vacated the 2025 preliminary injunction, so Florida can enforce the under-14 account prohibition and the parental-consent requirement for 14- and 15-year-olds. The law applies only to platforms meeting the four-factor coverage test.",
     primary: { title: "Florida Senate — HB 3 (2024)", url: "https://www.flsenate.gov/Session/Bill/2024/3", host: "flsenate.gov" }
   },
@@ -1293,6 +1303,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Fitch (S.D. Miss.) — the district court granted a preliminary injunction on July 1, 2024; the 5th Circuit vacated it on April 17, 2025 and remanded. The district court granted a second preliminary injunction on June 18, 2025; the 5th Circuit stayed it on July 17, 2025, and the U.S. Supreme Court denied NetChoice's emergency application on Aug 14, 2025. After oral argument on Feb 3, 2026, a unanimous 5th Circuit panel (opinion by Judge Cory T. Wilson) vacated the second preliminary injunction on Nov 19, 2026 and remanded to the district court. NetChoice said it is assessing its options.",
+    inEffect: true,
+    inEffectNote: "Enforceable since the 5th Circuit's July 17, 2025 stay; the 5th Circuit vacated the second preliminary injunction on Nov 19, 2026 and the case continues in the district court.",
     notes: "In force since the 5th Circuit's July 17, 2025 stay of the second preliminary injunction. The Nov 19, 2026 ruling vacated that injunction; litigation continues in the district court. The law requires covered platforms to make commercially reasonable efforts to verify users' ages and to obtain parental consent before known minors can hold accounts.",
     primary: { title: "HB 1126 (Walker Montgomery Protecting Children Online Act) — MS Legislature", url: "https://billstatus.ls.state.ms.us/documents/2024/html/HB/1100-1199/HB1126PS.htm", host: "billstatus.ls.state.ms.us" }
   },
@@ -1463,6 +1475,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "SEAT v. Paxton / NetChoice v. Texas — W.D. Tex. issued preliminary injunction Dec. 2025 on First Amendment grounds. 5th Circuit granted administrative stay June 2, 2026; then issued full opinion June 4–5, 2026 (SEAT v. Paxton, No. 26-50001) finding SB 2420 'likely constitutional' under intermediate scrutiny — age verification and parental consent requirements likely directly advance Texas's substantial interest in child safety. July 6, 2026: U.S. Supreme Court declined, on its emergency docket, to block SB 2420 while litigation continues — a brief unsigned order with no dissents and no stated reasoning, leaving the law in effect. Merits appeal remains before the 5th Circuit, with an expedited hearing expected in early August 2026.",
+    inEffect: true,
+    inEffectNote: "The 5th Circuit stayed the preliminary injunction in June 2026, and the U.S. Supreme Court declined to block SB 2420 on July 6, 2026; the merits appeal continues.",
     notes: "App store-level approach: requires age assurance at point of download. 5th Circuit administrative stay (June 2, 2026) allowed law to take effect June 4, 2026; full 5th Circuit opinion (June 4–5, 2026) found the law likely constitutional, strongly signaling how the merits appeal will resolve. Apple and Google implementing compliance.",
     primary: { title: "Texas Legislature — SB 2420", url: "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420", host: "capitol.texas.gov" }
   },
@@ -1951,6 +1965,8 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice filed suit February 9, 2026 (four days after enactment) on First and Fourteenth Amendment grounds, arguing the 'reasonable care' standard is a content-based speech restriction and that the law is preempted by Section 230 and COPPA. Gov. McMaster moved to intervene as a defendant February 13, 2026.",
+    inEffect: true,
+    inEffectNote: "No ruling has been reported on NetChoice's preliminary-injunction motion (fully briefed April 20, 2026), so the law applies while the case proceeds.",
     notes: "Enacted February 6, 2026; effective immediately. South Carolina became the fifth US state to enact an AADC. Annual independent third-party audit requirement is more demanding than most peer laws.",
     primary: { title: "S.431 — SC Legislature", url: "https://www.scstatehouse.gov/sess126_2025-2026/prever/3431_20260114.htm", host: "scstatehouse.gov" }
   },
@@ -1979,6 +1995,8 @@ const POLICIES = [
     penalties: "$2,500–$7,500 per child per violation; UDAP penalties up to $25,000 for repeat violations",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Brown — filed Feb 3, 2025 in U.S. District Court for the District of Maryland; motion to dismiss denied Nov 24, 2025 (court found NetChoice plausibly alleged First/Fourteenth Amendment and preemption violations); amended complaint filed April 2026; July 7, 2026 ruling granted NetChoice leave to add a dormant Commerce Clause claim.",
+    inEffect: true,
+    inEffectNote: "No injunction has been sought or entered; the court denied the state's motion to dismiss on Nov 24, 2025 and the case continues.",
     notes: "Signed by Gov. Wes Moore May 9, 2024; effective October 1, 2024. No private right of action — enforcement is exclusive to the AG's Division of Consumer Protection, with a 90-day cure period for companies that have completed a DPIA. First DPIA deadline was April 1, 2026. Law remains in force while litigation proceeds.",
     primary: { title: "HB 603 (2024) — Maryland General Assembly", url: "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB0603", host: "mgaleg.maryland.gov" }
   },
@@ -3509,6 +3527,13 @@ function getFiltered() {
   });
 }
 
+// While-in-court note: shown for Implemented cards with active litigation
+function effectHtml(p, cls) {
+  if (p.status !== "implemented" || p.litigation === "none" || !p.inEffectNote) return "";
+  const label = p.inEffect ? "In force during litigation" : "On hold until litigation is resolved";
+  return `<div class="${cls} ${p.inEffect ? "effect-yes" : "effect-no"}"><strong>${label}.</strong> ${p.inEffectNote}</div>`;
+}
+
 function renderKanban() {
   const board = $("#kanban-board");
   const filtered = getFiltered();
@@ -3541,6 +3566,7 @@ function renderKanban() {
               ${stageBadge}
               ${litBadge}
             </div>
+            ${effectHtml(p, "k-card-effect")}
           </div>`;
         }).join("")}
     </div>`;
@@ -3614,6 +3640,7 @@ function openModal(idx) {
     ["Litigation",  p.litigation !== "none"
       ? `<span class="badge lit-${p.litigation}">${p.litigationLabel}</span>${p.litigationDetail ? '<div class="modal-lit-detail">' + p.litigationDetail + '</div>' : ''}`
       : null],
+    ["While in court", effectHtml(p, "modal-lit-detail") || null],
   ].filter(([, v]) => v !== null && v !== undefined);
 
   $("#modal-grid").innerHTML = rows.map(([l, v]) =>
