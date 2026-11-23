@@ -454,6 +454,7 @@
   .k-card-effect strong { font-weight: 600; }
   .effect-yes strong { color: var(--green); }
   .effect-no strong { color: var(--red); }
+  .effect-partial strong { color: var(--amber); }
   .k-empty { color: var(--muted); font-size: 12px; padding: 6px 0; }
 
   /* Modal */
@@ -1218,7 +1219,9 @@ const POLICIES = [
     enforcement: "CA Attorney General",
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
-    litigationDetail: "Related California design laws (e.g., AADC) face NetChoice litigation.",
+    litigationDetail: "NetChoice v. Bonta (SB 976) — the district court denied most of NetChoice's preliminary-injunction request; the 9th Circuit granted an injunction pending appeal in Jan 2025, then ruled 3–0 on Sept 9, 2025 that the addictive-feed and default-settings provisions could take effect, found NetChoice lacked standing on the personalized-feed provisions, and held NetChoice likely to succeed against the like-count provision (severable). Rehearing en banc was denied Nov 6, 2025; the case continues in the district court.",
+    inEffect: "partial",
+    inEffectNote: "After the 9th Circuit's Sept 9, 2025 ruling, the addictive-feed parental-consent and default-settings provisions may take effect; the court found the like-count provision likely unconstitutional. The case continues in the district court.",
     notes: "Effective December 31, 2026.",
     primary: { title: "California Legislative Info — SB 976", url: "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202320240SB976", host: "leginfo.legislature.ca.gov" }
   },
@@ -1233,6 +1236,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Hilgers — complaint filed May 13, 2026; Senior U.S. District Judge Gerrard granted preliminary injunction in part June 28, 2026, blocking age-verification and parental-consent provisions as likely First Amendment violations, but declined to enjoin the law's parental-monitoring-tools provisions, finding them 'narrowly tailored.' Law will not take effect July 1 as scheduled for the enjoined provisions. NetChoice appealed the monitoring-tools ruling to the 8th Circuit (No. 26-2478, filed July 23, 2026); briefing due September 11, 2026.",
+    inEffect: "partial",
+    inEffectNote: "The June 28, 2026 preliminary injunction blocks the age-verification and parental-consent provisions; the parental-monitoring-tools provisions were not enjoined. NetChoice's appeal on those provisions is before the 8th Circuit.",
     notes: "Effective date July 1, 2026 — enjoined. On June 28, 2026, Senior U.S. District Judge John Gerrard partially granted NetChoice's preliminary injunction motion, finding that LB 383's age-verification and parental-consent requirements likely violate the First Amendment rights of both users and platforms. Law is blocked pending merits. Note: Nebraska separately enacted LB 504 (Age-Appropriate Online Design Code Act, in force Jan 1, 2026), a design-rules law distinct from LB 383 — see the separate LB 504 entry.",
     primary: { title: "LB 383 (Parental Rights in Social Media Act) — Nebraska Legislature", url: "https://nebraskalegislature.gov/FloorDocs/109/PDF/Slip/LB383.pdf", host: "nebraskalegislature.gov" }
   },
@@ -1261,6 +1266,8 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Minnesota — 48-page First Amendment complaint filed April 29, 2026; seeks injunction before July 1 enforcement date.",
+    inEffect: true,
+    inEffectNote: "No preliminary injunction has been reported; the warning-label requirement took effect July 1, 2026 while the state's motion to dismiss and the case are pending.",
     notes: "Warning labels law effective July 1, 2026. NetChoice filed suit in U.S. District Court on April 29, 2026, arguing the mandatory disclosures compel speech in violation of the First Amendment.",
     primary: { title: "MN Stat. § 325M.335 Mental Health Warning Label — MN Revisor", url: "https://www.revisor.mn.gov/laws/cite/325M.335", host: "revisor.mn.gov" }
   },
@@ -1289,6 +1296,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Injunction reversed",
     litigationDetail: "NetChoice v. Carr — Senior U.S. District Judge Amy Totenberg issued a preliminary injunction on June 26, 2025. On Oct 15, 2026 an 11th Circuit panel (Judges Newsom, Tjoflat and Luck; opinion by Judge Newsom) reversed it, holding NetChoice had not met its burden in a facial First Amendment challenge, had not shown the law is unconstitutionally vague, and had not shown Section 230 preemption. The court did not rule that SB 351 is constitutional. NetChoice said it is evaluating next steps.",
+    inEffect: true,
+    inEffectNote: "No injunction has been in place since the 11th Circuit vacated it on Oct 15, 2026; the case returns to the district court. This tracker has not confirmed whether enforcement has begun.",
     notes: "Injunction in place from June 2025 until the 11th Circuit reversal on Oct 15, 2026. The court cited the Moody v. NetChoice requirement of a comparative analysis of covered platforms and noted NetChoice had not supplied a full list of its covered members. The case was argued March 10, 2026 alongside the Florida appeal (HB 3).",
     primary: { title: "Georgia SB 351 (2024) — Georgia General Assembly", url: "https://www.legis.ga.gov/legislation/66023", host: "legis.ga.gov" }
   },
@@ -1319,6 +1328,8 @@ const POLICIES = [
     penalties: "Enforced as a deceptive act",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Rokita, No. 1:26-cv-02500 (S.D. Ind., Indianapolis Division) — filed Nov 18, 2026, challenging the social media provisions on First Amendment grounds and seeking an injunction before the Jan 1, 2027 effective date. No ruling yet.",
+    inEffect: true,
+    inEffectNote: "No ruling yet on NetChoice's challenge (filed Nov 18, 2026); the social media provisions are scheduled to take effect Jan 1, 2027 unless a court blocks them.",
     notes: "House Enrolled Act 1408 ('Education matters') was signed by Gov. Mike Braun on March 4, 2026 (Public Law 100); the social media provisions were added to the education bill and take effect Jan 1, 2027. Reported votes: House 93–0, Senate 49–1. Provision details above are as described in reporting and the NetChoice complaint; the enrolled text has not been reviewed in full by this tracker.",
     primary: { title: "HEA 1408 (2026), Public Law 100 — Indiana General Assembly", url: "https://iga.in.gov/legislative/2026/bills/house/1408/details", host: "iga.in.gov" }
   },
@@ -1347,6 +1358,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "The Computer & Communications Industry Association (CCIA) sued in the U.S. District Court for the Middle District of Alabama (reported Oct 28, 2026) on First Amendment grounds. CCIA reportedly agreed with the Attorney General's office to delay further proceedings until the state adopts rules on acceptable age-verification methods.",
+    inEffect: true,
+    inEffectNote: "No court order; the case is reportedly paused by agreement until the Attorney General adopts age-verification rules. The law is scheduled to take effect Jan 1, 2027.",
     notes: "App store-level approach — rather than banning minors from platforms directly, requires age verification at the point of app download. One of a handful of states taking this distribution-layer strategy. Scheduled to take effect Jan 1, 2027; reporting indicates existing accounts must be age-categorized by Oct 1, 2027. Reported Nov 19, 2026: Attorney General Steve Marshall issued a request for information to inform rules on app store age verification, with responses due Jan 8, 2027.",
     primary: { title: "LegiScan — Alabama HB 161", url: "https://legiscan.com/AL/bill/HB161/2026", host: "legiscan.com" }
   },
@@ -1389,6 +1402,8 @@ const POLICIES = [
     penalties: "Civil penalties; private right of action (HB 464)",
     litigation: "enjoined", litigationLabel: "Enjoined",
     litigationDetail: "NetChoice v. Brown (originally NetChoice v. Reyes): Judge Robert Shelby of the U.S. District Court for the District of Utah granted a preliminary injunction on Sept. 10, 2024. Utah appealed to the 10th Circuit. As of Sept 2026 the injunction remains in place and no appellate decision has been issued.",
+    inEffect: false,
+    inEffectNote: "The Sept 10, 2024 preliminary injunction remains in place; the 10th Circuit heard Utah's appeal on Nov 20, 2025 and has not ruled.",
     notes: "Correction (Sept 28, 2026): an earlier version of this card listed SB 194 / HB 464 as 'Pending · Introduced'. Both bills were enacted in 2024; the law is not in force because of the preliminary injunction. They replaced the 2023 Utah Social Media Regulation Act (curfews and parental consent), which was repealed after its own NetChoice challenge.",
     primary: { title: "S.B. 194 Social Media Regulation Amendments — Utah State Legislature", url: "https://le.utah.gov/~2024/bills/static/SB0194.html", host: "le.utah.gov" }
   },
@@ -1403,6 +1418,8 @@ const POLICIES = [
     penalties: "tbd",
     litigation: "enjoined", litigationLabel: "Enjoined",
     litigationDetail: "NetChoice v. Griffin — Act 689 (2023) was permanently struck down March 31, 2025 on First Amendment/vagueness grounds; that ruling is on appeal to the 8th Circuit. Its successor, Act 900 (2025), was preliminarily enjoined April 20, 2026 (same court, Judge Brooks: law 'likely violate[s] the First Amendment').",
+    inEffect: false,
+    inEffectNote: "Act 900 has been preliminarily enjoined since April 20, 2026; the state's appeal (No. 26-1096) is pending at the 8th Circuit.",
     notes: "Second round of Arkansas social-media legislation after Act 689 was struck down. Act 900 was drafted to fix the constitutional defects courts identified in Act 689 while adding new obligations; a federal judge preliminarily enjoined it on the same grounds. Referenced in this tracker's milestones (April 20, 2026 injunction) prior to having its own entry.",
     primary: { title: "Act 900 of 2025 — full text (Arkansas State Legislature)", url: "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FACTS%2F2025R%2FPublic%2FACT900.pdf", host: "arkleg.state.ar.us" }
   },
@@ -1418,6 +1435,8 @@ const POLICIES = [
     penalties: "Civil penalties",
     litigation: "active", litigationLabel: "Active",
     litigationDetail: "NetChoice v. Yost — district court had permanently enjoined the law; 6th Circuit reversed 2-1 on June 18, 2026, holding NetChoice lacked third-party standing to assert minors' First Amendment rights and that the law survives strict scrutiny. Judge Ritz dissented. On Aug 17, 2026 the 6th Circuit granted NetChoice's motion to stay the mandate (No. 25-3371), so the June 18 decision has not taken effect and the district court's injunction remains in place; the stay lasts until the Supreme Court disposes of the case, but the mandate issues if no certiorari petition is filed within 90 days of final judgment.",
+    inEffect: false,
+    inEffectNote: "The district court's injunction stays in place because the 6th Circuit stayed its mandate on Aug 17, 2026 pending Supreme Court review; NetChoice sought an extension to Dec 3, 2026 to file its certiorari petition.",
     notes: "Signed by Gov. Mike DeWine in 2023, initially blocked by a permanent injunction. Correction (Oct 5, 2026): an earlier version of this card listed the law as Implemented. The 6th Circuit's June 18, 2026 decision would allow the law to take effect, but the court stayed its mandate on Aug 17, 2026 pending a NetChoice certiorari petition, so the law is not currently enforceable. Referenced in this tracker's milestones prior to having its own entry.",
     primary: { title: "Ohio Revised Code § 1349.09 — Parental notification by social media operators (Ohio Laws)", url: "https://codes.ohio.gov/ohio-revised-code/section-1349.09", host: "codes.ohio.gov" }
   },
@@ -3527,11 +3546,15 @@ function getFiltered() {
   });
 }
 
-// While-in-court note: shown for Implemented cards with active litigation
+// While-in-court note: shown for Implemented and Passed cards with litigation.
+// inEffect: true (not blocked), false (on hold), "partial" (some provisions blocked)
 function effectHtml(p, cls) {
-  if (p.status !== "implemented" || p.litigation === "none" || !p.inEffectNote) return "";
-  const label = p.inEffect ? "In force during litigation" : "On hold until litigation is resolved";
-  return `<div class="${cls} ${p.inEffect ? "effect-yes" : "effect-no"}"><strong>${label}.</strong> ${p.inEffectNote}</div>`;
+  if (!["implemented", "passed"].includes(p.status) || p.litigation === "none" || !p.inEffectNote) return "";
+  let label, tone;
+  if (p.inEffect === "partial") { label = "Partly on hold during litigation"; tone = "effect-partial"; }
+  else if (p.inEffect) { label = p.status === "implemented" ? "In force during litigation" : "Not blocked by the court"; tone = "effect-yes"; }
+  else { label = "On hold until litigation is resolved"; tone = "effect-no"; }
+  return `<div class="${cls} ${tone}"><strong>${label}.</strong> ${p.inEffectNote}</div>`;
 }
 
 function renderKanban() {
